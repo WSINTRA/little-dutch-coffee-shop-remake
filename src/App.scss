@@ -1,5 +1,59 @@
-.backdrop-overlay {
+.backdrop {
 width: 100vw;
 height: 100vh;
-background: transparent;
+
+
+  &__image-left {
+  position: absolute;
+  
+  bottom: 0;
+  left: 0;
+  width:90%;
+  height: 70%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+   
+   filter: blur(3px);
+   clip-path: polygon(0 0, 65% 0%, 55% 100%, 0% 100%);
+ overflow: hidden;
+ 
+  }
+  &__image-right {
+    position: absolute;
+    bottom: 0;
+    left:40%;
+    width: 60%;
+    height: 70%;
+    
+    filter: blur(3px);
+    
+    clip-path: polygon(10% 0, 100% 0%, 100% 100%, 0% 100%);
+overflow: hidden;
+  }
 }
+.header {
+z-index: 1000;
+position: absolute;
+width: 100vw;
+height: 15rem;
+background-image: linear-gradient(#f4f4f4, #9BB39E);
+border: 1px solid #707070;
+text-align: center;
+&__menu{
+  position: absolute;
+  left: 90vw;
+  top: 10vh;
+}
+&__logo{
+  display: block;
+  img{
+    margin-top: 2rem;
+  height: 10rem;
+  width: 18rem;
+  }
+}
+}
+
+
+
+

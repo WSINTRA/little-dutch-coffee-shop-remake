@@ -8,7 +8,7 @@
 import React from "react";
 
 const DutchComponent = () => (
-  <svg width={362} height={204} viewBox="0 0 362 204">
+  <svg viewBox="0 0 362 204">
     <defs>
       <style>{".a{fill:url(#a);}"}</style>
       <pattern
@@ -18,7 +18,7 @@ const DutchComponent = () => (
         height="100%"
         viewBox="0 0 560 315"
       >
-        <image width={560} height={315} xlinkHref="ComponentTMP_1-image.png" />
+        <image width={560} height={315} xlinkHref="ComponentTMP_0-image.png" />
       </pattern>
     </defs>
     <rect className="a" width={362} height={204} />

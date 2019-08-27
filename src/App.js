@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.css';
-import Logo from './components/DutchComponent'
+import './App.scss';
+import BackDrop from './components/BackDrop'
 function App() {
   return (
     <div>
-    <Logo/>
+    <BackDrop/>
     </div>
   );
 }

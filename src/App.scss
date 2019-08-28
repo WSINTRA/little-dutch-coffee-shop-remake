@@ -1,62 +1,115 @@
+/////////////////////////////////
+//mixins at the top for media queries
+//////////////////////////////////
+/*
+0-600px: phone;
+600 - 900px: Tablet portrait
+900-1200px: Tablet Landscape
+1200 - 1800: desktop;
+1800 + : Big Desktop;
+$breakpoint argument choices:
+-phone
+-tab-port
+-tab-land
+-big-desktop
+*/
+@mixin respond($breakpoint){
+  @if $breakpoint == phone {
+      @media (max-width: 37.5em) { //600px divided by 16
+        @content
+      };
+  }
+  @if $breakpoint == tab-port{
+      @media (max-width: 56.25em) {
+        @content
+      };
+  } 
+  @if $breakpoint == tab-land{
+      @media (max-width: 75em) {
+        @content
+      };
+  } 
+  @if $breakpoint == big-desktop{
+      @media (min-width: 112.5em) {
+        @content
+      };
+  } 
+}
+
 .backdrop {
-width: 100vw;
-height: 100vh;
-z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
 
   &__image-left {
-  position: absolute;
-  
-  bottom: 0;
-  left: 0;
-  width:90%;
-  height: 70%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-   
-   filter: blur(3px);
-   clip-path: polygon(0 0, 65% 0%, 55% 100%, 0% 100%);
- overflow: hidden;
- 
+           @include respond(phone){
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            width: 100vw;
+            };
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width:90%;
+    height: 70%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    filter: blur(3px);
+    clip-path: polygon(0 0, 65% 0%, 55% 100%, 0% 100%);
+    overflow: hidden;
   }
+
   &__image-right {
+          @include respond(phone){
+          display:none;
+          };
+
     position: absolute;
     bottom: 0;
     left:40%;
     width: 60%;
     height: 70%;
-    
     filter: blur(3px);
-    
     clip-path: polygon(10% 0, 100% 0%, 100% 100%, 0% 100%);
-overflow: hidden;
+    overflow: hidden;
   }
 }
 .header {
-z-index: 1000;
-position: absolute;
-width: 100vw;
-height: 15rem;
-background-image: linear-gradient(#f4f4f4, #9BB39E);
-border: 1px solid #707070;
-text-align: center;
-&__menu{
-  position: absolute;
-  left: 90vw;
-  top: 10vh;
-}
-&__logo{
-  display: block;
-  img{
-    margin-top: 2rem;
-  height: 10rem;
-  width: 18rem;
-  }
-}
+    z-index: 1000;
+    position: absolute;
+    width: 100vw;
+    height: 15rem;
+    background-image: linear-gradient(#f4f4f4, #9BB39E);
+    border: 1px solid #707070;
+    text-align: center;
+    &__menu{
+          @include respond(phone){
+            left: 45%;
+            top:80%;
+            };
+      position: absolute;
+      left: 90vw;
+      top: 10vh;
+    }
+    &__logo{
+      display: block;
+      img{
+             @include respond(phone){
+                margin-top: 1rem;
+                height: 7rem;
+                width: 13rem;
+                }
+      margin-top: 2rem;
+      height: 10rem;
+      width: 18rem;
+      }
+    }
 }
 
 .menu {
+        @include respond(phone){
+          z-index:1000;
+          };
   position: absolute;
-
   width: 100vw;
   background-color: #101110;
   height: 17rem;
@@ -67,13 +120,21 @@ text-align: center;
     top: 3rem;
   }
   li {
+          @include respond(phone){
+            padding: 0.4rem;
+            display: block;
+            };
      display: inline;
      padding: 1rem;
   }
   &__close {
+        @include respond(phone){
+          left: 45%;
+          top:70%;
+          };
     position: absolute;
-      left: 90vw;
-      top: 10vh;
+    left: 90vw;
+    top: 10vh;
   }
 }
 
@@ -87,14 +148,15 @@ text-align: center;
   height: 50vh;
   border-radius: 22px;
   background: transparent;
- 
-
 /* Note: currently only Safari supports backdrop-filter */
 backdrop-filter: blur(21.347999572753906px);
 --webkit-backdrop-filter: blur(21.347999572753906px);
 background-color: rgba(255, 255, 255, 0.31);
 /* (plus shape's fill blended on top as a separate layer with 27.26% opacity) */
   h1 {
+        @include respond(phone){
+          font-size: 80%
+          };
     font-size: 2.8rem;
     font-weight: 420px;
     padding-top: 2.4rem;
@@ -102,6 +164,9 @@ background-color: rgba(255, 255, 255, 0.31);
     text-align: center;
   }
   h2 {
+        @include respond(phone){
+          font-size: 80%
+          };
     padding-top: 0.5rem;
     font-family: "Montserrat Alternates";
     font-weight: 500;

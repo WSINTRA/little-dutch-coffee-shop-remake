@@ -1,7 +1,7 @@
 .backdrop {
 width: 100vw;
 height: 100vh;
-
+z-index: -1;
 
   &__image-left {
   position: absolute;
@@ -54,6 +54,27 @@ text-align: center;
 }
 }
 
+.menu {
+  position: absolute;
 
+  width: 100vw;
+  background-color: #101110;
+  height: 17rem;
+  color: #D8ECDA;
+
+  ul {
+    position: absolute;
+    top: 3rem;
+  }
+  li {
+     display: inline;
+     padding: 1rem;
+  }
+  &__close {
+    position: absolute;
+      left: 90vw;
+      top: 10vh;
+  }
+}
 
 

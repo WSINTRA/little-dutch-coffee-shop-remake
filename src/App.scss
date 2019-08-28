@@ -77,4 +77,61 @@ text-align: center;
   }
 }
 
+.landing {
+  overflow: auto;
+  position: absolute;
+  top: 20rem;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 80vw;
+  height: 50vh;
+  border-radius: 22px;
+  background: transparent;
+ 
+
+/* Note: currently only Safari supports backdrop-filter */
+backdrop-filter: blur(21.347999572753906px);
+--webkit-backdrop-filter: blur(21.347999572753906px);
+background-color: rgba(255, 255, 255, 0.31);
+/* (plus shape's fill blended on top as a separate layer with 27.26% opacity) */
+  h1 {
+    font-size: 2.8rem;
+    font-weight: 420px;
+    padding-top: 2.4rem;
+    font-family: "Montserrat Alternates";
+    text-align: center;
+  }
+  h2 {
+    padding-top: 0.5rem;
+    font-family: "Montserrat Alternates";
+    font-weight: 500;
+    font-size: 2rem;
+    text-align: center;
+    color: #6f6f6f;
+  }
+
+  &__login,&__register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    float: left;
+    margin-left: 25%;
+    margin-top: 2rem;
+    width: 129px;
+    height: 51px;
+    border-radius: 9px;
+    
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    text-align: center;
+    cursor: pointer;
+  }
+   &__login{
+    background: linear-gradient(#469bcc 0%, #463a88 100%);
+   }
+   &__register {
+    background: linear-gradient(#a7af5c 0%, #809f11 100%);
+  }
+
+}
 

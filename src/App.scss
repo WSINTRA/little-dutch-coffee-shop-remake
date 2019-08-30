@@ -37,6 +37,7 @@ $breakpoint argument choices:
 }
 
 .backdrop {
+
   width: 100vw;
   height: 100vh;
   z-index: -1;
@@ -46,7 +47,7 @@ $breakpoint argument choices:
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
             width: 100vw;
             };
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     width:90%;
@@ -63,7 +64,7 @@ $breakpoint argument choices:
           display:none;
           };
 
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left:40%;
     width: 60%;
@@ -156,8 +157,8 @@ $breakpoint argument choices:
   overflow: auto;
   position: absolute;
   top: 20rem;
-  left: 50%;
-  transform: translate(-50%, 0%);
+  // left: 50%;
+  transform: translate(10%, 0%);
   width: 80vw;
   height: 50vh;
   border-radius: 22px;
@@ -190,6 +191,7 @@ background-color: rgba(255, 255, 255, 0.31);
   }
 
   &__login,&__register {
+    font-family: Lato;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -214,3 +216,66 @@ background-color: rgba(255, 255, 255, 0.31);
 
 }
 
+.login {
+
+&__box{
+  margin-top: 10rem;
+  transform: translate(10%, 0%);
+  width: 80vw;
+  height: 80vh;
+  clip-path: polygon(13% 4%, 97% 0, 99% 100%, 0% 100%);
+  background: transparent;
+  opacity: 0.7;
+  /* Note: currently only Safari supports backdrop-filter */
+  backdrop-filter: blur(20.91230010986328px);
+  --webkit-backdrop-filter: blur(20.91230010986328px);
+  background-color: rgba(255, 255, 255, 0.31);
+  /* (plus shape's fill blended on top as a separate layer with 100% opacity) */
+}
+
+h1 {
+  font-family: "Montserrat Alternates";
+  font-size: 2.8rem;
+  padding-top: 10rem;
+  padding-bottom: 5rem;
+  position: relative;
+  text-align: center;
+}
+&__box-detail {
+  font-family: Lato;
+  font-weight: 500;
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  text-align: left;
+  color: #080705;
+  text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  position: relative;
+  text-align: center;
+  width: 30rem;
+  left: 20rem;
+
+input {
+  width:12rem;
+  height: 3rem;
+  font-weight: 500;
+  font-size: 2rem;
+  background: linear-gradient(#fff 0%, #f5f5f5 100%);
+
+}
+}
+&__submit{
+  font-size: 1rem;
+  font-family: Lato;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  
+  margin-top: 2rem;
+  height: 51px;
+  border-radius: 9px;
+  background: linear-gradient(#469bcc 0%, #463a88 100%);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+}
+}

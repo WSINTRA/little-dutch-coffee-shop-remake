@@ -25,22 +25,13 @@ return (
 		    openCloseMenu={this.openCloseMenu}/>
     	)
 }
-random = () => {
-	return <div>HELLO Will</div>
-}
 
 render() {
   	
 	
   	return (
-    <div>
-    <Switch>
-    	
+    <div>   
         <Route exact path="/" component={this.renderLandingPage} />
-        <Route path="/will" component={this.random} />
-
-    </Switch>
-    
     </div>
     );
   	 

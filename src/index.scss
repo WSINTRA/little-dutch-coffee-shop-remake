@@ -13,4 +13,15 @@ body {
     font-size: 16px;
 }
 
-
+a {
+  text-decoration: none;
+  &:visited {
+      color: #D8ECDA;
+    }
+    &:hover {
+      color: #6D7F7F;   
+    }
+    &:active {
+      color: #AECAC8;
+    }
+}

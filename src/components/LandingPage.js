@@ -5,7 +5,7 @@ import BackDrop from './BackDrop'
 import MenuHeader from './MenuHeader'
 import Header from './Header'
 import LandingBox from './LandingBox'
-
+import LoginForm from './LoginForm'
 
 const Bounce = styled.div`animation: 0.5s ${keyframes`${fadeInLeft}`} 1`;
 
@@ -15,6 +15,7 @@ const LandingPage = (props) => (
  {props.menuOpen ? <Bounce><MenuHeader menuButton={props.openCloseMenu}/></Bounce>: 
 	<Header menuButton={props.openCloseMenu}/>} 
     <BackDrop/><LandingBox/>
+    <LoginForm/>
 </div>
 );
 

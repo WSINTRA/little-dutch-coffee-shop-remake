@@ -1,11 +1,7 @@
 import React from 'react';
+import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 import './App.scss';
-import styled, {keyframes} from 'styled-components';
-import {fadeInLeft} from 'react-animations';
-import BackDrop from './components/BackDrop'
-import MenuHeader from './components/MenuHeader'
-import Header from './components/Header'
-import LandingBox from './components/LandingBox'
+import LandingPage from './components/LandingPage'
 
 
 class App extends React.Component {
@@ -22,14 +18,29 @@ openCloseMenu=()=>{
 	})
 }
 
+renderLandingPage = () => {
+return (
+		<LandingPage 
+		    menuOpen={this.state.menuOpen}
+		    openCloseMenu={this.openCloseMenu}/>
+    	)
+}
+random = () => {
+	return <div>HELLO Will</div>
+}
+
 render() {
-  	const Bounce = styled.div`animation: 0.5s ${keyframes`${fadeInLeft}`} 1`;
-	const { menuOpen } = this.state
+  	
+	
   	return (
     <div>
-   {menuOpen ? <Bounce><MenuHeader menuButton={this.openCloseMenu}/></Bounce>: 
-	<Header menuButton={this.openCloseMenu}/>} 
-    <BackDrop/><LandingBox/>
+    <Switch>
+    	
+        <Route exact path="/" component={this.renderLandingPage} />
+        <Route path="/will" component={this.random} />
+
+    </Switch>
+    
     </div>
     );
   	 

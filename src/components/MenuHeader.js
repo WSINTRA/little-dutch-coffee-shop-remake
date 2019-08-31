@@ -7,7 +7,7 @@ const MenuHeader = (props) => (
    <li>Our Story</li>
    <li>Statement</li>
    <li><a href="#login">Log in</a></li>
-   <li>Register</li></ul>
+   <li><a href="#register">Register</a></li></ul>
    <div className="menu__selection-close"
    onClick={()=>props.menuButton()}>
    <img alt="close button"src={close}/></div>

@@ -86,6 +86,7 @@ $breakpoint argument choices:
           @include respond(phone){
             left: 45%;
             top:80%;
+            position: absolute;
             };
       position: fixed;
       left: 90vw;
@@ -113,14 +114,14 @@ $breakpoint argument choices:
   position: fixed;
   width: 100vw;
   background-color: #101110;
-  height: 17rem;
+  height: 16rem;
   color: #D8ECDA;
-
+  z-index:1000;
   
 
   &__selection {
     
-
+    text-align: center;
     ul {
     position: fixed;
     top: 5rem;
@@ -130,7 +131,8 @@ $breakpoint argument choices:
             font-size: 1.5rem;
             top: 0.2rem;
             display: block;
-            left: 34%;
+            position: absolute;
+            left: 30%;
             };
   }
   li {
@@ -145,6 +147,7 @@ $breakpoint argument choices:
         @include respond(phone){
           left: 45%;
           top:70%;
+          position: absolute;
           };
     position: fixed;
     left: 90vw;
@@ -154,11 +157,16 @@ $breakpoint argument choices:
 }
 
 .landing {
+  @include respond(phone){
+          width: 100%
+          };
   overflow: auto;
   position: absolute;
   top: 20rem;
   // left: 50%;
-  transform: translate(10%, 0%);
+  margin-left: 10rem;
+  margin-right: 10rem;
+  text-align: center;
   width: 80vw;
   height: 50vh;
   border-radius: 22px;
@@ -217,12 +225,38 @@ background-color: rgba(255, 255, 255, 0.31);
 }
 
 .login {
+padding-top: 8rem;
 
+
+  &__submit {
+     @include respond(phone){
+         margin-left: 0;
+          width: 7rem;
+          };
+    font-family: Lato;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    float: left;
+    margin-left: 25%;
+    margin-top: 2rem;
+    width: 129px;
+    height: 51px;
+    border-radius: 9px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    text-align: center;
+background: linear-gradient(#469bcc 0%, #463a88 100%);
+    cursor: pointer;
+  }
 &__box{
-  margin-top: 10rem;
+  display: grid;
+
+  grid-template-columns: repeat(12, 1fr);
+  margin-top: 8rem;
   transform: translate(10%, 0%);
   width: 80vw;
-  height: 80vh;
+  height: 90vh;
   clip-path: polygon(13% 4%, 97% 0, 99% 100%, 0% 100%);
   background: transparent;
   opacity: 0.7;
@@ -232,50 +266,82 @@ background-color: rgba(255, 255, 255, 0.31);
   background-color: rgba(255, 255, 255, 0.31);
   /* (plus shape's fill blended on top as a separate layer with 100% opacity) */
 }
-
-h1 {
-  font-family: "Montserrat Alternates";
-  font-size: 2.8rem;
-  padding-top: 10rem;
-  padding-bottom: 5rem;
-  position: relative;
-  text-align: center;
-}
-&__box-detail {
-  font-family: Lato;
-  font-weight: 500;
+&__box-detail{
+@include respond(phone){
+         grid-column: 4 / 10;
+         
+          };
+  grid-column: 6 / 10;
+  grid-row: 2/2;
+label {
+  @include respond(phone){
+          font-size: 80%
+          };
   font-size: 2rem;
-  letter-spacing: 0.05em;
-  text-align: left;
-  color: #080705;
-  text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-  position: relative;
-  text-align: center;
-  width: 30rem;
-  left: 20rem;
-
+  width:30%;
+}
 input {
-  width:12rem;
-  height: 3rem;
-  font-weight: 500;
+  @include respond(phone){
+         
+          width: 9rem;
+          };
   font-size: 2rem;
-  background: linear-gradient(#fff 0%, #f5f5f5 100%);
+  width:100%;
+}
+}
+}
 
+.register {
+  padding-top: 8rem;
+
+  &__submit {
+    @include respond(phone){
+         margin-left: 0;
+          
+          };
+    font-family: Lato;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    float: left;
+    margin-left: 25%;
+    margin-top: 2rem;
+    width: 129px;
+    height: 51px;
+    border-radius: 9px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    text-align: center;
+    background: linear-gradient(#a7af5c 0%, #809f11 100%);
+    cursor: pointer;
+  }
+&__box{
+  display: grid;
+
+  grid-template-columns: repeat(12, 1fr);
+  margin-top: 12rem;
+  transform: translate(10%, 0%);
+  width: 80vw;
+  height: 90vh;
+  clip-path: polygon(13% 4%, 97% 0, 99% 100%, 0% 100%);
+  background: transparent;
+  opacity: 0.7;
+  /* Note: currently only Safari supports backdrop-filter */
+  backdrop-filter: blur(20.91230010986328px);
+  --webkit-backdrop-filter: blur(20.91230010986328px);
+  background-color: rgba(255, 255, 255, 0.31);
+  /* (plus shape's fill blended on top as a separate layer with 100% opacity) */
 }
+&__box-detail{
+grid-column: 6 / 10;
+  grid-row: 2/2;
+label {
+  font-size: 2rem;
+  width:30%;
 }
-&__submit{
-  font-size: 1rem;
-  font-family: Lato;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  
-  margin-top: 2rem;
-  height: 51px;
-  border-radius: 9px;
-  background: linear-gradient(#469bcc 0%, #463a88 100%);
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-  cursor: pointer;
+input {
+  font-size: 2rem;
+  width:100%;
+}
 }
 }

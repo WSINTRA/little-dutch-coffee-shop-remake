@@ -1,13 +1,14 @@
 import React from "react";
 import styled, {keyframes} from 'styled-components';
-import {fadeInLeft} from 'react-animations';
+import {fadeInUp} from 'react-animations';
 import BackDrop from './BackDrop'
 import MenuHeader from './MenuHeader'
 import Header from './Header'
 import LandingBox from './LandingBox'
 import LoginForm from './LoginForm'
+import RegisterForm from './RegisterForm'
 
-const Bounce = styled.div`animation: 0.5s ${keyframes`${fadeInLeft}`} 1`;
+const Bounce = styled.div`animation: 0.5s ${keyframes`${fadeInUp}`} 1`;
 
 const LandingPage = (props) => (
 
@@ -15,7 +16,8 @@ const LandingPage = (props) => (
  {props.menuOpen ? <Bounce><MenuHeader menuButton={props.openCloseMenu}/></Bounce>: 
 	<Header menuButton={props.openCloseMenu}/>} 
     <BackDrop/><LandingBox/>
-    <LoginForm/>
+    <LoginForm/><RegisterForm/>
+
 </div>
 );
 

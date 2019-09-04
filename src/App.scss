@@ -51,7 +51,7 @@ $breakpoint argument choices:
     bottom: 0;
     left: 0;
     width:90%;
-    height: 70%;
+    height: 90%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     filter: blur(3px);
@@ -68,29 +68,30 @@ $breakpoint argument choices:
     bottom: 0;
     left:40%;
     width: 60%;
-    height: 70%;
+    height: 90%;
     filter: blur(3px);
     clip-path: polygon(10% 0, 100% 0%, 100% 100%, 0% 100%);
     overflow: hidden;
   }
 }
 .header {
-    z-index: 1000;
-    position: absolute;
+    z-index: 1;
+    position: fixed;
     width: 100vw;
-    height: 16rem;
+    height: 9rem;
     background-image: linear-gradient(#f4f4f4, #9BB39E);
     border: 1px solid #707070;
     text-align: center;
     &__menu{
           @include respond(phone){
-            left: 45%;
-            top:80%;
-            position: absolute;
+          left: 10rem;
+          top:110%;
+          position: absolute;
             };
       position: fixed;
       left: 90vw;
       top: 10vh;
+      cursor: pointer;
     }
     &__logo{
       display: block;
@@ -100,9 +101,9 @@ $breakpoint argument choices:
                 height: 7rem;
                 width: 13rem;
                 }
-      margin-top: 2rem;
-      height: 10rem;
-      width: 18rem;
+      // margin-top: 0.01rem;
+      height: 9rem;
+      width: 17rem;
       }
     }
 }
@@ -111,21 +112,18 @@ $breakpoint argument choices:
         @include respond(phone){
           z-index:1000;
           };
-  position: fixed;
-  width: 100vw;
-  background-color: #101110;
-  height: 16rem;
-  color: #D8ECDA;
-  z-index:1000;
-  
-
+      z-index:1000;
+      position: fixed;
+      width: 100vw;
+      background-color: #101110;
+      height: 11rem;
+      color: #D8ECDA;
   &__selection {
     
-    text-align: center;
+    // text-align: center;
     ul {
     position: fixed;
-    top: 5rem;
-    left: 20%;
+    top: 1rem;
     font-size: 2.1rem;
     @include respond(phone){
             font-size: 1.5rem;
@@ -145,20 +143,24 @@ $breakpoint argument choices:
   }
   &-close {
         @include respond(phone){
-          left: 45%;
-          top:70%;
-          position: absolute;
+          left: 0rem;
+          top:00%;
+          position: relative;
           };
-    position: fixed;
+    
     left: 90vw;
-    top: 10vh;
+    top: 1vh;
+    cursor: pointer;
   }
   }
 }
 
 .landing {
   @include respond(phone){
-          width: 100%
+          width: 23rem;
+          margin-left: 0rem;
+          left: 0.1rem;
+          height: 16rem;
           };
   overflow: auto;
   position: absolute;
@@ -179,6 +181,7 @@ background-color: rgba(255, 255, 255, 0.31);
   h1 {
         @include respond(phone){
           font-size: 80%
+
           };
     font-size: 2.8rem;
     font-weight: 420px;
@@ -199,6 +202,10 @@ background-color: rgba(255, 255, 255, 0.31);
   }
 
   &__login,&__register {
+    @include respond(phone){
+          margin-left: 1rem;
+          width: 10rem;
+          };
     font-family: Lato;
     display: flex;
     justify-content: center;
@@ -230,7 +237,7 @@ padding-top: 8rem;
 
   &__submit {
      @include respond(phone){
-         margin-left: 0;
+          margin-left: 0;
           width: 7rem;
           };
     font-family: Lato;
@@ -240,20 +247,18 @@ padding-top: 8rem;
     position: relative;
     float: left;
     margin-left: 25%;
-    margin-top: 2rem;
     width: 129px;
     height: 51px;
     border-radius: 9px;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
     text-align: center;
-background: linear-gradient(#469bcc 0%, #463a88 100%);
+    background: linear-gradient(#469bcc 0%, #463a88 100%);
     cursor: pointer;
   }
 &__box{
   display: grid;
 
   grid-template-columns: repeat(12, 1fr);
-  margin-top: 8rem;
   transform: translate(10%, 0%);
   width: 80vw;
   height: 90vh;
@@ -271,7 +276,7 @@ background: linear-gradient(#469bcc 0%, #463a88 100%);
          grid-column: 4 / 10;
          
           };
-  grid-column: 6 / 10;
+  grid-column: 5 / 10;
   grid-row: 2/2;
 label {
   @include respond(phone){
@@ -306,7 +311,6 @@ input {
     position: relative;
     float: left;
     margin-left: 25%;
-    margin-top: 2rem;
     width: 129px;
     height: 51px;
     border-radius: 9px;
@@ -317,9 +321,7 @@ input {
   }
 &__box{
   display: grid;
-
   grid-template-columns: repeat(12, 1fr);
-  margin-top: 12rem;
   transform: translate(10%, 0%);
   width: 80vw;
   height: 90vh;
@@ -333,15 +335,93 @@ input {
   /* (plus shape's fill blended on top as a separate layer with 100% opacity) */
 }
 &__box-detail{
-grid-column: 6 / 10;
-  grid-row: 2/2;
-label {
-  font-size: 2rem;
-  width:30%;
+    grid-column: 5 / 10;
+      grid-row: 2/2;
+    label {
+        @include respond(phone){
+          font-size: 80%
+          };
+      font-size: 2rem;
+      width:30%;
+    }
+    input {
+       @include respond(phone){
+         
+          width: 9rem;
+          };
+      font-size: 2rem;
+      width:100%;
+    }
+  }
 }
-input {
-  font-size: 2rem;
-  width:100%;
-}
-}
-}
+
+
+.header-comp {
+
+  height: 13.8rem;
+  background: #fff;
+  border: 1px solid #707070;
+  text-align: center;
+    &__banner {
+
+    height: 10rem;
+    background: linear-gradient(#f4f4f4 0%, #d9d9d9 49.75%, #fff 100%);
+    border: 1px solid #707070;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+
+    }
+    &__logo{
+          display: block;
+          .logo-img{
+                 @include respond(phone){
+                    margin-top: 1.4rem;
+                    height: 7rem;
+                    width: 13rem;
+                    }
+          margin-top: 0.2rem;
+          height: 10rem;
+          width: 18rem;
+          }
+        }
+    .cart-svg{
+      @include respond(phone){
+                    display: none;
+                    }
+            z-index: 10000;
+            position: absolute;
+            left: 95%;
+            top: 6.7rem;
+            width: 2.55rem;
+            background: transparent;
+
+          }
+    &__menu-bar{
+      @include respond(phone){
+                    display: none
+                    }
+      padding-left: 5rem;
+      padding-right: 5rem;
+      padding-top: 0.7rem;
+      ul {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        list-style-type: none;
+        li{
+          display: block;
+          font-family: lato;
+          font-size: 1.8rem;
+          flex: 0 1 auto; /* Default */
+    
+        }
+      }
+    }
+    .mobile-menu{
+      display: none;
+      @include respond(phone){
+        display: block;
+                     margin-top: 1rem;
+                    }
+    }
+} 

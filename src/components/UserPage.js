@@ -1,8 +1,10 @@
 import React from "react";
 import HeaderComp from "./HeaderComp"
+import MenuComp from "./MenuComp"
 const UserPage = (props) => (
   <div>
     <HeaderComp/>
+    <MenuComp/>
   </div>
 );
 

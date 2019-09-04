@@ -3,8 +3,10 @@ import HeaderComp from "./HeaderComp"
 import MenuComp from "./MenuComp"
 const UserPage = (props) => (
   <div>
-    <HeaderComp/>
-    <MenuComp/>
+    <HeaderComp />
+    <MenuComp 
+    selectMenuItem={props.selectMenuItem}
+    menuItem={props.menuItem}/>
   </div>
 );
 

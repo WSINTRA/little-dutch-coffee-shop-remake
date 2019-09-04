@@ -11,28 +11,8 @@ const HeaderComp = (props) => (
         </div>
       <img className="cart-svg" alt="cart" src={cart}/>
     </div>
-      <div className="header-comp__menu-bar">
-        <ul>
-          <li>
-          	Menu
-          </li>
-            <li>
-          	Our Story
-          </li>
-            <li>
-          	Statement
-          </li>
-            <li>
-          	Account
-          </li>
-            <li>
-          	Logout
-          </li>
-        </ul>
-      </div>
-      <div className="mobile-menu">
-      <img src={menuOpen}alt="open menu button"/>
-      </div>
+     
+      
   </div>
 );
 //fix menu button for mobile so a new menu opens on click

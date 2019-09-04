@@ -40,7 +40,6 @@ $breakpoint argument choices:
 
   width: 100vw;
   height: 100vh;
-  z-index: -1;
 
   &__image-left {
            @include respond(phone){
@@ -53,7 +52,6 @@ $breakpoint argument choices:
     width:90%;
     height: 90%;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     filter: blur(3px);
     clip-path: polygon(0 0, 65% 0%, 55% 100%, 0% 100%);
     overflow: hidden;
@@ -75,7 +73,7 @@ $breakpoint argument choices:
   }
 }
 .header {
-    z-index: 1;
+  z-index: 1;
     position: fixed;
     width: 100vw;
     height: 9rem;
@@ -147,7 +145,7 @@ $breakpoint argument choices:
           top:00%;
           position: relative;
           };
-    
+    position: fixed;
     left: 90vw;
     top: 1vh;
     cursor: pointer;
@@ -399,6 +397,7 @@ input {
       @include respond(phone){
                     display: none
                     }
+
       padding-left: 5rem;
       padding-right: 5rem;
       padding-top: 0.7rem;
@@ -406,7 +405,8 @@ input {
 
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        align-content: center;
+        justify-content: space-evenly;
         list-style-type: none;
         li{
           display: block;
@@ -417,13 +417,7 @@ input {
         }
       }
     }
-    .mobile-menu{
-      display: none;
-      @include respond(phone){
-        display: block;
-                     margin-top: 1rem;
-                    }
-    }
+    
 } 
 
 .menu-comp {
@@ -441,7 +435,6 @@ backdrop-filter: blur(2rem);
 background-color: rgba(255, 255, 255, 0.31);
 /* (plus shape's fill blended on top as a separate layer with 27.26% opacity) */
         .backdrop {
-
           width: 100vw;
           height: 100vh;
           margin-top: -15rem;
@@ -467,21 +460,22 @@ background-color: rgba(255, 255, 255, 0.31);
 }
 
 &__display {
-  margin-top: -30rem;
+
+  margin-top: -36.8rem;
   width: 100vw;
   height: 3.6rem;
-  background: rgba(250,253,255,0.3);
   opacity: 0.9;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+  .mobile-menu{
+      display: none;
+      @include respond(phone){
+        position: fixed;
+        display: block;
+        margin-top: -2rem;
+        margin-left: 10rem;
+                    }
+    }
 }
-.title {
-    font-family: lato;
-    font-size: 2rem;
-    vertical-align: center;
-    padding: 0.4rem;
-    padding-left: 8rem;
-    width: 868px;
-    font-weight: 500;
-  }
+
 
 }

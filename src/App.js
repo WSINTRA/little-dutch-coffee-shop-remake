@@ -9,6 +9,7 @@ class App extends React.Component {
 
 state = {
 	menuOpen: false,
+  menuItem: "Weekly Menu", 
 }
 
 openCloseMenu=()=>{
@@ -17,6 +18,13 @@ openCloseMenu=()=>{
 			menuOpen: !prevState.menuOpen
 		}
 	})
+}
+
+selectMenuItem=(event)=>{
+  console.log("Clicked")
+  this.setState({
+
+  })
 }
 
 renderLandingPage = () => {
@@ -28,7 +36,12 @@ return (
 }
 renderUserPage = () => {
 return (
-    <UserPage />
+    <UserPage 
+        menuOpen={this.state.menuOpen}
+        openCloseMenu={this.openCloseMenu}
+        menuItem={this.state.menuItem}
+        selectMenuItem={this.selectMenuItem}
+        />
       )
 }
 

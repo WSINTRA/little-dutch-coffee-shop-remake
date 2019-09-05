@@ -4,12 +4,14 @@ import './App.scss';
 import LandingPage from './components/LandingPage'
 import UserPage from './components/UserPage'
 import { NavHashLink as NavLink } from 'react-router-hash-link';
+import { connect } from 'react-redux'
 
 class App extends React.Component {
 
 state = {
 	menuOpen: false,
   menuItem: "Weekly Menu", 
+  loggedIn: true,
 }
 
 openCloseMenu=()=>{
@@ -54,11 +56,18 @@ render() {
         <Route exact path="/" component={this.renderLandingPage} />
         <Route exact path="/login" component={this.renderLandingPage} />
         <Route exact path="/register" component={this.renderLandingPage} />
-        <Route exact path="/user" component={this.renderUserPage} />
+        <Route exact path="/user" component={this.state.loggedIn ? this.renderUserPage : this.renderLandingPage} />
     </div>
     );
   	 
   };
 };
 
-export default App;
+function msp(store){
+
+}
+function mdp(dispatch){
+  
+}
+
+export default connect(msp,mdp)(App);

@@ -1,0 +1,58 @@
+.register {
+  padding-top: 8rem;
+
+  &__submit {
+    @include respond(phone){
+         margin-left: 0;
+          
+          };
+    font-family: Lato;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    float: left;
+    margin-left: 25%;
+    width: 129px;
+    height: 51px;
+    border-radius: 9px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    text-align: center;
+    background: linear-gradient(#a7af5c 0%, #809f11 100%);
+    cursor: pointer;
+  }
+&__box{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  transform: translate(10%, 0%);
+  width: 80vw;
+  height: 90vh;
+  clip-path: polygon(13% 4%, 97% 0, 99% 100%, 0% 100%);
+  background: transparent;
+  opacity: 0.7;
+  /* Note: currently only Safari supports backdrop-filter */
+  backdrop-filter: blur(20.91230010986328px);
+  --webkit-backdrop-filter: blur(20.91230010986328px);
+  background-color: rgba(255, 255, 255, 0.31);
+  /* (plus shape's fill blended on top as a separate layer with 100% opacity) */
+}
+&__box-detail{
+    grid-column: 5 / 10;
+      grid-row: 2/2;
+    label {
+        @include respond(phone){
+          font-size: 80%
+          };
+      font-size: 2rem;
+      width:30%;
+    }
+    input {
+       @include respond(phone){
+         
+          width: 9rem;
+          };
+      font-size: 2rem;
+      width:100%;
+    }
+  }
+}

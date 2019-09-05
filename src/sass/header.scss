@@ -1,0 +1,33 @@
+.header {
+  z-index: 1;
+    position: fixed;
+    width: 100vw;
+    height: 9rem;
+    background-image: linear-gradient(#f4f4f4, #9BB39E);
+    border: 1px solid #707070;
+    text-align: center;
+    &__menu{
+          @include respond(phone){
+          left: 10rem;
+          top:110%;
+          position: absolute;
+            };
+      position: fixed;
+      left: 90vw;
+      top: 10vh;
+      cursor: pointer;
+    }
+    &__logo{
+      display: block;
+      img{
+             @include respond(phone){
+                margin-top: 1rem;
+                height: 7rem;
+                width: 13rem;
+                }
+      // margin-top: 0.01rem;
+      height: 9rem;
+      width: 17rem;
+      }
+    }
+}

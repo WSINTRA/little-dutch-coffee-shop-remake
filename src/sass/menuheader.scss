@@ -1,0 +1,47 @@
+
+.menu {
+        @include respond(phone){
+          z-index:1000;
+          };
+      z-index:1000;
+      position: fixed;
+      width: 100vw;
+      background-color: #101110;
+      height: 11rem;
+      color: #D8ECDA;
+  &__selection {
+    
+    // text-align: center;
+    ul {
+    position: fixed;
+    top: 1rem;
+    font-size: 2.1rem;
+    @include respond(phone){
+            font-size: 1.5rem;
+            top: 0.2rem;
+            display: block;
+            position: absolute;
+            left: 30%;
+            };
+  }
+  li {
+          @include respond(phone){
+            padding: 0.4rem;
+            display: block;
+            };
+     display: inline;
+     padding: 2.3rem;
+  }
+  &-close {
+        @include respond(phone){
+          left: 0rem;
+          top:00%;
+          position: relative;
+          };
+    position: fixed;
+    left: 90vw;
+    top: 1vh;
+    cursor: pointer;
+  }
+  }
+}

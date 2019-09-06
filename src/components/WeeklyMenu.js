@@ -1,4 +1,5 @@
 import React from "react";
+import ProductCard from './ProductCard'
 
 const WeeklyMenu = (props) => {
 	let categories = props.categories || []
@@ -7,7 +8,7 @@ const WeeklyMenu = (props) => {
     <div className="weekly-menu">
     <div className="banner">{props.banner}</div>
     <div className="weekly-menu__cat">
-        {categories.map(cat=> <ul><li>{cat.category_name}</li></ul>)}</div>
+        {categories.map(cat=> <ProductCard cat={cat}/> )}</div>
     </div>
 
 	)}

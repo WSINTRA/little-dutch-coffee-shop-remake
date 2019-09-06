@@ -1,9 +1,11 @@
 .weekly-menu{
 
 	position: relative;
-
+    
 	&__cat{
+		padding-left: 5rem;
+		padding-right: 5rem;
 		position: relative;
-		top: 6rem;
+		padding-top: 6rem;
 	}
 }

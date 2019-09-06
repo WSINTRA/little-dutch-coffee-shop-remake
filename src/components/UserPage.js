@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux'
-import {fadeIn} from 'react-animations';
+import {slideInRight} from 'react-animations';
 import styled, {keyframes} from 'styled-components';
 import HeaderComp from "./HeaderComp";
 import MenuComp from "./MenuComp";
@@ -10,7 +10,7 @@ import Statement from "./Statement";
 import Account from "./Account";
 
 
-const Bounce = styled.div`animation: 1.8s ${keyframes`${fadeIn}`} 1`;
+const Bounce = styled.div`animation: 1.8s ${keyframes`${slideInRight}`} 1`;
 const UserPage = (props) => (
 
   <div>
@@ -18,7 +18,7 @@ const UserPage = (props) => (
     <MenuComp 
     selectMenuItem={props.selectMenuItem}
     />
-    {console.log(props.categories)}
+  
     <Bounce>
 	    {props.menuItem === 'Weekly Menu' ? 
 	    <WeeklyMenu 

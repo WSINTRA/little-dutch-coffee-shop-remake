@@ -15,20 +15,20 @@ const MenuComp = (props) => (
       </div>
     <div >
      	<div className="header-comp__menu-bar">
-	        <ul onClick={(e)=>props.selectMenuItem(e)} >
-	          <li>
-	          <Link to="/menu">Menu</Link>
+	        <ul  >
+	          <li onClick={(e)=>props.selectMenuItem(e)}>
+	          <Link to="/menu">Weekly Menu</Link>
 	          </li>
-	            <li>
+	            <li onClick={(e)=>props.selectMenuItem(e)}>
 	          	<Link to="/our-story">Our Story</Link>
 	          </li>
-	            <li>
+	            <li onClick={(e)=>props.selectMenuItem(e)}>
 	          	<Link to="/statement">Statement</Link>
 	          </li>
-	            <li>
+	            <li onClick={(e)=>props.selectMenuItem(e)}>
 	          	<Link to="/account">Account</Link>
 	          </li>
-	            <li>
+	            <li onClick={(e)=>props.selectMenuItem(e)}>
 	          	<Link to="/logout">Logout</Link>
 	          </li>
 	        </ul>

@@ -1,18 +1,42 @@
 import React from "react";
-import HeaderComp from "./HeaderComp"
-import MenuComp from "./MenuComp"
 import { connect } from 'react-redux'
+import {fadeIn} from 'react-animations';
+import styled, {keyframes} from 'styled-components';
+import HeaderComp from "./HeaderComp";
+import MenuComp from "./MenuComp";
+import WeeklyMenu from "./WeeklyMenu";
+import OurStory from "./OurStory";
+import Statement from "./Statement";
+import Account from "./Account";
 
 
-
+const Bounce = styled.div`animation: 1.8s ${keyframes`${fadeIn}`} 1`;
 const UserPage = (props) => (
 
   <div>
-  {console.log(props)}
     <HeaderComp />
     <MenuComp 
     selectMenuItem={props.selectMenuItem}
-    menuItem={props.menuItem}/>
+    />
+    {console.log(props.categories)}
+    <Bounce>
+	    {props.menuItem === 'Weekly Menu' ? 
+	    <WeeklyMenu 
+	    banner={props.menuItem}
+	    categories={props.categories}/> : null}
+	    {props.menuItem === 'Our Story' ? 
+	    <OurStory
+	    banner={props.menuItem}
+	    categories={props.categories}/> : null}
+	    {props.menuItem === 'Statement' ? 
+	    <Statement
+	    banner={props.menuItem}
+	    categories={props.categories}/> : null}
+	    {props.menuItem === 'Account' ? 
+	    <Account
+	    banner={props.menuItem}
+	    categories={props.categories}/> : null}
+	</Bounce>
   </div>
 );
 

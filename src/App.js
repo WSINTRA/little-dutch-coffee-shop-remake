@@ -28,10 +28,13 @@ openCloseMenu=()=>{
 }
 
 selectMenuItem=(event)=>{
-  console.log("Clicked", event.target)
-  this.setState({
-
-  })
+  let menuItem = event.target.innerText
+  if (typeof menuItem === 'string') {
+    this.setState({
+      menuItem: menuItem
+    } )
+  }
+  
 }
 
 renderLandingPage = () => {

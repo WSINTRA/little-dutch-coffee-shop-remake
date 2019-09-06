@@ -1,6 +1,7 @@
 import React from "react";
 import BackDrop from "./BackDrop"
 import menuOpen from "../svg/Menu.svg";
+import { Link } from 'react-router-dom'
 
 const MenuComp = (props) => (
   <div className="menu-comp">
@@ -16,19 +17,19 @@ const MenuComp = (props) => (
      	<div className="header-comp__menu-bar">
 	        <ul onClick={(e)=>props.selectMenuItem(e)} >
 	          <li>
-	          	Menu
+	          <Link to="/menu">Menu</Link>
 	          </li>
 	            <li>
-	          	Our Story
+	          	<Link to="/our-story">Our Story</Link>
 	          </li>
 	            <li>
-	          	Statement
+	          	<Link to="/statement">Statement</Link>
 	          </li>
 	            <li>
-	          	Account
+	          	<Link to="/account">Account</Link>
 	          </li>
 	            <li>
-	          	Logout
+	          	<Link to="/logout">Logout</Link>
 	          </li>
 	        </ul>
       	</div>

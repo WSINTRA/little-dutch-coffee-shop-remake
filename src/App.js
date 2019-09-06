@@ -28,7 +28,7 @@ openCloseMenu=()=>{
 }
 
 selectMenuItem=(event)=>{
-  console.log("Clicked")
+  console.log("Clicked", event.target)
   this.setState({
 
   })
@@ -62,6 +62,11 @@ render() {
         <Route exact path="/login" component={this.renderLandingPage} />
         <Route exact path="/register" component={this.renderLandingPage} />
         <Route exact path="/user" component={this.state.loggedIn ? this.renderUserPage : this.renderLandingPage} />
+        <Route exact path="/menu" component={this.state.loggedIn ? this.renderUserPage : this.renderLandingPage} />
+        <Route exact path="/our-story" component={this.state.loggedIn ? this.renderUserPage : this.renderLandingPage} />
+        <Route exact path="/statement" component={this.state.loggedIn ? this.renderUserPage : this.renderLandingPage} />
+        <Route exact path="/account" component={this.state.loggedIn ? this.renderUserPage : this.renderLandingPage} />
+        <Route exact path="/logout" component={this.state.loggedIn ? this.renderUserPage : this.renderLandingPage} />
     </div>
     );
   	 

@@ -14,6 +14,11 @@ state = {
   loggedIn: true,
 }
 
+componentDidMount(){
+  fetch('http://localhost:3050/category')
+  .then(res=>res.json())
+  .then(categories=>this.props.createStateFromFetch(categories))
+}
 openCloseMenu=()=>{
 	this.setState(prevState=>{
 		return {
@@ -63,11 +68,15 @@ render() {
   };
 };
 
-function msp(store){
-
-}
+// function msp(store){
+//   return {}
+// }
 function mdp(dispatch){
-  
+  return {
+    createStateFromFetch: (fetchData)=>{
+      dispatch( {type:"ADD_DATA_TO_STATE", payload: fetchData})
+    }
+  }
 }
 
-export default connect(msp,mdp)(App);
+export default connect(null,mdp)(App);

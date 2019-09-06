@@ -8,8 +8,8 @@ const initialState = {
 function reducer( state = initialState , action){
 
 	switch(action.type){
-		case "":
-		return {...state}
+		case "ADD_DATA_TO_STATE":
+		return {...state, categories: action.payload}
 	
 		default:
 		return state

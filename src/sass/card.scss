@@ -1,3 +1,45 @@
 .card-details{
-	
+
+border-radius: 4px;
+background-image: linear-gradient(rgba(255,255,255,0.1), rgba(187,148,190,0.3));
+box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+height: 100%;
+padding: 0.3rem;
+	h1{ 
+		font-family: Lato;
+		font-weight: bold;
+		line-height: 1.2rem;
+		text-align: left;
+		color: rgba(0, 0, 0, 0.87);
+		font-family: Lato;
+		text-align: left;
+		font-size: 1rem;
+		padding-left: 3rem;
+	}
+	h2{
+		font-family: Lato;
+		font-weight: normal;
+			
+		color: rgba(0, 0, 0, 0.4);
+
+		font-size: .8rem;
+	}
+	p{
+		padding-left: 1rem;
+		margin-top:2rem;
+		font-size: 0.7rem;
+		font-family: lato;
+	}
+	img{
+		margin:0.5rem;
+		float: left;
+		margin-right: 1rem;
+		width: 4rem;
+		height: 4rem;
+		border-radius:6rem;
+/* background: url(...); */
+
+	}
+/* background: url(...); */
+
 }

@@ -1,13 +1,20 @@
 import React from 'react';
+import StarRatingComponent from 'react-star-rating-component';
 
+const stars = 4
 const Card =(props)=> {
 	return (
 	<div className="card-details">
-	<h1>CARD TITLE</h1>
-	<img src="#"/>
-	<p>star rating</p>
+	<img src={props.product.image}/>
+	<h1>{props.product.name}</h1>
+	
 	<h2>BREED</h2>
-	<p>INFO ABOUT PRODUCT</p>
+	<StarRatingComponent 
+          name="rate1" 
+          starCount={5}
+          value={stars}
+        />
+	<p>{props.product.description}</p>
 	</div>
 	)
 }

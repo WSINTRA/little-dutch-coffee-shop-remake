@@ -13,12 +13,17 @@ const initialState = {
  }
 }
 
-
 function reducer( state = initialState , action){
 
 	switch(action.type){
 		case "FORM_CONTROL":
-		return {...state, form: action.payload}
+		const objKey = Object.keys(action.payload)[0];
+		const formObject = {...state.form, [objKey]:action.payload[objKey]}
+		//Creates a new form state object based on incoming data object, 
+		//works for all fields
+		//of the RegisterForm.js based on their name and the value.
+		return {...state,  form: formObject }
+		
 		default:
 		return state
 	}	

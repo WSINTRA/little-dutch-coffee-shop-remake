@@ -20,7 +20,7 @@ const RegisterForm = (props) => (
   <div className="register__box">
   <div className="register__box-detail">
   <h1>Register</h1><br/>
-  
+  {console.log(props)}
   <label>email</label><br/><input 
   onChange={(e)=>ControlledInput(props, e)} 
   name="email"

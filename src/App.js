@@ -15,9 +15,9 @@ state = {
 }
 
 componentDidMount(){
-  fetch('http://localhost:3050/category')
-  .then(res=>res.json())
-  .then(categories=>this.props.createStateFromFetch(categories))
+  // fetch('http://localhost:3050/category')
+  // .then(res=>res.json())
+  // .then(categories=>this.props.createStateFromFetch(categories))
 }
 openCloseMenu=()=>{
 	this.setState(prevState=>{

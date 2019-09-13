@@ -4,16 +4,17 @@ padding-top: 8rem;
 
   &__submit {
      @include respond(phone){
-          margin-left: 0;
-          width: 7rem;
-          };
+         margin-left: 0;
+          grid-row: 11 / span 2;
+          grid-column: 3 / span 4;
+          };   
+    grid-row: 11 / span 5;
+    grid-column: 6 / span 4; 
     font-family: Lato;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    float: left;
-    margin-left: 25%;
+    float:right;
     width: 129px;
     height: 51px;
     border-radius: 9px;
@@ -23,9 +24,9 @@ padding-top: 8rem;
     cursor: pointer;
   }
 &__box{
-  display: grid;
+  
 
-  grid-template-columns: repeat(12, 1fr);
+ 
   transform: translate(10%, 0%);
   width: 80vw;
   height: 90vh;
@@ -39,12 +40,47 @@ padding-top: 8rem;
   /* (plus shape's fill blended on top as a separate layer with 100% opacity) */
 }
 &__box-detail{
-@include respond(phone){
-         grid-column: 4 / 10;
-         
-          };
-  grid-column: 5 / 10;
-  grid-row: 2/2;
+   display: grid;
+   grid-template-columns: repeat(12, 1fr);
+   grid-template-rows: repeat(12, 1fr);
+   column-gap: 2rem;
+   @include respond(phone){
+    grid-template-rows: repeat(6, 1fr);
+   }
+   grid-column-gap: 2em;
+   row-gap: 1.2em;
+   @-moz-document url-prefix() {
+    
+        row-gap: 3em;
+    
+   }
+   overflow: visible;
+    h1 {
+      @include respond(phone){
+          grid-row: 4 / span 5;
+          grid-column: 3 / span 4;
+          };   
+      grid-row: 4 / span 5;
+      grid-column: 5 / span 4;
+    }
+   .username {
+    @include respond(phone){
+          grid-row: 5 / span all;
+          grid-column: 3 / span 4;
+          };   
+      grid-row: 6 / span all;
+      grid-column: 5 / span 4;
+   }
+   .password {
+    @include respond(phone){
+          grid-row: 7 / span 4;
+          grid-column: 3 / span 4;
+          };   
+      grid-row: 8 / span all;
+      grid-column: 5 / span 4;
+
+   }
+
 label {
   @include respond(phone){
           font-size: 80%

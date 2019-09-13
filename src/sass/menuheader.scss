@@ -1,9 +1,9 @@
 
 .menu {
         @include respond(phone){
-          z-index:1000;
+          z-index:1;
           };
-      z-index:1000;
+      z-index:1;
       position: fixed;
       width: 100vw;
       background-color: #101110;
@@ -14,7 +14,7 @@
     // text-align: center;
     ul {
     position: fixed;
-    top: 1rem;
+    top: 3rem;
     font-size: 2.1rem;
     @include respond(phone){
             font-size: 1.5rem;
@@ -23,6 +23,18 @@
             position: absolute;
             left: 30%;
             };
+            a {
+              color: #252725;
+              &:visited {
+                  color: #DAE7DD;
+                }
+                &:hover {
+                  color: #6D7F7F;   
+                }
+                &:active {
+                  color: #697B7C;
+                }
+            }
   }
   li {
           @include respond(phone){
@@ -40,7 +52,7 @@
           };
     position: fixed;
     left: 90vw;
-    top: 1vh;
+    top: 4rem;
     cursor: pointer;
   }
   }

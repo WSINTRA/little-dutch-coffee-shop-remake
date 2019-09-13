@@ -1,8 +1,57 @@
 import { connect } from 'react-redux'
 import React from "react";
 
-const registerSubmit=()=>{
-  console.log("submit")
+const passwordValid=(pass,conf)=>{
+  if (pass === conf){
+    return true
+  }
+}
+const emailValid=(email)=>{
+let checkForAt = /\S+@\S+\.\S+/.test(email)
+return checkForAt
+}
+const usernameValid=(username)=>{
+//Just check length and do a unique check in backend
+  if(username.length >= 1 && username <= 15){
+  return true
+  }
+}
+const addressValid=(address)=>{
+  if(address.length >= 1){
+   return true
+  }
+}
+const cityValid=(city)=>{
+  if(city.length >= 1){
+   return true
+  } 
+}
+const stateValid=(state)=>{
+  //This must a be a valid legal state for recreational use 
+  //The recreational use of cannabis is legalized in 11 states 
+  // According to https://en.wikipedia.org/wiki/Legality_of_cannabis_by_U.S._jurisdiction
+  //(Alaska, California, Colorado, Illinois, Maine, Massachusetts, 
+  //Michigan, Nevada, Oregon, Vermont, and Washington)
+  //
+  //Will implement this later.
+}
+const zipValid=(zip)=>{
+  
+}
+
+const registerSubmit=(event, props)=>{
+  //Build frontEnd validations for the form here
+  let email, username, address, city, state, zip, password, confirmPass;
+  email = props.email;
+  username = props.username;
+  address = props.address;
+  city = props.city;
+  state = props.state;
+  zip = props.zipCode;
+  password = props.password;
+  confirmPass = props.confirmPassword;
+  console.log("submit", props)
+
 }
 
 const ControlledInput = (props, input) => {
@@ -18,59 +67,77 @@ const ControlledInput = (props, input) => {
 const RegisterForm = (props) => (
   <div id="register"className="register">
   <div className="register__box">
-  <div className="register__box-detail">
-  <h1>Register</h1><br/>
-  {console.log(props)}
-  <label>email</label><br/><input 
-  onChange={(e)=>ControlledInput(props, e)} 
-  name="email"
-  value={props.form.email}
-  type="text"/><br/>
+    <div className="register__box-detail">
+      <h1>Register</h1><br/>
+        
 
-  <label>username</label><br/><input 
-  onChange={(e)=>ControlledInput(props, e)} 
-  name="username"
-  value={props.form.username}
-  type="text"/><br/>
+          <div className="email">
+            <label >email</label><br/><input 
+            onChange={(e)=>ControlledInput(props, e)} 
+            name="email"
+            value={props.form.email}
+            type="text"/>
+          </div><br/>
 
-  <label>address</label><br/><input 
-  onChange={(e)=>ControlledInput(props, e)} 
-  name="address"
-  value={props.form.address}
-  type="text"/><br/>
+          <div className="username">
+            <label >username</label><br/><input 
+            onChange={(e)=>ControlledInput(props, e)} 
+            name="username"
+            value={props.form.username}
+            type="text"/>
+          </div><br/>
+          
+          <div className="address">
+            <label >address</label><br/><input 
+            onChange={(e)=>ControlledInput(props, e)} 
+            name="address"
+            value={props.form.address}
+            type="text"/>
+          <br/></div>
 
-  <label>city</label><br/><input 
-  onChange={(e)=>ControlledInput(props, e)} 
-  name="city"
-  value={props.form.city}
-  type="text"/><br/>
+          <div className="city">
+            <label >city</label><br/><input 
+            onChange={(e)=>ControlledInput(props, e)} 
+            name="city"
+            value={props.form.city}
+            type="text"/>
+          <br/></div>
+  
+          <div className="state">
+            <label >state</label><br/><input 
+            onChange={(e)=>ControlledInput(props, e)} 
+            name="state"
+            value={props.form.state}
+            type="text"/>
+          <br/></div>
 
-  <label>state</label><br/><input 
-  onChange={(e)=>ControlledInput(props, e)} 
-  name="state"
-  value={props.form.state}
-  type="text"/><br/>
+          <div className="zip">
+            <label >zip code</label><br/><input 
+            onChange={(e)=>ControlledInput(props, e)} 
+            name="zipCode"
+            value={props.form.zipCode}
+            type="text"/>
+          <br/></div>
 
-  <label>zip code</label><br/><input 
-  onChange={(e)=>ControlledInput(props, e)} 
-  name="zipCode"
-  value={props.form.state}
-  type="text"/><br/>
+          <div className="password">
+            <label >password</label><br/><input 
+            onChange={(e)=>ControlledInput(props, e)} 
+            name="password"
+            value={props.form.password}
+            type="password"/>
+          <br/></div>
 
-  <label>password</label><br/><input 
-  onChange={(e)=>ControlledInput(props, e)} 
-  name="password"
-  value={props.form.password}
-  type="password"/><br/>
-
-  <label>confirm password</label><br/><input
-  onChange={(e)=>ControlledInput(props, e)} 
-  name="confirmPassword"
-  value={props.form.confirmPassword}
-  type="password"/><br/><br/>
-
-    <div className="register__submit"onClick={(e)=>registerSubmit(e)}>REGISTER</div>
-  </div></div>
+          <div className="confirm">
+            <label >confirm password</label><br/><input
+            onChange={(e)=>ControlledInput(props, e)} 
+            name="confirmPassword"
+            value={props.form.confirmPassword}
+            type="password"/>
+          </div><br/><br/>
+  
+          <div className="submit"onClick={(e)=>registerSubmit(e, props.form)}>REGISTER</div>
+    </div>
+  </div>
   </div>
 );
 

@@ -1,11 +1,16 @@
+
+
 .register {
   padding-top: 8rem;
   
-  &__submit {
+  .submit {
     @include respond(phone){
          margin-left: 0;
-          
-          };    
+          grid-row: 18 / span 5;
+          grid-column: 2 / span 4;
+          };   
+      grid-row: 11 / span 5;
+      grid-column: 6 / span 4; 
     font-family: Lato;
     display: flex;
     justify-content: center;
@@ -20,11 +25,9 @@
     cursor: pointer;
   }
 &__box{
-  padding: 2rem;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  transform: translate(10%, 0%);
-  width: 80vw;
+  padding: 4rem;
+  height: 100%;
+  width: 100vw;
   // height: 90vh;
   // clip-path: polygon(13% 4%, 97% 0, 99% 100%, 0% 100%);
   background: transparent;
@@ -36,16 +39,106 @@
 
   /* (plus shape's fill blended on top as a separate layer with 100% opacity) */
 }
+
 &__box-detail{
-    grid-column: 3 / 10;
-      grid-row: 2/2;
-        overflow: visible;
+  height: 95%;
+   display: grid;
+   grid-template-columns: repeat(12, 1fr);
+   grid-template-rows: repeat(12, 1fr);
+   @include respond(phone){
+    grid-template-rows: repeat(22, 1fr);
+   }
+   column-gap: 2rem;
+   grid-column-gap: 2em;
+
+   @-moz-document url-prefix() {
+    
+        row-gap: 3em;
+    
+   }
+   overflow: visible;
+    h1 {
+      @include respond(phone){
+          grid-row: 1 / span 5;
+          grid-column: 2 / span 4;
+          };   
+      grid-row: 1 / span 5;
+      grid-column: 2 / span 4;
+
+    }
+    .email {
+      @include respond(phone){
+          grid-row: 2 / span all;
+          grid-column: 2 / span 4;
+          };   
+      grid-row: 2 / span all;
+      grid-column: 2 / span 4;
+    }
+    .username {
+      @include respond(phone){
+          grid-row: 4 / span 4;
+          grid-column: 2 / span 4;
+          };   
+      grid-row: 2 / span 4;
+      grid-column: 6 / span 4;
+    }
+    .address {
+      @include respond(phone){
+          grid-row: 6 / span 4;
+          grid-column: 2 / span 5;
+          };   
+      grid-row: 4 / span 4;
+      grid-column: 2 / span 5;
+    }
+    .city {
+      @include respond(phone){
+          grid-row: 8 / span 5;
+          grid-column: 2 / span 5;
+          };   
+      grid-row: 6 / span 5;
+      grid-column: 2 / span 3;
+    }
+    .zip {
+      @include respond(phone){
+          grid-row: 10 / span 5;
+          grid-column: 2 / span 5;
+          };   
+      grid-row: 6 / span 5;
+      grid-column: 7 / span 2;
+    }
+    .state {
+      @include respond(phone){
+          grid-row: 12 / span 5;
+          grid-column: 2 / span 5;
+          };   
+      grid-row: 6 / span 5;
+      grid-column: 5 / span 2;
+    }
+
+    .confirm {
+      @include respond(phone){
+          grid-row: 14 / span 5;
+          grid-column: 2 / span 9;
+          };   
+      grid-row: 8 / span 5;
+      grid-column: 6 / span 4;
+     
+    }
+    .password {
+      @include respond(phone){
+          grid-row: 16 / span 5;
+          grid-column: 2 / span 4;
+          };   
+       grid-row: 8 / span 5;
+      grid-column: 2 / span 4;
+    }
     label {
         @include respond(phone){
           font-size: 80%
           };
       font-size: 2rem;
       width:30%;
+      
     }
     input {
        @include respond(phone){

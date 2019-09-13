@@ -2,7 +2,7 @@
 
 const initialState = {
  form: {
- 	email: "test",
+ 	email: "",
  	username: "",
  	password: "",
  	confirmPassword: "",

@@ -1,7 +1,7 @@
 .menu-comp {
 // width: 1920px;
 // height: 854px;
-    &__backdrop{
+   &__backdrop{
       background: transparent;
     border: 1px solid #707070;
     filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.16));
@@ -36,24 +36,4 @@
               }
             }
     }
-
-  &__display {
-
-    margin-top: -36.8rem;
-    width: 100vw;
-    height: 3.6rem;
-    opacity: 0.9;
-    cursor: pointer;
-    .mobile-menu{
-        display: none;
-        @include respond(phone){
-          position: fixed;
-          display: block;
-          margin-top: -2rem;
-          margin-left: 10rem;
-                      }
-      }
-  }
-
-
 }

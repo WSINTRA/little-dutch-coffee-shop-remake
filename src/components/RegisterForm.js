@@ -12,7 +12,7 @@ return checkForAt
 }
 const usernameValid=(username)=>{
 //Just check length and do a unique check in backend
-  if(username.length >= 1 && username <= 15){
+  if(username.length >= 1 && username.length < 15){
   return true
   }
 }
@@ -36,10 +36,11 @@ const stateValid=(state)=>{
   //Will implement this later.
 }
 const zipValid=(zip)=>{
-  
+   let zipCodeCheck = /^\d{5}$|^\d{5}-\d{4}$/.test(zip)
+     return zipCodeCheck
 }
 
-const registerSubmit=(event, props)=>{
+const registerSubmit=(event, props, submit)=>{
   //Build frontEnd validations for the form here
   let email, username, address, city, state, zip, password, confirmPass;
   email = props.email;
@@ -50,7 +51,20 @@ const registerSubmit=(event, props)=>{
   zip = props.zipCode;
   password = props.password;
   confirmPass = props.confirmPassword;
-  console.log("submit", props)
+  if (
+    passwordValid(password,confirmPass) &&
+    emailValid(email) &&
+    usernameValid(username) &&
+    addressValid(address) &&
+    cityValid(city) &&
+    zipValid(zip) 
+    )
+    {
+    let registerObject = {email: email, username: username, address: address, city: city, state: state, zip: zip, password:password}
+    submit(registerObject)
+    }
+  else console.log("Something not right")
+
 
 }
 
@@ -69,7 +83,7 @@ const RegisterForm = (props) => (
   <div className="register__box">
     <div className="register__box-detail">
       <h1>Register</h1><br/>
-        
+       
 
           <div className="email">
             <label >email</label><br/><input 
@@ -135,7 +149,7 @@ const RegisterForm = (props) => (
             type="password"/>
           </div><br/><br/>
   
-          <div className="submit"onClick={(e)=>registerSubmit(e, props.form)}>REGISTER</div>
+          <div className="submit"onClick={(e)=>registerSubmit(e, props.form, props.submitRegisterForm)}>REGISTER</div>
     </div>
   </div>
   </div>
@@ -148,6 +162,9 @@ function msp(state){
 }
 function mdp(dispatch){
   return {
+    submitRegisterForm: (object)=> {
+      dispatch({type:"FORM_SUBMIT", payload: object})
+    },
     registerFormControl: (object)=> {
       dispatch({type:"FORM_CONTROL", payload: object})
     },

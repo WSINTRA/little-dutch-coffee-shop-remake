@@ -1,4 +1,5 @@
 //reducer
+import submitRegistration from "./submitRegistration"
 
 const initialState = {
  form: {
@@ -23,7 +24,10 @@ function reducer( state = initialState , action){
 		//works for all fields
 		//of the RegisterForm.js based on their name and the value.
 		return {...state,  form: formObject }
-		
+		case "FORM_SUBMIT":
+        
+		submitRegistration(action.payload)
+		return state
 		default:
 		return state
 	}	

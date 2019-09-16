@@ -2,41 +2,13 @@ import React from "react";
 import { connect } from 'react-redux'
 import {slideInRight} from 'react-animations';
 import styled, {keyframes} from 'styled-components';
-import HeaderComp from "./HeaderComp";
-import MenuComp from "./MenuComp";
-import WeeklyMenu from "./WeeklyMenu";
-import OurStory from "./OurStory";
-import Statement from "./Statement";
-import Account from "./Account";
-
+import Header from './Header'
 
 const Bounce = styled.div`animation: 1.8s ${keyframes`${slideInRight}`} 1`;
 const UserPage = (props) => (
 
   <div>
-    <HeaderComp />
-    <MenuComp 
-    selectMenuItem={props.selectMenuItem}
-    />
-  
-    <Bounce>
-	    {props.menuItem === 'Weekly Menu' ? 
-	    <WeeklyMenu 
-	    banner={props.menuItem}
-	    categories={props.categories}/> : null}
-	    {props.menuItem === 'Our Story' ? 
-	    <OurStory
-	    banner={props.menuItem}
-	    categories={props.categories}/> : null}
-	    {props.menuItem === 'Statement' ? 
-	    <Statement
-	    banner={props.menuItem}
-	    categories={props.categories}/> : null}
-	    {props.menuItem === 'Account' ? 
-	    <Account
-	    banner={props.menuItem}
-	    categories={props.categories}/> : null}
-	</Bounce>
+   <Header menuButton={props.openCloseMenu}/>} 
   </div>
 );
 

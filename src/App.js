@@ -11,7 +11,6 @@ class App extends React.Component {
 state = {
 	menuOpen: false,
   menuItem: "Weekly Menu", 
-  loggedIn: false,
 }
 
 componentDidMount(){
@@ -29,12 +28,12 @@ componentDidMount(){
             }).then(res => {
                 // debugger
                     this.props.createStateFromFetch(res.user)
-                    this.setState({
-                      loggedIn: true
-                    })
+                    this.props.logIn(true)
             })  
         }
 }
+
+
 openCloseMenu=()=>{
 	this.setState(prevState=>{
 		return {
@@ -55,7 +54,7 @@ selectMenuItem=(event)=>{
 
 renderLandingPage = () => {
 return (
-		this.state.loggedIn ? this.renderUserPage() : <LandingPage 
+		this.props.loggedIn ? this.renderUserPage() : <LandingPage 
 		    menuOpen={this.state.menuOpen}
 		    openCloseMenu={this.openCloseMenu}/>
     	)
@@ -77,30 +76,36 @@ render() {
 	
   	return (
     <div>
+    {console.log(this.props, "App.js")}
         <Route exact path="/" component={this.renderLandingPage} />
         <Route exact path="/login" component={this.renderLandingPage} />
         <Route exact path="/register" component={this.renderLandingPage} />
-        <Route exact path="/user" component={this.state.loggedIn ? this.renderUserPage : this.renderLandingPage} />
-        <Route exact path="/menu" component={this.state.loggedIn ? this.renderUserPage : this.renderLandingPage} />
-        <Route exact path="/our-story" component={this.state.loggedIn ? this.renderUserPage : this.renderLandingPage} />
-        <Route exact path="/statement" component={this.state.loggedIn ? this.renderUserPage : this.renderLandingPage} />
-        <Route exact path="/account" component={this.state.loggedIn ? this.renderUserPage : this.renderLandingPage} />
-        <Route exact path="/logout" component={this.state.loggedIn ? this.renderUserPage : this.renderLandingPage} />
+        <Route exact path="/user" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
+        <Route exact path="/menu" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
+        <Route exact path="/our-story" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
+        <Route exact path="/statement" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
+        <Route exact path="/account" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
+        <Route exact path="/logout" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
     </div>
     );
   	 
   };
 };
 
-// function msp(store){
-//   return {}
-// }
+function msp(store){
+  return {
+    loggedIn: store.loggedIn
+  }
+}
 function mdp(dispatch){
   return {
+    logIn: (logInBool)=>{
+      dispatch({type:"ADD_LOGIN_BOOL", payload: logInBool})
+    },
     createStateFromFetch: (fetchData)=>{
       dispatch( {type:"ADD_USER_DATA_TO_STATE", payload: fetchData})
     }
   }
 }
 
-export default connect(null,mdp)(App);
+export default connect(msp,mdp)(App);

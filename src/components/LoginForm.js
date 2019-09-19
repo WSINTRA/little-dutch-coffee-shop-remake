@@ -5,8 +5,9 @@ import submitLogin from './submitLogin'
 
 const loginSubmit=(props)=>{
 
-
-console.log(submitLogin(props))
+console.log(props,"login submit")
+submitLogin(props)
+// console.log(test)
 
 }
 
@@ -51,12 +52,15 @@ const LoginForm = (props) => (
 );
 
 function msp(state){
-return {
-  login: state.login
-};
+  return {
+    login: state.login,
+  };
 }
 function mdp(dispatch){
   return {
+    logIn: (logInBool)=>{
+      dispatch({type:"ADD_LOGIN_BOOL", payload: logInBool})
+    },
     createStateFromFetch: (fetchData)=>{
       dispatch( {type:"ADD_USER_DATA_TO_STATE", payload: fetchData})
     },

@@ -159,7 +159,7 @@ const RegisterForm = (props) => (
           </div><br/><br/>
   
           <div className="submit"onClick={()=>registerSubmit(props.form, props)}>REGISTER</div>
-      }
+      
     </div>
   </div>
   </div>
@@ -172,6 +172,9 @@ function msp(state){
 }
 function mdp(dispatch){
   return {
+    logIn: (logInBool)=>{
+      dispatch({type:"ADD_LOGIN_BOOL", payload: logInBool})
+    },
     submitRegisterForm: (object)=> {
       dispatch({type:"FORM_SUBMIT", payload: object})
     },

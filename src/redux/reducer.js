@@ -1,6 +1,7 @@
 //reducer
 
 const initialState = {
+ loggedIn: false,
  userData: [],
  form: {
  	email: "",
@@ -29,6 +30,8 @@ function reducer( state = initialState , action){
 let objKey,formObject
 
 	switch(action.type){
+        case "ADD_LOGIN_BOOL":
+        return {...state, loggedIn: action.payload}
 		case "LOGIN_FORM_CONTROL":
 		let loginUpdate = formObjectCreator("login", action.payload, state)
 		return {...state, login: loginUpdate}
@@ -36,6 +39,7 @@ let objKey,formObject
 		let registerUpdate = formObjectCreator("form", action.payload, state)
 		return {...state, form: registerUpdate}
 		case "ADD_USER_DATA_TO_STATE":
+
 		return {...state, userData: action.payload}
 
 		default:

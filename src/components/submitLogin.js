@@ -1,6 +1,5 @@
 
 const submitLogin=(props)=>{
-
 	fetch("http://localhost:3050/v1/login", {
             method: "POST",
             headers: {
@@ -23,14 +22,15 @@ const submitLogin=(props)=>{
             return res.json()
         }).then(userData => {
             localStorage.setItem("myJWT", userData.jwt)
-            if (localStorage.myJWT){
-            	return userData
-            } 
+           
+            props.createStateFromFetch(userData.user)
+            props.logIn(true)
 
             }).catch(err => {
             console.log("Error here",err)
             alert("Incorrect username or password");
         }).then(() => props.history.push("/user"));
+    
 }
 
 export default submitLogin;

@@ -1,5 +1,7 @@
 import { connect } from 'react-redux'
+import { withRouter, Redirect } from 'react-router-dom'
 import React from "react";
+import submitRegistration from "./submitRegistration"
 
 const passwordValid=(pass,conf)=>{
   if (pass === conf){
@@ -40,7 +42,7 @@ const zipValid=(zip)=>{
      return zipCodeCheck
 }
 
-const registerSubmit=(event, props, submit)=>{
+const registerSubmit=(props, history)=>{
   //Build frontEnd validations for the form here
   let email, username, address, city, state, zip, password, confirmPass;
   email = props.email;
@@ -61,18 +63,24 @@ const registerSubmit=(event, props, submit)=>{
     )
     {
     let registerObject = {email: email, username: username, address: address, city: city, state: state, zip: zip, password:password}
-    submit(registerObject)
+    submitRegistration(registerObject)
+    
+     
+    history.history.push("/user")
+   
+
     }
   else console.log("Something not right")
+  
 
 
 }
 
 const ControlledInput = (props, input) => {
 
-  let value = input.target.value
-  let label = input.target.name
-  let payload = {}
+  const value = input.target.value
+  const label = input.target.name
+  const payload = {}
   payload[label] = value 
   props.registerFormControl(payload)
 
@@ -83,6 +91,7 @@ const RegisterForm = (props) => (
   <div className="register__box">
     <div className="register__box-detail">
       <h1>Register</h1><br/>
+  
        
 
           <div className="email">
@@ -149,7 +158,8 @@ const RegisterForm = (props) => (
             type="password"/>
           </div><br/><br/>
   
-          <div className="submit"onClick={(e)=>registerSubmit(e, props.form, props.submitRegisterForm)}>REGISTER</div>
+          <div className="submit"onClick={()=>registerSubmit(props.form, props)}>REGISTER</div>
+      }
     </div>
   </div>
   </div>
@@ -166,10 +176,11 @@ function mdp(dispatch){
       dispatch({type:"FORM_SUBMIT", payload: object})
     },
     registerFormControl: (object)=> {
-      dispatch({type:"FORM_CONTROL", payload: object})
+      dispatch({type:"REGISTER_FORM_CONTROL", payload: object})
     },
   }
 }
-export default connect(msp,mdp)(RegisterForm);
+export default withRouter(connect(msp,mdp)(RegisterForm));
+
 
 //need to make entire form a controlled form with Redux State Management

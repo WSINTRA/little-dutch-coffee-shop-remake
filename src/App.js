@@ -11,13 +11,29 @@ class App extends React.Component {
 state = {
 	menuOpen: false,
   menuItem: "Weekly Menu", 
-  loggedIn: true,
+  loggedIn: false,
 }
 
 componentDidMount(){
-  // fetch('http://localhost:3050/category')
-  // .then(res=>res.json())
-  // .then(categories=>this.props.createStateFromFetch(categories))
+     if (localStorage.myJWT) {
+            fetch("http://localhost:3050/v1/profile", {
+                method: "GET",
+                headers: {
+                Authorization: `Bearer ${localStorage.myJWT}`
+                }
+            }).then(res => {
+                if (!res.ok) {
+                    console.log("not logged in", res);
+                }
+                return res.json()
+            }).then(res => {
+                // debugger
+                    this.props.createStateFromFetch(res.user)
+                    this.setState({
+                      loggedIn: true
+                    })
+            })  
+        }
 }
 openCloseMenu=()=>{
 	this.setState(prevState=>{
@@ -39,7 +55,7 @@ selectMenuItem=(event)=>{
 
 renderLandingPage = () => {
 return (
-		<LandingPage 
+		this.state.loggedIn ? this.renderUserPage() : <LandingPage 
 		    menuOpen={this.state.menuOpen}
 		    openCloseMenu={this.openCloseMenu}/>
     	)
@@ -82,7 +98,7 @@ render() {
 function mdp(dispatch){
   return {
     createStateFromFetch: (fetchData)=>{
-      dispatch( {type:"ADD_DATA_TO_STATE", payload: fetchData})
+      dispatch( {type:"ADD_USER_DATA_TO_STATE", payload: fetchData})
     }
   }
 }

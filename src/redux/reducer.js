@@ -1,7 +1,7 @@
 //reducer
-import submitRegistration from "./submitRegistration"
 
 const initialState = {
+ userData: [],
  form: {
  	email: "",
  	username: "",
@@ -11,23 +11,33 @@ const initialState = {
  	state: "",
  	city: "",
  	zipCode: "",
+ },
+ login: {
+ 	username:"",
+ 	password:"",
  }
 }
 
+const formObjectCreator=(formType, payload, state)=>{
+	let objKey = Object.keys(payload)[0];
+	let formObject = {...state[formType], [objKey]:payload[objKey]}
+	//creates a controlled field based on incoming payload input field name
+    return formObject
+}
+
 function reducer( state = initialState , action){
+let objKey,formObject
 
 	switch(action.type){
-		case "FORM_CONTROL":
-		const objKey = Object.keys(action.payload)[0];
-		const formObject = {...state.form, [objKey]:action.payload[objKey]}
-		//Creates a new form state object based on incoming data object, 
-		//works for all fields
-		//of the RegisterForm.js based on their name and the value.
-		return {...state,  form: formObject }
-		case "FORM_SUBMIT":
-        
-		submitRegistration(action.payload)
-		return state
+		case "LOGIN_FORM_CONTROL":
+		let loginUpdate = formObjectCreator("login", action.payload, state)
+		return {...state, login: loginUpdate}
+		case "REGISTER_FORM_CONTROL":
+		let registerUpdate = formObjectCreator("form", action.payload, state)
+		return {...state, form: registerUpdate}
+		case "ADD_USER_DATA_TO_STATE":
+		return {...state, userData: action.payload}
+
 		default:
 		return state
 	}	

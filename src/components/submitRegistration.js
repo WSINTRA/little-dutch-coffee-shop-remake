@@ -1,8 +1,6 @@
 
 const submitRegistration =(formDetails)=> {
 //write a submission to the backend server here.
-
-console.log(formDetails,"submitting")
 fetch('http://localhost:3050/v1/users', {
   method: 'POST',
   headers: {
@@ -32,12 +30,11 @@ fetch('http://localhost:3050/v1/users', {
                 return res.json()
                 }).then(userData => {
                     localStorage.setItem("myJWT", userData.jwt)
-                                        
-                }).then(() => alert("Success, please login with username and password"))
+                                       
+                }).then(() => alert("Success, User auto logged in"))
                     .catch(err => {
                         alert(err);
                     })
-       
 }
 
 export default submitRegistration;

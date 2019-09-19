@@ -6,9 +6,11 @@ import scenic from '../images/scenic.jpg'
 
 const BackDrop = () => (
  <div className="backdrop">
+
  <div className="backdrop__image-left" ><img alt="windmill"src={windmill}/></div>
  <div className="backdrop__image-right" ><img alt="scenic setting"src={scenic}/></div> 
-</div>
+ <div className="backdrop_fill">
+</div></div>
 );
 
 export default BackDrop;

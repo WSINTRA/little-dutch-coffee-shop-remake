@@ -4,6 +4,7 @@ import {slideInRight} from 'react-animations';
 import styled, {keyframes} from 'styled-components';
 import Header from './Header'
 import MenuHeader from './MenuHeader'
+import BackDrop from './BackDrop'
 
 const Bounce = styled.div`animation: 1.8s ${keyframes`${slideInRight}`} 1`;
 const UserPage = (props) => (
@@ -11,7 +12,7 @@ const UserPage = (props) => (
   <div>
   {props.menuOpen ? <MenuHeader menuButton={props.openCloseMenu}/>: 
 	<Header menuButton={props.openCloseMenu}/>} 
-   
+   <BackDrop/>
    
   </div>
 );

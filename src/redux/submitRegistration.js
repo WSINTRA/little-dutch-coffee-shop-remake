@@ -32,7 +32,7 @@ fetch('http://localhost:3050/v1/users', {
                 return res.json()
                 }).then(userData => {
                     localStorage.setItem("myJWT", userData.jwt)
-                    
+                                        
                 }).then(() => alert("Success, please login with username and password"))
                     .catch(err => {
                         alert(err);

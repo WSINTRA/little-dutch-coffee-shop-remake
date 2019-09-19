@@ -3,12 +3,16 @@ import { connect } from 'react-redux'
 import {slideInRight} from 'react-animations';
 import styled, {keyframes} from 'styled-components';
 import Header from './Header'
+import MenuHeader from './MenuHeader'
 
 const Bounce = styled.div`animation: 1.8s ${keyframes`${slideInRight}`} 1`;
 const UserPage = (props) => (
 
   <div>
-   <Header menuButton={props.openCloseMenu}/>} 
+  {props.menuOpen ? <MenuHeader menuButton={props.openCloseMenu}/>: 
+	<Header menuButton={props.openCloseMenu}/>} 
+   
+   
   </div>
 );
 

@@ -62,6 +62,7 @@ return (
 renderUserPage = () => {
 return (
     <UserPage 
+        
         menuOpen={this.state.menuOpen}
         openCloseMenu={this.openCloseMenu}
         menuItem={this.state.menuItem}

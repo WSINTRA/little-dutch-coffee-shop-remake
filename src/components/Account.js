@@ -6,7 +6,9 @@ const Account = (props) => {
 	
     <div className="account">
     <div className="banner">{props.banner}
+
     </div>
+    TESTING TESTING TESTING
     
     </div>
 

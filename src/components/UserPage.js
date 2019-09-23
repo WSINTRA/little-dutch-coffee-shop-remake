@@ -5,6 +5,7 @@ import styled, {keyframes} from 'styled-components';
 import Header from './Header'
 import MenuHeader from './MenuHeader'
 import BackDrop from './BackDrop'
+import Account from './Account'
 
 const Bounce = styled.div`animation: 1.8s ${keyframes`${slideInRight}`} 1`;
 const UserPage = (props) => (
@@ -13,6 +14,7 @@ const UserPage = (props) => (
   {props.menuOpen ? <MenuHeader menuButton={props.openCloseMenu}/>: 
 	<Header menuButton={props.openCloseMenu}/>} 
    <BackDrop/>
+   <Account banner={"Account"}/>
    
   </div>
 );

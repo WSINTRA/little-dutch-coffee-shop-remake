@@ -1,7 +1,11 @@
-.banner {
+.account {
 	position:absolute;
+	top: 10rem;
+	width: 100%;
+	.banner {
+	
 	padding-left: 2rem;
-	margin-top: -18rem;
+	
     width: 100%;
     height: 3rem;
 	background: #fff;
@@ -16,6 +20,9 @@
 	@include respond(phone){
                     position:absolute;
 					padding-left: 2rem;
-					margin-top: -35rem;
+					top:13rem;
                     }
 }
+}
+
+

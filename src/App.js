@@ -77,7 +77,7 @@ render() {
 	
   	return (
     <div>
-    {console.log(this.props, "App.js")}
+    
         <Route exact path="/" component={this.renderLandingPage} />
         <Route exact path="/login" component={this.renderLandingPage} />
         <Route exact path="/register" component={this.renderLandingPage} />

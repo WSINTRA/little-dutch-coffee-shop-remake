@@ -8,8 +8,10 @@ const Account = (props) => {
     <div className="banner">{props.banner}
 
     </div>
+    <div className="account__content">
     TESTING TESTING TESTING
     
+    </div>
     </div>
 
 	)}

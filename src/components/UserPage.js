@@ -6,23 +6,53 @@ import Header from './Header'
 import MenuHeader from './MenuHeader'
 import BackDrop from './BackDrop'
 import Account from './Account'
+import WeeklyMenu from './WeeklyMenu'
+const Bounce = styled.div`animation: 0.8s ${keyframes`${slideInRight}`} 1`;
 
-const Bounce = styled.div`animation: 1.8s ${keyframes`${slideInRight}`} 1`;
+const displayLink=(props)=>{
+	switch(props.activeLink){
+		case "Your Account":
+		return <Account banner={props.activeLink}/>;
+		case "Weekly Menu":
+		return <WeeklyMenu banner={props.activeLink}/>
+		default:
+		return <Account banner={props.activeLink}/>;
+
+	}
+}
+
+
 const UserPage = (props) => (
 
   <div>
-  {props.menuOpen ? <MenuHeader menuButton={props.openCloseMenu}/>: 
-	<Header menuButton={props.openCloseMenu}/>} 
+  <Bounce>
+   {props.menuOpen ? <MenuHeader 
+  	activeLinkSelect={props.activeLinkSelect}
+  	menuButton={props.openCloseMenu}/>: 
+	<Header 
+	menuButton={props.openCloseMenu}/>} 
    <BackDrop/>
-   <Account banner={"Account"}/>
+   
+   {displayLink(props)}
+   </Bounce>
    
   </div>
 );
 
-function msp(state){
-	return {categories: state.categories}
+function mdp(dispatch){
+	return {
+		activeLinkSelect: (action)=> {
+			dispatch({type:"SOME_LINK", payload: action})
+		}
+	}
 }
-export default connect(msp)(UserPage);
+function msp(state){
+	return {
+		categories: state.categories,
+		activeLink: state.activeLink
+	}
+}
+export default connect(msp,mdp)(UserPage);
 
 
 //Build a header bar component, build a nav bar component, 

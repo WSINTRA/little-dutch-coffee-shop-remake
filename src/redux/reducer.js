@@ -16,7 +16,8 @@ const initialState = {
  login: {
  	username:"",
  	password:"",
- }
+ },
+ activeLink: "Your Account",
 }
 
 const formObjectCreator=(formType, payload, state)=>{
@@ -30,6 +31,8 @@ function reducer( state = initialState , action){
 let objKey,formObject
 
 	switch(action.type){
+		case "SOME_LINK":
+		return {...state, activeLink: action.payload}
         case "ADD_LOGIN_BOOL":
         return {...state, loggedIn: action.payload}
 		case "LOGIN_FORM_CONTROL":

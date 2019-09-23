@@ -6,11 +6,11 @@ const MenuHeader = (props) => (
 
   props.loggedIn ? 
   <div className="menu">
-   <div className="menu__selection"><ul>
+   <div className="menu__selection"><ul onClick={(e)=>props.activeLinkSelect(e.target.innerText)}>
    <li>Weekly Menu</li>
    <li>CBD Menu</li>
    <li>Our Story</li>
-   <li>Your Account</li>
+   <li name="Account">Your Account</li>
    </ul>
    <div className="menu__selection-close"
    onClick={()=>props.menuButton()}>

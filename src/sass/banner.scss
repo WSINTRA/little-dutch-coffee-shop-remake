@@ -1,13 +1,11 @@
-.account {
-	position:absolute;
-	top: 10rem;
-	width: 100%;
+.banner {
+	position: absolute;
 	@include respond(phone){
-                    
-					top: 13rem;
+                    top: 13rem;
 					
                     }
-	.banner {
+	top: 10rem;
+	width: 100%;;
 	padding-left: 2rem;
 	margin-bottom: 2rem;
     height: 3rem;
@@ -22,9 +20,4 @@
 	border: 1px solid #707070;
 	
    }
-   &__content {
-   	padding-left: 2rem;
-   }
-}
-
-
+  

@@ -1,0 +1,45 @@
+.account {
+
+   &__content {
+   	position: absolute;
+   	top: 15rem;  
+   	@include respond(phone){
+                    top: 17rem;
+                    }    
+
+    width: 90vw;
+    height: 60vh;            
+   	padding-left: 2rem;
+   	padding-right: 2rem;
+	&_grid_items{
+		width: 95vw;
+		height: 25rem;
+		background: rgba(240,243,236,0.3);
+		display: grid;
+   		grid-template-columns: repeat(12, 1fr);
+		grid-template-rows: repeat(12, 1fr);
+		@include respond(phone){
+                   width: 80vw;
+                    }    
+	&_selection-box{
+		@include respond(phone){
+                    width: 6rem;
+                    }   
+        display: grid;
+   		grid-template-columns: repeat(1, 1fr);
+		grid-template-rows: repeat(5, 1fr); 
+		width: 12rem;
+		height: 25rem;
+		background: rgba(168, 188, 255, 0.38);
+
+		.option_sales {
+			grid-row-start: 1;
+		}
+		.option_orders {
+			grid-row-start: 2;
+		}
+
+	}	
+	}
+   }
+}

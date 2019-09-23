@@ -47,9 +47,10 @@
   }
   &-close {
         @include respond(phone){
-          left: 0rem;
-          top:00%;
-          position: relative;
+          top: 4rem;
+          left: 1rem;
+          
+          
           };
     position: fixed;
     left: 90vw;

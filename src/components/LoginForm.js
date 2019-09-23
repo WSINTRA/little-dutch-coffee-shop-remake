@@ -43,7 +43,8 @@ const LoginForm = (props) => (
            value={props.login.password}/>
   			</div>
             	
-            <div onClick={()=>{loginSubmit(props)}}className="login__submit">SUBMIT</div>
+            <div onClick={()=>{loginSubmit(props)}}
+            className="login__submit">SUBMIT</div>
   		
 
   	</div>

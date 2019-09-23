@@ -24,22 +24,28 @@
 	&_selection-box{
 		@include respond(phone){
                     width: 6rem;
+                    font-size: 1rem;
                     }   
         display: grid;
    		grid-template-columns: repeat(1, 1fr);
 		grid-template-rows: repeat(5, 1fr); 
 		width: 12rem;
 		height: 25rem;
+		font-size: 1.6rem;
 		background: rgba(168, 188, 255, 0.38);
-
-		.option_sales {
-			grid-row-start: 1;
+		*[class^='option_']{
+		border-right: 5px double rgba(90,98,98,0.7);
+		padding-top: 2.9rem;
+		padding-left: 0.4rem;
+		color: rgba(0, 0, 0, 0.87);
+		cursor: pointer;
+		
 		}
-		.option_orders {
-			grid-row-start: 2;
-		}
-
 	}	
+
+	.active-option{
+		padding-left: 1rem;
+	}
 	}
    }
 }

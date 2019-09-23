@@ -18,6 +18,7 @@ const initialState = {
  	password:"",
  },
  activeLink: "Your Account",
+ activeOption: "",
 }
 
 const formObjectCreator=(formType, payload, state)=>{
@@ -31,6 +32,9 @@ function reducer( state = initialState , action){
 let objKey,formObject
 
 	switch(action.type){
+
+		case "SOME_OPTION":
+		return {...state, activeOption: action.payload}
 		case "SOME_LINK":
 		return {...state, activeLink: action.payload}
         case "ADD_LOGIN_BOOL":

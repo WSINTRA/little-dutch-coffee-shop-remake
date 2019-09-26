@@ -7,8 +7,7 @@ const WeeklyMenu = (props) => {
 	
     <div className="weekly-menu">
     <div className="banner">{props.banner}</div>
-    <div className="weekly-menu__cat">
-        {categories.map(cat=> <ProductCard cat={cat}/> )}</div>
+    
     </div>
 
 	)}

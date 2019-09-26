@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux'
-
+import AdminProducts from './AdminProducts'
 
 const displayOption=(option)=>{
 	switch(option){
@@ -13,13 +13,16 @@ const displayOption=(option)=>{
 		case "Employees":
 		return <div>EMPLOYEES TEST</div>;
 		case "Products":
-		return <div>PRODUCTS TEST</div>;
+		return <AdminProducts/>;
 		default:
-		return <div>DEFAULT TEST</div>;;
+		return <div>default</div>;;
 
 	}
 }
 
+const clickActionForOptions=(e,props)=>{
+	props.activeOptionSelect(e.target.innerText)
+}
 
 const Account = (props) => {
 	
@@ -33,11 +36,11 @@ const Account = (props) => {
     <div className="account__content_grid_items"> 
 
     <div className="account__content_grid_items_selection-box"> 
-    <div className="option_sales" onClick={(e)=>props.activeOptionSelect(e.target.innerText)}>Sales stats<hr/></div>
-    <div className="option_orders" onClick={(e)=>props.activeOptionSelect(e.target.innerText)}>Orders<hr/></div>
-    <div className="option_customers" onClick={(e)=>props.activeOptionSelect(e.target.innerText)}>Customers<hr/></div>
-    <div className="option_employee" onClick={(e)=>props.activeOptionSelect(e.target.innerText)}>Employees<hr/></div>
-    <div className="option_products"onClick={(e)=>props.activeOptionSelect(e.target.innerText)}>Products<hr/></div>
+    <div className="option_sales" onClick={(e)=>clickActionForOptions(e,props)}>Sales stats<hr/></div>
+    <div className="option_orders" onClick={(e)=>clickActionForOptions(e,props)}>Orders<hr/></div>
+    <div className="option_customers" onClick={(e)=>clickActionForOptions(e,props)}>Customers<hr/></div>
+    <div className="option_employee" onClick={(e)=>clickActionForOptions(e,props)}>Employees<hr/></div>
+    <div className="option_products"onClick={(e)=>clickActionForOptions(e,props)}>Products<hr/></div>
     </div>
     <div className="active-option">{displayOption(props.activeOption)}</div>
     </div>

@@ -1,0 +1,74 @@
+.product-form {
+	font-family: lato;
+	text-align: right;
+	display: grid;
+	grid-template-columns: 20% 20% 30% 30%;
+	grid-template-rows: repeat(8,auto);
+	.star {
+		text-align: left;
+	}
+	h1{
+		grid-column-start: span 6;
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+	label {
+		@include respond(phone){
+          font-size: 80%
+          };
+        grid-column-start: 1;
+	    grid-column-end: 3;
+      font-size: 1.4rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.7rem;
+      
+	}
+	input {
+		@include respond(phone){
+         
+          width: 9rem;
+          };
+         grid-column-start: 3;
+	    grid-column-end: 7;
+      margin-bottom: 0.7rem;
+      font-size: 1.4rem;
+      width:100%;
+		
+	}
+	.upload {
+    @include respond(phone){
+         margin-left: 0;
+          
+          };     
+   
+    grid-column-start: 2;
+	   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    height: 3.18rem;
+    border-radius: 9px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    background: linear-gradient(#FD736A 0%, #E1AAA9 100%);
+    cursor: pointer;
+  }
+	.submit {
+    @include respond(phone){
+         margin-left: 0;
+          
+          };     
+    grid-column-start: 4;
+	 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8rem;
+    height: 3.18rem;
+    border-radius: 9px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    background: linear-gradient(#9C2921 0%, #E1AAA9 100%);
+    cursor: pointer;
+  }
+}

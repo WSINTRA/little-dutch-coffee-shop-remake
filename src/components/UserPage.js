@@ -7,7 +7,7 @@ import MenuHeader from './MenuHeader'
 import BackDrop from './BackDrop'
 import Account from './Account'
 import WeeklyMenu from './WeeklyMenu'
-const Bounce = styled.div`animation: 0.8s ${keyframes`${slideInRight}`} 1`;
+const Bounce = styled.div`animation: 1.8s ${keyframes`${slideInRight}`} 1`;
 
 const displayLink=(props)=>{
 	switch(props.activeLink){

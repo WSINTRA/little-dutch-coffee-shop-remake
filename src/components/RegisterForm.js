@@ -175,9 +175,9 @@ function mdp(dispatch){
     logIn: (logInBool)=>{
       dispatch({type:"ADD_LOGIN_BOOL", payload: logInBool})
     },
-    submitRegisterForm: (object)=> {
-      dispatch({type:"FORM_SUBMIT", payload: object})
-    },
+    // submitRegisterForm: (object)=> {
+    //   dispatch({type:"FORM_SUBMIT", payload: object})
+    // },
     registerFormControl: (object)=> {
       dispatch({type:"REGISTER_FORM_CONTROL", payload: object})
     },

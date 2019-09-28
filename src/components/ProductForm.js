@@ -1,7 +1,7 @@
 import React from 'react'
 import StarRatingComponent from 'react-star-rating-component';
 import { connect } from 'react-redux'
-import { withRouter, Redirect } from 'react-router-dom'
+
 
 
 const ControlledInput = (props, input) => {
@@ -36,7 +36,7 @@ const ProductForm=(props)=>{
             type="text"/>
            
              <label >Description</label>
-            <input 
+            <textarea
             onChange={(e)=>ControlledInput(props, e)} 
             name="description"
             value={props.productForm.description}
@@ -45,6 +45,7 @@ const ProductForm=(props)=>{
             <input 
             onChange={(e)=>ControlledInput(props, e)} 
             name="price"
+            min="0.00" max="100000.00" step="0.01"
             value={props.productForm.price}
             type="number"/>
            
@@ -52,7 +53,7 @@ const ProductForm=(props)=>{
             <input 
             onChange={(e)=>ControlledInput(props, e)} 
             name="imageUrl"
-            value={props.productForm.imageUrl}
+            value={props.productForm.imageURL}
             type="url"/>
               <label >Rating</label>
              <div className="star">
@@ -97,4 +98,4 @@ function mdp(dispatch){
     },
   }
 }
-export default withRouter(connect(msp,mdp)(ProductForm));
+export default connect(msp,mdp)(ProductForm);

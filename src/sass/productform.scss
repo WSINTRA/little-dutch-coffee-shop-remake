@@ -23,6 +23,11 @@
       margin-bottom: 0.7rem;
       
 	}
+  textarea {
+    margin-bottom: 0.7rem;
+    width:25rem;
+    font-size: 1.4rem;
+  }
 	input {
 		@include respond(phone){
          

@@ -14,8 +14,10 @@ state = {
 }
 
 componentDidMount(){
+  let userUrl = "http://localhost:3050/v1/profile"
+  let productUrl = "http://localhost:3050/v1/all_products"
      if (localStorage.myJWT) {
-            fetch("http://localhost:3050/v1/profile", {
+            fetch(userUrl, {
                 method: "GET",
                 headers: {
                 Authorization: `Bearer ${localStorage.myJWT}`
@@ -27,10 +29,23 @@ componentDidMount(){
                 return res.json()
             }).then(res => {
                 // debugger
-                    this.props.createStateFromFetch(res.user)
+                    this.props.createUserStateFromFetch(res.user)
                     this.props.logIn(true)
             })  
+            
         }
+    if(!localStorage.products) {
+        fetch(productUrl).then(res => {
+                if (!res.ok) {
+                    console.log("server error", res);
+                }
+                return res.json()
+            }).then(res => {
+                
+                   this.props.createProductStateFromFetch(res)
+
+            })  
+    }
 }
 
 
@@ -103,8 +118,11 @@ function mdp(dispatch){
     logIn: (logInBool)=>{
       dispatch({type:"ADD_LOGIN_BOOL", payload: logInBool})
     },
-    createStateFromFetch: (fetchData)=>{
+    createUserStateFromFetch: (fetchData)=>{
       dispatch( {type:"ADD_USER_DATA_TO_STATE", payload: fetchData})
+    },
+    createProductStateFromFetch: (fetchData)=>{
+      dispatch( {type:"ADD_PRODUCT_DATA_TO_STATE", payload: fetchData})
     }
   }
 }

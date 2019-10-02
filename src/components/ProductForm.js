@@ -14,6 +14,10 @@ const ControlledInput = (props, input) => {
 
 }
 
+const CreateNewProduct = (ID)=> {
+
+}
+
 const StarClick = (props,nextValue, prevValue, name)=> {
     props.starClickControl(nextValue);
   }
@@ -27,7 +31,7 @@ const ProductForm=(props)=>{
 		<div className="product-form">
 	
         <h1>Add/Edit Product</h1>
-        
+            {console.log(props)}
             <label >Product title</label>
             <input 
             onChange={(e)=>ControlledInput(props, e)} 
@@ -52,9 +56,9 @@ const ProductForm=(props)=>{
              <label >Image Location</label>
             <input 
             onChange={(e)=>ControlledInput(props, e)} 
-            name="imageUrl"
+            name="imageURL"
             value={props.productForm.imageURL}
-            type="url"/>
+            type="text"/>
               <label >Rating</label>
              <div className="star">
 
@@ -73,9 +77,13 @@ const ProductForm=(props)=>{
             checked={props.productForm.checkbox}
             onChange={()=>CheckboxClick(props)}
             type="checkbox"/>
+            {console.log(props.productForm.editID)}
+            <label >Current Product ID <p style={{fontSize: "0.8rem"}}>(if ID=0 a new product will be created)</p></label><p>{props.productForm.editID}</p>
+            
 
-          <div className="upload">Upload Image</div>
-          <div className="submit">Submit</div>
+          
+          <div className="clear" onClick={()=>props.clearProductID()}>Clear product ID</div>
+          <div className="submit" onClick={()=>props.submitProductForm()}>Submit</div>
 		</div>
 	)
 }
@@ -87,6 +95,12 @@ function msp(state){
 }
 function mdp(dispatch){
   return {
+    clearProductID:(object)=> {
+      dispatch({type:"CLEAR_PRODUCT_ID", payload: object})
+    },
+    submitProductForm: (object)=> {
+      dispatch({type:"SUBMIT_PRODUCT_FORM", payload: object})
+    },
   	weeklyMenuBoolControl: (object)=> {
   		dispatch({type:"WEEKLY_CHECKBOX", payload: object})
   	},

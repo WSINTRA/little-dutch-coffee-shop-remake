@@ -25,6 +25,7 @@ const initialState = {
  	imageURL: "",
  	starRate: 0,
  	checkbox: true,
+ 	editID: 0,
  },
  activeLink: "Your Account",
  activeOption: "",

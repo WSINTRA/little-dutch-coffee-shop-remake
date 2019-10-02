@@ -10,13 +10,17 @@ const SearchListProducts = (props)=>{
 	return (
 		
 		<div className="search-list-products">
-		{console.log(props)}
 			<div className="search">
 			  <input placeholder="search products"/>
 			  <span className="fa fa-search"></span>
 			</div>
-			<div className="results"><ul>{props.productData.map(product=> 
-        <li key={product.id}onClick={()=>handleProductClick(product,props)}>{product.id}:{product.title}</li>)}</ul></div>
+			<div className="results">
+			<ul>{(props.productData || []).map(product=> 
+       			 <li key={product.id}
+        				onClick={()=>handleProductClick(product,props)}>
+        				{product.id}:{product.title}</li>)}
+			</ul>
+			</div>
 		</div>
 		
 		)

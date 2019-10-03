@@ -1,16 +1,17 @@
 .admin-product{
 display: grid;
-grid-template-columns: auto auto;
+grid-template-columns: auto;
 grid-template-rows: auto auto;
 @include respond(phone){
                   grid-auto-flow: column;
                     }    
+.add-product-form{
+	
+}
 .search-list{
 	
 }
 
-.add-product-form{
-	
-}
+
 
 }

@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 import StarRatingComponent from 'react-star-rating-component';
-import { connect } from 'react-redux'
+import submitProduct from './submitProduct';
+import { connect } from 'react-redux';
 
 
 
@@ -14,8 +15,8 @@ const ControlledInput = (props, input) => {
 
 }
 
-const CreateNewProduct = (ID)=> {
-
+const CreateNewProduct = (props)=> {
+   submitProduct(props.productForm, props.submitProductForm)
 }
 
 const StarClick = (props,nextValue, prevValue, name)=> {
@@ -31,7 +32,7 @@ const ProductForm=(props)=>{
 		<div className="product-form">
 	
         <h1>Add/Edit Product</h1>
-            {console.log(props)}
+            
             <label >Product title</label>
             <input 
             onChange={(e)=>ControlledInput(props, e)} 
@@ -77,13 +78,13 @@ const ProductForm=(props)=>{
             checked={props.productForm.checkbox}
             onChange={()=>CheckboxClick(props)}
             type="checkbox"/>
-            {console.log(props.productForm.editID)}
+            
             <label >Current Product ID <p style={{fontSize: "0.8rem"}}>(if ID=0 a new product will be created)</p></label><p>{props.productForm.editID}</p>
             
 
           
           <div className="clear" onClick={()=>props.clearProductID()}>Clear product ID</div>
-          <div className="submit" onClick={()=>props.submitProductForm()}>Submit</div>
+          <div className="submit" onClick={()=>CreateNewProduct(props)}>Submit</div>
 		</div>
 	)
 }

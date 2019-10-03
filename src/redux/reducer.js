@@ -60,7 +60,6 @@ function reducer( state = initialState , action){
 	    case CLEAR_PRODUCT_ID:
 	    //set current form id to 0
 	    let setFormIDtoZero = setCurrentFormIDtoZero(state.productForm)
-	    
 	    return {...state, productForm: setFormIDtoZero}
 		
 		case SUBMIT_PRODUCT_FORM:

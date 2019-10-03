@@ -3,13 +3,6 @@ import { withRouter, Redirect } from 'react-router-dom'
 import React from "react";
 import submitLogin from './submitLogin'
 
-const loginSubmit=(props)=>{
-
-console.log(props,"login submit")
-submitLogin(props)
-// console.log(test)
-
-}
 
 const controlledInput=(e,props)=>{
   const changeFunction = props.FormControl
@@ -43,7 +36,7 @@ const LoginForm = (props) => (
            value={props.login.password}/>
   			</div>
             	
-            <div onClick={()=>{loginSubmit(props)}}
+            <div onClick={()=>{ submitLogin(props) } }
             className="login__submit">SUBMIT</div>
   		
 

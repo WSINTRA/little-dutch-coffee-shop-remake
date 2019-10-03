@@ -40,7 +40,11 @@ const weeklyCheckBoxBool=(state )=>{
     return copy;
 };
 
-
+const addProductToProductArray=(state, payload)=>{
+ let copy = [...state, payload];
+  
+ return copy
+}
 const sendProductToEdit=(state, payload)=>{
 let stateCopy = {...state};
 
@@ -63,8 +67,9 @@ function reducer( state = initialState , action){
 	    return {...state, productForm: setFormIDtoZero}
 		
 		case SUBMIT_PRODUCT_FORM:
-		debugger
-		return {...state }
+		let updatedProductData = addProductToProductArray(state.productData, action.payload)
+
+		return {...state, productData: updatedProductData }
 
 		case PRODUCT_FOR_EDIT:
         let productFormEdit = sendProductToEdit(state.productForm, action.payload)

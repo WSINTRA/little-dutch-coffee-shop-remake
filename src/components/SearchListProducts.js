@@ -14,11 +14,12 @@ const SearchListProducts = (props)=>{
 			  <input placeholder="search products"/>
 			  <span className="fa fa-search"></span>
 			</div>
+			{console.log(props)}
 			<div className="results">
-			<ul>{(props.productData || []).map(product=> 
+			<ul>{(props.productData.length ? props.productData.map( product=> 
        			 <li key={product.id}
         				onClick={()=>handleProductClick(product,props)}>
-        				{product.id}:{product.title}</li>)}
+        				{product.id}:{product.title}</li>) : null)}
 			</ul>
 			</div>
 		</div>

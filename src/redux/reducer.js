@@ -41,21 +41,19 @@ const weeklyCheckBoxBool=(state )=>{
 };
 
 const addProductToProductArray=(state, payload)=>{
- let copy = [...state, payload];
-  
- return copy
+	 let copy = [...state, payload];
+	 return copy
 }
 const sendProductToEdit=(state, payload)=>{
-let stateCopy = {...state};
-
-stateCopy.productTitle = payload.title;
-stateCopy.description = payload.description;
-stateCopy.imageURL = payload.image;
-stateCopy.starRate = payload.rating;
-stateCopy.price = payload.price;
-stateCopy.checkbox = payload.in_menu;
-stateCopy.editID = payload.id
-return stateCopy;
+	let stateCopy = {...state};
+	stateCopy.productTitle = payload.title;
+	stateCopy.description = payload.description;
+	stateCopy.imageURL = payload.image;
+	stateCopy.starRate = payload.rating;
+	stateCopy.price = payload.price;
+	stateCopy.checkbox = payload.in_menu;
+	stateCopy.editID = payload.id
+	return stateCopy;
 };
 
 

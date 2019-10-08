@@ -11,12 +11,13 @@ const PRODUCT_FORM_CONTROL = "PRODUCT_FORM_CONTROL";
 const LOGIN_FORM_CONTROL = "LOGIN_FORM_CONTROL";
 const REGISTER_FORM_CONTROL = "REGISTER_FORM_CONTROL";
 const ADD_USER_DATA_TO_STATE = "ADD_USER_DATA_TO_STATE";
-const ADD_PRODUCT_DATA_TO_STATE = "ADD_PRODUCT_DATA_TO_STATE"
-const SUBMIT_PRODUCT_FORM = "SUBMIT_PRODUCT_FORM"
-const CLEAR_PRODUCT_ID = "CLEAR_PRODUCT_ID"
-const REMOVE_BY_ID = "REMOVE_BY_ID"
-const formObjectCreator=(formType, payload, state)=>{
+const ADD_PRODUCT_DATA_TO_STATE = "ADD_PRODUCT_DATA_TO_STATE";
+const SUBMIT_PRODUCT_FORM = "SUBMIT_PRODUCT_FORM";
+const CLEAR_PRODUCT_ID = "CLEAR_PRODUCT_ID";
+const REMOVE_BY_ID = "REMOVE_BY_ID";
+const SEARCH_TERM_CONTROL = "SEARCH_TERM_CONTROL";
 
+const formObjectCreator=(formType, payload, state)=>{
 	let objKey = Object.keys(payload)[0];
 	let formObject = {...state[formType], [objKey]:payload[objKey]};
 	//creates a controlled field based on incoming payload input field name
@@ -24,15 +25,14 @@ const formObjectCreator=(formType, payload, state)=>{
 };
 
 const removeById=(state, id)=>{
-  let copy = [...state]
-  let removedObject = copy.map(el=> el.id !== id ? el : null).filter(el=> el!== null)
-  return removedObject
+    let copy = [...state]
+    let removedObject = copy.map(el=> el.id !== id ? el : null).filter(el=> el!== null)
+    return removedObject
 }
 
 const setCurrentFormIDtoZero=(state)=>{
     let copy = {...state};
     copy.editID = 0;
-
     return copy
 }
 const starRateInsert=(state, payload )=>{
@@ -47,8 +47,8 @@ const weeklyCheckBoxBool=(state )=>{
 };
 
 const addProductToProductArray=(state, payload)=>{
-	 let copy = [...state, payload];
-	 return copy
+	let copy = [...state, payload];
+	return copy
 }
 const sendProductToEdit=(state, payload)=>{
 	let stateCopy = {...state};
@@ -65,6 +65,8 @@ const sendProductToEdit=(state, payload)=>{
 
 function reducer( state = initialState , action){
 	switch(action.type){
+		case SEARCH_TERM_CONTROL:
+		return {...state, searchTerm: action.payload}
 		case REMOVE_BY_ID:
 		let removedProductByID = removeById(state.productData, action.payload)
 		return {...state, productData: removedProductByID }

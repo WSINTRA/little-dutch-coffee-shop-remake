@@ -6,17 +6,23 @@ const handleProductClick=(product,props)=>{
 props.sendToFormControl(product)
 }
 
+const handleSearchForm=(props,term)=>{
+props.filterFormControl(term)
+}
+
 const SearchListProducts = (props)=>{
 	return (
 		
 		<div className="search-list-products">
 			<div className="search">
-			  <input placeholder="search products"/>
+			  <input onChange={(e)=>handleSearchForm(props,e.target.value)}
+			  value={props.searchTerm} 
+			  placeholder="filter by title"/>
 			  <span className="fa fa-search"></span>
 			</div>
-			{console.log(props)}
+			
 			<div className="results">
-			<ul>{(props.productData.length ? props.productData.map( product=> 
+			<ul>{(props.productData.length ? props.productData.filter(el=>el.title.includes(props.searchTerm)).map( product=> 
        			 <li key={product.id}
         				onClick={()=>handleProductClick(product,props)}>
         				{product.id}:{product.title}</li>) : null)}
@@ -31,12 +37,16 @@ function mdp(dispatch){
     sendToFormControl: (object)=> {
       dispatch({type:"PRODUCT_FOR_EDIT", payload: object})
     },
+    filterFormControl: (object)=> {
+      dispatch({type:"SEARCH_TERM_CONTROL", payload: object})
+    }
   }
 }
 
 function msp(state){
   return {
     productData: state.productData,
+    searchTerm: state.searchTerm
   };
 }
 

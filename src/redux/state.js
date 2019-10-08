@@ -3,6 +3,7 @@ const initialState = {
  loggedIn: false,
  userData: [],
  productData: [],
+ searchTerm: "",
  form: {
  	email: "",
  	username: "",

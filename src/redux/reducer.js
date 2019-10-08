@@ -14,7 +14,7 @@ const ADD_USER_DATA_TO_STATE = "ADD_USER_DATA_TO_STATE";
 const ADD_PRODUCT_DATA_TO_STATE = "ADD_PRODUCT_DATA_TO_STATE"
 const SUBMIT_PRODUCT_FORM = "SUBMIT_PRODUCT_FORM"
 const CLEAR_PRODUCT_ID = "CLEAR_PRODUCT_ID"
-
+const REMOVE_BY_ID = "REMOVE_BY_ID"
 const formObjectCreator=(formType, payload, state)=>{
 
 	let objKey = Object.keys(payload)[0];
@@ -22,6 +22,12 @@ const formObjectCreator=(formType, payload, state)=>{
 	//creates a controlled field based on incoming payload input field name
     return formObject;
 };
+
+const removeById=(state, id)=>{
+  let copy = [...state]
+  let removedObject = copy.map(el=> el.id !== id ? el : null).filter(el=> el!== null)
+  return removedObject
+}
 
 const setCurrentFormIDtoZero=(state)=>{
     let copy = {...state};
@@ -59,6 +65,9 @@ const sendProductToEdit=(state, payload)=>{
 
 function reducer( state = initialState , action){
 	switch(action.type){
+		case REMOVE_BY_ID:
+		let removedProductByID = removeById(state.productData, action.payload)
+		return {...state, productData: removedProductByID }
 	    case CLEAR_PRODUCT_ID:
 	    //set current form id to 0
 	    let setFormIDtoZero = setCurrentFormIDtoZero(state.productForm)

@@ -16,7 +16,7 @@ const ControlledInput = (props, input) => {
 }
 
 const CreateNewProduct = (props)=> {
-   submitProduct(props.productForm, props.submitProductForm)
+   submitProduct(props.removeOldProductFromStore,props.productForm, props.submitProductForm)
 }
 
 const StarClick = (props,nextValue, prevValue, name)=> {
@@ -96,6 +96,9 @@ function msp(state){
 }
 function mdp(dispatch){
   return {
+    removeOldProductFromStore: (object)=> {
+      dispatch({type:"REMOVE_BY_ID", payload: object})
+    },
     clearProductID:(object)=> {
       dispatch({type:"CLEAR_PRODUCT_ID", payload: object})
     },

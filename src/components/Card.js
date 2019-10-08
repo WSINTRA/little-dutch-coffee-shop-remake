@@ -6,14 +6,14 @@ const Card =(props)=> {
 	return (
 	<div className="card-details">
 	<img src={props.product.image}/>
-	<h1>{props.product.name}</h1>
+	<h1>{props.product.title}</h1>
 	
-	<h2>BREED</h2>
+	<h2>
 	<StarRatingComponent 
           name="rate1" 
           starCount={5}
           value={stars}
-        />
+        /></h2>
 	<p>{props.product.description}</p>
 	</div>
 	)

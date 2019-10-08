@@ -1,20 +1,24 @@
 import React from "react";
 import { connect } from 'react-redux'
-import {slideInRight} from 'react-animations';
+import { Router, Route } from "react-router";
+import {fadeIn} from 'react-animations';
 import styled, {keyframes} from 'styled-components';
 import Header from './Header'
 import MenuHeader from './MenuHeader'
 import BackDrop from './BackDrop'
 import Account from './Account'
 import WeeklyMenu from './WeeklyMenu'
-const Bounce = styled.div`animation: 1.8s ${keyframes`${slideInRight}`} 1`;
+const Bounce = styled.div`animation: 0.8s ${keyframes`${fadeIn}`} 1`;
 
 const displayLink=(props)=>{
+
 	switch(props.activeLink){
+		//Add more statements to this for links to work as App grows
 		case "Your Account":
 		return <Account banner={props.activeLink}/>;
 		case "Weekly Menu":
-		return <WeeklyMenu banner={props.activeLink}/>
+		return <WeeklyMenu productData={props.productData}
+		banner={props.activeLink}/>
 		default:
 		return <Account banner={props.activeLink}/>;
 
@@ -25,14 +29,14 @@ const displayLink=(props)=>{
 const UserPage = (props) => (
 
   <div>
-  <Bounce>
+  
    {props.menuOpen ? <MenuHeader 
   	activeLinkSelect={props.activeLinkSelect}
   	menuButton={props.openCloseMenu}/>: 
 	<Header 
 	menuButton={props.openCloseMenu}/>} 
    <BackDrop/>
-   
+   <Bounce>
    {displayLink(props)}
    </Bounce>
    
@@ -48,7 +52,7 @@ function mdp(dispatch){
 }
 function msp(state){
 	return {
-		categories: state.categories,
+		productData: state.productData,
 		activeLink: state.activeLink
 	}
 }

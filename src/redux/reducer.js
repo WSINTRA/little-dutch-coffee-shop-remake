@@ -16,6 +16,7 @@ const SUBMIT_PRODUCT_FORM = "SUBMIT_PRODUCT_FORM";
 const CLEAR_PRODUCT_ID = "CLEAR_PRODUCT_ID";
 const REMOVE_BY_ID = "REMOVE_BY_ID";
 const SEARCH_TERM_CONTROL = "SEARCH_TERM_CONTROL";
+const URL_PATH = "URL_PATH";
 
 const formObjectCreator=(formType, payload, state)=>{
 	let objKey = Object.keys(payload)[0];
@@ -65,6 +66,7 @@ const sendProductToEdit=(state, payload)=>{
 
 function reducer( state = initialState , action){
 	switch(action.type){
+		
 		case SEARCH_TERM_CONTROL:
 		return {...state, searchTerm: action.payload}
 		case REMOVE_BY_ID:

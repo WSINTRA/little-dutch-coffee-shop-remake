@@ -74,17 +74,28 @@ return (
 		    openCloseMenu={this.openCloseMenu}/>
     	)
 }
-renderUserPage = () => {
-return (
-    <UserPage 
-        
+renderUserPage = (path) => {
+const User = <UserPage 
         menuOpen={this.state.menuOpen}
         openCloseMenu={this.openCloseMenu}
         menuItem={this.state.menuItem}
         selectMenuItem={this.selectMenuItem}
         />
-      )
+switch(path.match.url){
+  //Add more statements to this as the app grows for links to work with Router
+  case "/weekly-menu":
+  return (this.props.getActiveLink("Weekly Menu"),
+    User )
+  case "/user":
+  return (this.props.getActiveLink("Your Account"), User)
+  default :
+  return (this.props.getActiveLink("Your Account"), User)
+
+  }
+
 }
+// NoMatch=()=>(
+//   <div>ERROR 404 -unknown url</div>)
 
 
 render() {
@@ -97,11 +108,13 @@ render() {
         <Route exact path="/login" component={this.renderLandingPage} />
         <Route exact path="/register" component={this.renderLandingPage} />
         <Route exact path="/user" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
-        <Route exact path="/menu" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
+        <Route exact path="/weekly-menu" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
+        <Route exact path="/cbd-menu" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
         <Route exact path="/our-story" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
         <Route exact path="/statement" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
         <Route exact path="/account" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
         <Route exact path="/logout" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
+      
     </div>
     );
   	 
@@ -115,6 +128,9 @@ function msp(store){
 }
 function mdp(dispatch){
   return {
+    getActiveLink: (obj)=> {
+      dispatch({type:"SOME_LINK", payload: obj})
+    },
     logIn: (logInBool)=>{
       dispatch({type:"ADD_LOGIN_BOOL", payload: logInBool})
     },

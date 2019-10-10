@@ -12,6 +12,7 @@ const MenuHeader = (props) => (
    <Link to="/cbd-menu"><li>CBD Menu</li></Link>
    <Link to="/our-story"><li>Our Story</li></Link>
    <Link to="/account"><li name="Account">Your Account</li></Link>
+   <li onClick={()=>props.logOut()}>Logout</li>
    </ul>
    <div className="menu__selection-close"
    onClick={()=>props.menuButton()}>
@@ -22,8 +23,8 @@ const MenuHeader = (props) => (
    <div className="menu__selection"><ul>
    <Link to="/our-story"><li>Our Story</li></Link>
    <Link to="/statement"><li>Statement</li></Link>
-   <Link to="/menu"><li><a href="#login">Log in</a></li></Link>
-   <Link to="/menu"><li><a href="#register">Register</a></li></Link></ul>
+   <li><a href="#login">Log in</a></li>
+   <li><a href="#register">Register</a></li></ul>
    <div className="menu__selection-close"
    onClick={()=>props.menuButton()}>
    <img alt="close button"src={close}/></div>

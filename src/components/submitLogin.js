@@ -20,16 +20,15 @@ const submitLogin=(props)=>{
                 throw error
             }
             return res.json()
-        }).then(userData => {
+
+            }).then(userData => {
             localStorage.setItem("myJWT", userData.jwt)
            
             props.createStateFromFetch(userData.user)
-            props.logIn(true)
-
-            }).catch(err => {
+        }).catch(err => {
             console.log("Error here",err)
             alert("Incorrect username or password");
-        }).then(() => props.history.push("/user"));
+        }).then(() => props.history.push("/"));
     
 }
 

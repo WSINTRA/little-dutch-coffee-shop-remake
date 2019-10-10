@@ -17,6 +17,7 @@ const CLEAR_PRODUCT_ID = "CLEAR_PRODUCT_ID";
 const REMOVE_BY_ID = "REMOVE_BY_ID";
 const SEARCH_TERM_CONTROL = "SEARCH_TERM_CONTROL";
 const URL_PATH = "URL_PATH";
+const LOGOUT = "LOGOUT";
 
 const formObjectCreator=(formType, payload, state)=>{
 	let objKey = Object.keys(payload)[0];
@@ -30,6 +31,7 @@ const removeById=(state, id)=>{
     let removedObject = copy.map(el=> el.id !== id ? el : null).filter(el=> el!== null)
     return removedObject
 }
+
 
 const setCurrentFormIDtoZero=(state)=>{
     let copy = {...state};
@@ -63,10 +65,24 @@ const sendProductToEdit=(state, payload)=>{
 	return stateCopy;
 };
 
+const logginIn=(state, userData)=>{
+let loginCopy = {...state, };
+return loginCopy
+}
+const logout=()=>{
+localStorage.clear();
+}
+
 
 function reducer( state = initialState , action){
 	switch(action.type){
-		
+		case LOGOUT:
+		logout()
+		return {...state, loggedIn: false, userData:{}, activeLink: "Your Account", login: {
+ 	username:"",
+ 	password:"",
+
+ }}
 		case SEARCH_TERM_CONTROL:
 		return {...state, searchTerm: action.payload}
 		case REMOVE_BY_ID:
@@ -96,9 +112,7 @@ function reducer( state = initialState , action){
 		return {...state, activeOption: action.payload}
 		case SOME_LINK: //Used for navigation
 		return {...state, activeLink: action.payload}
-        case ADD_LOGIN_BOOL:
-        return {...state, loggedIn: action.payload}
-
+       
 		case PRODUCT_FORM_CONTROL:
 		let productUpdate = formObjectCreator("productForm", action.payload, state)
 		return {...state, productForm: productUpdate}
@@ -108,8 +122,8 @@ function reducer( state = initialState , action){
 		case REGISTER_FORM_CONTROL:
 		let registerUpdate = formObjectCreator("form", action.payload, state)
 		return {...state, form: registerUpdate}
-		case ADD_USER_DATA_TO_STATE:
-		return {...state, userData: action.payload}
+		case ADD_USER_DATA_TO_STATE:	
+		return {...state, loggedIn: true, userData: action.payload}
 		case ADD_PRODUCT_DATA_TO_STATE:
 		return {...state, productData: action.payload}
 

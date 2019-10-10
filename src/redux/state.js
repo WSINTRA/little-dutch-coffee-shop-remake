@@ -1,7 +1,7 @@
 
 const initialState = {
  loggedIn: false,
- userData: [],
+ userData: {},
  productData: [],
  searchTerm: "",
  form: {

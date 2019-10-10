@@ -22,7 +22,7 @@ const SearchListProducts = (props)=>{
 			</div>
 			
 			<div className="results">
-			<ul>{(props.productData.length ? props.productData.filter(el=>el.title.includes(props.searchTerm)).map( product=> 
+			<ul>{(props.productData.length ? props.productData.filter(el=>el.title.toLowerCase().includes(props.searchTerm.toLowerCase())).map( product=> 
        			 <li key={product.id}
         				onClick={()=>handleProductClick(product,props)}>
         				<h3>ID:{product.id}-</h3><b>{product.title}</b><p>{product.description}</p></li>) : null)}

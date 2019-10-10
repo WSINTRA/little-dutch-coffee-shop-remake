@@ -32,7 +32,8 @@ const UserPage = (props) => (
   
    {props.menuOpen ? <MenuHeader 
   	activeLinkSelect={props.activeLinkSelect}
-  	menuButton={props.openCloseMenu}/>: 
+  	menuButton={props.openCloseMenu}
+  	logOut={props.logOut}/>: 
 	<Header 
 	menuButton={props.openCloseMenu}/>} 
    <BackDrop/>

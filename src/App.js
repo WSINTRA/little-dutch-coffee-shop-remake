@@ -30,7 +30,7 @@ componentDidMount(){
             }).then(res => {
                 // debugger
                     this.props.createUserStateFromFetch(res.user)
-                    this.props.logIn(true)
+                    
             })  
             
         }
@@ -75,13 +75,8 @@ return (
     	)
 }
 renderUserPage = (path) => {
-const User = <UserPage 
-        menuOpen={this.state.menuOpen}
-        openCloseMenu={this.openCloseMenu}
-        menuItem={this.state.menuItem}
-        selectMenuItem={this.selectMenuItem}
-        />
-switch(path.match.url){
+  let urlFinder=(path, User)=>{
+  switch(path.match.url){
   //Add more statements to this as the app grows for links to work with Router
   case "/weekly-menu":
   return (this.props.getActiveLink("Weekly Menu"),
@@ -91,8 +86,22 @@ switch(path.match.url){
   default :
   return (this.props.getActiveLink("Your Account"), User)
 
+    };
   }
+const User = <UserPage 
+        menuOpen={this.state.menuOpen}
+        openCloseMenu={this.openCloseMenu}
+        menuItem={this.state.menuItem}
+        selectMenuItem={this.selectMenuItem}
+        logOut={this.LogoutFunction}
+        />
 
+return path === true ? urlFinder(path, User) : User;
+
+}
+
+LogoutFunction = (props)=> {
+this.props.logOut()
 }
 // NoMatch=()=>(
 //   <div>ERROR 404 -unknown url</div>)
@@ -103,7 +112,7 @@ render() {
 	
   	return (
     <div>
-    
+    {console.log(this.props, "APP, RENDER")}
         <Route exact path="/" component={this.renderLandingPage} />
         <Route exact path="/login" component={this.renderLandingPage} />
         <Route exact path="/register" component={this.renderLandingPage} />
@@ -113,7 +122,7 @@ render() {
         <Route exact path="/our-story" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
         <Route exact path="/statement" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
         <Route exact path="/account" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
-        <Route exact path="/logout" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
+      
       
     </div>
     );
@@ -128,6 +137,9 @@ function msp(store){
 }
 function mdp(dispatch){
   return {
+    logOut: (obj)=>{
+      dispatch({type:"LOGOUT", payload:obj})
+    },
     getActiveLink: (obj)=> {
       dispatch({type:"SOME_LINK", payload: obj})
     },

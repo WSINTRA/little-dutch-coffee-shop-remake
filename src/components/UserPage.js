@@ -35,6 +35,8 @@ const UserPage = (props) => (
   	menuButton={props.openCloseMenu}
   	logOut={props.logOut}/>: 
 	<Header 
+	openCloseCart={props.openCloseCart}
+	cartOpen={props.cartOpen}
 	menuButton={props.openCloseMenu}/>} 
    <BackDrop/>
    <Bounce>

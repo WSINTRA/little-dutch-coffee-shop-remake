@@ -10,7 +10,7 @@ class App extends React.Component {
 
 state = {
 	menuOpen: false,
-  menuItem: "Weekly Menu", 
+  cartOpen: false,
 }
 
 componentDidMount(){
@@ -56,16 +56,23 @@ openCloseMenu=()=>{
 		}
 	})
 }
-
-selectMenuItem=(event)=>{
-  let menuItem = event.target.innerText
-  if (typeof menuItem === 'string') {
-    this.setState({
-      menuItem: menuItem
-    } )
-  }
-  
+openCloseCart=()=>{
+  this.setState(prevState=>{
+    return {
+      cartOpen: !prevState.cartOpen
+    }
+  })
 }
+
+// selectMenuItem=(event)=>{
+//   let menuItem = event.target.innerText
+//   if (typeof menuItem === 'string') {
+//     this.setState({
+//       menuItem: menuItem
+//     } )
+//   }
+  
+// }
 
 renderLandingPage = () => {
 return (
@@ -85,14 +92,13 @@ renderUserPage = (path) => {
   return (this.props.getActiveLink("Your Account"), User)
   default :
   return (this.props.getActiveLink("Your Account"), User)
-
     };
   }
 const User = <UserPage 
         menuOpen={this.state.menuOpen}
         openCloseMenu={this.openCloseMenu}
-        menuItem={this.state.menuItem}
-        selectMenuItem={this.selectMenuItem}
+        openCloseCart={this.openCloseCart}
+        cartOpen={this.state.cartOpen}
         logOut={this.LogoutFunction}
         />
 if (path){
@@ -104,9 +110,6 @@ else {return User}
 LogoutFunction = (props)=> {
 this.props.logOut()
 }
-// NoMatch=()=>(
-//   <div>ERROR 404 -unknown url</div>)
-
 
 render() {
   	

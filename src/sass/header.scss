@@ -33,9 +33,10 @@
     }
     &__cart{
       @include respond(phone){
-      position: fixed;
-      left: 75vw;
-      top: 17vh;
+      left: 90%;
+      transform: translate(-50%, -50%);
+      top:115%;
+      position: absolute;
       }
       display: block;
       position: fixed;
@@ -52,6 +53,11 @@
       height: 2rem;
       width: 4rem;
     }
+    }
+    .cart-overview{
+      background-color:#C8DCD9;
+      width: 100%;
+      height: 100vh;
     }
 }
 

@@ -5,7 +5,9 @@ import {fadeInRight} from 'react-animations';
 import styled, {keyframes} from 'styled-components';
 
 const Bounce = styled.div`animation: 2.8s ${keyframes`${fadeInRight}`} 1`;
-
+const Price=(DataPrice)=>{
+	return parseFloat(DataPrice).toFixed( 2 )
+}
 const stars = 4
 const Card =(props)=> {
 	return (
@@ -22,7 +24,9 @@ const Card =(props)=> {
         /></h2>
 	<p>{props.product.description}</p>
 
-	<div className="buy-button"></div>
+	<div className="buy-button">
+	<div className="buy-button__details">BUY NOW<br/><h3>${Price(props.product.price)}</h3></div>
+	</div>
 	</div>
 	 </Bounce>
 	)

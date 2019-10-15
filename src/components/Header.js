@@ -10,9 +10,12 @@ const Header = (props) => (
  onClick={()=>props.menuButton()}>
  <img src={menuOpen}alt="open menu button"/><br/>
  </div>
- <div className="header__cart">
-  <img className="cart-svg" alt="cart" src={cart}/>
+ <div className="header__cart" >
+
+  <img className="cart-svg" alt="cart" src={cart}
+  onClick={()=>props.openCloseCart()}/><br/>
   </div>
+  {props.cartOpen ? <div className="cart-overview">SHOPPING CART</div> : null}
 </div>
 );
 

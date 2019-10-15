@@ -13,7 +13,7 @@ const Card =(props)=> {
 	<div className="card-details">
 	<img src={props.product.image}/>
 	<h1>{props.product.title}</h1>
-	
+	<h3>{props.product.breed}</h3>
 	<h2>
 	<StarRatingComponent 
           name="rate1" 
@@ -22,7 +22,7 @@ const Card =(props)=> {
         /></h2>
 	<p>{props.product.description}</p>
 
-	SOME EXTRA HERE
+	<div className="buy-button"></div>
 	</div>
 	 </Bounce>
 	)

@@ -76,7 +76,7 @@ return (
 }
 renderUserPage = (path) => {
   let urlFinder=(path, User)=>{
-  switch(path.match.url){
+  switch(path.location.pathname){
   //Add more statements to this as the app grows for links to work with Router
   case "/weekly-menu":
   return (this.props.getActiveLink("Weekly Menu"),
@@ -95,9 +95,10 @@ const User = <UserPage
         selectMenuItem={this.selectMenuItem}
         logOut={this.LogoutFunction}
         />
-
-return path === true ? urlFinder(path, User) : User;
-
+if (path){
+return !!path.location.pathname === true ? urlFinder(path, User) : User;
+}
+else {return User}  
 }
 
 LogoutFunction = (props)=> {
@@ -112,7 +113,6 @@ render() {
 	
   	return (
     <div>
-    {console.log(this.props, "APP, RENDER")}
         <Route exact path="/" component={this.renderLandingPage} />
         <Route exact path="/login" component={this.renderLandingPage} />
         <Route exact path="/register" component={this.renderLandingPage} />

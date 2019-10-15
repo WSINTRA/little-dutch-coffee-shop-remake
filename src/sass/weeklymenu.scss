@@ -1,6 +1,11 @@
 .weekly-menu{
 
 .display-window {
+	@include respond(phone){
+          grid-gap: 1rem;
+          grid-template-columns: repeat(2, auto);
+          left: 0rem;
+            };
 	position: absolute;
     top: 16rem;
     left: 3rem;

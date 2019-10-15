@@ -10,13 +10,12 @@ const ProductCard = (props) => {
 	<Bounce>
     <div className="product-card">
     <div className="product-card__title">
-    {props.cat.category_name}
+    
     </div>
-
-    {props.cat.products.slice(0,4).map(//Currently only using first 4 items of the array
-    	//will fix this later so I can have a button to scroll through
-    	(product,index)=> <div className={`product-card__card_${index+1}`}>
-    	<Card product={product}/></div>)}
+     {console.log(props)}
+ 
+    	 <div>
+    	<Card product={props.product}/></div>
    
     </div>
      </Bounce>

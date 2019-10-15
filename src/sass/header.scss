@@ -8,8 +8,9 @@
     text-align: center;
     &__menu{
           @include respond(phone){
-          left: 10rem;
-          top:110%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          top:120%;
           position: absolute;
             };
       position: fixed;
@@ -29,6 +30,28 @@
       height: 9rem;
       width: 16rem;
       }
+    }
+    &__cart{
+      @include respond(phone){
+      position: fixed;
+      left: 75vw;
+      top: 17vh;
+      }
+      display: block;
+      position: fixed;
+      left: 90vw;
+      top: 22vh;
+      cursor: pointer;
+      img{
+             @include respond(phone){
+                margin-top: 1rem;
+                height: 2rem;
+                width: 4rem;
+                }
+      // margin-top: 0.01rem;
+      height: 2rem;
+      width: 4rem;
+    }
     }
 }
 

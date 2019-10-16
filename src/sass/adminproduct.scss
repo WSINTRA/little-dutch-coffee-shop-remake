@@ -1,7 +1,7 @@
 .admin-product{
 display: grid;
 grid-template-columns: auto;
-grid-template-rows: auto auto;
+grid-template-rows: auto;
 @include respond(phone){
                   grid-auto-flow: column;
                     }    

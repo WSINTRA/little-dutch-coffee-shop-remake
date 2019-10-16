@@ -1,5 +1,5 @@
 
-const submitRegistration =(formDetails)=> {
+const submitRegistration =(formDetails, props)=> {
 //write a submission to the backend server here.
 fetch('http://localhost:3050/v1/users', {
   method: 'POST',
@@ -30,11 +30,12 @@ fetch('http://localhost:3050/v1/users', {
                 return res.json()
                 }).then(userData => {
                     localStorage.setItem("myJWT", userData.jwt)
+                    props.createStateFromFetch(userData.user)
                                        
                 }).then(() => alert("Success, User auto logged in"))
                     .catch(err => {
                         alert(err);
-                    })
+                    }).then(()=>props.history.push("/weekly-menu"));
 }
 
 export default submitRegistration;

@@ -23,6 +23,7 @@
     text-align: center;
     background: linear-gradient(#9C2921 0%, #E1AAA9 100%);
     cursor: pointer;
+    z-index: 1000;
   }
 &__box{
   padding: 4rem;

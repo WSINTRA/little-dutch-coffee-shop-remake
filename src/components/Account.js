@@ -23,30 +23,52 @@ const displayOption=(option)=>{
 const clickActionForOptions=(e,props)=>{
 	props.activeOptionSelect(e.target.innerText)
 }
+const checkForCurrentUserStatus=(currentUser)=>{
+	debugger
+//  if(currentUser){props.currentUser.staff ?    <div className="account__content">
+//     <div className="account__content_grid_items"> 
 
+//     <div className="account__content_grid_items_selection-box"> 
+//     <div className="option_sales" onClick={(e)=>clickActionForOptions(e,props)}>Sales stats<hr/></div>
+//     <div className="option_orders" onClick={(e)=>clickActionForOptions(e,props)}>Orders<hr/></div>
+//     <div className="option_customers" onClick={(e)=>clickActionForOptions(e,props)}>Customers<hr/></div>
+//     <div className="option_employee" onClick={(e)=>clickActionForOptions(e,props)}>Employees<hr/></div>
+//     <div className="option_products"onClick={(e)=>clickActionForOptions(e,props)}>Products<hr/></div>
+//     </div>
+//     <div className="active-option">{displayOption(props.activeOption)}</div>
+//     </div>
+    
+//     </div> :
+//  null 
+// //Fill in how the account page should look for a normal user
+// }
+}
 const Account = (props) => {
 	
 	return (
-	
-    <div className="account">
-    <div className="banner">{props.banner}
-    </div>
-    {props.currentUser.staff ?    <div className="account__content">
-    <div className="account__content_grid_items"> 
 
-    <div className="account__content_grid_items_selection-box"> 
-    <div className="option_sales" onClick={(e)=>clickActionForOptions(e,props)}>Sales stats<hr/></div>
-    <div className="option_orders" onClick={(e)=>clickActionForOptions(e,props)}>Orders<hr/></div>
-    <div className="option_customers" onClick={(e)=>clickActionForOptions(e,props)}>Customers<hr/></div>
-    <div className="option_employee" onClick={(e)=>clickActionForOptions(e,props)}>Employees<hr/></div>
-    <div className="option_products"onClick={(e)=>clickActionForOptions(e,props)}>Products<hr/></div>
+    <div className="account">
+
+    <div className="banner">
+    {props.banner}
     </div>
-    <div className="active-option">{displayOption(props.activeOption)}</div>
-    </div>
+   {props.currentUser.staff ?   
+    <div className="account__content">
+   <div className="account__content_grid_items"> 
+
+   <div className="account__content_grid_items_selection-box"> 
+   <div className="option_sales" onClick={(e)=>clickActionForOptions(e,props)}>Sales stats<hr/></div>
+   <div className="option_orders" onClick={(e)=>clickActionForOptions(e,props)}>Orders<hr/></div>
+   <div className="option_customers" onClick={(e)=>clickActionForOptions(e,props)}>Customers<hr/></div>
+   <div className="option_employee" onClick={(e)=>clickActionForOptions(e,props)}>Employees<hr/></div>
+   <div className="option_products"onClick={(e)=>clickActionForOptions(e,props)}>Products<hr/></div>
+   </div>
+   <div className="active-option">{displayOption(props.activeOption)}</div>
+   </div>
     
-    </div> :
+   </div> :
  null 
-//Fill in how the account page should look for a normal user
+// //Fill in how the account page should look for a normal user
 }
  
     </div>

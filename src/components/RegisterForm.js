@@ -42,17 +42,17 @@ const zipValid=(zip)=>{
      return zipCodeCheck
 }
 
-const registerSubmit=(props, history)=>{
+const registerSubmit=(form, props)=>{
   //Build frontEnd validations for the form here
   let email, username, address, city, state, zip, password, confirmPass;
-  email = props.email;
-  username = props.username;
-  address = props.address;
-  city = props.city;
-  state = props.state;
-  zip = props.zipCode;
-  password = props.password;
-  confirmPass = props.confirmPassword;
+  email = form.email;
+  username = form.username;
+  address = form.address;
+  city = form.city;
+  state = form.state;
+  zip = form.zipCode;
+  password = form.password;
+  confirmPass = form.confirmPassword;
   if (
     passwordValid(password,confirmPass) &&
     emailValid(email) &&
@@ -63,10 +63,9 @@ const registerSubmit=(props, history)=>{
     )
     {
     let registerObject = {email: email, username: username, address: address, city: city, state: state, zip: zip, password:password}
-    submitRegistration(registerObject)
+    submitRegistration(registerObject, props)
     
-     
-    history.history.push("/user")
+
    
 
     }
@@ -174,6 +173,9 @@ function mdp(dispatch){
   return {
     logIn: (logInBool)=>{
       dispatch({type:"ADD_LOGIN_BOOL", payload: logInBool})
+    },
+    createStateFromFetch: (fetchData)=>{
+      dispatch( {type:"ADD_USER_DATA_TO_STATE", payload: fetchData})
     },
     // submitRegisterForm: (object)=> {
     //   dispatch({type:"FORM_SUBMIT", payload: object})

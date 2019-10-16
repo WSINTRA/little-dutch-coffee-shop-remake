@@ -4,7 +4,7 @@ const initialState = {
  userData: {},
  productData: [],
  searchTerm: "",
- form: {
+ form: {//Make this userForm *
  	email: "",
  	username: "",
  	password: "",
@@ -20,6 +20,7 @@ const initialState = {
 
  },
  productForm: {
+ 	breed: "",
  	productTitle: "",
  	description: "",
  	price: 0.00,

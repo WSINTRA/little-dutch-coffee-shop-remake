@@ -41,7 +41,7 @@
       display: block;
       position: fixed;
       left: 90vw;
-      top: 22vh;
+      top: 10.5rem;
       cursor: pointer;
       img{
              @include respond(phone){
@@ -59,7 +59,7 @@
       position: relative;
       border-top: 1px solid #707070;
       width: 100%;
-      top: 40%;
+      top: 3.7rem;
       height: 100vh;
       .cart-display{
         

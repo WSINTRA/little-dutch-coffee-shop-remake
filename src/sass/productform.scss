@@ -2,7 +2,7 @@
 	font-family: lato;
 	text-align: right;
 	display: grid;
-	grid-template-columns: 20% 20% 30% 30%;
+	grid-template-columns: auto 20% 30% 30%;
 	grid-template-rows: repeat(8,auto);
 	.star {
 		text-align: left;
@@ -26,7 +26,7 @@
   textarea {
     margin-bottom: 0.7rem;
     width:25rem;
-    font-size: 1.4rem;
+    font-size: 0.923rem;
   }
 	input {
 		@include respond(phone){

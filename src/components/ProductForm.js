@@ -39,6 +39,12 @@ const ProductForm=(props)=>{
             name="productTitle"
             value={props.productForm.productTitle}
             type="text"/>
+             <label >Breed</label>
+            <input 
+            onChange={(e)=>ControlledInput(props, e)} 
+            name="breed"
+            value={props.productForm.breed}
+            type="text"/>
            
              <label >Description</label>
             <textarea

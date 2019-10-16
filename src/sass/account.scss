@@ -1,5 +1,5 @@
 .account {
-
+     
    &__content {
    	position: absolute;
    	top: 15rem;  
@@ -8,13 +8,14 @@
                     }    
 
     width: 90vw;
-    height: 60vh;            
+               
    	padding-left: 2rem;
    	padding-right: 2rem;
 	&_grid_items{
 		width: 95vw;
-		height: 25rem;
+		
 		background: rgba(240,243,236,0.3);
+		height: 60rem;
 		display: grid;
    		grid-template-columns: repeat(12, 1fr);
 		grid-template-rows: repeat(12, 1fr);

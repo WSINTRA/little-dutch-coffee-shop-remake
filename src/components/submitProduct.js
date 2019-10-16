@@ -14,7 +14,7 @@ fetch('http://localhost:3050/v1/new_product', {
             body: JSON.stringify({
                "title": formDetails.productTitle,
                "rating": formDetails.starRate,
-               
+               "breed": formDetails.breed,
                "description": formDetails.description,
                "price": formDetails.price,
                "image": formDetails.imageURL,

@@ -55,9 +55,22 @@
     }
     }
     .cart-overview{
-      background-color:#C8DCD9;
+      background-color:rgba(200,220,217,0.5);
+      position: relative;
+      border-top: 1px solid #707070;
       width: 100%;
+      top: 40%;
       height: 100vh;
+      .cart-display{
+        box-shadow: -10px 3px 6px rgba(0, 0, 0, 0.16);
+        background-color:#C2CCD6;
+        border-left: 1px solid #707070;
+        height: 100vh;
+        width: 20%;
+        position: absolute;
+        left: 80%;
+      
+      }
     }
 }
 

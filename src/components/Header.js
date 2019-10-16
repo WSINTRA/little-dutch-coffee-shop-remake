@@ -15,7 +15,8 @@ const Header = (props) => (
   <img className="cart-svg" alt="cart" src={cart}
   onClick={()=>props.openCloseCart()}/><br/>
   </div>
-  {props.cartOpen ? <div className="cart-overview">SHOPPING CART</div> : null}
+  {props.cartOpen ? <div className="cart-overview">
+  <div className="cart-display">SHOPPING CART</div></div> : null}
 </div>
 );
 

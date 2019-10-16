@@ -16,7 +16,6 @@ const controlledInput=(e,props)=>{
 const LoginForm = (props) => (
 
  <div id="login"className="login">
- {console.log(props, "LoginForm")}
   	<div className="login__box">
   		<div className="login__box-detail">
   			<h1>Login</h1><br/>
@@ -49,7 +48,6 @@ const LoginForm = (props) => (
 function msp(state){
   return {
     login: state.login,
-    allState: state,
   };
 }
 function mdp(dispatch){

@@ -30,9 +30,8 @@ const Account = (props) => {
 	
     <div className="account">
     <div className="banner">{props.banner}
-
     </div>
-    <div className="account__content">
+    {props.currentUser.staff ?    <div className="account__content">
     <div className="account__content_grid_items"> 
 
     <div className="account__content_grid_items_selection-box"> 
@@ -45,7 +44,11 @@ const Account = (props) => {
     <div className="active-option">{displayOption(props.activeOption)}</div>
     </div>
     
-    </div>
+    </div> :
+ null 
+//Fill in how the account page should look for a normal user
+}
+ 
     </div>
 
 	)
@@ -60,6 +63,7 @@ function mdp(dispatch){
 }
 function msp(state){
 	return {
+		currentUser: state.userData,
 		activeOption: state.activeOption
 	}
 }

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { withRouter, Redirect } from 'react-router-dom'
+import { withRouter  } from 'react-router-dom'
 import React from "react";
 import submitLogin from './submitLogin'
 

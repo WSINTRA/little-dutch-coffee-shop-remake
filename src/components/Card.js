@@ -12,8 +12,8 @@ const stars = 4
 const Card =(props)=> {
 	return (
 		<Bounce>
-	<div className="card-details">
-	<img src={props.product.image}/>
+	<div onClick={()=>console.log(props.product,"card clicked")}className="card-details">
+	<img alt="product" src={props.product.image}/>
 	<h1>{props.product.title}</h1>
 	<h3>{props.product.breed}</h3>
 	<h2>

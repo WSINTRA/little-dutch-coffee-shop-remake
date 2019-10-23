@@ -1,0 +1,25 @@
+.cart-overview{
+      background-color:rgba(200,220,217,0.5);
+      position: relative;
+      border-top: 1px solid #707070;
+      width: 100%;
+      top: 3.7rem;
+      height: 100vh;
+      .cart-display{
+        
+        @include respond(phone){
+                height: 100vh;
+                width: 100%;
+                left: 0%;
+                }
+        box-shadow: -10px 3px 6px rgba(0, 0, 0, 0.16);
+        background-color:rgba(213,216,209,0.5);
+        opacity: 0.5;
+        border-left: 1px solid #707070;
+        height: 100vh;
+        width: 20%;
+        position: absolute;
+        left: 80%;
+      
+      }
+    }

@@ -1,9 +1,8 @@
 import React from 'react';
-import { Route, Switch, Redirect, withRouter } from "react-router-dom";
+import { Route } from "react-router-dom";
 import './App.scss';
 import LandingPage from './components/LandingPage'
 import UserPage from './components/UserPage'
-import { NavHashLink as NavLink } from 'react-router-hash-link';
 import { connect } from 'react-redux'
 
 class App extends React.Component {

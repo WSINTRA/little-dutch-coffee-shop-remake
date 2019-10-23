@@ -20,7 +20,8 @@ const displayLink=(props)=>{
 		return <Account banner={props.activeLink}/>;
 		case "Weekly Menu":
 		return <WeeklyMenu productData={props.productData}
-		banner={props.activeLink}/>
+		banner={props.activeLink}
+		/>
 		default:
 		return <Account banner={props.activeLink}/>;
 

@@ -78,6 +78,7 @@ function reducer( state = initialState , action){
 	switch(action.type){
 		case LOGOUT:
 		logout()
+		console.log("This is being triggered",state)
 		return {...state, loggedIn: false, userData:{}, activeLink: "Your Account", login: {
  	username:"",
  	password:"",

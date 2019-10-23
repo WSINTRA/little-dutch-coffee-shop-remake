@@ -38,6 +38,10 @@
       top:115%;
       position: absolute;
       }
+      &:hover {
+            border-radius: 50px;
+        background-color: rgba(147,181,185,0.2);
+       }
       display: block;
       position: fixed;
       left: 90vw;

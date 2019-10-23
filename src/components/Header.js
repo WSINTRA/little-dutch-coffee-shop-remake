@@ -1,7 +1,9 @@
 import React from "react";
 import logo from "../images/header-logo.png";
 import menuOpen from "../svg/Menu.svg";
+import CartOverview from "./CartOverview"
 import cart from "../svg/custom-cart.svg"
+import { connect } from 'react-redux'
 
 const Header = (props) => (
  <div className="header"> 
@@ -12,12 +14,16 @@ const Header = (props) => (
  </div>
  <div className="header__cart" >
 
-  <img className="cart-svg" alt="cart" src={cart}
-  onClick={()=>props.openCloseCart()}/><br/>
+   {props.loggedIn ? <img className="cart-svg" alt="cart" src={cart}
+  onClick={()=>props.openCloseCart()}/>: null}<br/>
   </div>
-  {props.cartOpen ? <div className="cart-overview">
-  <div className="cart-display">SHOPPING CART</div></div> : null}
+  {props.cartOpen ? <CartOverview/> : null}
 </div>
 );
+function msp(state){
+	return {
+		loggedIn: state.loggedIn
+	}
+}
 
-export default Header;
+export default connect(msp)(Header);

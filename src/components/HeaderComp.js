@@ -9,7 +9,7 @@ const HeaderComp = (props) => (
         <div className="header-comp__logo">
         <img className="logo-img"alt="logo"src={logo}/>
         </div>
-      <img className="cart-svg" alt="cart" src={cart}/>
+     <img className="cart-svg" alt="cart" src={cart}/>
     </div>
      
       

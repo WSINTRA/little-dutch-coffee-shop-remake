@@ -10,11 +10,13 @@ import Account from './Account'
 import WeeklyMenu from './WeeklyMenu'
 const Bounce = styled.div`animation: 0.8s ${keyframes`${fadeIn}`} 1`;
 
+
 const displayLink=(props)=>{
 
 	switch(props.activeLink){
 		//Add more statements to this for links to work as App grows
 		case "Your Account":
+		window.scrollTo(0, 0);
 		return <Account banner={props.activeLink}/>;
 		case "Weekly Menu":
 		return <WeeklyMenu productData={props.productData}

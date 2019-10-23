@@ -12,8 +12,7 @@ const ProductCard = (props) => {
     <div className="product-card__title">
     
     </div>
-     {console.log(props)}
- 
+    
     	 <div>
     	<Card product={props.product}/></div>
    

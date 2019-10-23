@@ -11,7 +11,13 @@
       height: 11rem;
       color: #D8ECDA;
   &__selection {
-    
+    .logout {
+       right:9rem;
+       top:3rem;
+       &:hover {
+        color: #FC007A;
+       }
+    }
     // text-align: center;
     ul {
     position: fixed;
@@ -53,6 +59,10 @@
           
           
           };
+          &:hover {
+            border-radius: 20px;
+        background-color: rgba(147,181,185,0.1);
+       }
     position: fixed;
     left: 90vw;
     top: 4rem;

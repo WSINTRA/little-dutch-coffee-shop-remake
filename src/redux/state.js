@@ -31,6 +31,16 @@ const initialState = {
  },
  activeLink: "Your Account",
  activeOption: "Products",
+ showProductDetail: false,
+ activeProductDetail: {
+ 	breed: "Sunshine",
+ 	productTitle: "Sunshine Daily",
+ 	description: "Some test Product",
+ 	price: 6.99,
+ 	imageURL: "",
+ 	starRate: 5,
+ 	checkbox: true,
+ 	editID: 0,},
 }
 
 export default initialState;

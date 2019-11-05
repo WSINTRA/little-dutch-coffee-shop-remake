@@ -18,6 +18,7 @@ const REMOVE_BY_ID = "REMOVE_BY_ID";
 const SEARCH_TERM_CONTROL = "SEARCH_TERM_CONTROL";
 const URL_PATH = "URL_PATH";
 const LOGOUT = "LOGOUT";
+const BACKSWITCH_PRODUCT_DETAIL = "BACKSWITCH_PRODUCT_DETAIL"
 
 const formObjectCreator=(formType, payload, state)=>{
 	let objKey = Object.keys(payload)[0];
@@ -64,6 +65,17 @@ const sendProductToEdit=(state, payload)=>{
 	stateCopy.editID = payload.id
 	return stateCopy;
 };
+const setProductDetail=(state, payload)=>{
+	let stateCopy = state
+	stateCopy = payload
+	return stateCopy
+}
+
+const switchProductDetail=(state)=>{
+let stateCopy = state
+stateCopy = !state
+return stateCopy
+}
 
 const logginIn=(state, userData)=>{
 let loginCopy = {...state, };
@@ -83,6 +95,10 @@ function reducer( state = initialState , action){
  	password:"",
 
  }}
+ 		case BACKSWITCH_PRODUCT_DETAIL:
+ 		let displaySwitch = switchProductDetail(state.showProductDetail)
+ 		let productDetail = setProductDetail(state.activeProductDetail, action.payload)
+ 		return {...state, showProductDetail: displaySwitch, activeProductDetail: productDetail}
 		case SEARCH_TERM_CONTROL:
 		return {...state, searchTerm: action.payload}
 		case REMOVE_BY_ID:

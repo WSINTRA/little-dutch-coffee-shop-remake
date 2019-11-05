@@ -4,15 +4,16 @@ import {fadeInRight} from 'react-animations';
 
 import styled, {keyframes} from 'styled-components';
 
-const Bounce = styled.div`animation: 2.8s ${keyframes`${fadeInRight}`} 1`;
+const Bounce = styled.div`animation: 0.8s ${keyframes`${fadeInRight}`} 1`;
 const Price=(DataPrice)=>{
 	return parseFloat(DataPrice).toFixed( 2 )
 }
+
 const stars = 4
 const Card =(props)=> {
 	return (
-		<Bounce>
-	<div onClick={()=>console.log(props.product,"card clicked")}className="card-details">
+	<Bounce>
+	<div onClick={()=>props.switch(props.product)}className="card-details">
 	<img alt="product" src={props.product.image}/>
 	<h1>{props.product.title}</h1>
 	<h3>{props.product.breed}</h3>

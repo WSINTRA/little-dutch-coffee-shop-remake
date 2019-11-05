@@ -65,9 +65,6 @@ const registerSubmit=(form, props)=>{
     let registerObject = {email: email, username: username, address: address, city: city, state: state, zip: zip, password:password}
     submitRegistration(registerObject, props)
     
-
-   
-
     }
   else console.log("Something not right")
   

@@ -12,11 +12,11 @@ const Bounce = styled.div`animation: 0.8s ${keyframes`${fadeIn}`} 1`;
 
 
 const displayLink=(props)=>{
-
+window.scrollTo(0, 0);
 	switch(props.activeLink){
 		//Add more statements to this for links to work as App grows
 		case "Your Account":
-		window.scrollTo(0, 0);
+		
 		return <Account banner={props.activeLink}/>;
 		case "Weekly Menu":
 		return <WeeklyMenu productData={props.productData}

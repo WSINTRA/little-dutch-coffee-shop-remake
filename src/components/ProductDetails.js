@@ -9,8 +9,23 @@ const ProductDetails = (props) => {
 
     <div className="product-details">    
     {console.log(props)}
-    <div>
-    {props.product.description}
+    <div className="left">
+    <div className="left-image"><img size="small"src={props.product.image}/></div>
+    <div className="left-title"><h2>{props.product.title}</h2></div>
+    <div className="left-breed"><h4>{props.product.breed}</h4></div>
+    <div className="left-details"><p>{props.product.description}</p></div>
+    
+   </div>
+   <div className="right">
+   <div className="right-title">
+   <h2>Reviews</h2>
+   </div>
+   <div className="right-review">
+       {props.product.reviews.map(review=><div key={review.id}><h3>{review.title}</h3>
+           <p>{review.content}</p></div>)}
+   
+   </div>
+   
    </div>
     </div>
    

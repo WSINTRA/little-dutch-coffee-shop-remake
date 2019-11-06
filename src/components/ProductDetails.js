@@ -1,8 +1,8 @@
 import React from "react";
-import {fadeInRight} from 'react-animations';
+import {fadeIn} from 'react-animations';
 import styled, {keyframes} from 'styled-components';
 import{ connect } from 'react-redux';
-const Bounce = styled.div`animation: 2.8s ${keyframes`${fadeInRight}`} 1`;
+const Bounce = styled.div`animation: 0.8s ${keyframes`${fadeIn}`} 1`;
 const Price=(DataPrice)=>{
   return parseFloat(DataPrice).toFixed( 2 )
 }
@@ -17,11 +17,12 @@ const toggleSuccess=()=>{
 
 const cartSuccess=(props)=>{
   return (
+    <Bounce>
     <div className="cart-success"><h4>{props.product.title}</h4>
     <p>Succesfully added to your shopping cart</p>
     <br/>
     <div className="cart-button" onClick={()=>props.closeSuccess()}>CLOSE</div>
-    </div>
+    </div></Bounce>
     )
 }
 const ProductDetails = (props) => {

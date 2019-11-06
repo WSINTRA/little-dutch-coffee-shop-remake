@@ -14,12 +14,15 @@
                 }
         box-shadow: -10px 3px 6px rgba(0, 0, 0, 0.16);
         background-color:rgba(213,216,209,0.8);
-        opacity: 0.5;
+        
         border-left: 1px solid #707070;
         height: 100vh;
         width: 20%;
         position: absolute;
         left: 80%;
+        .cart-items{
+          text-align: left;
+        }
       
       }
     }

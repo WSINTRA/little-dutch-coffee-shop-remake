@@ -1,8 +1,11 @@
 import React from "react";
 import {fadeInRight} from 'react-animations';
 import styled, {keyframes} from 'styled-components';
-
+import{ connect } from 'react-redux';
 const Bounce = styled.div`animation: 2.8s ${keyframes`${fadeInRight}`} 1`;
+const Price=(DataPrice)=>{
+  return parseFloat(DataPrice).toFixed( 2 )
+}
 const ProductDetails = (props) => {
 	
 	return (
@@ -15,6 +18,11 @@ const ProductDetails = (props) => {
     <div className="left-breed"><h4>{props.product.breed}</h4></div>
     <div className="left-details"><p>{props.product.description}</p></div>
     
+    <div className="buy-button" onClick={()=>props.addToCart(props.product)}>
+      <div className="buy-button__details">ADD TO CART<br/>
+      <h3>${Price(props.product.price)}</h3>
+        </div>
+    </div>
    </div>
    <div className="right">
    <div className="right-title">
@@ -31,7 +39,15 @@ const ProductDetails = (props) => {
    
 
 	)}
+  function mdp(dispatch){
+    return {
+      addToCart: (action)=>{
+        dispatch({type:"ADD_TO_CART", payload: action})
+      }
+    }
 
-export default ProductDetails;
+  }
+
+export default connect(null,mdp)(ProductDetails);
 
 

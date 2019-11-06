@@ -1,6 +1,7 @@
 //reducer
 import initialState from './state.js';
 
+const ADD_TO_CART = "ADD_TO_CART"
 const PRODUCT_FOR_EDIT = "PRODUCT_FOR_EDIT";
 const WEEKLY_CHECKBOX = "WEEKLY_CHECKBOX";
 const STAR_RATE = "STAR_RATE";
@@ -84,6 +85,11 @@ return loginCopy
 const logout=()=>{
 localStorage.clear();
 }
+const addingToCart=(state, product)=>{
+let stateCopy = [...state]
+stateCopy.push(product)
+return stateCopy
+}
 
 
 function reducer( state = initialState , action){
@@ -95,6 +101,10 @@ function reducer( state = initialState , action){
  	password:"",
 
  }}
+ 		case ADD_TO_CART:
+ 		console.log("ADDING TO CART", action.payload)
+ 		let addToCart = addingToCart(state.cartItems, action.payload)
+ 		return {...state, cartItems: addToCart}
  		case BACKSWITCH_PRODUCT_DETAIL:
  		let displaySwitch = switchProductDetail(state.showProductDetail)
  		let productDetail = setProductDetail(state.activeProductDetail, action.payload)

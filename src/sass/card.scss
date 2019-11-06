@@ -82,3 +82,26 @@ padding: 0.3rem;
 /* background: url(...); */
 
 }
+	.buy-button{
+		&__details{
+			padding-top: 3rem;
+			text-align: center;
+			color: white;
+			h3{
+				color:#831C2D;
+			}
+		}
+	
+  	left: 50%;
+  	transform: translate(-50%, -10%);
+	position: absolute;
+	bottom:3rem;
+	border-radius: 500px;
+	background: transparent;
+	width: 8rem;
+	height: 8rem;
+	background: radial-gradient(#1b1c1d 60%, #222324 27.19%, rgba(255, 0, 0, 0.66) 100%);
+	border: 1px solid #f00;
+	filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.16));
+
+	}

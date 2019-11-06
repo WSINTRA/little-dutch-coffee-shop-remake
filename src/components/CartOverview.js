@@ -20,7 +20,6 @@ const CartOverview = (props)=> {
    Total: {cartTotal(props.cartItems).toFixed(2)}
    </div>
    <div className="cart-items">
-   
     </div>
   </div>
   );

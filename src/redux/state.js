@@ -1,5 +1,7 @@
 
 const initialState = {
+ menuOpen: false,
+ cartOpen: false,
  loggedIn: false,
  userData: {},
  cartItems: [{title: "Some new shit", price: "3.99"}, {title: "Old Stuff", price: "3.99"}],

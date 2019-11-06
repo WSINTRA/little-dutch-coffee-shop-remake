@@ -75,9 +75,7 @@ openCloseCart=()=>{
 
 renderLandingPage = () => {
 return (
-		this.props.loggedIn ? this.renderUserPage() : <LandingPage 
-		    menuOpen={this.state.menuOpen}
-		    openCloseMenu={this.openCloseMenu}/>
+		this.props.loggedIn ? this.renderUserPage() : <LandingPage />
     	)
 }
 renderUserPage = (path) => {
@@ -94,8 +92,8 @@ renderUserPage = (path) => {
     };
   }
 const User = <UserPage 
-        menuOpen={this.state.menuOpen}
-        openCloseMenu={this.openCloseMenu}
+        
+        
         openCloseCart={this.openCloseCart}
         cartOpen={this.state.cartOpen}
         logOut={this.LogoutFunction}

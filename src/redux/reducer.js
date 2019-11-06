@@ -1,6 +1,6 @@
 //reducer
 import initialState from './state.js';
-
+const TOGGLE_MENU = "TOGGLE_MENU";
 const ADD_TO_CART = "ADD_TO_CART"
 const PRODUCT_FOR_EDIT = "PRODUCT_FOR_EDIT";
 const WEEKLY_CHECKBOX = "WEEKLY_CHECKBOX";
@@ -90,19 +90,22 @@ let stateCopy = [...state]
 stateCopy.push(product)
 return stateCopy
 }
+const toggleMenu=(state)=>{
+	let stateCopy = state
+	stateCopy = !stateCopy
+	return stateCopy 
+}
 
 
 function reducer( state = initialState , action){
 	switch(action.type){
 		case LOGOUT:
 		logout()
-		return {...state, loggedIn: false, userData:{}, activeLink: "Your Account", login: {
- 	username:"",
- 	password:"",
-
- }}
+		return {...state, loggedIn: false, userData:{}, activeLink: "Your Account", login: {username:"",password:""}}			
+ 		case TOGGLE_MENU:
+ 		let toggle = toggleMenu(state.menuOpen)
+ 		return {...state,  menuOpen: toggle}
  		case ADD_TO_CART:
- 		console.log("ADDING TO CART", action.payload)
  		let addToCart = addingToCart(state.cartItems, action.payload)
  		return {...state, cartItems: addToCart}
  		case BACKSWITCH_PRODUCT_DETAIL:

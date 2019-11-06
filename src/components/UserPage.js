@@ -35,7 +35,6 @@ const UserPage = (props) => (
   
    {props.menuOpen ? <MenuHeader 
   	activeLinkSelect={props.activeLinkSelect}
-  	menuButton={props.openCloseMenu}
   	logOut={props.logOut}/>: 
 	<Header 
 	openCloseCart={props.openCloseCart}
@@ -59,7 +58,8 @@ function mdp(dispatch){
 function msp(state){
 	return {
 		productData: state.productData,
-		activeLink: state.activeLink
+		activeLink: state.activeLink,
+		menuOpen: state.menuOpen,
 	}
 }
 export default connect(msp,mdp)(UserPage);

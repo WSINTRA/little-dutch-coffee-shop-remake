@@ -9,7 +9,7 @@ const Header = (props) => (
  <div className="header"> 
  <div className="header__logo"  ><img alt="logo"src={logo}/></div>
  <div className="header__menu" 
- onClick={()=>props.menuButton()}>
+ onClick={()=>props.openCloseMenu()}>
  <img src={menuOpen}alt="open menu button"/><br/>
  </div>
  <div className="header__cart" >
@@ -20,10 +20,18 @@ const Header = (props) => (
   {props.cartOpen ? <CartOverview/> : null}
 </div>
 );
+
+function mdp(dispatch){
+  return {
+    openCloseMenu: (action)=>{
+      dispatch({type:"TOGGLE_MENU", payload:action})
+      }
+    }
+  }
 function msp(state){
 	return {
 		loggedIn: state.loggedIn
 	}
 }
 
-export default connect(msp)(Header);
+export default connect(msp,mdp)(Header);

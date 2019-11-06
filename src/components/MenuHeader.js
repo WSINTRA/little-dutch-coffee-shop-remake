@@ -16,7 +16,7 @@ const MenuHeader = (props) => (
    <li onClick={()=>props.logOut()}>Logout</li></ul></span>
    
    <div className="menu__selection-close"
-   onClick={()=>props.menuButton()}>
+   onClick={()=>props.openCloseMenu()}>
    <img alt="close button"src={close}/></div>
    </div>
    </div> : 
@@ -27,17 +27,27 @@ const MenuHeader = (props) => (
    <li><a href="#login">Log in</a></li>
    <li><a href="#register">Register</a></li></ul>
    <div className="menu__selection-close"
-   onClick={()=>props.menuButton()}>
+   onClick={()=>props.openCloseMenu()}>
    <img alt="close button"src={close}/></div>
    </div>
    </div>
 );
 
+function mdp(dispatch){
+  return {
+    openCloseMenu: (action)=>{
+      dispatch({type:"TOGGLE_MENU", payload:action})
+      }
+    }
+  }
+
+
 
 function msp(store){
   return {
-    loggedIn: store.loggedIn
+    loggedIn: store.loggedIn,
+    menuOpen: store.menuOpen
   }
 }
 
-export default connect(msp)(MenuHeader);
+export default connect(msp,mdp)(MenuHeader);

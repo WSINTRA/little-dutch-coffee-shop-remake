@@ -8,7 +8,6 @@ import { connect } from 'react-redux'
 class App extends React.Component {
 
 state = {
-	menuOpen: false,
   cartOpen: false,
 }
 
@@ -48,14 +47,8 @@ componentDidMount(){
 }
 
 
-openCloseMenu=()=>{
-	this.setState(prevState=>{
-		return {
-			menuOpen: !prevState.menuOpen
-		}
-	})
-}
-openCloseCart=()=>{
+
+openCloseCart=()=>{ //TODO - Shift this control into Redux state management
   this.setState(prevState=>{
     return {
       cartOpen: !prevState.cartOpen
@@ -63,15 +56,6 @@ openCloseCart=()=>{
   })
 }
 
-// selectMenuItem=(event)=>{
-//   let menuItem = event.target.innerText
-//   if (typeof menuItem === 'string') {
-//     this.setState({
-//       menuItem: menuItem
-//     } )
-//   }
-  
-// }
 
 renderLandingPage = () => {
 return (
@@ -92,8 +76,6 @@ renderUserPage = (path) => {
     };
   }
 const User = <UserPage 
-        
-        
         openCloseCart={this.openCloseCart}
         cartOpen={this.state.cartOpen}
         logOut={this.LogoutFunction}

@@ -1,5 +1,6 @@
 //reducer
 import initialState from './state.js';
+const CLOSE_SUCCESS_WINDOW = "CLOSE_SUCCESS_WINDOW";
 const TOGGLE_MENU = "TOGGLE_MENU";
 const ADD_TO_CART = "ADD_TO_CART"
 const PRODUCT_FOR_EDIT = "PRODUCT_FOR_EDIT";
@@ -90,6 +91,11 @@ let stateCopy = [...state]
 stateCopy.push(product)
 return stateCopy
 }
+const cartSuccess=(state)=>{
+	let stateCopy = state
+    stateCopy = !stateCopy
+    return stateCopy
+}
 const toggleMenu=(state)=>{
 	let stateCopy = state
 	stateCopy = !stateCopy
@@ -102,12 +108,16 @@ function reducer( state = initialState , action){
 		case LOGOUT:
 		logout()
 		return {...state, loggedIn: false, userData:{}, activeLink: "Your Account", login: {username:"",password:""}}			
+ 		case CLOSE_SUCCESS_WINDOW:
+ 		let successClose = cartSuccess(state.cartSuccess)
+ 		return {...state, cartSuccess: successClose}
  		case TOGGLE_MENU:
  		let toggle = toggleMenu(state.menuOpen)
  		return {...state,  menuOpen: toggle}
  		case ADD_TO_CART:
  		let addToCart = addingToCart(state.cartItems, action.payload)
- 		return {...state, cartItems: addToCart}
+ 		let success = cartSuccess(state.cartSuccess)
+ 		return {...state, cartItems: addToCart, cartSuccess:success}
  		case BACKSWITCH_PRODUCT_DETAIL:
  		let displaySwitch = switchProductDetail(state.showProductDetail)
  		let productDetail = setProductDetail(state.activeProductDetail, action.payload)

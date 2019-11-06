@@ -1,5 +1,6 @@
 
 const initialState = {
+ cartSuccess: false,
  menuOpen: false,
  cartOpen: false,
  loggedIn: false,

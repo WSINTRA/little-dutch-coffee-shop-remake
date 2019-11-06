@@ -5,9 +5,11 @@ const CartOverview = (props)=> {
 	return (
 	<div className="cart-overview">
 	
-  <div className="cart-display">SHOPPING CART</div>
+  <div className="cart-display">SHOPPING CART
+   {props.cartItems.map(item=><div>{item.title}</div>)}
+   </div>
    <div className="cart-items">
-    {props.cartItems.map(item=><div>{item.title}</div>)}
+   
     </div>
   </div>
   );

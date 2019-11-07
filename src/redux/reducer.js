@@ -1,5 +1,6 @@
 //reducer
 import initialState from './state.js';
+const ALL_CUSTOMERS = "ALL_CUSTOMERS";
 const CLOSE_SUCCESS_WINDOW = "CLOSE_SUCCESS_WINDOW";
 const TOGGLE_MENU = "TOGGLE_MENU";
 const ADD_TO_CART = "ADD_TO_CART"
@@ -101,6 +102,12 @@ const toggleMenu=(state)=>{
 	stateCopy = !stateCopy
 	return stateCopy 
 }
+const addAllCustomers=(state, data)=>{
+	let stateCopy = state
+	stateCopy = [...data]
+	return stateCopy
+
+}
 
 
 function reducer( state = initialState , action){
@@ -108,6 +115,9 @@ function reducer( state = initialState , action){
 		case LOGOUT:
 		logout()
 		return {...state, loggedIn: false, userData:{}, activeLink: "Your Account", login: {username:"",password:""}}			
+ 		case ALL_CUSTOMERS:
+ 		let allCustData = addAllCustomers(state.allCustomersData, action.payload)
+ 		return {...state, allCustomersData: allCustData}
  		case CLOSE_SUCCESS_WINDOW:
  		let successClose = cartSuccess(state.cartSuccess)
  		return {...state, cartSuccess: successClose}

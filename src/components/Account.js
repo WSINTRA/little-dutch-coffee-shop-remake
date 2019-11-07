@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux'
 import AdminProducts from './AdminProducts'
-
+import Customers from './Customers'
 const displayOption=(option)=>{
 	switch(option){
 		case "Sales stats":
@@ -9,7 +9,7 @@ const displayOption=(option)=>{
 		case "Orders":
 		return <div>ORDERS TEST</div>;
 		case "Customers":
-		return <div>CUSTOMERS TEST</div>;
+		return <Customers/>;
 		case "Employees":
 		return <div>EMPLOYEES TEST</div>;
 		case "Products":

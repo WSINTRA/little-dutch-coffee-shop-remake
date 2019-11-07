@@ -13,7 +13,8 @@ const stars = 4
 const Card =(props)=> {
 	return (
 	<Bounce>
-	<div onClick={()=>props.switch(props.product)}className="card-details">
+	<div onClick={()=>props.switch(props.product)}
+		className="card-details">
 	<img alt="product" src={props.product.image}/>
 	<h1>{props.product.title}</h1>
 	<h3>{props.product.breed}</h3>

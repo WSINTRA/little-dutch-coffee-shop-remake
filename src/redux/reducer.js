@@ -65,7 +65,8 @@ const sendProductToEdit=(state, payload)=>{
 	stateCopy.starRate = payload.rating;
 	stateCopy.price = payload.price;
 	stateCopy.checkbox = payload.in_menu;
-	stateCopy.editID = payload.id
+	stateCopy.editID = payload.id;
+	stateCopy.breed = payload.breed;
 	return stateCopy;
 };
 const setProductDetail=(state, payload)=>{

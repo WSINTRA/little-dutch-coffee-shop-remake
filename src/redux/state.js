@@ -5,7 +5,10 @@ const initialState = {
  cartOpen: false,
  loggedIn: false,
  userData: {},
- cartItems: [{title: "Some new shit", price: "3.99"}, {title: "Old Stuff", price: "3.99"}],
+ cartItems: [
+	 {title: "Some new shit", price: "3.99"}, //remove this later
+	 {title: "Old Stuff", price: "3.99"}
+	 ],
  productData: [],
  allCustomersData:[],
  searchTerm: "",
@@ -35,7 +38,7 @@ const initialState = {
  	editID: 0,
  },
  activeLink: "Your Account",
- activeOption: "Products",
+ activeOption: "Customers",
  showProductDetail: false,
  activeProductDetail: {},
 }

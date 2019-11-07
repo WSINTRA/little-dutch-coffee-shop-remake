@@ -16,6 +16,7 @@
 		
 		background: rgba(240,243,236,0.3);
 		height: 60rem;
+		overflow: scroll;
 		display: grid;
    		grid-template-columns: repeat(12, 1fr);
 		grid-template-rows: repeat(12, 1fr);

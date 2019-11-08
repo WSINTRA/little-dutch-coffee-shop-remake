@@ -5,10 +5,7 @@ const initialState = {
  cartOpen: false,
  loggedIn: false,
  userData: {},
- cartItems: [
-	 {title: "Some new shit", price: "3.99"}, //remove this later
-	 {title: "Old Stuff", price: "3.99"}
-	 ],
+ cartItems: [],
  productData: [],
  allCustomersData:[],
  searchTerm: "",

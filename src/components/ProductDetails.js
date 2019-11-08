@@ -8,11 +8,19 @@ const Price=(DataPrice)=>{
 }
 
 const addProductToCart=(props)=>{
-  props.addToCart(props.product);
-  
+  props.addToCart(props.product);  
 }
-const toggleSuccess=()=>{
- 
+const Reviews=(props)=>{
+  return props.product.reviews.map(review=><div key={review.id}><h3>{review.title}</h3>
+           <p>{review.content}</p></div>)
+}
+
+const BuyButton=(addToCart, props)=>{
+   return (<div className="buy-button" onClick={()=>addProductToCart(props)}>
+      <div className="buy-button__details">ADD TO CART<br/>
+      <h3>${Price(props.product.price)}</h3>
+        </div>
+    </div>)
 }
 
 const cartSuccess=(props)=>{
@@ -28,9 +36,19 @@ const cartSuccess=(props)=>{
 const ProductDetails = (props) => {
 	
 	return (
+    <div>
+    <div className="product-responsive-view">
+    <div className="review-responsive">
+    <h2>Reviews</h2>
+    {Reviews(props)}
+    </div>
+    <div className="button-responsive">
+    {BuyButton(addProductToCart, props)}
 
+    </div>
+     {props.cartSuccessSwitch ? cartSuccess(props) : null}
+    </div>
     <div className="product-details">    
-    {console.log(props,"PROPS HERE")}
     {props.cartSuccessSwitch ? cartSuccess(props) : null}
     <div className="left">
 
@@ -39,23 +57,19 @@ const ProductDetails = (props) => {
     <div className="left-breed"><h4>{props.product.breed}</h4></div>
     <div className="left-details"><p>{props.product.description}</p></div>
     
-    <div className="buy-button" onClick={()=>addProductToCart(props)}>
-      <div className="buy-button__details">ADD TO CART<br/>
-      <h3>${Price(props.product.price)}</h3>
-        </div>
-    </div>
+     {BuyButton(addProductToCart, props)}
    </div>
    <div className="right">
    <div className="right-title">
    <h2>Reviews</h2>
    </div>
    <div className="right-review">
-       {props.product.reviews.map(review=><div key={review.id}><h3>{review.title}</h3>
-           <p>{review.content}</p></div>)}
+       {Reviews(props)}
    
    </div>
    
    </div>
+    </div>
     </div>
 	)}
   function mdp(dispatch){

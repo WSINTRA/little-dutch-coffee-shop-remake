@@ -6,7 +6,7 @@ import ProductDetail from './ProductDetails';
 const WeeklyMenu = (props) => {
 	let categories = props.productData || []
 
-	const arrow = <svg xmlns="http://www.w3.org/2000/svg" width="42" height="48" viewBox="0 0 42 48">
+const arrow = <svg xmlns="http://www.w3.org/2000/svg" width="42" height="48" viewBox="0 0 42 48">
   <path id="Polygon_1" data-name="Polygon 1" d="M19.659,7.6a5,5,0,0,1,8.682,0L43.725,34.519A5,5,0,0,1,39.384,42H8.616a5,5,0,0,1-4.341-7.481Z" transform="translate(0 48) rotate(-90)" fill="#5d5d5d"/>
 </svg>
 
@@ -14,7 +14,7 @@ const WeeklyMenu = (props) => {
 	
     <div className="weekly-menu">
     {props.showProductDetail ? 
-    	<div className="banner"><div onClick={()=>props.backSwitchProductDetail()}>{arrow}</div><h4>{props.activeProductDetail.title}</h4></div> 
+    	<div className="banner"><div onClick={()=>props.backSwitchProductDetail()}>{arrow}</div><p>{props.activeProductDetail.title}</p></div> 
     	:
     	<div className="banner">{props.banner}</div>
     }

@@ -12,6 +12,10 @@
       color: #D8ECDA;
   &__selection {
     .logout {
+      @include respond(phone){
+          right:9rem;
+          top:10rem;
+          };
        right:9rem;
        top:3rem;
        &:hover {

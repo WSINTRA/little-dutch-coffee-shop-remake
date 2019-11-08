@@ -5,9 +5,8 @@
   
   .submit {
     @include respond(phone){
-         margin-left: 0;
           grid-row: 18 / span 5;
-          grid-column: 2 / span 4;
+          grid-column: 3 / span 4;
           };   
       grid-row: 11 / span 5;
       grid-column: 6 / span 4; 
@@ -32,7 +31,7 @@
   // height: 90vh;
   // clip-path: polygon(13% 4%, 97% 0, 99% 100%, 0% 100%);
   background: transparent;
-  opacity: 0.7;
+  opacity: 0.9;
   /* Note: currently only Safari supports backdrop-filter */
   backdrop-filter: blur(20.91230010986328px);
   --webkit-backdrop-filter: blur(20.91230010986328px);
@@ -54,7 +53,7 @@
 
    @-moz-document url-prefix() {
     
-        row-gap: 3em;
+        row-gap: 2em;
     
    }
    overflow: visible;
@@ -144,7 +143,7 @@
     input {
        @include respond(phone){
          
-          width: 9rem;
+          width: 15rem;
           };
       font-size: 2rem;
       width:100%;

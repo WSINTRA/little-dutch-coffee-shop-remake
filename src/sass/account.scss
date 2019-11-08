@@ -1,31 +1,38 @@
 .account {
-     
+   .responsive_view{
+    display:none;
+    @include respond(phone){
+    display: inline;
+    top: 18rem;
+    position: absolute;
+    width: 100%;
+    background: rgba(168, 188, 255, 0.38);
+    }
+   }
    &__content {
-   	position: absolute;
-   	top: 15rem;  
+ 
    	@include respond(phone){
                     top: 17rem;
+                    display: none;
                     }    
-
-    width: 90vw;
-               
+    position: absolute;
+   	top: 15rem;  
+    width: 100vw;
+    overflow: scroll;           
    	padding-left: 2rem;
    	padding-right: 2rem;
-	&_grid_items{
+&_grid_items{
 		width: 95vw;
-		
 		background: rgba(240,243,236,0.3);
 		height: 60rem;
-		overflow: scroll;
 		display: grid;
    		grid-template-columns: repeat(12, 1fr);
 		grid-template-rows: repeat(12, 1fr);
-		@include respond(phone){
-                   width: 80vw;
-                    }    
+		
 	&_selection-box{
 		@include respond(phone){
-                    width: 6rem;
+					
+                    width: 100vw;
                     font-size: 1rem;
                     }   
         display: grid;
@@ -36,7 +43,8 @@
 		font-size: 1.6rem;
 		background: rgba(168, 188, 255, 0.38);
 		*[class^='option_']{
-		border-right: 5px double rgba(90,98,98,0.7);
+			
+		border-right: 1px double rgba(90,98,98,0.2);
 		padding-top: 2.9rem;
 		padding-left: 0.4rem;
 		color: rgba(0, 0, 0, 0.87);
@@ -47,7 +55,8 @@
 
 	.active-option{
 		padding-left: 1rem;
-		grid-column: 2 / 12
+		grid-column: 2 / 12;
+		
 	}
 	}
    }

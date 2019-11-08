@@ -20,6 +20,7 @@ const displayOption=(option)=>{
 	}
 }
 
+
 const clickActionForOptions=(e,props)=>{
 	props.activeOptionSelect(e.target.innerText)
 }
@@ -33,7 +34,21 @@ const Account = (props) => {
     <div className="banner">
     {props.banner}
     </div>
-   {props.currentUser.staff ?   
+
+   {props.currentUser.staff ?   <div>
+   	<div className="responsive_view">
+   	<div className="option_sales" onClick={(e)=>clickActionForOptions(e,props)}>Sales stats<hr/>
+   	{props.activeOption === "Sales stats" ? <div>SOME THING HERE</div>:null}</div>
+   <div className="option_orders" onClick={(e)=>clickActionForOptions(e,props)}>Orders<hr/>
+   {props.activeOption === "Orders" ? <div>SOME THING HERE</div>:null}</div>
+   <div className="option_customers" onClick={(e)=>clickActionForOptions(e,props)}>Customers<hr/>
+   {props.activeOption === "Customers" ? <div>SOME THING HERE</div>:null}</div>
+   <div className="option_employee" onClick={(e)=>clickActionForOptions(e,props)}>Employees<hr/>
+   {props.activeOption === "Employees"? <div>SOME THING HERE</div>:null}</div>
+   <div className="option_products"onClick={(e)=>clickActionForOptions(e,props)}>Products<hr/>
+   {props.activeOption === "Products" ? <div>SOME THING HERE</div>:null}</div>
+
+   </div>
     <div className="account__content">
    <div className="account__content_grid_items"> 
 
@@ -46,7 +61,7 @@ const Account = (props) => {
    </div>
    <div className="active-option">{displayOption(props.activeOption)}</div>
    </div>
-    
+    </div>
    </div> :
  null 
 // //Fill in how the account page should look for a normal user

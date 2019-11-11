@@ -42,7 +42,7 @@ const Account = (props) => {
    <div className="option_orders" onClick={(e)=>clickActionForOptions(e,props)}>Orders<hr/>
    {props.activeOption === "Orders" ? <div>SOME THING HERE</div>:null}</div>
    <div className="option_customers" onClick={(e)=>clickActionForOptions(e,props)}>Customers<hr/>
-   {props.activeOption === "Customers" ? <div>SOME THING HERE</div>:null}</div>
+   {props.activeOption === "Customers" ? <div><Customers/></div>:null}</div>
    <div className="option_employee" onClick={(e)=>clickActionForOptions(e,props)}>Employees<hr/>
    {props.activeOption === "Employees"? <div>SOME THING HERE</div>:null}</div>
    <div className="option_products"onClick={(e)=>clickActionForOptions(e,props)}>Products<hr/>

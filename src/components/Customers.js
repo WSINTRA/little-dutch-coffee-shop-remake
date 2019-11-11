@@ -9,7 +9,7 @@ const Customers=(props)=>{
 	<Button onClick={()=>fetchCustomers(props.allCustomers)}>Show latest data</Button>
 	<Table basic='very' celled collapsing>
     <Table.Header>
-      <Table.Row>
+      <Table.Row >
         <Table.HeaderCell>Customer</Table.HeaderCell>
         <Table.HeaderCell>Email</Table.HeaderCell>
         <Table.HeaderCell>Status</Table.HeaderCell>

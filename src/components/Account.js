@@ -8,7 +8,7 @@ import YourOrders from './YourOrders'
 const displayOption=(option,props)=>{
 	switch(option){
     case "Your Orders":
-    return <div><YourOrders currentUser={props.currentUser}/></div>;
+    return <div style={{marginLeft:"9rem",marginTop:"5rem"}}><YourOrders currentUser={props.currentUser}/></div>;
 		case "Sales stats":
 		return <div>SALES STAT TEST</div>;
 		case "Orders":

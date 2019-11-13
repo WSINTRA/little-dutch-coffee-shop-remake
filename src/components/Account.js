@@ -2,10 +2,13 @@ import React from "react";
 import { connect } from 'react-redux'
 import AdminProducts from './AdminProducts'
 import Customers from './Customers'
-import { Button, Header, Image, Table } from 'semantic-ui-react';
+import YourOrders from './YourOrders'
 
-const displayOption=(option)=>{
+
+const displayOption=(option,props)=>{
 	switch(option){
+    case "Your Orders":
+    return <div><YourOrders currentUser={props.currentUser}/></div>;
 		case "Sales stats":
 		return <div>SALES STAT TEST</div>;
 		case "Orders":
@@ -27,10 +30,7 @@ const clickActionForOptions=(e,props)=>{
 	props.activeOptionSelect(e.target.innerText)
 }
 
-const orderDate=(date)=>{
-  let newDate = new Date(date)
-  return newDate.toDateString()
-}
+
 
 const Account = (props) => {
 	
@@ -39,7 +39,7 @@ const Account = (props) => {
     <div className="account">
 
     <div className="banner">
-    {props.banner} : {props.currentUser.username}
+    {props.banner} : {props.currentUser.username ? props.currentUser.username : null}
     </div>
 
    {props.currentUser.staff ?   <div>
@@ -70,50 +70,34 @@ const Account = (props) => {
    </div>
     </div>
    </div> :
- <div>{console.log(props.currentUser)}
-     <div className="responsive_view">TEST RESPONSIVE</div>
-     <div className="account__content">
-     <div className="account__content_grid_items" >
-     <div className="active-option"><img src={props.currentUser.avatar}/>
-     <div style={{height:"19rem",overflow: "scroll"}}><h3>Purchase History</h3>
-     
-     
+   <div>
+   <div className="responsive_view">
+     <div className="option_userOrders" onClick={(e)=>clickActionForOptions(e,props)}>User Orders<hr/>
+     {props.activeOption === "User Orders" ? <div>User orders</div>:null}</div>
+   <div className="option_reviews" onClick={(e)=>clickActionForOptions(e,props)}>Reviews<hr/>
+   {props.activeOption === "Reviews" ? <div>User reviews</div>:null}</div>
+   <div className="option_savedCart" onClick={(e)=>clickActionForOptions(e,props)}>Saved cart<hr/>
+   {props.activeOption === "Saved Cart" ? <div>Saved cart</div>:null}</div>
+   <div className="option_details" onClick={(e)=>clickActionForOptions(e,props)}>Details<hr/>
+   {props.activeOption === "Details"? <div>Details here</div>:null}</div>
+   <div className="option_settings"onClick={(e)=>clickActionForOptions(e,props)}>Settings<hr/>
+   {props.activeOption === "Settings" ? <div>SOME THING HERE</div>:null}</div>
 
-       {props.currentUser.orders.map(order=> <React.Fragment>
-         <Table basic='very' celled collapsing>
-    <Table.Header>
-      <Table.Row >
-        <Table.HeaderCell>Order No.{order.id}</Table.HeaderCell>
-         <Table.HeaderCell>Product Name</Table.HeaderCell>
-          <Table.HeaderCell>Purchase Date</Table.HeaderCell>
-      </Table.Row>
-    </Table.Header>
-    <Table.Body>
-         
-        
-        {order.products.map(product=>
-          <React.Fragment><Table.Row >
-         <Table.Cell>
-       
-        </Table.Cell><Table.Cell>{product.title}</Table.Cell>
-          <Table.Cell>{orderDate(order.created_at)}</Table.Cell> </Table.Row></React.Fragment>
-        )}
-        
-        
-       
-         </Table.Body>
-      </Table>
-        </React.Fragment>)} 
-        
-      
-        
-      
- 
-  
- </div>
-      </div>
-     </div>
-  </div></div>
+   </div>
+    <div className="account__content">
+   <div className="account__content_grid_items"> 
+
+   <div className="account__content_grid_items_selection-box"> 
+   <div className="option_userOrders" onClick={(e)=>clickActionForOptions(e,props)}>Your Orders<hr/></div>
+   <div className="option_reviews" onClick={(e)=>clickActionForOptions(e,props)}>Reviews<hr/></div>
+   <div className="option_savedCart" onClick={(e)=>clickActionForOptions(e,props)}>Saved Cart<hr/></div>
+   <div className="option_details" onClick={(e)=>clickActionForOptions(e,props)}>Details<hr/></div>
+   <div className="option_settings"onClick={(e)=>clickActionForOptions(e,props)}>Settings<hr/></div>
+   </div>
+   <div className="active-option">{displayOption(props.activeOption, props)}</div>
+   </div>
+    </div>
+   </div>
 // //Fill in how the account page should look for a normal user
 
 }

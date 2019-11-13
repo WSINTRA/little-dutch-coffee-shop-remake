@@ -115,7 +115,7 @@ function reducer( state = initialState , action){
 	switch(action.type){
 		case LOGOUT:
 		logout()
-		return {...state, loggedIn: false, userData:{}, activeLink: "Your Account", login: {username:"",password:""}}			
+		return {...state, loggedIn: false, userData:{},activeOption: "", activeLink: "Your Account", login: {username:"",password:""}}			
  		case ALL_CUSTOMERS:
  		let allCustData = addAllCustomers(state.allCustomersData, action.payload)
  		return {...state, allCustomersData: allCustData}

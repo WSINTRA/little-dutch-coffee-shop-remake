@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 
 
 const ControlledInput = (props, input) => {
-
   const value = input.target.value
   const label = input.target.name
   const payload = {}

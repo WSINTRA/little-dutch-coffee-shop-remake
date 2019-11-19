@@ -3,10 +3,13 @@ import { connect } from 'react-redux'
 import AdminProducts from './AdminProducts'
 import Customers from './Customers'
 import YourOrders from './YourOrders'
-
+import Reviews from './Reviews'
 
 const displayOption=(option,props)=>{
 	switch(option){
+    case "Reviews":
+    return <div style={{marginLeft:"9rem",marginTop:"5rem"}}>
+    <Reviews/></div>
     case "Your Orders":
     return <div style={{marginLeft:"9rem",marginTop:"5rem"}}>
     <YourOrders currentUser={props.currentUser}/></div>;
@@ -44,7 +47,7 @@ const Account = (props) => {
     </div>
 
    {props.currentUser.staff ?   <div>
-   	<div className="responsive_view">
+   	<div className="responsive_view">{/** THIS SECTION IS FOR MOBILE VIEW ADMIN**/}
    	<div className="option_sales" onClick={(e)=>clickActionForOptions(e,props)}>Sales stats<hr/>
    	{props.activeOption === "Sales stats" ? <div>SOME THING HERE</div>:null}</div>
    <div className="option_orders" onClick={(e)=>clickActionForOptions(e,props)}>Orders<hr/>
@@ -72,7 +75,7 @@ const Account = (props) => {
     </div>
    </div> :
    <div>
-   <div className="responsive_view">
+   <div className="responsive_view">{/** THIS SECTION IS FOR MOBILE VIEW USERS**/}
      <div className="option_userOrders" onClick={(e)=>clickActionForOptions(e,props)}>User Orders<hr/>
      {props.activeOption === "User Orders" ? <div>User orders</div>:null}</div>
    <div className="option_reviews" onClick={(e)=>clickActionForOptions(e,props)}>Reviews<hr/>

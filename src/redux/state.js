@@ -1,5 +1,6 @@
 
 const initialState = {
+ reviewActive: false,
  cartSuccess: false,
  menuOpen: false,
  cartOpen: false,
@@ -9,6 +10,10 @@ const initialState = {
  productData: [],
  allCustomersData:[],
  searchTerm: "",
+ editReviewForm: {
+ 	reviewTitle: "",
+ 	reviewContent: "",
+ },
  form: {//Make this userForm *
  	email: "",
  	username: "",

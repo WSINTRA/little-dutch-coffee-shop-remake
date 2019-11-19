@@ -1,5 +1,6 @@
 //reducer
 import initialState from './state.js';
+const REVIEW_ACTIVE = "REVIEW_ACTIVE";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 const ALL_CUSTOMERS = "ALL_CUSTOMERS";
 const CLOSE_SUCCESS_WINDOW = "CLOSE_SUCCESS_WINDOW";
@@ -11,6 +12,7 @@ const STAR_RATE = "STAR_RATE";
 const SOME_OPTION = "SOME_OPTION";
 const SOME_LINK = "SOME_LINK";
 const ADD_LOGIN_BOOL = "ADD_LOGIN_BOOL";
+const REVIEW_FORM_CONTROL = "REVIEW_FORM_CONTROL";
 const PRODUCT_FORM_CONTROL = "PRODUCT_FORM_CONTROL";
 const LOGIN_FORM_CONTROL = "LOGIN_FORM_CONTROL";
 const REGISTER_FORM_CONTROL = "REGISTER_FORM_CONTROL";
@@ -122,9 +124,19 @@ const removeFromCart=(state, itemRemID)=>{
 	return cartItems
 }
 
+const ActiveReview=(state)=>{
+	let stateCopy = state
+	stateCopy = !stateCopy
+ 
+	return stateCopy
+}
+
 
 function reducer( state = initialState , action){
 	switch(action.type){
+		case REVIEW_ACTIVE:
+		let activateReview = ActiveReview(state.reviewActive)
+		return {...state, reviewActive: activateReview}
 		case REMOVE_FROM_CART:
 		let removeItem = removeFromCart(state, action.payload)
         return {...state, cartItems: removeItem }
@@ -184,6 +196,9 @@ function reducer( state = initialState , action){
 		case LOGIN_FORM_CONTROL:
 		let loginUpdate = formObjectCreator("login", action.payload, state)
 		return {...state, login: loginUpdate}
+		case REVIEW_FORM_CONTROL:
+		let reviewUpdate = formObjectCreator("editReviewForm", action.payload, state)
+		return {...state,  editReviewForm: reviewUpdate}
 		case REGISTER_FORM_CONTROL:
 		let registerUpdate = formObjectCreator("form", action.payload, state)
 		return {...state, form: registerUpdate}

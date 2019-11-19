@@ -12,7 +12,7 @@ const displayOption=(option,props)=>{
     <Reviews/></div>
     case "Your Orders":
     return <div style={{marginLeft:"9rem",marginTop:"5rem"}}>
-    <YourOrders currentUser={props.currentUser}/></div>;
+    <YourOrders/></div>;
 		case "Sales stats":
 		return <div>SALES STAT TEST</div>;
 		case "Orders":

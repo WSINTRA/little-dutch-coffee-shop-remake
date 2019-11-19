@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Header, Image, Table } from 'semantic-ui-react';
-
+import { connect } from 'react-redux';
 
 
 const orderDate=(date)=>{
@@ -15,13 +15,17 @@ const checkProductHasReview=(reviews, product)=>{
   }
   return false
 }
+const toggleReview=(toggleSwitch, changeView)=>{
+toggleSwitch()
+changeView("Reviews")
+
+}
 
 const YourOrders=(props)=>{
 	
 	return (
 	<React.Fragment>
 	<h3>Purchase History</h3>
-     {console.log(props, "inspection")}
       <Table basic='very' celled collapsing>
     <Table.Header>
       <Table.Row >
@@ -45,7 +49,8 @@ const YourOrders=(props)=>{
           <Table.Cell>{orderDate(order.created_at)}</Table.Cell>
           <Table.Cell>
          {checkProductHasReview(props.currentUser.reviews, product.id) ?  
-           <Button>Edit Review</Button> : <Button>Add Review</Button> }
+           "Completed" : 
+           <Button onClick={()=>toggleReview(props.reviewActivate, props.activeOptionSelect)}>Add Review</Button> }
           </Table.Cell> </Table.Row></React.Fragment>
         )}
         
@@ -67,4 +72,24 @@ const YourOrders=(props)=>{
         )
 }
 
-export default YourOrders;
+
+function mdp(dispatch){
+  return {
+    reviewActivate: (action)=> {
+      dispatch({type:"REVIEW_ACTIVE", payload: action})
+    },
+    activeOptionSelect: (action)=> {
+      dispatch({type:"SOME_OPTION", payload: action})
+    }
+  }
+}
+
+function msp(state){
+  return {
+    currentUser: state.userData,
+    reviewActive: state.reviewActive
+  }
+
+}
+
+export default connect(msp, mdp)(YourOrders);

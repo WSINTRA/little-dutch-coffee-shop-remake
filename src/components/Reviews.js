@@ -23,7 +23,7 @@ const Reviews=(props)=>{
 	return (
  	<div>
  	{console.log(props.currentUser)}
- 	{props.reviewActive ? <ReviewEdit user={props.currentUser}/> : props.currentUser.reviews.map(
+ 	{props.reviewActive ? <ReviewEdit toggleReview={props.reviewActivate} user={props.currentUser}/> : props.currentUser.reviews.map(
  		review=><React.Fragment key={review.id}>
  		
  		<div style={{display:"flex"}}>

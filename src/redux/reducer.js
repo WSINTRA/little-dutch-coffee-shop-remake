@@ -16,6 +16,7 @@ const REVIEW_FORM_CONTROL = "REVIEW_FORM_CONTROL";
 const PRODUCT_FORM_CONTROL = "PRODUCT_FORM_CONTROL";
 const LOGIN_FORM_CONTROL = "LOGIN_FORM_CONTROL";
 const REGISTER_FORM_CONTROL = "REGISTER_FORM_CONTROL";
+const ADD_REVIEW_DATA_TO_USER_STATE = "ADD_REVIEW_DATA_TO_USER_STATE";
 const ADD_USER_DATA_TO_STATE = "ADD_USER_DATA_TO_STATE";
 const ADD_PRODUCT_DATA_TO_STATE = "ADD_PRODUCT_DATA_TO_STATE";
 const SUBMIT_PRODUCT_FORM = "SUBMIT_PRODUCT_FORM";
@@ -25,6 +26,9 @@ const SEARCH_TERM_CONTROL = "SEARCH_TERM_CONTROL";
 const URL_PATH = "URL_PATH";
 const LOGOUT = "LOGOUT";
 const BACKSWITCH_PRODUCT_DETAIL = "BACKSWITCH_PRODUCT_DETAIL"
+
+
+
 
 const formObjectCreator=(formType, payload, state)=>{
 	let objKey = Object.keys(payload)[0];
@@ -130,10 +134,26 @@ const ActiveReview=(state)=>{
  
 	return stateCopy
 }
+const addReviewToUser=(user, review)=>{
+	
+	let userCopy = user
+	let newReview = {}
+	newReview.content = review.payload.content
+	newReview.id = review.payload.id
+	newReview.product = review.payload.product
+	newReview.product_id = review.payload.product_id
+	newReview.title = review.payload.title
+	newReview.user_id = review.payload.user_id
+	userCopy.reviews.push(newReview)
+	return userCopy
+}
 
 
 function reducer( state = initialState , action){
 	switch(action.type){
+		case ADD_REVIEW_DATA_TO_USER_STATE:
+        let addToUser = addReviewToUser(state.userData, action)
+		return {...state, userData: addToUser}
 		case REVIEW_ACTIVE:
 		let activateReview = ActiveReview(state.reviewActive)
 		return {...state, reviewActive: activateReview}

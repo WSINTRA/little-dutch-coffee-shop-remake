@@ -33,6 +33,7 @@ const YourOrders=(props)=>{
 	
 	return (
 	<React.Fragment>
+  {console.log(props.currentUser)}
 	<h3>Purchase History</h3>
       <Table basic='very' celled collapsing>
     <Table.Header>

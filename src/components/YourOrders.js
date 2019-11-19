@@ -15,9 +15,17 @@ const checkProductHasReview=(reviews, product)=>{
   }
   return false
 }
-const toggleReview=(toggleSwitch, changeView)=>{
+const toggleReview=(toggleSwitch, changeView,control,product)=>{
 toggleSwitch()
 changeView("Reviews")
+
+const title = {}
+title["reviewTitle"] = product.title
+control(title)
+
+const prodID = {}
+prodID["productID"] = product.id
+control(prodID)
 
 }
 
@@ -50,7 +58,11 @@ const YourOrders=(props)=>{
           <Table.Cell>
          {checkProductHasReview(props.currentUser.reviews, product.id) ?  
            "Completed" : 
-           <Button onClick={()=>toggleReview(props.reviewActivate, props.activeOptionSelect)}>Add Review</Button> }
+           <Button 
+           onClick={()=>toggleReview(props.reviewActivate, 
+             props.activeOptionSelect, 
+             props.reviewFormControl,
+             product )}>Add Review</Button> }
           </Table.Cell> </Table.Row></React.Fragment>
         )}
         
@@ -80,7 +92,10 @@ function mdp(dispatch){
     },
     activeOptionSelect: (action)=> {
       dispatch({type:"SOME_OPTION", payload: action})
-    }
+    },
+    reviewFormControl: (object)=> {
+      dispatch({type:"REVIEW_FORM_CONTROL", payload: object})
+    },
   }
 }
 

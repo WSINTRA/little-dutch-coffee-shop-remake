@@ -13,6 +13,8 @@ const initialState = {
  editReviewForm: {
  	reviewTitle: "",
  	reviewContent: "",
+ 	reviewID: 0,
+ 	productID: ""
  },
  form: {//Make this userForm *
  	email: "",

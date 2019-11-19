@@ -28,6 +28,7 @@ const CartOverview = (props)=> {
    </div>
    Total: {cartTotal(props.cartItems).toFixed(2)}
    <div className="cart-checkout" onClick={()=>submitCheckOut(props.cartItems, props.user)}>Checkout</div>
+   <div className="cart-checkout">Save for later</div>
  {/**When the checkout button is pressed do something!!**/}
    </div>
   

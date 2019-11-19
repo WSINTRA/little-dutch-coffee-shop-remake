@@ -5,11 +5,11 @@ import { Button, Header, Image, Table } from 'semantic-ui-react';
 
 const Customers=(props)=>{
 	return (
-	<div>
+	<div style={{overflow: "auto",height:"23rem",backgroundColor:"rgba(146,156,159,0.4)",marginLeft:"9rem",marginTop:"5rem"}}>
 	<Button onClick={()=>fetchCustomers(props.allCustomers)}>Show latest data</Button>
 	<Table basic='very' celled collapsing>
     <Table.Header>
-      <Table.Row>
+      <Table.Row >
         <Table.HeaderCell>Customer</Table.HeaderCell>
         <Table.HeaderCell>Email</Table.HeaderCell>
         <Table.HeaderCell>Status</Table.HeaderCell>

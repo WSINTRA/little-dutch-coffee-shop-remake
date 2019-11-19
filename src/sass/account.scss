@@ -18,7 +18,7 @@
     position: absolute;
    	top: 15rem;  
     width: 100vw;
-    overflow: scroll;           
+             
    	padding-left: 2rem;
    	padding-right: 2rem;
 &_grid_items{
@@ -40,6 +40,7 @@
 		grid-template-rows: repeat(5, 1fr); 
 		width: 12rem;
 		height: 25rem;
+		
 		font-size: 1.6rem;
 		background: rgba(168, 188, 255, 0.38);
 		*[class^='option_']{
@@ -56,6 +57,9 @@
 	.active-option{
 		padding-left: 1rem;
 		grid-column: 2 / 12;
+		img{
+			width:12rem;
+		}
 		
 	}
 	}

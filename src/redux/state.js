@@ -35,7 +35,7 @@ const initialState = {
  	editID: 0,
  },
  activeLink: "Your Account",
- activeOption: "Customers",
+ activeOption: "",
  showProductDetail: false,
  activeProductDetail: {},
 }

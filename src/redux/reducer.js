@@ -1,5 +1,6 @@
 //reducer
 import initialState from './state.js';
+const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 const ALL_CUSTOMERS = "ALL_CUSTOMERS";
 const CLOSE_SUCCESS_WINDOW = "CLOSE_SUCCESS_WINDOW";
 const TOGGLE_MENU = "TOGGLE_MENU";
@@ -109,13 +110,27 @@ const addAllCustomers=(state, data)=>{
 	return stateCopy
 
 }
+const removeFromCart=(state, itemRemID)=>{
+	let cartItems = state.cartItems.map(item=>{
+		if (item.id !== itemRemID){
+			return item
+		}
+	}).filter(function (el) {
+ 	 return el != null;
+	});
+
+	return cartItems
+}
 
 
 function reducer( state = initialState , action){
 	switch(action.type){
+		case REMOVE_FROM_CART:
+		let removeItem = removeFromCart(state, action.payload)
+        return {...state, cartItems: removeItem }
 		case LOGOUT:
 		logout()
-		return {...state, loggedIn: false, userData:{}, activeLink: "Your Account", login: {username:"",password:""}}			
+		return {...state, loggedIn: false, userData:{},activeOption: "", activeLink: "Your Account", login: {username:"",password:""}}			
  		case ALL_CUSTOMERS:
  		let allCustData = addAllCustomers(state.allCustomersData, action.payload)
  		return {...state, allCustomersData: allCustData}

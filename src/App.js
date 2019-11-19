@@ -39,8 +39,8 @@ componentDidMount(){
                 }
                 return res.json()
             }).then(res => {
-                
-                   this.props.createProductStateFromFetch(res)
+                   //Set this object to store in localStorage
+                   this.props.createProductStateFromFetch(res);
 
             })  
     }

@@ -1,3 +1,5 @@
+$link-color: #393C3B;
+
 * {
   margin: 0;
   padding: 0;
@@ -13,19 +15,19 @@ body {
     font-weight: 400;
     font-size: 16px;
     max-width: 100%;
-        overflow-x: hidden;
+   // overflow-x: hidden;
 }
 
 a {
   text-decoration: none;
-  color: #252725;
+  color: $link-color;
   &:visited {
-      color: #1F1D27;
+      color: $link-color;
     }
     &:hover {
-      color: #3A2F3A;   
+      color: $link-color;   
     }
     &:active {
-      color: #3A2F3A;
+      color: $link-color;
     }
 }

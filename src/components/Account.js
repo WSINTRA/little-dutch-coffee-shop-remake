@@ -2,8 +2,14 @@ import React from "react";
 import { connect } from 'react-redux'
 import AdminProducts from './AdminProducts'
 import Customers from './Customers'
-const displayOption=(option)=>{
+import YourOrders from './YourOrders'
+
+
+const displayOption=(option,props)=>{
 	switch(option){
+    case "Your Orders":
+    return <div style={{marginLeft:"9rem",marginTop:"5rem"}}>
+    <YourOrders currentUser={props.currentUser}/></div>;
 		case "Sales stats":
 		return <div>SALES STAT TEST</div>;
 		case "Orders":
@@ -25,6 +31,8 @@ const clickActionForOptions=(e,props)=>{
 	props.activeOptionSelect(e.target.innerText)
 }
 
+
+
 const Account = (props) => {
 	
 	return (
@@ -32,7 +40,7 @@ const Account = (props) => {
     <div className="account">
 
     <div className="banner">
-    {props.banner}
+    {props.banner} : {props.currentUser.username ? props.currentUser.username : null}
     </div>
 
    {props.currentUser.staff ?   <div>
@@ -42,7 +50,7 @@ const Account = (props) => {
    <div className="option_orders" onClick={(e)=>clickActionForOptions(e,props)}>Orders<hr/>
    {props.activeOption === "Orders" ? <div>SOME THING HERE</div>:null}</div>
    <div className="option_customers" onClick={(e)=>clickActionForOptions(e,props)}>Customers<hr/>
-   {props.activeOption === "Customers" ? <div>SOME THING HERE</div>:null}</div>
+   {props.activeOption === "Customers" ? <div><Customers/></div>:null}</div>
    <div className="option_employee" onClick={(e)=>clickActionForOptions(e,props)}>Employees<hr/>
    {props.activeOption === "Employees"? <div>SOME THING HERE</div>:null}</div>
    <div className="option_products"onClick={(e)=>clickActionForOptions(e,props)}>Products<hr/>
@@ -63,8 +71,36 @@ const Account = (props) => {
    </div>
     </div>
    </div> :
- null 
+   <div>
+   <div className="responsive_view">
+     <div className="option_userOrders" onClick={(e)=>clickActionForOptions(e,props)}>User Orders<hr/>
+     {props.activeOption === "User Orders" ? <div>User orders</div>:null}</div>
+   <div className="option_reviews" onClick={(e)=>clickActionForOptions(e,props)}>Reviews<hr/>
+   {props.activeOption === "Reviews" ? <div>User reviews</div>:null}</div>
+   <div className="option_savedCart" onClick={(e)=>clickActionForOptions(e,props)}>Saved cart<hr/>
+   {props.activeOption === "Saved Cart" ? <div>Saved cart</div>:null}</div>
+   <div className="option_details" onClick={(e)=>clickActionForOptions(e,props)}>Details<hr/>
+   {props.activeOption === "Details"? <div>Details here</div>:null}</div>
+   <div className="option_settings"onClick={(e)=>clickActionForOptions(e,props)}>Settings<hr/>
+   {props.activeOption === "Settings" ? <div>SOME THING HERE</div>:null}</div>
+
+   </div>
+    <div className="account__content">
+   <div className="account__content_grid_items"> 
+
+   <div className="account__content_grid_items_selection-box"> 
+   <div className="option_userOrders" onClick={(e)=>clickActionForOptions(e,props)}>Your Orders<hr/></div>
+   <div className="option_reviews" onClick={(e)=>clickActionForOptions(e,props)}>Reviews<hr/></div>
+   <div className="option_savedCart" onClick={(e)=>clickActionForOptions(e,props)}>Saved Cart<hr/></div>
+   <div className="option_details" onClick={(e)=>clickActionForOptions(e,props)}>Details<hr/></div>
+   <div className="option_settings"onClick={(e)=>clickActionForOptions(e,props)}>Settings<hr/></div>
+   </div>
+   <div className="active-option">{displayOption(props.activeOption, props)}</div>
+   </div>
+    </div>
+   </div>
 // //Fill in how the account page should look for a normal user
+
 }
  
     </div>

@@ -51,8 +51,7 @@ const YourOrders=(props)=>{
         
         {order.products.map(product=>
           <React.Fragment key={product.id}>
-          <Table.Row >
-          <Table.Cell>
+          <Table.Row><Table.Cell>
        {order.id}
         </Table.Cell><Table.Cell>{product.title}</Table.Cell>
           <Table.Cell>{orderDate(order.created_at)}</Table.Cell>
@@ -64,7 +63,7 @@ const YourOrders=(props)=>{
              props.activeOptionSelect, 
              props.reviewFormControl,
              product )}>Add Review</Button> }
-          </Table.Cell> </Table.Row></React.Fragment>
+          </Table.Cell></Table.Row></React.Fragment>
         )}
         
         

@@ -1,0 +1,13 @@
+.reviews{
+	height: 50rem;
+	overflow: scroll;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	
+	.review{
+	width: 100%;
+	justify-self: start;
+	border-style: groove;
+	background-image: linear-gradient(rgba(111,162,97,0.3) 0%, rgba(225,170,169,0.5) 100%);
+	}
+}

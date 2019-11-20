@@ -21,25 +21,27 @@ control(prodID)
 
 const Reviews=(props)=>{
 	return (
- 	<div>
- 	{console.log(props.currentUser)}
- 	{props.reviewActive ? <ReviewEdit toggleReview={props.reviewActivate} user={props.currentUser}/> : props.currentUser.reviews.map(
- 		review=><React.Fragment key={review.id}>
- 		
- 		<div style={{display:"flex"}}>
- 		<Image size='tiny' src={review.product.image}/>
- 		<h1>{review.product.title}</h1>
- 		</div>
- 		<h2>{review.title}</h2>
- 		<p>{review.content}</p>
- 		<Button onClick={()=>toggleReview(props.reviewActivate, 
- 			review, 
- 			props.reviewFormControl)}>Edit Review</Button>
- 		<hr/>
- 		</React.Fragment>)}
  	
- 	</div>
-		)
+ 	<React.Fragment>
+ 	{props.reviewActive ? <ReviewEdit toggleReview={props.reviewActivate} user={props.currentUser}/> : 
+ 		<div className="reviews">
+	 	{props.currentUser.reviews.map(
+	 		review=><React.Fragment key={review.id}>
+	 		<div className="review">
+	 		<div style={{display:"flex"}}>
+	 		<Image size='tiny' src={review.product.image}/>
+	 		<h1>{review.product.title}</h1>
+	 		</div>
+	 		<h2>{review.title}</h2>
+	 		<p>{review.content}</p>
+	 		<Button onClick={()=>toggleReview(props.reviewActivate, 
+	 			review, 
+	 			props.reviewFormControl)}>Edit Review</Button>
+	 		</div>
+	 		</React.Fragment>) }
+ 		</div>
+	}
+	</React.Fragment>)
 }
 
 function mdp(dispatch){

@@ -21,7 +21,8 @@ const EditReview=(props)=>{
 	return(
 	
     <div className="review-edit">
-      <h1>Review</h1><p>{props.editReviewForm.reviewID ? props.editReviewForm.reviewID : null}</p><br/>
+     
+      {props.editReviewForm.reviewID ? <p>Review ID : {props.editReviewForm.reviewID}</p> : null}<br/>
           <div>
             <label >Review Title</label><br/><input 
             onChange={(e)=>ControlledInput(props, e)} 

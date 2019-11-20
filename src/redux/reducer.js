@@ -135,7 +135,6 @@ const ActiveReview=(state)=>{
 	return stateCopy
 }
 const addReviewToUser=(user, review)=>{
-	
 	let userCopy = user
 	let newReview = {}
 	newReview.content = review.payload.content
@@ -144,7 +143,14 @@ const addReviewToUser=(user, review)=>{
 	newReview.product_id = review.payload.product_id
 	newReview.title = review.payload.title
 	newReview.user_id = review.payload.user_id
-	userCopy.reviews.push(newReview)
+	const existingCheck=(userCopy,newReview)=>{
+	  let userData = userCopy.reviews.filter(review=> 
+	  	review.product_id !== newReview.product_id)
+	  userData.push(newReview)
+      return userData
+	} 
+    let reviewsArray = existingCheck(userCopy, newReview)
+	userCopy.reviews = reviewsArray
 	return userCopy
 }
 

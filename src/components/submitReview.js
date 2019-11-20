@@ -20,6 +20,26 @@ if (formDetails.reviewID === 0){
                     reviewToUserData(review)
                     } )
 } 
+else if (formDetails.reviewID !== 0){
+    fetch('http://localhost:3050/v1/review/edit', {
+            method: 'PATCH',
+            headers: { 
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+                Authorization: `Bearer ${localStorage.myJWT}`
+            },
+            body: JSON.stringify({
+               "title": formDetails.reviewTitle,
+               "content": formDetails.reviewContent,
+               "user_id": user.id,
+               "product_id": formDetails.productID,
+               "review_id": formDetails.reviewID
+              }) }).then(res => res.json() ).then(review=> {
+                    //push new review into the array of user reviews
+                    reviewToUserData(review)
+                    } )
+
+}
 //write a submission to the backend server here.
 
 // fetch('http://localhost:3050/v1/review/edit', {

@@ -1,6 +1,6 @@
 import React from "react";
 import styled, {keyframes} from 'styled-components';
-import {fadeIn, bounce} from 'react-animations';
+import {fadeIn} from 'react-animations';
 import BackDrop from './BackDrop';
 import MenuHeader from './MenuHeader';
 import Header from './Header';

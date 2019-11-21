@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux'
-import { Router, Route } from "react-router";
+// import { Router, Route } from "react-router";
 import { fadeIn } from 'react-animations';
 import styled, { keyframes } from 'styled-components';
 import Header from './Header'

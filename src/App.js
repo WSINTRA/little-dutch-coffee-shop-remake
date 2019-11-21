@@ -23,13 +23,17 @@ componentDidMount(){
             }).then(res => {
                 if (!res.ok) {
                     console.log("not logged in", res);
+                    return null
                 }
-                return res.json()
-            }).then(res => {
-                // debugger
-                    this.props.createUserStateFromFetch(res.user)
-                    
-            })  
+                else {
+                   return res.json()
+                }
+                
+            }).then(userData=> {
+              
+              this.props.createUserStateFromFetch(userData.user)
+            }
+              )  
             
         }
     if(!localStorage.products) {

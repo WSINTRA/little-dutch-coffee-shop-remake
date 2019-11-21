@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import fetchCustomers from './customerFetch'
-import { Button, Header, Image, Table } from 'semantic-ui-react';
+import { Button, Image, Table } from 'semantic-ui-react';
 
 const Customers=(props)=>{
 	return (

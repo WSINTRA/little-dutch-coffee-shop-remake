@@ -25,7 +25,7 @@ const Reviews=(props)=>{
  	<React.Fragment>
  	{props.reviewActive ? <ReviewEdit toggleReview={props.reviewActivate} user={props.currentUser}/> : 
  		<div className="reviews">
-	 	{props.currentUser.reviews.map(
+	 	{props.currentUser.reviews.length > 0 ? props.currentUser.reviews.map(
 	 		review=><React.Fragment key={review.id}>
 	 		<div className="review">
 	 		<div style={{display:"flex"}}>
@@ -38,7 +38,7 @@ const Reviews=(props)=>{
 	 			review, 
 	 			props.reviewFormControl)}>Edit Review</Button>
 	 		</div>
-	 		</React.Fragment>) }
+	 		</React.Fragment>) : <div>No reviews yet</div> }
  		</div>
 	}
 	</React.Fragment>)

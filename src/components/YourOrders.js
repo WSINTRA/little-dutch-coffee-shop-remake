@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Header, Image, Table } from 'semantic-ui-react';
+import { Button, Table } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
 
@@ -33,12 +33,13 @@ const YourOrders=(props)=>{
 	
 	return (
 	<React.Fragment>
-  {console.log(props.currentUser)}
-	<h3>Purchase History</h3>
+  {props.currentUser.orders.length > 0 ? 
+    <React.Fragment>
+  <h3>Purchase History</h3>
       <Table basic='very' celled collapsing>
     <Table.Header>
       <Table.Row >
-      		<Table.HeaderCell>Order No.</Table.HeaderCell>
+          <Table.HeaderCell>Order No.</Table.HeaderCell>
           <Table.HeaderCell>Product Name</Table.HeaderCell>
            <Table.HeaderCell>Purchase Data</Table.HeaderCell>
            <Table.HeaderCell>Review Status</Table.HeaderCell>
@@ -77,7 +78,8 @@ const YourOrders=(props)=>{
    
    </Table.Body>
     
-</Table>
+</Table></React.Fragment> : <p>You currently have no previous orders</p>}
+	
 
 
         </React.Fragment>

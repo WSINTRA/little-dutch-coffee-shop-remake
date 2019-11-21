@@ -12,7 +12,7 @@ const addProductToCart=(props)=>{
 }
 const Reviews=(props)=>{
   return props.product.reviews.map(review=><div key={review.id}><h3>{review.title}</h3>
-           <p>{review.content}</p></div>)
+           <p>{review.content}</p><hr/></div>)
 }
 
 const BuyButton=(addToCart, props)=>{

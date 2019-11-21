@@ -43,7 +43,7 @@ const Account = (props) => {
     <div className="account">
 
     <div className="banner">
-    {props.banner} : {props.currentUser.username ? props.currentUser.username : null}
+    {props.banner} : {props.currentUser.username === undefined ? props.currentUser.username : null}
     </div>
 
    {props.currentUser.staff ?   <div>

@@ -1,6 +1,5 @@
 
 const submitReview =(formDetails, user, reviewToUserData)=> {
-console.log(formDetails)
 
 if (formDetails.reviewID === 0){
   fetch('http://localhost:3050/v1/review/new', {

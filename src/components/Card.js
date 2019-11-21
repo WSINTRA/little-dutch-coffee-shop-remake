@@ -16,7 +16,7 @@ const Card =(props)=> {
 	<div onClick={()=>props.switch(props.product)}
 		className="card-details">
 	<img alt="product" src={props.product.image}/>
-	<h1>{props.product.title}</h1>
+	<h1>{props.product.title}</h1><br/>
 	<h3>{props.product.breed}</h3>
 	<h2>
 	<StarRatingComponent 
@@ -25,7 +25,7 @@ const Card =(props)=> {
           value={stars}
         /></h2>
 	<p>{props.product.description}</p>
-
+	
 	<div className="buy-button">
 	<div className="buy-button__details">BUY NOW<br/><h3>${Price(props.product.price)}</h3></div>
 	</div>

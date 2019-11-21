@@ -121,6 +121,7 @@ const removeFromCart=(state, itemRemID)=>{
 		if (item.id !== itemRemID){
 			return item
 		}
+		return null
 	}).filter(function (el) {
  	 return el != null;
 	});
@@ -134,8 +135,8 @@ const ActiveReview=(state)=>{
  
 	return stateCopy
 }
-const addReviewToUser=(user, review)=>{
-	let userCopy = user
+const addReviewToUserAndProduct=(state, review)=>{
+	let stateCopy = {...state}
 	let newReview = {}
 	newReview.content = review.payload.content
 	newReview.id = review.payload.id
@@ -149,17 +150,18 @@ const addReviewToUser=(user, review)=>{
 	  userData.push(newReview)
       return userData
 	} 
-    let reviewsArray = existingCheck(userCopy, newReview)
-	userCopy.reviews = reviewsArray
-	return userCopy
+    let reviewsArray = existingCheck(stateCopy.userData, newReview)
+	stateCopy.userData.reviews = reviewsArray
+	stateCopy.productData.filter(prod=> prod.id === newReview.product_id)[0].reviews.push(newReview)
+	return stateCopy
 }
 
 
 function reducer( state = initialState , action){
 	switch(action.type){
 		case ADD_REVIEW_DATA_TO_USER_STATE:
-        let addToUser = addReviewToUser(state.userData, action)
-		return {...state, userData: addToUser}
+        let updatedState = addReviewToUserAndProduct(state, action)
+		return {...updatedState}
 		case REVIEW_ACTIVE:
 		let activateReview = ActiveReview(state.reviewActive)
 		return {...state, reviewActive: activateReview}

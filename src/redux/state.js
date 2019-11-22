@@ -31,6 +31,15 @@ const initialState = {
  	password:"",
 
  },
+ employeeForm:{
+ 	name:"",
+ 	email: "",
+ 	status: "",
+ 	address: "",
+ 	city: "",
+ 	zip: "",
+ 	password: "p455w0rd"
+ },
  productForm: {
  	breed: "",
  	productTitle: "",

@@ -4,23 +4,29 @@ import AdminProducts from './AdminProducts'
 import Customers from './Customers'
 import YourOrders from './YourOrders'
 import Reviews from './Reviews'
+import Employees from './Employees'
 
 const displayOption=(option,props)=>{
+
+  let marginLeft = "5rem"
+  let marginTop = "5rem"
 	switch(option){
     case "Reviews":
-    return <div style={{marginLeft:"9rem",marginTop:"5rem"}}>
+    return <div style={{marginLeft:marginLeft,marginTop:marginTop}}>
     <Reviews/></div>
     case "Your Orders":
-    return <div style={{marginLeft:"9rem",marginTop:"5rem"}}>
+    return <div style={{marginLeft:marginLeft,marginTop:marginTop}}>
     <YourOrders/></div>;
 		case "Sales stats":
 		return <div>SALES STAT TEST</div>;
 		case "Orders":
 		return <div>ORDERS TEST</div>;
 		case "Customers":
-		return <Customers/>;
+		return <div style={{marginLeft:marginLeft,marginTop:marginTop}}>
+    <Customers/></div>;
 		case "Employees":
-		return <div>EMPLOYEES TEST</div>;
+		return <div style={{marginLeft:marginLeft,marginTop:marginTop}}>
+    <Employees/></div>;
 		case "Products":
 		return <AdminProducts/>;
 		default:

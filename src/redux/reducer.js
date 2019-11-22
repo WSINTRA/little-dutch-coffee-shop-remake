@@ -1,5 +1,6 @@
 //reducer
 import initialState from './state.js';
+const EMPLOYEE_FORM_INPUT = "EMPLOYEE_FORM_INPUT";
 const REVIEW_ACTIVE = "REVIEW_ACTIVE";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 const ALL_CUSTOMERS = "ALL_CUSTOMERS";
@@ -159,6 +160,10 @@ const addReviewToUserAndProduct=(state, review)=>{
 
 function reducer( state = initialState , action){
 	switch(action.type){
+		case EMPLOYEE_FORM_INPUT:
+		let employeeUpdate = formObjectCreator("employeeForm", action.payload, state)
+		return {...state, employeeForm: employeeUpdate}
+		
 		case ADD_REVIEW_DATA_TO_USER_STATE:
         let updatedState = addReviewToUserAndProduct(state, action)
 		return {...updatedState}

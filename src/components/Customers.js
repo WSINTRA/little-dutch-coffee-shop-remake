@@ -5,12 +5,12 @@ import { Button, Image, Table } from 'semantic-ui-react';
 
 const Customers=(props)=>{
 	return (
-	<div style={{overflow: "auto",height:"23rem",backgroundColor:"rgba(146,156,159,0.4)",marginLeft:"9rem",marginTop:"5rem"}}>
+	<div style={{padding:"2rem",overflow: "auto",width:"100%",height:"23rem",backgroundColor:"rgba(146,156,159,0.4)"}}>
 	<Button onClick={()=>fetchCustomers(props.allCustomers)}>Show latest data</Button>
 	<Table basic='very' celled collapsing>
     <Table.Header>
       <Table.Row >
-        <Table.HeaderCell>Customer</Table.HeaderCell>
+        <Table.HeaderCell>Name</Table.HeaderCell>
         <Table.HeaderCell>Email</Table.HeaderCell>
         <Table.HeaderCell>Status</Table.HeaderCell>
         <Table.HeaderCell>Address</Table.HeaderCell>
@@ -20,7 +20,7 @@ const Customers=(props)=>{
     </Table.Header>
     <Table.Body>
     
-	{props.customersData.map(customer=> CustomerTable(customer) )}
+	{props.customersData.filter(cust=> cust.staff !== true).map(customer=> CustomerTable(customer) )}
 	
 	</Table.Body>
       </Table>

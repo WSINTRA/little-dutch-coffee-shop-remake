@@ -1,11 +1,11 @@
-Demo here.   https://youtu.be/TBqfQ2GGsnM
-The little dutch coffee shop
-An online ecommerce store.
+# Demo here.   https://youtu.be/TBqfQ2GGsnM
+## The little dutch coffee shop
+### An online ecommerce store.
 Built as a project for a client that was never used due to unforseen circumstances
 
 See /design for Adobe XD files,
 
-Backend API is available at 
+### Backend API is available at 
 https://github.com/WSINTRA/littledutchbackend
 
 To see current progress, clone the repo,

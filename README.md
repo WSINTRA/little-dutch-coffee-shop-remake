@@ -18,7 +18,7 @@ Project is built in React and Redux for advanced state management.
 
 I was asked to develop an online platform that could manage users and products. 
 A user would have a shopping cart and an ability to review products they had ordered.
-Having completed the flatiron fullstack immersive using React and rails I decided to build the project in those frameworks.
+Having completed the flatiron fullstack immersive using React and Rails I decided to build the project in those frameworks.
 
 Another requirement was that specific users could login as administrators and add employees and products.
 

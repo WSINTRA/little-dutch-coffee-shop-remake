@@ -16,33 +16,34 @@ const controlledInput=(e,props)=>{
 const LoginForm = (props) => (
 
  <div id="login"className="login">
-  	<div className="login__box">
-  		<div className="login__box-detail">
-  			<h1>Login</h1><br/>
-  			<div className="username">
-  				<label>Username</label>
+   <h1>Welcome</h1>
+  			<p>Sign up?</p>
+  			<div className="login-form">
+  				{/* <label>Username</label> */}
           <input 
-          name="username"
-          onChange={ (e)=>{ controlledInput(e,props) } }
-          type="text"
-          value={props.login.username}/>
-  			</div><br/>
-        
-            <div className="password">
-  				<label>Password{" "} </label><input
+              name="Email"
+              placeholder="Email address"
+              onChange={ (e)=>{ controlledInput(e,props) } }
+              type="text"
+              value={props.login.username}/>
+  			<br/>
+      
+  				{/* <label>Password{" "} </label> */}
+          <input
            name="password"
            onChange={ (e)=>{ controlledInput(e,props) } }
            type="password" 
+           placeholder="Password"
            value={props.login.password}/>
+           <p>forgot your password?</p>
+            <div onClick={()=>{ submitLogin(props) } }
+            className="submit-button">Submit</div>
   			</div>
             	
-            <div onClick={()=>{ submitLogin(props) } }
-            className="login__submit">SUBMIT</div>
+           
   		
 
   	</div>
-  </div> 
- </div>	
 );
 
 function msp(state){

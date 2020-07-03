@@ -63,9 +63,11 @@ openCloseCart=()=>{ //TODO - Shift this control into Redux state management
 
 renderLandingPage = () => {
 return (
-		this.props.loggedIn ? this.renderUserPage() : <LandingPage />
+  false ? this.renderUserPage() : <LandingPage />
+		// this.props.loggedIn ? this.renderUserPage() : <LandingPage />
     	)
 }
+
 renderUserPage = (path) => {
   let urlFinder=(path, User)=>{
   switch(path.location.pathname){

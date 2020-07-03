@@ -4,7 +4,7 @@ import AdminProducts from './AdminProducts'
 import Customers from './Customers'
 import YourOrders from './YourOrders'
 import Reviews from './Reviews'
-import Employees from './Employees'
+// import Employees from './Employees'
 
 const displayOption=(option,props)=>{
 
@@ -24,9 +24,9 @@ const displayOption=(option,props)=>{
 		case "Customers":
 		return <div style={{marginLeft:marginLeft,marginTop:marginTop}}>
     <Customers/></div>;
-		case "Employees":
-		return <div style={{marginLeft:marginLeft,marginTop:marginTop}}>
-    <Employees/></div>;
+		// case "Employees":
+		// return <div style={{marginLeft:marginLeft,marginTop:marginTop}}>
+    // <Employees/></div>;
 		case "Products":
 		return <AdminProducts/>;
 		default:

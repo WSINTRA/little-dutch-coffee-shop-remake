@@ -6,18 +6,7 @@ const business_header = "The Little Dutch Coffee Shop"
 const business_sub_header = "Online high grade dispensary built with the official secrets act"
 const LandingPage = ()=> {
 	return(
-		<div className="container">
-			<div className="header">
-				<h1>{`${business_header}`}</h1>
-			<hr/>
-			<div className="sub-header">
-				<h3>{`${business_sub_header}`}</h3>
-			</div>
 			<LoginForm/>
-			</div>
-			
-			
-		</div>
 	)
 }
 

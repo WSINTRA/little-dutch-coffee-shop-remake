@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 // import { Router, Route } from "react-router";
 import { fadeIn } from 'react-animations';
 import styled, { keyframes } from 'styled-components';
-import Header from './Header'
+
 import MenuHeader from './MenuHeader'
 import BackDrop from './BackDrop'
 import Account from './Account'
@@ -11,42 +11,49 @@ import WeeklyMenu from './WeeklyMenu'
 const Bounce = styled.div`animation: 0.8s ${keyframes`${fadeIn}`} 1`;
 
 
-const displayLink=(props)=>{
-window.scrollTo(0, 0);
-	switch(props.activeLink){
-		//Add more statements to this for links to work as App grows
-		case "Your Account":
-		
-		return <Account banner={props.activeLink}/>;
-		case "Weekly Menu":
-		return <WeeklyMenu productData={props.productData}
-		banner={props.activeLink}
-		/>
-		default:
-		return <Account banner={props.activeLink}/>;
-
-	}
+const UserPage = (props)=> {
+	return (
+		<>
+		<div>HELLO</div>
+		</>
+	
+	)
 }
 
+// const displayLink=(props)=>{
+// window.scrollTo(0, 0);
+// 	switch(props.activeLink){
+// 		//Add more statements to this for links to work as App grows
+// 		case "Your Account":
+// 		return <Account banner={props.activeLink}/>;
+// 		case "Weekly Menu":
+// 		return <WeeklyMenu productData={props.productData}
+// 		banner={props.activeLink}
+// 		/>
+// 		default:
+// 		return <Account banner={props.activeLink}/>;
+// 	}
+// }
 
-const UserPage = (props) => (
 
-  <div>
+// const UserPage = (props) => (
+
+//   <div>
   
-   {props.menuOpen ? <MenuHeader 
-  	activeLinkSelect={props.activeLinkSelect}
-  	logOut={props.logOut}/>: 
-	<Header 
-	openCloseCart={props.openCloseCart}
-	cartOpen={props.cartOpen}	
-	menuButton={props.openCloseMenu}/>} 
-   <BackDrop/>
-   <Bounce>
-   {displayLink(props)}
-   </Bounce>
+//    {props.menuOpen ? <MenuHeader 
+//   	activeLinkSelect={props.activeLinkSelect}
+//   	logOut={props.logOut}/>: 
+// 	<Header 
+// 	openCloseCart={props.openCloseCart}
+// 	cartOpen={props.cartOpen}	
+// 	menuButton={props.openCloseMenu}/>} 
+//    <BackDrop/>
+//    <Bounce>
+//    {displayLink(props)}
+//    </Bounce>
    
-  </div>
-);
+//   </div>
+// );
 
 function mdp(dispatch){
 	return {

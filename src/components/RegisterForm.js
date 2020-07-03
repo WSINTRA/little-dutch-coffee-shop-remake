@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import React from "react";
 import submitRegistration from "./submitRegistration"
 
@@ -67,9 +67,6 @@ const registerSubmit=(form, props)=>{
     
     }
   else console.log("Something not right")
-  
-
-
 }
 
 const ControlledInput = (props, input) => {
@@ -84,81 +81,88 @@ const ControlledInput = (props, input) => {
 
 const RegisterForm = (props) => (
   <div id="register"className="register">
-  <div className="register__box">
-    <div className="register__box-detail">
-      <h1>Register</h1><br/>
-  
-       
 
-          <div className="email">
-            <label >email</label><br/><input 
+      <h1>Sign up</h1>
+      <Link to="/">Login ?</Link>
+          <div className="register-form">
+
+          <div className="row-1">
+            {/* <label >email</label> */}
+            <input 
+            placeholder="Email address"
             onChange={(e)=>ControlledInput(props, e)} 
             name="email"
             value={props.form.email}
             type="text"/>
-          </div><br/>
-
-          <div className="username">
-            <label >username</label><br/><input 
+         
+            {/* <label >username</label> */}
+            <input 
+            placeholder="Full name"
             onChange={(e)=>ControlledInput(props, e)} 
             name="username"
             value={props.form.username}
             type="text"/>
-          </div><br/>
-          
-          <div className="address">
-            <label >address</label><br/><input 
+          </div>
+          <div className="row-2">
+            {/* <label >address</label>*/}
+            <input  
+            placeholder="Address"
             onChange={(e)=>ControlledInput(props, e)} 
             name="address"
             value={props.form.address}
             type="text"/>
-          <br/></div>
-
-          <div className="city">
-            <label >city</label><br/><input 
+     
+            {/* <label >city</label> */}
+            <input  
+            placeholder="City"
             onChange={(e)=>ControlledInput(props, e)} 
             name="city"
             value={props.form.city}
             type="text"/>
-          <br/></div>
-  
-          <div className="state">
-            <label >state</label><br/><input 
+          </div>
+          <div className="row-3">
+            {/* <label >state</label> */}
+            <input  
+            placeholder="State"
             onChange={(e)=>ControlledInput(props, e)} 
             name="state"
             value={props.form.state}
             type="text"/>
-          <br/></div>
-
-          <div className="zip">
-            <label >zip code</label><br/><input 
+      
+            {/* <label >zip code</label> */}
+            <input  
+            placeholder="zip code"
             onChange={(e)=>ControlledInput(props, e)} 
             name="zipCode"
             value={props.form.zipCode}
             type="text"/>
-          <br/></div>
-
-          <div className="password">
-            <label >password</label><br/><input 
+          </div>
+          <div className="row-4">
+            {/* <label >password</label> */}
+            <input  
+            placeholder="password"
             onChange={(e)=>ControlledInput(props, e)} 
             name="password"
             value={props.form.password}
             type="password"/>
-          <br/></div>
-
-          <div className="confirm">
-            <label >confirm password</label><br/><input
+      
+            {/* <label >confirm password</label> */}
+            <input  
+            placeholder="confirm password"
             onChange={(e)=>ControlledInput(props, e)} 
             name="confirmPassword"
             value={props.form.confirmPassword}
             type="password"/>
-          </div><br/><br/>
-  
-          <div className="submit"onClick={()=>registerSubmit(props.form, props)}>REGISTER</div>
-      
+          </div>
+
+          <div className="submit-button" onClick={()=>registerSubmit(props.form, props)}>
+            Register
+            </div>
+         
+          </div>
+          
     </div>
-  </div>
-  </div>
+
 );
 
 function msp(state){

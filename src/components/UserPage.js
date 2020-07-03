@@ -14,7 +14,7 @@ const Bounce = styled.div`animation: 0.8s ${keyframes`${fadeIn}`} 1`;
 const UserPage = (props)=> {
 	return (
 		<>
-		<div>HELLO</div>
+		<div>Welcome to the little dutch coffee shop</div>
 		</>
 	
 	)

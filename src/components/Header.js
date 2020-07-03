@@ -2,33 +2,51 @@ import React from "react";
 import logo from "../images/header-logo.png";
 import menuOpen from "../svg/Menu.svg";
 import { Link } from 'react-router-dom'
+import close from "../images/Close.png"
 import CartOverview from "./CartOverview"
 import cart from "../svg/custom-cart.svg"
 import { connect } from 'react-redux'
 
-const Header = (props) => (
- <div className="header"> 
- <img style={{"width": "150px" }}alt="logo"src={logo}/>
-    <div className="desktop-nav">
+const Navigation = ()=>{
+ return (
+ 
       <ul>
         <li>
-        <Link> Home </Link>
+        <Link to="/menu"> Weekly menu </Link>
         </li>
         <li>
-          <Link> Products </Link>
+          <Link> Stash box </Link>
         </li>
         <li>
-          <Link> Account </Link>
+          <Link to="/account"> Account </Link>
         </li>
         <li>
           <Link> Logout </Link>
         </li>
       </ul>
+    )
+}
+
+const Header = (props) => (
+ <div className="header"> 
+ <Link to="/"><img style={{"width": "150px" }}alt="logo"src={logo}/></Link>
+    <div className="desktop-nav">
+     <Navigation/>
     </div>
     <div className="mobile-header">
-    <img onClick={()=>props.openCloseMenu()}
-    src={menuOpen}alt="open menu button"/>
+     {
+     props.menuOpen ? 
+     <img onClick={()=>props.openCloseMenu()} alt="close button" src={close}/> :
+     <img onClick={()=>props.openCloseMenu()} alt="open menu button" src={menuOpen}/>
+     } 
+    
+     {props.menuOpen ? 
+     <div className="mobile-nav">
+     <Navigation/>
+     </div> : console.log(props)}
     </div>
+   
+
   </div>
 );
 
@@ -41,7 +59,7 @@ function mdp(dispatch){
   }
 function msp(state){
 	return {
-		loggedIn: state.loggedIn
+		menuOpen: state.menuOpen
 	}
 }
 

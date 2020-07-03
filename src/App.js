@@ -6,6 +6,8 @@ import UserPage from "./components/UserPage";
 import { connect } from "react-redux";
 import RegisterForm from "./components/RegisterForm";
 import Header from './components/Header'
+import Account from "./components/Account";
+import WeeklyMenu from "./components/WeeklyMenu";
 
 class App extends React.Component {
   state = {
@@ -114,7 +116,9 @@ class App extends React.Component {
         :
         <>
         <Header/>
-        <UserPage/>
+        <Route exact path="/" component={UserPage} />
+        <Route exact path="/account" component={Account} />
+        <Route exact path="/menu" component={WeeklyMenu} />
         </>
         }
       </div>

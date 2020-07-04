@@ -51,46 +51,6 @@ class App extends React.Component {
     }
   }
 
-  openCloseCart = () => {
-    //TODO - Shift this control into Redux state management
-    this.setState((prevState) => {
-      return {
-        cartOpen: !prevState.cartOpen,
-      };
-    });
-  };
-
-  renderLandingPage = () => {
-    return false ? this.renderUserPage() : <LandingPage />;
-    // this.props.loggedIn ? this.renderUserPage() : <LandingPage />
-  };
-
-  renderUserPage = (path) => {
-    let urlFinder = (path, User) => {
-      switch (path.location.pathname) {
-        //Add more statements to this as the app grows for links to work with Router
-        case "/weekly-menu":
-          return this.props.getActiveLink("Weekly Menu"), User;
-        case "/user":
-          return this.props.getActiveLink("Your Account"), User;
-        default:
-          return this.props.getActiveLink("Your Account"), User;
-      }
-    };
-    const User = (
-      <UserPage
-        openCloseCart={this.openCloseCart}
-        cartOpen={this.state.cartOpen}
-        logOut={this.LogoutFunction}
-      />
-    );
-    if (path) {
-      return !!path.location.pathname === true ? urlFinder(path, User) : User;
-    } else {
-      return User;
-    }
-  };
-
   LogoutFunction = (props) => {
     this.props.logOut();
   };
@@ -115,7 +75,7 @@ class App extends React.Component {
         <Route exact path="/register" component={RegisterForm} /> </>
         :
         <>
-        <Header/>
+        <Header logout={()=>this.LogoutFunction()}/>
         <Route exact path="/" component={UserPage} />
         <Route exact path="/account" component={Account} />
         <Route exact path="/menu" component={WeeklyMenu} />
@@ -164,3 +124,44 @@ function mdp(dispatch) {
 }
 
 export default connect(msp, mdp)(App);
+
+
+  // openCloseCart = () => {
+  //   //TODO - Shift this control into Redux state management
+  //   this.setState((prevState) => {
+  //     return {
+  //       cartOpen: !prevState.cartOpen,
+  //     };
+  //   });
+  // };
+
+  // renderLandingPage = () => {
+  //   return false ? this.renderUserPage() : <LandingPage />;
+  //   // this.props.loggedIn ? this.renderUserPage() : <LandingPage />
+  // };
+
+  // renderUserPage = (path) => {
+  //   let urlFinder = (path, User) => {
+  //     switch (path.location.pathname) {
+  //       //Add more statements to this as the app grows for links to work with Router
+  //       case "/weekly-menu":
+  //         return this.props.getActiveLink("Weekly Menu"), User;
+  //       case "/user":
+  //         return this.props.getActiveLink("Your Account"), User;
+  //       default:
+  //         return this.props.getActiveLink("Your Account"), User;
+  //     }
+  //   };
+  //   const User = (
+  //     <UserPage
+  //       openCloseCart={this.openCloseCart}
+  //       cartOpen={this.state.cartOpen}
+  //       logOut={this.LogoutFunction}
+  //     />
+  //   );
+  //   if (path) {
+  //     return !!path.location.pathname === true ? urlFinder(path, User) : User;
+  //   } else {
+  //     return User;
+  //   }
+  // };

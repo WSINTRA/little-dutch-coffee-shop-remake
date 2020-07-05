@@ -1,7 +1,6 @@
 
 
-const fetchCustomers =(allCustomers)=> {
-
+const fetchCustomers=(allCustomers)=> {
 //write a submission to the backend server here.
 fetch('http://localhost:3050/v1/admin_menu/customers', {
             method: "GET",

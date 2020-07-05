@@ -5,11 +5,11 @@ import LandingPage from "./components/LandingPage";
 import UserPage from "./components/UserPage";
 import { connect } from "react-redux";
 import RegisterForm from "./components/RegisterForm";
-import Header from './components/Header'
+import Header from "./components/Header";
 import Account from "./components/Account";
 import WeeklyMenu from "./components/WeeklyMenu";
-import ProductDetail from './components/ProductDetails';
-import Reviews from './components/Reviews';
+import ProductDetail from "./components/ProductDetails";
+import fetchCustomers from "./components/services/customerFetch";
 
 class App extends React.Component {
   state = {
@@ -35,6 +35,10 @@ class App extends React.Component {
           }
         })
         .then((userData) => {
+          if (userData.user.staff) {
+            //Put any specifics for staff login here
+            fetchCustomers(this.props.allCustomers);
+          }
           this.props.createUserStateFromFetch(userData.user);
         });
     }
@@ -58,50 +62,38 @@ class App extends React.Component {
   };
 
   render(props) {
-  
     const business_header = "The Little Dutch Coffee Shop";
     const business_sub_header =
       "Online high grade dispensary built with the official secrets act";
-    
 
     return (
-      
       <div className="container">
-
-        {!this.props.loggedIn ? <>
-        <div className="heading">
-          <h1>{`${business_header}`}</h1>
-          <hr />
-          <div className="sub-heading">
-            <h3>{`${business_sub_header}`}</h3>
-          </div>
-        </div>
-        <Route exact path="/" component={LandingPage} />
-        <Route exact path="/register" component={RegisterForm} /> </>
-        :
-        <>
-        
-        <Header logout={()=>this.LogoutFunction()}/>
-        <Route exact path="/" component={UserPage} />
-        <Route exact path="/account" component={Account} />
-        <Route exact path="/menu" component={WeeklyMenu} />
-        <Route exact path={`product-detail-${""}`} component={ProductDetail}/>
-        
-        </>
-        }
+        {!this.props.loggedIn ? (
+          <>
+            <div className="heading">
+              <h1>{`${business_header}`}</h1>
+              <hr />
+              <div className="sub-heading">
+                <h3>{`${business_sub_header}`}</h3>
+              </div>
+            </div>
+            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/register" component={RegisterForm} />{" "}
+          </>
+        ) : (
+          <>
+            <Header logout={() => this.LogoutFunction()} />
+            <Route exact path="/" component={UserPage} />
+            <Route exact path="/account" component={Account} />
+            <Route exact path="/menu" component={WeeklyMenu} />
+            <Route
+              exact
+              path={`product-detail-${""}`}
+              component={ProductDetail}
+            />
+          </>
+        )}
       </div>
-
-      // <div>
-      //     <Route exact path="/" component={this.renderLandingPage} />
-      //     <Route exact path="/login" component={this.renderLandingPage} />
-      //     <Route exact path="/register" component={this.renderLandingPage} />
-      //     <Route exact path="/user" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
-      //     <Route exact path="/weekly-menu" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
-      //     <Route exact path="/cbd-menu" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
-      //     <Route exact path="/our-story" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
-      //     <Route exact path="/statement" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
-      //     <Route exact path="/account" component={this.props.loggedIn ? this.renderUserPage : this.renderLandingPage} />
-      // </div>
     );
   }
 }
@@ -128,48 +120,10 @@ function mdp(dispatch) {
     createProductStateFromFetch: (fetchData) => {
       dispatch({ type: "ADD_PRODUCT_DATA_TO_STATE", payload: fetchData });
     },
+    allCustomers: (action) => {
+      dispatch({ type: "ALL_CUSTOMERS", payload: action });
+    },
   };
 }
 
 export default connect(msp, mdp)(App);
-
-
-  // openCloseCart = () => {
-  //   //TODO - Shift this control into Redux state management
-  //   this.setState((prevState) => {
-  //     return {
-  //       cartOpen: !prevState.cartOpen,
-  //     };
-  //   });
-  // };
-
-  // renderLandingPage = () => {
-  //   return false ? this.renderUserPage() : <LandingPage />;
-  //   // this.props.loggedIn ? this.renderUserPage() : <LandingPage />
-  // };
-
-  // renderUserPage = (path) => {
-  //   let urlFinder = (path, User) => {
-  //     switch (path.location.pathname) {
-  //       //Add more statements to this as the app grows for links to work with Router
-  //       case "/weekly-menu":
-  //         return this.props.getActiveLink("Weekly Menu"), User;
-  //       case "/user":
-  //         return this.props.getActiveLink("Your Account"), User;
-  //       default:
-  //         return this.props.getActiveLink("Your Account"), User;
-  //     }
-  //   };
-  //   const User = (
-  //     <UserPage
-  //       openCloseCart={this.openCloseCart}
-  //       cartOpen={this.state.cartOpen}
-  //       logOut={this.LogoutFunction}
-  //     />
-  //   );
-  //   if (path) {
-  //     return !!path.location.pathname === true ? urlFinder(path, User) : User;
-  //   } else {
-  //     return User;
-  //   }
-  // };

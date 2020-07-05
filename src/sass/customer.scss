@@ -1,0 +1,12 @@
+.table-style{
+    @include respond(phone) {
+        display: flex;
+        padding: 1rem;
+        justify-content: left;
+      }
+      thead{
+        @include respond(phone) {
+            display: none;
+          }
+      }
+}

@@ -1,0 +1,28 @@
+.account {
+  display: flow-root;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  justify-items: right;
+  padding: 3rem;
+  @include respond(phone) {
+    display: inline;
+    padding: 1rem;
+    justify-content: left;
+  }
+  h1 {
+    text-align: justify;
+  }
+  a {
+    cursor: pointer;
+  }
+  .menu {
+    flex-direction: column;
+    .option {
+      flex: 1;
+    }
+  }
+  .frame {
+    border: solid;
+    width: inherit;
+  }
+}

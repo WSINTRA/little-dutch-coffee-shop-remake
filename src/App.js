@@ -8,6 +8,8 @@ import RegisterForm from "./components/RegisterForm";
 import Header from './components/Header'
 import Account from "./components/Account";
 import WeeklyMenu from "./components/WeeklyMenu";
+import ProductDetail from './components/ProductDetails';
+import Reviews from './components/Reviews';
 
 class App extends React.Component {
   state = {
@@ -55,15 +57,18 @@ class App extends React.Component {
     this.props.logOut();
   };
 
-  render() {
+  render(props) {
+  
     const business_header = "The Little Dutch Coffee Shop";
     const business_sub_header =
       "Online high grade dispensary built with the official secrets act";
+    
 
     return (
+      
       <div className="container">
 
-        {this.props.loggedIn ? <>
+        {!this.props.loggedIn ? <>
         <div className="heading">
           <h1>{`${business_header}`}</h1>
           <hr />
@@ -75,10 +80,13 @@ class App extends React.Component {
         <Route exact path="/register" component={RegisterForm} /> </>
         :
         <>
+        
         <Header logout={()=>this.LogoutFunction()}/>
         <Route exact path="/" component={UserPage} />
         <Route exact path="/account" component={Account} />
         <Route exact path="/menu" component={WeeklyMenu} />
+        <Route exact path={`product-detail-${""}`} component={ProductDetail}/>
+        
         </>
         }
       </div>

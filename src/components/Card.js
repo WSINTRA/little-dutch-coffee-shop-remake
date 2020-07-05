@@ -13,7 +13,7 @@ const showFullDescription=(description, trigger)=>{
 	let string = description;
 	if(boolSwitch){
 
-		return string.slice(0,50)
+		return string.slice(0,55)
 	}
 	return string
 }
@@ -29,9 +29,10 @@ const Card =(props)=> {
 	const [more, setMore] = useState(false);
 	console.log(props)
 	return (
+		
 		<div className="product-card">
-			<h1>{props.title}</h1>
-			<img alt="product" src={props.mainImg}/>
+			<Bounce><h1>{props.title}</h1></Bounce>
+			<img alt="product" src={props.image}/>
 			<StarRatingComponent 
 				name="rate1" 
 				starCount={5}
@@ -39,7 +40,7 @@ const Card =(props)=> {
 				/>
 			<p>{showFullDescription(props.description, more) + " "}
 				<a onClick={()=>setMore(!more)}>{changeMoreToLess(more)}</a></p>
-			<h3>${standardisePrice(props.pricePerWeight)}</h3>
+			<h3>${standardisePrice(props.price)}</h3>
 		</div>
 
 		//set the strings to a set length, add a more.. tage to the end with an onlick

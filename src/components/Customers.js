@@ -1,12 +1,14 @@
-import React from "react";
+import * as React from "react";
 import { connect } from "react-redux";
 import fetchCustomers from './customerFetch'
 import { Button, Image, Table } from 'semantic-ui-react';
 
-const Customers=(props)=>{
+function Customers(props){
 	return (
 	<div style={{padding:"2rem",overflow: "auto",width:"100%",height:"23rem",backgroundColor:"rgba(146,156,159,0.4)"}}>
-	<Button onClick={()=>fetchCustomers(props.allCustomers)}>Show latest data</Button>
+	<Button onClick={()=>fetchCustomers(props.allCustomers)}>Update</Button>
+  {fetchCustomers(props.allCustomers)}
+  {console.log(props)}
 	<Table basic='very' celled collapsing>
     <Table.Header>
       <Table.Row >
@@ -20,8 +22,8 @@ const Customers=(props)=>{
     </Table.Header>
     <Table.Body>
     
-	{props.customersData.filter(cust=> cust.staff !== true).map(customer=> CustomerTable(customer) )}
-	
+	 {props.customersData.filter(cust=> cust.staff !== true).map(customer=> CustomerTable(customer) )}
+
 	</Table.Body>
       </Table>
 
@@ -48,17 +50,17 @@ return (
       )
   }
 
-function mdp(dispatch){
-return {
-	allCustomers: (action)=>{
-		dispatch({type:"ALL_CUSTOMERS", payload: action})
-	}
- }
-}
-function msp(state){
-	return {
-		customersData: state.allCustomersData
-	}
-}
-
-export default connect(msp, mdp)(Customers);
+// function mdp(dispatch){
+// return {
+// 	allCustomers: (action)=>{
+// 		dispatch({type:"ALL_CUSTOMERS", payload: action})
+// 	}
+//  }
+// }
+// function msp(state){
+// 	return {
+// 		customersData: state.allCustomersData
+// 	}
+// }
+export default Customers;
+// export default connect(msp, mdp)(Customers);

@@ -2,15 +2,19 @@ import React from "react";
 import { connect } from 'react-redux';
 import Card from './Card';
 import ProductDetail from './ProductDetails';
+import {useSpring, animated} from 'react-spring';
 
 const WeeklyMenu = (props) => {
+	const spring = useSpring({opacity: 1, from: {opacity: 0}})
 	let categories = props.productData || []
 	return (
+		<animated.div style={spring}>
 		<div className="products-list">
 		{categories.map(product=>{
-			return <Card {...product} />
+			return <Card key={product.id} {...product} />
 		})}	
 		</div>
+		</animated.div>
 	)
 }
 

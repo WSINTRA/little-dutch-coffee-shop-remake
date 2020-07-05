@@ -6,24 +6,27 @@ import close from "../images/Close.png"
 import CartOverview from "./CartOverview"
 import cart from "../svg/custom-cart.svg"
 import { connect } from 'react-redux'
+import {useSpring, animated} from 'react-spring';
 
 const Navigation = ()=>{
+  const page = useSpring({opacity: 1, from: {opacity: 0}})
  return (
- 
+  <animated.div style={page}>
       <ul>
         <li>
         <Link to="/menu"> Weekly menu </Link>
         </li>
         <li>
-          <Link> Stash box </Link>
+          <Link to="/"> Stash box </Link>
         </li>
         <li>
           <Link to="/account"> Account </Link>
         </li>
         <li>
-          <Link> Logout </Link>
+          <Link to="/"> Logout </Link>
         </li>
       </ul>
+      </animated.div>
     )
 }
 
@@ -41,12 +44,11 @@ const Header = (props) => (
      } 
     
      {props.menuOpen ? 
+     
      <div className="mobile-nav">
      <Navigation/>
-     </div> : console.log(props)}
+     </div> : null}
     </div>
-   
-
   </div>
 );
 

@@ -28,10 +28,7 @@ const CheckboxClick = (props)=> {
 
 const ProductForm=(props)=>{
 	return (
-		<div className="product-form">
-	
-        <h1>Add/Edit Product</h1>
-            
+		<div className="product-form">      
             <label >Product title</label>
             <input 
             onChange={(e)=>ControlledInput(props, e)} 

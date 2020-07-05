@@ -14,46 +14,10 @@ const Bounce = styled.div`animation: 0.8s ${keyframes`${fadeIn}`} 1`;
 const UserPage = (props)=> {
 	return (
 		<>
-		<div>Welcome to the little dutch coffee shop</div>
+		<div style={{'textAlign': 'center', 'padding':'3rem'}}>Welcome to the little dutch coffee shop</div>
 		</>
-	
 	)
 }
-
-// const displayLink=(props)=>{
-// window.scrollTo(0, 0);
-// 	switch(props.activeLink){
-// 		//Add more statements to this for links to work as App grows
-// 		case "Your Account":
-// 		return <Account banner={props.activeLink}/>;
-// 		case "Weekly Menu":
-// 		return <WeeklyMenu productData={props.productData}
-// 		banner={props.activeLink}
-// 		/>
-// 		default:
-// 		return <Account banner={props.activeLink}/>;
-// 	}
-// }
-
-
-// const UserPage = (props) => (
-
-//   <div>
-  
-//    {props.menuOpen ? <MenuHeader 
-//   	activeLinkSelect={props.activeLinkSelect}
-//   	logOut={props.logOut}/>: 
-// 	<Header 
-// 	openCloseCart={props.openCloseCart}
-// 	cartOpen={props.cartOpen}	
-// 	menuButton={props.openCloseMenu}/>} 
-//    <BackDrop/>
-//    <Bounce>
-//    {displayLink(props)}
-//    </Bounce>
-   
-//   </div>
-// );
 
 function mdp(dispatch){
 	return {
@@ -70,7 +34,3 @@ function msp(state){
 	}
 }
 export default connect(msp,mdp)(UserPage);
-
-
-//Build a header bar component, build a nav bar component, 
-// BUild links and routes for the different pages based on the designs

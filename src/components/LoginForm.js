@@ -2,9 +2,10 @@ import { connect } from 'react-redux'
 import { withRouter, Link  } from 'react-router-dom'
 import React from "react";
 import submitLogin from './submitLogin'
-import RegisterForm from './RegisterForm';
+
 
 const controlledInput=(e,props)=>{
+  console.log(e.target.value,props)
   const changeFunction = props.FormControl
   const value = e.target.value
   const label = e.target.name
@@ -16,12 +17,13 @@ const controlledInput=(e,props)=>{
 const LoginForm = (props) => (
 
  <div id="login"className="login">
+   {console.log(props, 'login')}
    <h1>Welcome</h1>
   			<Link to="/register">Sign up?</Link>
   			<div className="login-form">
   				{/* <label>Username</label> */}
           <input 
-              name="Email"
+              name="username"
               placeholder="Email address"
               onChange={ (e)=>{ controlledInput(e,props) } }
               type="text"

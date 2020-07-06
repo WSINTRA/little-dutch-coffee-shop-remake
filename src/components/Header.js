@@ -30,7 +30,7 @@ const Navigation = (props)=>{
 
 const Header = (props) => (
  <div className="header"> 
- <Link to="/"><img style={{"width": "150px" }}alt="logo"src={logo}/></Link>
+ <Link to="/"><img className="logo"style={{"width": "150px" }}alt="logo"src={logo}/></Link>
     <div className="desktop-nav">
      <Navigation {...props}/>
     </div>

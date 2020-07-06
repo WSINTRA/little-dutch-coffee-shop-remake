@@ -1,4 +1,4 @@
-$link-color: #393C3B;
+$link-color: #ffffff;
 $backgroundColor: rgb(241, 80, 37);
 
 * {
@@ -26,7 +26,8 @@ a {
       color: $link-color;
     }
     &:hover {
-      color: $link-color;   
+      color: black;  
+      text-decoration: underline; 
     }
     &:active {
       color: $link-color;

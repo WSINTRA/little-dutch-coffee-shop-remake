@@ -2,6 +2,9 @@ import React from "react";
 import StarRatingComponent from "react-star-rating-component";
 import submitProduct from "./services/submitProduct";
 import { connect } from "react-redux";
+import styled, {keyframes} from 'styled-components';
+import {fadeIn} from 'react-animations';
+const Bounce = styled.div`animation: 0.5s ${keyframes`${fadeIn}`} 1`;
 
 const ControlledInput = (props, input) => {
   const value = input.target.value;
@@ -29,15 +32,17 @@ const CheckboxClick = (props) => {
 
 const ProductForm = (props) => {
   return (
+    <Bounce>
     <div className="product-form">
-      <label>Product title</label>
+      <a className="close-modal" onClick={()=>props.setModal(false)}>X</a>
+      <label>Edit Title</label>
       <input
         onChange={(e) => ControlledInput(props, e)}
         name="productTitle"
         value={props.productForm.productTitle}
         type="text"
       />
-      <label>Breed</label>
+      <label>Edit Breed</label>
       <input
         onChange={(e) => ControlledInput(props, e)}
         name="breed"
@@ -45,14 +50,14 @@ const ProductForm = (props) => {
         type="text"
       />
 
-      <label>Description</label>
+      <label>Edit Description</label>
       <textarea
         onChange={(e) => ControlledInput(props, e)}
         name="description"
         value={props.productForm.description}
         type="text"
       />
-      <label>Price USD/$</label>
+      <label>Edit Price USD/$</label>
       <input
         onChange={(e) => ControlledInput(props, e)}
         name="price"
@@ -63,14 +68,14 @@ const ProductForm = (props) => {
         type="number"
       />
 
-      <label>Image Location</label>
+      <label>Edit Image Location</label>
       <input
         onChange={(e) => ControlledInput(props, e)}
         name="imageURL"
         value={props.productForm.imageURL}
         type="text"
       />
-      <label>Rating</label>
+      <label>Edit Rating</label>
       <div className="star">
         <StarRatingComponent
           name="prodRating"
@@ -79,15 +84,16 @@ const ProductForm = (props) => {
           onStarClick={StarClick.bind(this, props)}
         />
       </div>
-      <label>On Weekly Menu ?</label>
+      <label>On Weekly Menu? :
       <input
         name="weeklyMenuBool"
         checked={props.productForm.checkbox}
         onChange={() => CheckboxClick(props)}
         type="checkbox"
       />
+      </label>
 
-      <label>
+      {/* <label>
         Current Product ID{" "}
         <p style={{ fontSize: "0.8rem" }}>
           (if ID=0 a new product will be created)
@@ -97,11 +103,12 @@ const ProductForm = (props) => {
 
       <div className="clear" onClick={() => props.clearProductID()}>
         Clear product ID
-      </div>
-      <div className="submit" onClick={() => CreateNewProduct(props)}>
+      </div>*/}
+      <div className="submit-button" onClick={() => CreateNewProduct(props)}>
         Submit
-      </div>
+      </div> 
     </div>
+    </Bounce>
   );
 };
 

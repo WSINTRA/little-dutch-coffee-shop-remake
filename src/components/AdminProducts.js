@@ -1,15 +1,12 @@
-import React from 'react'
-import ProductForm from './ProductForm'
+import React, { useState } from "react";
 import SearchListProducts from './SearchListProducts'
-const AdminProducts = ()=>{
+
+const AdminProducts = (props)=>{
+
 	return (
-		<div className="admin-product">
-			{false ? 
-		<div className="add-product-form">
-			<ProductForm/>
-		</div> : null }
+		<div className="admin-product">			
 		<div className="search-list">
-			<SearchListProducts/>
+			<SearchListProducts />
 		</div>
 		</div>
 		)

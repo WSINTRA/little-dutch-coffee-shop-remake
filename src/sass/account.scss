@@ -15,9 +15,9 @@
 
   padding: 1.2rem;
   @include respond(phone) {
-    display: inline;
     padding: 1rem;
-    justify-content: left;
+    margin-left: 1.1rem;
+    margin-right: 1.1rem;
   }
   h1 {
     text-align: justify;

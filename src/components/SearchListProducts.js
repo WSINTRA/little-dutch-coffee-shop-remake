@@ -59,14 +59,6 @@ const SearchListProducts = (props) => {
 			<ProductForm setModal={setShowModal}/>
 		</div> : null }
     <div className="search-list-products">
-      <div className="search">
-        <input
-			className="search-filter"
-          onChange={(e) => handleSearchForm(props, e.target.value)}
-          value={props.searchTerm}
-          placeholder="filter current page"
-        />
-      </div>
       <div className="results">
         <span>
           results per page :
@@ -86,6 +78,12 @@ const SearchListProducts = (props) => {
             &lt;
           </a>
           <a onClick={()=>nextPage()}> &gt; </a>
+		  <input
+			className="search-filter"
+          onChange={(e) => handleSearchForm(props, e.target.value)}
+          value={props.searchTerm}
+          placeholder="filter current page"
+        />
         </span>
         <Table className="table-style" basic="very" celled collapsing>
           <Table.Header>

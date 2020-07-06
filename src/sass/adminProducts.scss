@@ -2,6 +2,17 @@
   display: flex;
   flex-direction: column;
 
+  ul{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: space-evenly;
+    li{
+      justify-self: flex-end;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
   .search-list {
     background: linear-gradient(rgba(255, 255, 255, 1), rgb(241, 80, 37));
     overflow: auto;
@@ -15,16 +26,12 @@
     width: 55rem;
     height: 2rem;
     text-align: center;
-    position: absolute;
-    top: 22rem;
+    top: 25rem;
     border-color: rgba(138, 80, 66, 0.521);
     border-radius: 0.1rem;
     border-style: dashed;
     border-width: 0.003rem;
-    box-shadow: 1px 1px 5px 1px, 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-      0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
-      0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-      0 100px 80px rgba(0, 0, 0, 0.12);
+    ;
   }
 
   .results {

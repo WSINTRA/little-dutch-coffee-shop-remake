@@ -4,6 +4,10 @@ import submitProduct from "./services/submitProduct";
 import { connect } from "react-redux";
 import styled, {keyframes} from 'styled-components';
 import {fadeIn} from 'react-animations';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
+
 const Bounce = styled.div`animation: 0.5s ${keyframes`${fadeIn}`} 1`;
 
 const ControlledInput = (props, input) => {
@@ -14,7 +18,7 @@ const ControlledInput = (props, input) => {
   props.productFormControl(payload);
 };
 
-const CreateNewProduct = (props) => {
+const updateProducts = (props) => {
   submitProduct(
     props.removeOldProductFromStore,
     props.productForm,
@@ -34,7 +38,7 @@ const ProductForm = (props) => {
   return (
     <Bounce>
     <div className="product-form">
-      <a className="close-modal" onClick={()=>props.setModal(false)}>X</a>
+      <a className="close-modal" onClick={()=>props.setModal(false)}><FontAwesomeIcon size="3x" icon={faWindowClose} /></a>
       <label>Edit Title</label>
       <input
         onChange={(e) => ControlledInput(props, e)}
@@ -92,19 +96,7 @@ const ProductForm = (props) => {
         type="checkbox"
       />
       </label>
-
-      {/* <label>
-        Current Product ID{" "}
-        <p style={{ fontSize: "0.8rem" }}>
-          (if ID=0 a new product will be created)
-        </p>
-      </label>
-      <p>{props.productForm.editID}</p>
-
-      <div className="clear" onClick={() => props.clearProductID()}>
-        Clear product ID
-      </div>*/}
-      <div className="submit-button" onClick={() => CreateNewProduct(props)}>
+      <div className="submit-button" onClick={() => updateProducts(props)}>
         Submit
       </div> 
     </div>

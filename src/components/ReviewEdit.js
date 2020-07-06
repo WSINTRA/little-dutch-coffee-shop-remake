@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect } from 'react-redux';
 import { Button } from 'semantic-ui-react';
-import submitReview from './submitReview'
+import submitReview from './services/submitReview'
 const ControlledInput = (props, input) => {
 
   const value = input.target.value

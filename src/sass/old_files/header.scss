@@ -1,0 +1,65 @@
+.header {
+  z-index: 1;
+    position: fixed;
+    width: 100vw;
+    height: 9rem;
+    background-image: linear-gradient(#f4f4f4, rgba(136,146,121,0.6),#f4f4f4);
+    border: 1px solid #707070;
+    text-align: center;
+    &__menu{
+          @include respond(phone){
+          left: 50%;
+          transform: translate(-50%, -50%);
+          top:120%;
+          position: absolute;
+            };
+      position: fixed;
+      left: 90vw;
+      top: 6vh;
+      cursor: pointer;
+    }
+    &__logo{
+      display: block;
+      img{
+             @include respond(phone){
+                margin-top: 1rem;
+                height: 7rem;
+                width: 13rem;
+                }
+      // margin-top: 0.01rem;
+      height: 9rem;
+      width: 16rem;
+      }
+    }
+    &__cart{
+      @include respond(phone){
+      left: 90%;
+      transform: translate(-50%, -50%);
+      top:115%;
+      position: absolute;
+      }
+      &:hover {
+            border-radius: 50px;
+        background-color: rgba(147,181,185,0.2);
+       }
+      display: block;
+      position: fixed;
+      left: 90vw;
+      top: 10.5rem;
+      cursor: pointer;
+      img{
+             @include respond(phone){
+                margin-top: 1rem;
+                height: 2rem;
+                width: 4rem;
+                }
+      // margin-top: 0.01rem;
+      height: 2rem;
+      width: 4rem;
+    }
+    }
+
+}
+
+
+/* background: url(...); */

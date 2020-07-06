@@ -1,3 +1,4 @@
+import fetchCustomers from './customerFetch'
 
 const submitLogin=(props)=>{
 	fetch("http://localhost:3050/v1/login", {
@@ -23,7 +24,10 @@ const submitLogin=(props)=>{
 
             }).then(userData => {
             localStorage.setItem("myJWT", userData.jwt)
-           
+            if(userData.user.staff){
+                //Put any specifics for staff login here
+                fetchCustomers(props.allCustomers)
+            }
             props.createStateFromFetch(userData.user)
         }).catch(err => {
             console.log("Error here",err)

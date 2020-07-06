@@ -1,0 +1,67 @@
+.account {
+   .responsive_view{
+    display:none;
+    @include respond(phone){
+    display: inline;
+    top: 18rem;
+    position: absolute;
+    width: 100%;
+    background: rgba(168, 188, 255, 0.38);
+    }
+   }
+   &__content {
+ 
+   	@include respond(phone){
+                    top: 17rem;
+                    display: none;
+                    }    
+    position: absolute;
+   	top: 15rem;  
+    width: 100vw;
+             
+   	padding-left: 2rem;
+   	padding-right: 2rem;
+&_grid_items{
+		width: 95vw;
+		background: rgba(240,243,236,0.3);
+		height: 60rem;
+		display: grid;
+   		grid-template-columns: repeat(12, 1fr);
+		grid-template-rows: repeat(12, 1fr);
+		
+	&_selection-box{
+		@include respond(phone){
+					
+                    width: 100vw;
+                    font-size: 1rem;
+                    }   
+        display: grid;
+   		grid-template-columns: repeat(1, 1fr);
+		grid-template-rows: repeat(5, 1fr); 
+		width: 12rem;
+		height: 25rem;
+		
+		font-size: 1.6rem;
+		background: rgba(168, 188, 255, 0.38);
+		*[class^='option_']{
+			
+		border-right: 1px double rgba(90,98,98,0.2);
+		padding-top: 2.9rem;
+		padding-left: 0.4rem;
+		color: rgba(0, 0, 0, 0.87);
+		cursor: pointer;
+		
+		}
+	}	
+
+	.active-option{
+		padding-left: 1rem;
+		grid-column: 2 / 12;
+		img{
+			width:12rem;
+		}
+		
+	}
+	}
+   }
+}

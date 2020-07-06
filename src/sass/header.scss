@@ -1,65 +1,61 @@
 .header {
-  z-index: 1;
-    position: fixed;
-    width: 100vw;
-    height: 9rem;
-    background-image: linear-gradient(#f4f4f4, rgba(136,146,121,0.6),#f4f4f4);
-    border: 1px solid #707070;
-    text-align: center;
-    &__menu{
-          @include respond(phone){
-          left: 50%;
-          transform: translate(-50%, -50%);
-          top:120%;
-          position: absolute;
-            };
-      position: fixed;
-      left: 90vw;
-      top: 6vh;
-      cursor: pointer;
-    }
-    &__logo{
-      display: block;
-      img{
-             @include respond(phone){
-                margin-top: 1rem;
-                height: 7rem;
-                width: 13rem;
-                }
-      // margin-top: 0.01rem;
-      height: 9rem;
-      width: 16rem;
-      }
-    }
-    &__cart{
-      @include respond(phone){
-      left: 90%;
-      transform: translate(-50%, -50%);
-      top:115%;
-      position: absolute;
-      }
-      &:hover {
-            border-radius: 50px;
-        background-color: rgba(147,181,185,0.2);
-       }
-      display: block;
-      position: fixed;
-      left: 90vw;
-      top: 10.5rem;
-      cursor: pointer;
-      img{
-             @include respond(phone){
-                margin-top: 1rem;
-                height: 2rem;
-                width: 4rem;
-                }
-      // margin-top: 0.01rem;
-      height: 2rem;
-      width: 4rem;
-    }
-    }
+  background: linear-gradient(rgba(255, 255, 255, 1), rgb(241, 80, 37));
+  justify-content: space-between;
+  align-items: stretch;
 
+  img {
+    margin-left: 4rem;
+  }
+  .mobile-header {
+    display: none;
+    @include respond(phone) {
+      display: flex;
+    }
+  }
+
+  .desktop-nav {
+    @include respond(phone) {
+      display: none;
+    }
+    padding-left: 5rem;
+    padding-right: 5rem;
+    ul {
+      background-color: rgba(66, 39, 32, 0.521);
+      border-color:rgba(138, 80, 66, 0.521);;
+      border-radius: 0.1rem;
+      border-style: dashed;
+      border-width: 0.003rem;
+      display: flex;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      flex-direction: row;
+      justify-content: space-evenly;
+      box-shadow: 1px 1px 5px 1px, 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+        0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+      li {
+        height: 2rem;
+        padding: 0.2rem;
+        align-content: flex-start;
+        a {
+          color: white;
+        }
+      }
+    }
+  }
+
+  .mobile-nav {
+    right: 0rem;
+    top: 6.5rem;
+    height: 100%;
+    position: absolute;
+    background-color: white;
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
 }
-
-
-/* background: url(...); */

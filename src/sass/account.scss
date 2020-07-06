@@ -1,67 +1,39 @@
 .account {
-   .responsive_view{
-    display:none;
-    @include respond(phone){
-    display: inline;
-    top: 18rem;
-    position: absolute;
-    width: 100%;
-    background: rgba(168, 188, 255, 0.38);
-    }
-   }
-   &__content {
- 
-   	@include respond(phone){
-                    top: 17rem;
-                    display: none;
-                    }    
-    position: absolute;
-   	top: 15rem;  
-    width: 100vw;
-             
-   	padding-left: 2rem;
-   	padding-right: 2rem;
-&_grid_items{
-		width: 95vw;
-		background: rgba(240,243,236,0.3);
-		height: 60rem;
-		display: grid;
-   		grid-template-columns: repeat(12, 1fr);
-		grid-template-rows: repeat(12, 1fr);
-		
-	&_selection-box{
-		@include respond(phone){
-					
-                    width: 100vw;
-                    font-size: 1rem;
-                    }   
-        display: grid;
-   		grid-template-columns: repeat(1, 1fr);
-		grid-template-rows: repeat(5, 1fr); 
-		width: 12rem;
-		height: 25rem;
-		
-		font-size: 1.6rem;
-		background: rgba(168, 188, 255, 0.38);
-		*[class^='option_']{
-			
-		border-right: 1px double rgba(90,98,98,0.2);
-		padding-top: 2.9rem;
-		padding-left: 0.4rem;
-		color: rgba(0, 0, 0, 0.87);
-		cursor: pointer;
-		
-		}
-	}	
+  background-color: rgba(66, 39, 32, 0.521);
+      border-color:rgba(138, 80, 66, 0.521);;
+      border-radius: 0.1rem;
+      border-style: dashed;
+      border-width: 0.003rem;
+      // margin: 2rem;
+      margin-left: 5rem;
+      margin-right: 5rem;
+    
+      box-shadow: 1px 1px 5px 1px, 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+        0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
 
-	.active-option{
-		padding-left: 1rem;
-		grid-column: 2 / 12;
-		img{
-			width:12rem;
-		}
-		
-	}
-	}
-   }
+  padding: 1.2rem;
+  @include respond(phone) {
+    display: inline;
+    padding: 1rem;
+    justify-content: left;
+  }
+  h1 {
+    text-align: justify;
+  }
+  a {
+    color: white;
+    cursor: pointer;
+  }
+  .menu {
+    flex-direction: column;
+    .option {
+      flex: 1;
+    }
+  }
+  .frame {
+    border: solid;
+    width: inherit;
+  }
 }

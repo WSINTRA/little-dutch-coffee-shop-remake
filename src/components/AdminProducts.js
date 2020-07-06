@@ -4,7 +4,6 @@ import SearchListProducts from './SearchListProducts'
 const AdminProducts = ()=>{
 	return (
 		<div className="admin-product">
-		
 		<div className="add-product-form">
 			<ProductForm/>
 		</div>

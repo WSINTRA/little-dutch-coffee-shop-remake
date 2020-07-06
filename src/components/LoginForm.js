@@ -1,64 +1,75 @@
-import { connect } from 'react-redux'
-import { withRouter  } from 'react-router-dom'
+import { connect } from "react-redux";
+import { withRouter, Link } from "react-router-dom";
 import React from "react";
-import submitLogin from './submitLogin'
+import submitLogin from "./services/submitLogin";
 
-
-const controlledInput=(e,props)=>{
-  const changeFunction = props.FormControl
-  const value = e.target.value
-  const label = e.target.name
-  const payload = {}
-  payload[label] = value 
-  changeFunction(payload)
-}
+const controlledInput = (e, props) => {
+  const changeFunction = props.FormControl;
+  const value = e.target.value;
+  const label = e.target.name;
+  const payload = {};
+  payload[label] = value;
+  changeFunction(payload);
+};
 
 const LoginForm = (props) => (
-
- <div id="login"className="login">
-  	<div className="login__box">
-  		<div className="login__box-detail">
-  			<h1>Login</h1><br/>
-  			<div className="username">
-  				<label>Username</label>
-          <input 
-          name="username"
-          onChange={ (e)=>{ controlledInput(e,props) } }
-          type="text"
-          value={props.login.username}/>
-  			</div><br/>
-        
-            <div className="password">
-  				<label>Password{" "} </label><input
-           name="password"
-           onChange={ (e)=>{ controlledInput(e,props) } }
-           type="password" 
-           value={props.login.password}/>
-  			</div>
-            	
-            <div onClick={()=>{ submitLogin(props) } }
-            className="login__submit">SUBMIT</div>
-  		
-
-  	</div>
-  </div> 
- </div>	
+  <div id="login" className="login">
+    {console.log(props, "login")}
+    <h1>Welcome</h1>
+    <Link to="/register">Sign up?</Link>
+    <div className="login-form">
+      <input
+        name="username"
+        placeholder="Email address"
+        onChange={(e) => {
+          controlledInput(e, props);
+        }}
+        type="text"
+        value={props.login.username}
+      />
+      <br />
+      <input
+        name="password"
+        onChange={(e) => {
+          controlledInput(e, props);
+        }}
+        type="password"
+        placeholder="Password"
+        value={props.login.password}
+      />
+      <p>forgot your password?</p>
+      <div
+        onClick={() => {
+          submitLogin(props);
+        }}
+        className="submit-button"
+      >
+        Submit
+      </div>
+    </div>
+  </div>
 );
 
-function msp(state){
+function msp(state) {
   return {
     login: state.login,
   };
 }
-function mdp(dispatch){
+function mdp(dispatch) {
   return {
-    createStateFromFetch: (fetchData)=>{
-      dispatch( {type:"ADD_USER_DATA_TO_STATE", payload: fetchData})
+    //These 2 pass along to submitLogin
+    createStateFromFetch: (fetchData) => {
+      dispatch({ type: "ADD_USER_DATA_TO_STATE", payload: fetchData });
     },
-    FormControl: (object)=> {
-        dispatch({type:"LOGIN_FORM_CONTROL", payload: object})
-      },
+    allCustomers: (action) => {
+      dispatch({ type: "ALL_CUSTOMERS", payload: action });
+    },
+    ///
+    FormControl: (object) => {
+      dispatch({ type: "LOGIN_FORM_CONTROL", payload: object });
     }
+   
+  };
 }
 
-export default withRouter(connect(msp,mdp)(LoginForm));
+export default withRouter(connect(msp, mdp)(LoginForm));

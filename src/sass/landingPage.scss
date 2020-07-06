@@ -1,0 +1,13 @@
+.container {
+    display: grid;
+    .heading {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sub-heading{
+        text-align: center;
+    }
+}

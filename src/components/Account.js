@@ -1,134 +1,142 @@
-import React from "react";
-import { connect } from 'react-redux'
-import AdminProducts from './AdminProducts'
-import Customers from './Customers'
-import YourOrders from './YourOrders'
-import Reviews from './Reviews'
-import Employees from './Employees'
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import SalesStats from "./SalesStats";
+import AdminProducts from "./AdminProducts";
+import Customers from "./Customers";
+import YourOrders from "./YourOrders";
+import Reviews from "./Reviews";
+import { useSpring, animated } from "react-spring";
+import { Link } from "react-router-dom";
 
-const displayOption=(option,props)=>{
+const renderSelection = (option, props) => {
+  let selection =
+    [SalesStats, Customers, AdminProducts, YourOrders, Reviews] || [];
+  for (let i = 0; i < selection.length; i++) {
+    if (selection[i].name === option) {
+      return selection[i](props);
+    }
+  }
+};
 
-  let marginLeft = "5rem"
-  let marginTop = "5rem"
-	switch(option){
-    case "Reviews":
-    return <div style={{marginLeft:marginLeft,marginTop:marginTop}}>
-    <Reviews/></div>
-    case "Your Orders":
-    return <div style={{marginLeft:marginLeft,marginTop:marginTop}}>
-    <YourOrders/></div>;
-		case "Sales stats":
-		return <div>SALES STAT TEST</div>;
-		case "Orders":
-		return <div>ORDERS TEST</div>;
-		case "Customers":
-		return <div style={{marginLeft:marginLeft,marginTop:marginTop}}>
-    <Customers/></div>;
-		case "Employees":
-		return <div style={{marginLeft:marginLeft,marginTop:marginTop}}>
-    <Employees/></div>;
-		case "Products":
-		return <AdminProducts/>;
-		default:
-		return <div>default</div>;;
+const displayOption = (option, fadeIn, setFadeIn, growWindow, props) => {
+  return (
+    <animated.div style={growWindow}>
+      <div className="frame">
+        <div onClick={() => setFadeIn(!fadeIn)}>
+          <a>X</a>
+        </div>
+        <h1>{option}</h1>
+        {renderSelection(option, props)}
+      </div>
+    </animated.div>
+  );
+};
 
-	}
-}
+const clickActionForOptions = (e, props) => {
+  props.activeOptionSelect(e.target.innerText);
+};
 
-
-const clickActionForOptions=(e,props)=>{
-	props.activeOptionSelect(e.target.innerText)
-}
-
-
+const userMenu = [
+  "YourOrders", 
+  "Reviews", 
+  "Cart", 
+  "Account Settings"
+];
+const staffMenu = [
+  "SalesStats",
+  "AllOrders",
+  "Customers",
+  "Employees",
+  "AdminProducts",
+];
 
 const Account = (props) => {
-	
-	return (
+  const [fadeIn, setFadeIn] = useState(true);
+  const spring = useSpring({
+    opacity: fadeIn ? 1 : 0,
+    display: fadeIn ? "inherit" : "none",
+  });
+  const page = useSpring({ opacity: 1, from: { opacity: 0 } });
+  const growWindow = useSpring({
+    opacity: fadeIn ? 0 : 1,
+    display: !fadeIn ? "inherit" : "none",
+  });
+  return (
+    <animated.div style={page}>
+      <div className="account">
+        <div className="banner">
+          {props.banner || "OPTIONS"}
+          {props.currentUser.username === undefined
+            ? props.currentUser.username
+            : null}
+        </div>
+        <div>
+          {displayOption(
+            props.activeOption,
+            fadeIn,
+            setFadeIn,
+            growWindow,
+            props
+          )}
+        </div>
+        {props.currentUser.staff ? (
+          <div className="menu">
+            <animated.div style={spring}>
+              {staffMenu.map((menu, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={`option`}
+                    onClick={() => setFadeIn(!fadeIn)}
+                  >
+                    <a onClick={(e) => clickActionForOptions(e, props)}>
+                      {menu}
+                    </a>
+                  </div>
+                );
+              })}
+            </animated.div>
+          </div>
+        ) : (
+          <div className="menu">
+            <animated.div style={spring}>
+              {userMenu.map((menu, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={`option`}
+                    onClick={() => setFadeIn(!fadeIn)}
+                  >
+                    <a onClick={(e) => clickActionForOptions(e, props)}>
+                      {menu}
+                    </a>
+                  </div>
+                );
+              })}
+            </animated.div>
+          </div>
+        )}
+      </div>
+    </animated.div>
+  );
+};
 
-    <div className="account">
-
-    <div className="banner">
-    {props.banner} : {props.currentUser.username === undefined ? props.currentUser.username : null}
-    </div>
-
-   {props.currentUser.staff ?   <div>
-   	<div className="responsive_view">{/** THIS SECTION IS FOR MOBILE VIEW ADMIN**/}
-   	<div className="option_sales" onClick={(e)=>clickActionForOptions(e,props)}>Sales stats<hr/>
-   	{props.activeOption === "Sales stats" ? <div>SOME THING HERE</div>:null}</div>
-   <div className="option_orders" onClick={(e)=>clickActionForOptions(e,props)}>Orders<hr/>
-   {props.activeOption === "Orders" ? <div>SOME THING HERE</div>:null}</div>
-   <div className="option_customers" onClick={(e)=>clickActionForOptions(e,props)}>Customers<hr/>
-   {props.activeOption === "Customers" ? <div><Customers/></div>:null}</div>
-   <div className="option_employee" onClick={(e)=>clickActionForOptions(e,props)}>Employees<hr/>
-   {props.activeOption === "Employees"? <div>SOME THING HERE</div>:null}</div>
-   <div className="option_products"onClick={(e)=>clickActionForOptions(e,props)}>Products<hr/>
-   {props.activeOption === "Products" ? <div>SOME THING HERE</div>:null}</div>
-
-   </div>
-    <div className="account__content">
-   <div className="account__content_grid_items"> 
-
-   <div className="account__content_grid_items_selection-box"> 
-   <div className="option_sales" onClick={(e)=>clickActionForOptions(e,props)}>Sales stats<hr/></div>
-   <div className="option_orders" onClick={(e)=>clickActionForOptions(e,props)}>Orders<hr/></div>
-   <div className="option_customers" onClick={(e)=>clickActionForOptions(e,props)}>Customers<hr/></div>
-   <div className="option_employee" onClick={(e)=>clickActionForOptions(e,props)}>Employees<hr/></div>
-   <div className="option_products"onClick={(e)=>clickActionForOptions(e,props)}>Products<hr/></div>
-   </div>
-   <div className="active-option">{displayOption(props.activeOption)}</div>
-   </div>
-    </div>
-   </div> :
-   <div>
-   <div className="responsive_view">{/** THIS SECTION IS FOR MOBILE VIEW USERS**/}
-     <div className="option_userOrders" onClick={(e)=>clickActionForOptions(e,props)}>User Orders<hr/>
-     {props.activeOption === "User Orders" ? <div>User orders</div>:null}</div>
-   <div className="option_reviews" onClick={(e)=>clickActionForOptions(e,props)}>Reviews<hr/>
-   {props.activeOption === "Reviews" ? <div>User reviews</div>:null}</div>
-   <div className="option_savedCart" onClick={(e)=>clickActionForOptions(e,props)}>Saved cart<hr/>
-   {props.activeOption === "Saved Cart" ? <div>Saved cart</div>:null}</div>
-   <div className="option_details" onClick={(e)=>clickActionForOptions(e,props)}>Details<hr/>
-   {props.activeOption === "Details"? <div>Details here</div>:null}</div>
-   <div className="option_settings"onClick={(e)=>clickActionForOptions(e,props)}>Settings<hr/>
-   {props.activeOption === "Settings" ? <div>SOME THING HERE</div>:null}</div>
-
-   </div>
-    <div className="account__content">
-   <div className="account__content_grid_items"> 
-
-   <div className="account__content_grid_items_selection-box"> 
-   <div className="option_userOrders" onClick={(e)=>clickActionForOptions(e,props)}>Your Orders<hr/></div>
-   <div className="option_reviews" onClick={(e)=>clickActionForOptions(e,props)}>Reviews<hr/></div>
-   <div className="option_savedCart" onClick={(e)=>clickActionForOptions(e,props)}>Saved Cart<hr/></div>
-   <div className="option_details" onClick={(e)=>clickActionForOptions(e,props)}>Details<hr/></div>
-   <div className="option_settings"onClick={(e)=>clickActionForOptions(e,props)}>Settings<hr/></div>
-   </div>
-   <div className="active-option">{displayOption(props.activeOption, props)}</div>
-   </div>
-    </div>
-   </div>
-// //Fill in how the account page should look for a normal user
-
+function mdp(dispatch) {
+  return {
+    activeOptionSelect: (action) => {
+      dispatch({ type: "SOME_OPTION", payload: action });
+    },
+    allCustomers: (action) => {
+      dispatch({ type: "ALL_CUSTOMERS", payload: action });
+    },
+  };
 }
- 
-    </div>
-
-	)
+function msp(state) {
+  return {
+    currentUser: state.userData,
+    activeOption: state.activeOption,
+    customersData: state.allCustomersData,
+  };
 }
 
-function mdp(dispatch){
-	return {
-		activeOptionSelect: (action)=> {
-			dispatch({type:"SOME_OPTION", payload: action})
-		}
-	}
-}
-function msp(state){
-	return {
-		currentUser: state.userData,
-		activeOption: state.activeOption
-	}
-}
-
-export default connect(msp,mdp)(Account);
+export default connect(msp, mdp)(Account);

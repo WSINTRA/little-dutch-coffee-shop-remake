@@ -1,24 +1,53 @@
 import React from "react";
 import logo from "../images/header-logo.png";
 import menuOpen from "../svg/Menu.svg";
-import CartOverview from "./CartOverview"
-import cart from "../svg/custom-cart.svg"
+import { Link } from 'react-router-dom'
+import close from "../images/Close.png"
 import { connect } from 'react-redux'
+import {useSpring, animated} from 'react-spring';
+
+const Navigation = (props)=>{
+  const page = useSpring({opacity: 1, from: {opacity: 0}})
+ return (
+  <animated.div style={page}>
+      <ul>
+        <li>
+        <Link to="/menu"> Weekly menu </Link>
+        </li>
+        <li>
+          <Link to="/"> Stash box </Link>
+        </li>
+        <li>
+          <Link to="/account"> Account </Link>
+        </li>
+        <li>
+          <Link onClick={()=>props.logout()} to="/"> Logout </Link>
+        </li>
+      </ul>
+      </animated.div>
+    )
+}
 
 const Header = (props) => (
  <div className="header"> 
- <div className="header__logo"  ><img alt="logo"src={logo}/></div>
- <div className="header__menu" 
- onClick={()=>props.openCloseMenu()}>
- <img src={menuOpen}alt="open menu button"/><br/>
- </div>
- <div className="header__cart" >
-
-   {props.loggedIn ? <img className="cart-svg" alt="cart" src={cart}
-  onClick={()=>props.openCloseCart()}/>: null}<br/>
+ <Link to="/"><img style={{"width": "150px" }}alt="logo"src={logo}/></Link>
+    <div className="desktop-nav">
+     <Navigation {...props}/>
+    </div>
+    <div className="mobile-header">
+     {
+     props.menuOpen ? 
+     <img onClick={()=>props.openCloseMenu()} alt="close button" src={close}/> :
+     <img onClick={()=>props.openCloseMenu()} alt="open menu button" src={menuOpen}/>
+     } 
+    
+     {props.menuOpen ? 
+     
+     <div className="mobile-nav">
+     <Navigation {...props}/>
+     </div> : null}
+    </div>
   </div>
-  {props.cartOpen ? <CartOverview/> : null}
-</div>
 );
 
 function mdp(dispatch){
@@ -30,7 +59,7 @@ function mdp(dispatch){
   }
 function msp(state){
 	return {
-		loggedIn: state.loggedIn
+		menuOpen: state.menuOpen
 	}
 }
 

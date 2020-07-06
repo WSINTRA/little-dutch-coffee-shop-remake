@@ -1,4 +1,5 @@
 $link-color: #393C3B;
+$backgroundColor: rgb(241, 80, 37);
 
 * {
   margin: 0;
@@ -9,12 +10,12 @@ $link-color: #393C3B;
   scroll-behavior: smooth;
 }
 body {
-	font-family: 'Lato', sans-serif;
-	font-family: "Montserrat Alternates", sans-serif;
-    background-color: #E37150;
+    font-family: monospace;
+    background-color: $backgroundColor;
     font-weight: 400;
     font-size: 16px;
     max-width: 100%;
+    color: rgb(25, 25, 25);
    // overflow-x: hidden;
 }
 

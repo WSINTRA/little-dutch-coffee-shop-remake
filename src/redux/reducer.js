@@ -183,7 +183,7 @@ function reducer( state = initialState , action){
  		let successClose = cartSuccess(state.cartSuccess)
  		return {...state, cartSuccess: successClose}
  		case TOGGLE_MENU:
- 		let toggle = toggleMenu(state.menuOpen)
+		 let toggle = toggleMenu(state.menuOpen)
  		return {...state,  menuOpen: toggle}
  		case ADD_TO_CART:
  		let addToCart = addingToCart(state.cartItems, action.payload)

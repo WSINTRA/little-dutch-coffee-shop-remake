@@ -35,7 +35,7 @@ fetch('http://localhost:3050/v1/users', {
                 }).then(() => alert("Success, User auto logged in"))
                     .catch(err => {
                         alert(err);
-                    }).then(()=>props.history.push("/weekly-menu"));
+                    }).then(()=>props.history.push("/"));
 }
 
 export default submitRegistration;

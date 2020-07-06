@@ -9,10 +9,13 @@ const WeeklyMenu = (props) => {
 	let categories = props.productData || []
 	return (
 		<animated.div style={spring}>
+			<div className="weekly-display">
+				<div className="product-filters">Some Filters here</div>
 		<div className="products-list">
 		{categories.map(product=>{
 			return <Card key={product.id} {...product} />
 		})}	
+		</div>
 		</div>
 		</animated.div>
 	)

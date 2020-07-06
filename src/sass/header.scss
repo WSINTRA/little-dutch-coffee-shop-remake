@@ -1,11 +1,8 @@
 .header {
-  // background-color: rgba(230, 232, 230,0.1);
   background: linear-gradient(rgba(255, 255, 255, 1), rgb(241, 80, 37));
-  // display: flex;
-  // flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
-  // padding-right: 3rem;
+
   img {
     margin-left: 4rem;
   }
@@ -24,6 +21,7 @@
     padding-right: 5rem;
     ul {
       background-color: rgba(66, 39, 32, 0.521);
+      border-color:rgba(138, 80, 66, 0.521);;
       border-radius: 0.1rem;
       border-style: dashed;
       border-width: 0.003rem;
@@ -39,10 +37,6 @@
         0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
       li {
         height: 2rem;
-        // box-shadow:
-        // inset 0 -3em 3em rgba(0,0,0,0.1),
-        //       0 0  0.2rem 2px rgba(255,255,255, 0.2),
-        //       0.3em 0.3em 1em rgba(0,0,0,0.3);
         padding: 0.2rem;
         align-content: flex-start;
         a {

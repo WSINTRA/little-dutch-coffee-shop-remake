@@ -12,6 +12,7 @@ import ProductDetail from "./components/ProductDetails";
 import fetchCustomers from "./components/services/customerFetch";
 import SalesStats from './components/SalesStats'
 import ProductForm from "./components/ProductForm"
+import SearchListProducts from "./components/SearchListProducts";
 class App extends React.Component {
   state = {
     cartOpen: false,
@@ -94,7 +95,7 @@ class App extends React.Component {
               component={ProductDetail}
             />
             <Route exact path="/account/AddNewProduct" component={ProductForm} />
-            <Route exact path="/account/RemoveProduct" component={SalesStats} />
+            <Route exact path="/account/RemoveProduct" component={SearchListProducts} />
             <Route exact path="/account/AddNewUser" component={SalesStats} />
             <Route exact path="/account/RemoveUser" component={SalesStats} />
 			 

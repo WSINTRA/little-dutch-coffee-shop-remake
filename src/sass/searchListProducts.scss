@@ -1,0 +1,15 @@
+.search-list-products {
+  padding-left: 5rem;
+  padding-right: 5rem;
+  
+  .delete-btn {
+    cursor: pointer;
+    position: fixed;
+    margin-left: 2rem;
+    padding: 0.5rem;
+    text-align: center;
+    background-color: darkolivegreen;
+    border-radius: 0.3rem;
+    box-shadow: 0rem 0.2rem 12px black;
+  }
+}

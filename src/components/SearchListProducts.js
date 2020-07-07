@@ -9,29 +9,59 @@ const handleProductClick = (product, props, setShowModal) => {
   setShowModal(true);
   props.sendToFormControl(product);
 };
-const handleSelectedProduct=(e,prod, setSelectedProducts, selectedProducts)=>{
-  //First check if the product exists in the array...
-  //You should only be able to delete once, so first check if it is selected..
-  if(selectedProducts.filter(product=> product.title === prod.title).length > 0 && !e.target.checked){
-    console.log("BINGO")
-    let updatedSelection = selectedProducts.filter(product=> product.title !== prod.title)
-    setSelectedProducts([...updatedSelection ])
+
+const handleDeleteSelected = (selectedProducts) => {
+  if (selectedProducts.length > 0) {
+    if (
+      window.confirm(
+        "Are you sure you want to delete \nall the selected products"
+      )
+    ) {
+      console.log("Delete", selectedProducts);
+    } else {
+      console.log("You cancelled");
+    }
   }
   else {
-    setSelectedProducts(selectedProducts.concat(prod))
+    alert("You need to select first")
   }
-  
-  //`setSearches([…searches, query]);`
-  //Use concat to update arrays in React Hooks
-  
-  console.log(e.target.checked)
-}
+};
+
+const handleSelectedProduct = (
+  e,
+  prod,
+  setSelectedProducts,
+  selectedProducts
+) => {
+  //First check if the product exists in the array...
+  //You should only be able to delete once, so first check if it is selected..
+  if (
+    selectedProducts.filter((product) => product.title === prod.title).length >
+      0 &&
+    !e.target.checked
+  ) {
+    let updatedSelection = selectedProducts.filter(
+      (product) => product.title !== prod.title
+    );
+    setSelectedProducts([...updatedSelection]);
+  } else {
+    setSelectedProducts([...selectedProducts, prod]);
+  }
+  console.log(e.target.checked);
+};
 const handleSearchForm = (props, term) => {
   props.filterFormControl(term);
 };
 
 //Called by getProducts()
-const ProductTable = (product, props, setShowModal, standAlone, setSelectedProducts, selectedProducts) => {
+const ProductTable = (
+  product,
+  props,
+  setShowModal,
+  standAlone,
+  setSelectedProducts,
+  selectedProducts
+) => {
   return (
     <Table.Row
       className="product-select"
@@ -43,7 +73,14 @@ const ProductTable = (product, props, setShowModal, standAlone, setSelectedProdu
           <input
             type="checkbox"
             // checked={false}
-            onChange={(e)=>handleSelectedProduct(e,product, setSelectedProducts, selectedProducts)}
+            onChange={(e) =>
+              handleSelectedProduct(
+                e,
+                product,
+                setSelectedProducts,
+                selectedProducts
+              )
+            }
           />
           {console.log(selectedProducts)}
         </Table.Cell>
@@ -69,7 +106,16 @@ const SearchListProducts = (props) => {
       .filter((el) =>
         el.title.toLowerCase().includes(props.searchTerm.toLowerCase())
       )
-      .map((product) => ProductTable(product, props, setShowModal, standAlone, setSelectedProducts, selectedProducts));
+      .map((product) =>
+        ProductTable(
+          product,
+          props,
+          setShowModal,
+          standAlone,
+          setSelectedProducts,
+          selectedProducts
+        )
+      );
   };
   let itemsLeft = getProducts().length;
 
@@ -120,6 +166,14 @@ const SearchListProducts = (props) => {
               value={props.searchTerm}
               placeholder="filter current page"
             />
+            {standAlone ? (
+              <a
+                className="delete-btn"
+                onClick={() => handleDeleteSelected(selectedProducts)}
+              >
+                Delete Selected
+              </a>
+            ) : null}
           </span>
           <Table className="table-style" basic="very" celled collapsing>
             <Table.Header>
@@ -133,8 +187,7 @@ const SearchListProducts = (props) => {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {getProducts().splice(indexFrom, displayCount)
-                .length === 0 ? (
+              {getProducts().splice(indexFrom, displayCount).length === 0 ? (
                 <Table.Row>
                   <Table.Cell>"No more results"</Table.Cell>
                 </Table.Row>

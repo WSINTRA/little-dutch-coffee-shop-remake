@@ -115,12 +115,6 @@ function mdp(dispatch) {
     logOut: (obj) => {
       dispatch({ type: "LOGOUT", payload: obj });
     },
-    getActiveLink: (obj) => {
-      dispatch({ type: "SOME_LINK", payload: obj });
-    },
-    logIn: (logInBool) => {
-      dispatch({ type: "ADD_LOGIN_BOOL", payload: logInBool });
-    },
     createUserStateFromFetch: (fetchData) => {
       dispatch({ type: "ADD_USER_DATA_TO_STATE", payload: fetchData });
     },

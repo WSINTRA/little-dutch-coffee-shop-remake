@@ -8,19 +8,9 @@ const UserPage = (props)=> {
 	)
 }
 
-function mdp(dispatch){
-	return {
-		activeLinkSelect: (action)=> {
-			dispatch({type:"SOME_LINK", payload: action})
-		}
-	}
-}
 function msp(state){
 	return {
 		userData: state.userData,
-		productData: state.productData,
-		activeLink: state.activeLink,
-		menuOpen: state.menuOpen,
 	}
 }
-export default connect(msp,mdp)(UserPage);
+export default connect(msp)(UserPage);

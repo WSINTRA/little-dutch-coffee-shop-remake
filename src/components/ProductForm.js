@@ -1,4 +1,3 @@
-// import React from "react";
 import React, { useLayoutEffect } from 'react'
 import StarRatingComponent from "react-star-rating-component";
 import submitProduct from "./services/submitProduct";
@@ -45,6 +44,7 @@ const CheckboxClick = (props) => {
 const ProductForm = (props) => {
   let match = useRouteMatch();
   let standAloneComp = match.path === '/account/AddNewProduct'
+  //This only triggers is the comp is being used as standalone, it fires the hook just before DOM render
   useLayoutEffect(() => {
     if(standAloneComp){props.clearAllFormFields()}
 }, [])

@@ -9,13 +9,32 @@ import { useSpring, animated } from "react-spring";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 
+const userMenu = [
+  "YourOrders", 
+  "Reviews", 
+  "Cart", 
+  "Account Settings"
+];
+const staffMenu = [
+  "SalesStats",
+  "AllOrders",
+  "Customers",
+  "Employees",
+  "AdminProducts",
+];
+
 const renderSelection = (option, props) => {
-  let selection =
-    [SalesStats, Customers, AdminProducts, YourOrders, Reviews] || [];
-  for (let i = 0; i < selection.length; i++) {
-    if (selection[i].name === option) {
-      return selection[i](props);
-    }
+  //Add any new menu items in here for the Account page, eventually they should match the userMenu and staffMenu
+  let selection = {
+    "SalesStats":SalesStats, 
+    "Customers":Customers, 
+    "AdminProducts":AdminProducts, 
+    "YourOrders":YourOrders, 
+    "Reviews":Reviews
+  };
+    //If the option is a valid selection then return the React Functional Component with props
+  if(!!selection[option]){
+    return selection[option](props)
   }
 };
 
@@ -36,20 +55,6 @@ const displayOption = (option, fadeIn, setFadeIn, growWindow, props) => {
 const clickActionForOptions = (e, props) => {
   props.activeOptionSelect(e.target.innerText);
 };
-
-const userMenu = [
-  "YourOrders", 
-  "Reviews", 
-  "Cart", 
-  "Account Settings"
-];
-const staffMenu = [
-  "SalesStats",
-  "AllOrders",
-  "Customers",
-  "Employees",
-  "AdminProducts",
-];
 
 const Account = (props) => {
   const [fadeIn, setFadeIn] = useState(true);

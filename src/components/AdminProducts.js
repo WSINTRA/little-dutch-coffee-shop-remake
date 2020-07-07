@@ -1,41 +1,45 @@
-import React, { useState } from "react";
+import React from "react";
 import SearchListProducts from "./SearchListProducts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBarcode,
   faUserPlus,
   faUserMinus,
   faTrashAlt,
-  faStore,
-  faStoreAlt,
-  faSave
+  faSave,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link,} from "react-router-dom";
+
+
 
 const AdminProducts = (props) => {
+  
+  const iconArray = [
+    { iconName: faSave, route: "AddNewProduct" },
+    { iconName: faTrashAlt, route: "RemoveProduct" },
+    { iconName: faUserPlus, route: "AddNewUser" },
+    { iconName: faUserMinus, route: "RemoveUser" },
+  ];
+
   return (
     <div className="admin-product">
       <span>
         <ul>
-          <li>
-			<FontAwesomeIcon  size="1x" icon={faSave} /> 
-          </li>
-          <li>
-            <FontAwesomeIcon  size="1x" icon={faTrashAlt} />
-          </li>
-          <li>
-            <FontAwesomeIcon  size="1x" icon={faUserPlus} />
-          </li>
-
-          <li>
-            <FontAwesomeIcon  size="1x" icon={faUserMinus} />
-          </li>
+          {iconArray.map((item) => {
+            return (
+              <li>
+                <Link to={`account/${item.route}`}>
+                  <FontAwesomeIcon size="1x" icon={item.iconName} />
+                </Link>
+              </li>
+            );
+          })}
         </ul>
+
+        <div className="search-list">
+          <SearchListProducts />
+        </div>
       </span>
-      <div className="search-list">
-        <SearchListProducts />
-      </div>
     </div>
   );
 };
 export default AdminProducts;
-//first use a links

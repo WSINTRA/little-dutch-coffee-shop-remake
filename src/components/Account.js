@@ -6,7 +6,6 @@ import Customers from "./Customers";
 import YourOrders from "./YourOrders";
 import Reviews from "./Reviews";
 import { useSpring, animated } from "react-spring";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 
@@ -91,7 +90,7 @@ const Account = (props) => {
                     className={`option`}
                     onClick={() => setFadeIn(!fadeIn)}
                   >
-                    <a onClick={(e) => clickActionForOptions(e, props)}>
+                    <a href="#" onClick={(e) => clickActionForOptions(e, props)}>
                       {menu}
                     </a>
                   </div>
@@ -109,7 +108,7 @@ const Account = (props) => {
                     className={`option`}
                     onClick={() => setFadeIn(!fadeIn)}
                   >
-                    <a onClick={(e) => clickActionForOptions(e, props)}>
+                    <a href="#" onClick={(e) => clickActionForOptions(e, props)}>
                       {menu}
                     </a>
                   </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Button, Image, Table } from "semantic-ui-react";
+import { Table } from "semantic-ui-react";
 import ProductForm from './ProductForm'
 
 const handleProductClick = (product, props, setShowModal) => {
@@ -93,8 +93,12 @@ const SearchListProducts = (props) => {
               <Table.HeaderCell>Description</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
-          <Table.Body>{getProducts().splice(indexFrom, displayCount).length == 0 ? "No more results" : 
-		  getProducts().splice(indexFrom, displayCount) }</Table.Body>
+          <Table.Body>{getProducts().splice(indexFrom, displayCount).length === 0 ? 
+          <Table.Row>
+            <Table.Cell>"No more results"</Table.Cell>
+            </Table.Row> : 
+		                  getProducts().splice(indexFrom, displayCount) }
+      </Table.Body>
         </Table>
       </div>
     </div>

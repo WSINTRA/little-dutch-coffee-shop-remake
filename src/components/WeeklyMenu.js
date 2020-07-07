@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 import Card from './Card';
-import ProductDetail from './ProductDetails';
+// import ProductDetail from './ProductDetails';
 import {useSpring, animated} from 'react-spring';
 
 const WeeklyMenu = (props) => {

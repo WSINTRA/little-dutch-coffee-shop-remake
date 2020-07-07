@@ -65,7 +65,7 @@ const ProductDetails = (props) => {
         {props.cartSuccessSwitch ? cartSuccess(props) : null}
         <div className="left">
           <div className="left-image">
-            <img size="small" src={props.product.image} />
+            <img size="small" alt={props.product.title} src={props.product.image} />
           </div>
           <div className="left-title">
             <h2>{props.product.title}</h2>

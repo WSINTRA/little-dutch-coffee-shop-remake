@@ -37,7 +37,7 @@ const Card =(props)=> {
 				value={stars}
 				/>
 			<p>{showFullDescription(props.description, more) + " "}
-				<a onClick={()=>setMore(!more)}>{changeMoreToLess(more)}</a></p>
+				<a href="#" onClick={()=>setMore(!more)}>{changeMoreToLess(more)}</a></p>
 			<h3>${standardisePrice(props.price)}</h3>
 		</div>
 	)

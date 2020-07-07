@@ -10,7 +10,8 @@ import Account from "./components/Account";
 import WeeklyMenu from "./components/WeeklyMenu";
 import ProductDetail from "./components/ProductDetails";
 import fetchCustomers from "./components/services/customerFetch";
-
+import SalesStats from './components/SalesStats'
+import ProductForm from "./components/ProductForm"
 class App extends React.Component {
   state = {
     cartOpen: false,
@@ -67,6 +68,7 @@ class App extends React.Component {
       "Online high grade dispensary built with the official secrets act";
 
     return (
+
       <div className="container">
         {!this.props.loggedIn ? (
           <>
@@ -91,6 +93,11 @@ class App extends React.Component {
               path={`product-detail-${""}`}
               component={ProductDetail}
             />
+            <Route exact path="/account/AddNewProduct" component={ProductForm} />
+            <Route exact path="/account/RemoveProduct" component={SalesStats} />
+            <Route exact path="/account/AddNewUser" component={SalesStats} />
+            <Route exact path="/account/RemoveUser" component={SalesStats} />
+			 
           </>
         )}
       </div>

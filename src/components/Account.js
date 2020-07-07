@@ -6,7 +6,8 @@ import Customers from "./Customers";
 import YourOrders from "./YourOrders";
 import Reviews from "./Reviews";
 import { useSpring, animated } from "react-spring";
-import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 
 const renderSelection = (option, props) => {
   let selection =
@@ -22,8 +23,8 @@ const displayOption = (option, fadeIn, setFadeIn, growWindow, props) => {
   return (
     <animated.div style={growWindow}>
       <div className="frame">
-        <div onClick={() => setFadeIn(!fadeIn)}>
-          <a>X</a>
+        <div className="close-icon" onClick={() => setFadeIn(!fadeIn)}>
+          <FontAwesomeIcon size="3x" icon={faWindowClose} />
         </div>
         <h1>{option}</h1>
         {renderSelection(option, props)}
@@ -89,7 +90,7 @@ const Account = (props) => {
                     className={`option`}
                     onClick={() => setFadeIn(!fadeIn)}
                   >
-                    <a onClick={(e) => clickActionForOptions(e, props)}>
+                    <a href="#" onClick={(e) => clickActionForOptions(e, props)}>
                       {menu}
                     </a>
                   </div>
@@ -107,7 +108,7 @@ const Account = (props) => {
                     className={`option`}
                     onClick={() => setFadeIn(!fadeIn)}
                   >
-                    <a onClick={(e) => clickActionForOptions(e, props)}>
+                    <a href="#" onClick={(e) => clickActionForOptions(e, props)}>
                       {menu}
                     </a>
                   </div>

@@ -14,7 +14,6 @@ const controlledInput = (e, props) => {
 
 const LoginForm = (props) => (
   <div id="login" className="login">
-    {console.log(props, "login")}
     <h1>Welcome</h1>
     <Link to="/register">Sign up?</Link>
     <div className="login-form">

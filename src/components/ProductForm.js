@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import StarRatingComponent from "react-star-rating-component";
 import submitProduct from "./services/submitProduct";
 import { connect } from "react-redux";
@@ -31,6 +31,7 @@ const updateProducts = (props,standAlone) => {
     props.productForm,
     props.submitProductForm
   );
+  props.clearAllFormFields()
 };
 
 const StarClick = (props, nextValue, prevValue, name) => {
@@ -43,11 +44,11 @@ const CheckboxClick = (props) => {
 
 const ProductForm = (props) => {
   let match = useRouteMatch();
-  let standAloneComp = match.path === '/account/AddNewProduct'
+  const [standAloneComp, setStandAloneComp] = useState(match.path === '/account/AddNewProduct')
   //This only triggers is the comp is being used as standalone, it fires the hook just before DOM render
   useLayoutEffect(() => {
     if(standAloneComp){props.clearAllFormFields()}
-}, [])
+  }, [])
   return (
     <Bounce>
       <div className="product-form">
@@ -55,7 +56,9 @@ const ProductForm = (props) => {
         <a className="close-modal" onClick={() => props.setModal(false)}>
           <FontAwesomeIcon size="3x" icon={faWindowClose} />
         </a>}
-        
+        {!!props.productForm.imageURL ? 
+        <img className="product-image" style={{ width: "250px" }} alt="prod-image" src={props.productForm.imageURL} /> 
+        : null}
         <label>Title</label>
         <input
           onChange={(e) => ControlledInput(props, e)}
@@ -114,9 +117,10 @@ const ProductForm = (props) => {
             type="checkbox"
           />
         </label>
-        <div className="clear-button" onClick={() => console.log("Clear form fields")}>
+        {standAloneComp ?
+        <div className="clear-button">
         <a onClick={()=>props.clearAllFormFields()}style={{cursor: 'pointer'}}>clear all fields</a>
-        </div>
+        </div> : null }
         <div className="submit-button" onClick={() => updateProducts(props,standAloneComp)}>
         {standAloneComp ? "Submit" : "Edit"}
         </div>
@@ -125,7 +129,7 @@ const ProductForm = (props) => {
     </Bounce>
   );
 };
-
+//Need some kind of feedback if the submission was all good, lets investigate the submission process
 function msp(state) {
   return {
     productForm: state.productForm,

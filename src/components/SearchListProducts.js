@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Table } from "semantic-ui-react";
+import { deleteProducts } from "/services/submitProductDelete";
 import ProductForm from "./ProductForm";
 import { useRouteMatch } from "react-router-dom";
 
@@ -17,7 +18,7 @@ const handleDeleteSelected = (selectedProducts) => {
         "Are you sure you want to delete \nall the selected products"
       )
     ) {
-      console.log("Delete", selectedProducts);
+      deleteProducts(selectedProducts,removeOldProductFromStore);
     } else {
       console.log("You cancelled");
     }
@@ -82,7 +83,7 @@ const ProductTable = (
               )
             }
           />
-          {console.log(selectedProducts)}
+          // {console.log(selectedProducts)}
         </Table.Cell>
       ) : null}
       <Table.Cell>{product.id}</Table.Cell>
@@ -208,6 +209,9 @@ function mdp(dispatch) {
     },
     filterFormControl: (object) => {
       dispatch({ type: "SEARCH_TERM_CONTROL", payload: object });
+    },
+      removeOldProductFromStore: (object) => {
+      dispatch({ type: "REMOVE_BY_ID", payload: object });
     },
   };
 }

@@ -13,6 +13,7 @@ import fetchCustomers from "./components/services/customerFetch";
 import SalesStats from './components/SalesStats'
 import ProductForm from "./components/ProductForm"
 import SearchListProducts from "./components/SearchListProducts";
+
 class App extends React.Component {
   state = {
     cartOpen: false,

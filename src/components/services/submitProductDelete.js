@@ -1,8 +1,6 @@
 //delete product service
 export const deleteProducts=(idArray)=>{
-	//Iterate over products array and delete from BackEnd 
-	
-	
+ //Backend can take an array of ID's and delete those
 	fetch("http://localhost:3050/v1/delete_products", {
         method: "DELETE",
         headers: {

@@ -1,39 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { connect } from "react-redux";
 import { Table } from "semantic-ui-react";
 import { deleteProducts } from "./services/submitProductDelete";
 import ProductForm from "./ProductForm";
 import { useRouteMatch } from "react-router-dom";
 
+//Can only be called if not standAlone mode
 const handleProductClick = (product, props, setShowModal) => {
   //send this information to the productForm state
   setShowModal(true);
   props.sendToFormControl(product);
 };
 
-const handleDeleteSelected = (selectedProducts,props, setSelectedProducts, setAllProducts) => {
-  let idArray = selectedProducts.map(prod=> prod.id);
-  if (selectedProducts.length > 0) {
+//Only used in StandAlone mode
+const handleDeleteSelected = (selectedProducts, props, setSelectedProducts) => {
+  //Creates an array of selected product ID's
+  let idArray = selectedProducts.map((prod) => prod.id);
+  if (idArray.length > 0) {
+    //Open confirm window
     if (
       window.confirm(
         "Are you sure you want to delete \nall the selected products"
       )
     ) {
+      //Sends array of ID's to backend for deletion
       deleteProducts(idArray);
-      let updatedProductArray = []
-      //Then remove from the Data store
-      selectedProducts.forEach(product=> props.removeOldProductFromStore(product));
-      //Removes each deleted product from the currently displayed list
-      idArray.forEach(elem=> updatedProductArray = [...updatedProductArray, props.productData.filter( product=> product.id !== elem)] )
-      setAllProducts(updatedProductArray.flat())
-      setSelectedProducts([])
-      
+      //Remove from the Redux Store
+      selectedProducts.forEach((product) =>
+        props.removeOldProductFromStore(product)
+      );
+      //Rebuild the displayed Products
+      let updatedProductArray = props.productData.filter((product) => {
+        return !idArray.includes(product.id);
+      });
+      props.updateProductStore(updatedProductArray.flat());
+      //Reset the selected products array
+      setSelectedProducts([]);
     } else {
       console.log("You cancelled");
     }
-  }
-  else {
-    alert("You need to select first")
+  } else {
+    alert("You need to select first");
   }
 };
 
@@ -57,13 +64,12 @@ const handleSelectedProduct = (
   } else {
     setSelectedProducts([...selectedProducts, prod]);
   }
-  // console.log(e.target.checked);
 };
 const handleSearchForm = (props, term) => {
   props.filterFormControl(term);
 };
 
-//Called by getProducts()
+//Called by getProducts() to build the table with the productData
 const ProductTable = (
   product,
   props,
@@ -92,7 +98,6 @@ const ProductTable = (
               )
             }
           />
-          {/* // {console.log(selectedProducts)} */}
         </Table.Cell>
       ) : null}
       <Table.Cell>{product.id}</Table.Cell>
@@ -104,16 +109,17 @@ const ProductTable = (
 
 const SearchListProducts = (props) => {
   let match = useRouteMatch();
-  const [allProducts, setAllProducts] = useState(props.productData);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [indexFrom, setIndexFrom] = useState(0);
   const [displayCount, setDisplayCount] = useState(10);
   const [showModal, setShowModal] = useState(false);
+  //This allows the component to be used in different settings depending on the URL - it is also used in the admin menu without URL
   const [standAlone, setStandAlone] = useState(
     match.path === "/account/RemoveProduct"
   );
+  //Builds the product table with the products filtered by string
   const getProducts = () => {
-    return allProducts
+    return props.productData
       .filter((el) =>
         el.title.toLowerCase().includes(props.searchTerm.toLowerCase())
       )
@@ -128,8 +134,8 @@ const SearchListProducts = (props) => {
         )
       );
   };
+  //Allows for pagination
   let itemsLeft = getProducts().length;
-
   const nextPage = () => {
     if (indexFrom > itemsLeft) {
       setIndexFrom(0);
@@ -138,7 +144,6 @@ const SearchListProducts = (props) => {
       setIndexFrom(indexFrom + displayCount);
     }
   };
-
   const prevPage = () => {
     if (indexFrom === 0) {
       return null;
@@ -180,7 +185,13 @@ const SearchListProducts = (props) => {
             {standAlone ? (
               <a
                 className="delete-btn"
-                onClick={() => handleDeleteSelected(selectedProducts,props, setSelectedProducts, setAllProducts)}
+                onClick={() =>
+                  handleDeleteSelected(
+                    selectedProducts,
+                    props,
+                    setSelectedProducts
+                  )
+                }
               >
                 Delete Selected
               </a>
@@ -214,13 +225,16 @@ const SearchListProducts = (props) => {
 };
 function mdp(dispatch) {
   return {
+    updateProductStore: (object) => {
+      dispatch({ type: "UPDATE_PRODUCT_STORE", payload: object });
+    },
     sendToFormControl: (object) => {
       dispatch({ type: "PRODUCT_FOR_EDIT", payload: object });
     },
     filterFormControl: (object) => {
       dispatch({ type: "SEARCH_TERM_CONTROL", payload: object });
     },
-      removeOldProductFromStore: (object) => {
+    removeOldProductFromStore: (object) => {
       dispatch({ type: "REMOVE_BY_ID", payload: object });
     },
   };

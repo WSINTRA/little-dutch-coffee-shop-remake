@@ -25,9 +25,6 @@ const handleDeleteSelected = (selectedProducts,props, setSelectedProducts, setAl
       selectedProducts.forEach(product=> props.removeOldProductFromStore(product));
       //Removes each deleted product from the currently displayed list
       idArray.forEach(elem=> updatedProductArray = [...updatedProductArray, props.productData.filter( product=> product.id !== elem)] )
-      // for (let index = 0; index < idArray.length; index++) {
-      //   updatedProductArray = [...updatedProductArray, props.productData.filter(product=> product.id !== idArray[index])]
-      // }
       setAllProducts(updatedProductArray.flat())
       setSelectedProducts([])
       

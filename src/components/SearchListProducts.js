@@ -82,7 +82,6 @@ const ProductTable = (
               )
             }
           />
-          {console.log(selectedProducts)}
         </Table.Cell>
       ) : null}
       <Table.Cell>{product.id}</Table.Cell>

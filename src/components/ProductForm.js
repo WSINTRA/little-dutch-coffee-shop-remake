@@ -32,6 +32,7 @@ const updateProducts = (props,standAlone) => {
     props.productForm,
     props.submitProductForm
   );
+  
   props.clearAllFormFields()
 };
 
@@ -45,6 +46,7 @@ const CheckboxClick = (props) => {
 
 const ProductForm = (props) => {
   let match = useRouteMatch();
+
   const [standAloneComp, setStandAloneComp] = useState(match.path === '/account/AddNewProduct')
   //This only triggers is the comp is being used as standalone, it fires the hook just before DOM render
   useLayoutEffect(() => {

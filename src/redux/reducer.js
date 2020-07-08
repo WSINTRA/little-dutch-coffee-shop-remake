@@ -1,5 +1,6 @@
 //reducer
 import initialState from './state.js';
+const UPDATE_PRODUCT_STORE = "UPDATE_PRODUCT_STORE"
 const CLEAR_ALL_FIELDS = "CLEAR_ALL_FIELDS";
 const EMPLOYEE_FORM_INPUT = "EMPLOYEE_FORM_INPUT";
 const REVIEW_ACTIVE = "REVIEW_ACTIVE";
@@ -159,6 +160,8 @@ const addReviewToUserAndProduct=(state, review)=>{
 
 function reducer( state = initialState , action){
 	switch(action.type){
+		case UPDATE_PRODUCT_STORE:
+			return {...state, productData: action.payload}
 		case CLEAR_ALL_FIELDS:
 			return {...state, productForm: {
 				breed: "",

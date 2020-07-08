@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Table } from "semantic-ui-react";
-import { deleteProducts } from "/services/submitProductDelete";
+import { deleteProducts } from "./services/submitProductDelete";
 import ProductForm from "./ProductForm";
 import { useRouteMatch } from "react-router-dom";
 
@@ -11,14 +11,26 @@ const handleProductClick = (product, props, setShowModal) => {
   props.sendToFormControl(product);
 };
 
-const handleDeleteSelected = (selectedProducts) => {
+const handleDeleteSelected = (selectedProducts,props, setSelectedProducts, setAllProducts) => {
+  let idArray = selectedProducts.map(prod=> prod.id);
   if (selectedProducts.length > 0) {
     if (
       window.confirm(
         "Are you sure you want to delete \nall the selected products"
       )
     ) {
-      deleteProducts(selectedProducts,removeOldProductFromStore);
+      deleteProducts(idArray);
+      let updatedProductArray = []
+      //Then remove from the Data store
+      selectedProducts.forEach(product=> props.removeOldProductFromStore(product));
+      //Removes each deleted product from the currently displayed list
+      idArray.forEach(elem=> updatedProductArray = [...updatedProductArray, props.productData.filter( product=> product.id !== elem)] )
+      // for (let index = 0; index < idArray.length; index++) {
+      //   updatedProductArray = [...updatedProductArray, props.productData.filter(product=> product.id !== idArray[index])]
+      // }
+      setAllProducts(updatedProductArray.flat())
+      setSelectedProducts([])
+      
     } else {
       console.log("You cancelled");
     }
@@ -48,7 +60,7 @@ const handleSelectedProduct = (
   } else {
     setSelectedProducts([...selectedProducts, prod]);
   }
-  console.log(e.target.checked);
+  // console.log(e.target.checked);
 };
 const handleSearchForm = (props, term) => {
   props.filterFormControl(term);
@@ -83,7 +95,7 @@ const ProductTable = (
               )
             }
           />
-          // {console.log(selectedProducts)}
+          {/* // {console.log(selectedProducts)} */}
         </Table.Cell>
       ) : null}
       <Table.Cell>{product.id}</Table.Cell>
@@ -95,6 +107,7 @@ const ProductTable = (
 
 const SearchListProducts = (props) => {
   let match = useRouteMatch();
+  const [allProducts, setAllProducts] = useState(props.productData);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [indexFrom, setIndexFrom] = useState(0);
   const [displayCount, setDisplayCount] = useState(10);
@@ -103,7 +116,7 @@ const SearchListProducts = (props) => {
     match.path === "/account/RemoveProduct"
   );
   const getProducts = () => {
-    return props.productData
+    return allProducts
       .filter((el) =>
         el.title.toLowerCase().includes(props.searchTerm.toLowerCase())
       )
@@ -170,7 +183,7 @@ const SearchListProducts = (props) => {
             {standAlone ? (
               <a
                 className="delete-btn"
-                onClick={() => handleDeleteSelected(selectedProducts)}
+                onClick={() => handleDeleteSelected(selectedProducts,props, setSelectedProducts, setAllProducts)}
               >
                 Delete Selected
               </a>

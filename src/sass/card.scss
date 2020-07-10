@@ -3,7 +3,7 @@
     margin: 2rem;
     display: flex;
     flex-direction: column;
-    justify-content: inherit;
+    justify-content: space-evenly;
     align-items: flex-start;
     border-style: solid;
     border-color: rgba(255, 255, 225, 0.2);
@@ -16,11 +16,14 @@
   0 41.8px 33.4px rgba(0, 0, 0, 0.086),
   0 100px 80px rgba(0, 0, 0, 0.12);
     width: 20rem;
-    height:50rem;
     overflow: hidden;
+    p {
+        height: 6rem;
+    }
     img {
         align-self: center;
         width: 20rem;
+        height: 15rem;
         
     }
     a {
@@ -28,6 +31,7 @@
         cursor: pointer;
     }
     h1 {
+        align-self: start;
         border-style: dashed;
         border-top-color: rgba(255, 255, 225, 0.1);
         border-right-color: rgba(54, 54, 47, 0.048);
@@ -40,5 +44,17 @@
     }
     h3 {
         align-self: flex-end;
+    }
+    .more-btn{
+        cursor: pointer;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        height: 3rem;
+        padding-top: 0.8rem;
+        width: 100%;
+        text-align: center;
+        background-color: darkolivegreen;
+        border-radius: 0.3rem;
+        box-shadow: 0rem 0.2rem 12px black;
     }
 }

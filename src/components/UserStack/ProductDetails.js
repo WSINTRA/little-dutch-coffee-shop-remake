@@ -24,12 +24,8 @@ const Reviews = (props) => {
 
 const BuyButton = (addToCart, props) => {
   return (
-    <div className="buy-button" onClick={() => addProductToCart(props)}>
-      <div className="buy-button__details">
+    <div className="buy-btn" onClick={() => addProductToCart(props)}>
         ADD TO CART
-        <br />
-        <h3>${Price(props.product.price)}</h3>
-      </div>
     </div>
   );
 };
@@ -50,42 +46,17 @@ const cartSuccess = (props) => {
 };
 const ProductDetails = (props) => {
   return (
-    <div>
-      <div className="product-responsive-view">
-        <div className="review-responsive">
-          <h2>Reviews</h2>
-          {Reviews(props)}
-        </div>
-        <div className="button-responsive">
-          {BuyButton(addProductToCart, props)}
-        </div>
-        {props.cartSuccessSwitch ? cartSuccess(props) : null}
+    <div className="product-details">
+      <h1>{props.product.title}</h1>
+      <div className="reviews">
+      <img size="small" alt={props.product.title} src={props.product.image} />
+      <div className="review">
+      {Reviews(props)}
       </div>
-      <div className="product-details">
-        {props.cartSuccessSwitch ? cartSuccess(props) : null}
-        <div className="left">
-          <div className="left-image">
-            <img size="small" alt={props.product.title} src={props.product.image} />
-          </div>
-          <div className="left-title">
-            <h2>{props.product.title}</h2>
-          </div>
-          <div className="left-breed">
-            <h4>{props.product.breed}</h4>
-          </div>
-          <div className="left-details">
-            <p>{props.product.description}</p>
-          </div>
-
-          {BuyButton(addProductToCart, props)}
-        </div>
-        <div className="right">
-          <div className="right-title">
-            <h2>Reviews</h2>
-          </div>
-          <div className="right-review">{Reviews(props)}</div>
-        </div>
       </div>
+      {props.cartSuccessSwitch ? cartSuccess(props) : null}
+      <h3>${Price(props.product.price)}</h3>
+      {BuyButton(addProductToCart, props)}
     </div>
   );
 };

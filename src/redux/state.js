@@ -1,4 +1,4 @@
-import {createFakeData} from './data'
+// import {createFakeData} from './data'
 
 const initialState = {
  reviewActive: false,
@@ -8,7 +8,7 @@ const initialState = {
  loggedIn: false,
  userData: {},
  cartItems: [],
- productData: createFakeData(),
+ productData: [],
  allCustomersData:[],
  searchTerm: "",
  editReviewForm: {

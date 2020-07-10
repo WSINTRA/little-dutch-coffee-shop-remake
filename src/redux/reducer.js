@@ -1,5 +1,6 @@
 //reducer
 import initialState from './state.js';
+const UPDATE_PRODUCT_STORE = "UPDATE_PRODUCT_STORE"
 const CLEAR_ALL_FIELDS = "CLEAR_ALL_FIELDS";
 const EMPLOYEE_FORM_INPUT = "EMPLOYEE_FORM_INPUT";
 const REVIEW_ACTIVE = "REVIEW_ACTIVE";
@@ -159,6 +160,8 @@ const addReviewToUserAndProduct=(state, review)=>{
 
 function reducer( state = initialState , action){
 	switch(action.type){
+		case UPDATE_PRODUCT_STORE:
+			return {...state, productData: action.payload}
 		case CLEAR_ALL_FIELDS:
 			return {...state, productForm: {
 				breed: "",
@@ -198,11 +201,13 @@ function reducer( state = initialState , action){
  		case ADD_TO_CART:
  		let addToCart = addingToCart(state.cartItems, action.payload)
  		let success = cartSuccess(state.cartSuccess)
- 		return {...state, cartItems: addToCart, cartSuccess:success}
+		 return {...state, cartItems: addToCart, cartSuccess:success}
+		 
  		case BACKSWITCH_PRODUCT_DETAIL:
- 		let displaySwitch = switchProductDetail(state.showProductDetail)
- 		let productDetail = setProductDetail(state.activeProductDetail, action.payload)
- 		return {...state, showProductDetail: displaySwitch, activeProductDetail: productDetail}
+ 		 let displaySwitch = switchProductDetail(state.showProductDetail)
+		 let productDetail = setProductDetail(state.activeProductDetail, action.payload)
+		 return {...state, showProductDetail: displaySwitch, activeProductDetail: productDetail}
+		 
 		case SEARCH_TERM_CONTROL:
 		return {...state, searchTerm: action.payload}
 		case REMOVE_BY_ID:

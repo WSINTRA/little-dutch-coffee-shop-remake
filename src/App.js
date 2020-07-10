@@ -1,18 +1,20 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import "./App.scss";
-import LandingPage from "./components/LandingPage";
-import UserPage from "./components/UserPage";
+import LandingPage from "./components/newUserStack/LandingPage";
+import UserPage from "./components/UserStack/UserPage";
 import { connect } from "react-redux";
-import RegisterForm from "./components/RegisterForm";
-import Header from "./components/Header";
-import Account from "./components/Account";
-import WeeklyMenu from "./components/WeeklyMenu";
-import ProductDetail from "./components/ProductDetails";
+import RegisterForm from "./components/newUserStack/RegisterForm";
+import Header from "./components/UserStack/Header";
+import Account from "./components/UserStack/Account";
+import WeeklyMenu from "./components/UserStack/WeeklyMenu";
+import ProductDetail from "./components/UserStack/ProductDetails";
 import fetchCustomers from "./components/services/customerFetch";
-import SalesStats from './components/SalesStats'
-import ProductForm from "./components/ProductForm"
-import SearchListProducts from "./components/SearchListProducts";
+import SalesStats from './components/AdminComponents/SalesStats'
+import ProductForm from "./components/AdminComponents/ProductForm"
+import SearchListProducts from "./components/AdminComponents/SearchListProducts";
+import CartOverview from './components/old_components/CartOverview'
+
 class App extends React.Component {
   state = {
     cartOpen: false,
@@ -98,6 +100,7 @@ class App extends React.Component {
             <Route exact path="/account/RemoveProduct" component={SearchListProducts} />
             <Route exact path="/account/AddNewUser" component={SalesStats} />
             <Route exact path="/account/RemoveUser" component={SalesStats} />
+            <Route exact path="/cart" component={CartOverview} />
 			 
           </>
         )}

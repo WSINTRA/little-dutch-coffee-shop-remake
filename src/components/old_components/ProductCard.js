@@ -1,9 +1,9 @@
 import React from "react";
-import Card from './Card'
+import Card from '../Card'
 import {fadeInRight} from 'react-animations';
 import styled, {keyframes} from 'styled-components';
 
-const Bounce = styled.div`animation: 2.8s ${keyframes`${fadeInRight}`} 1`;
+const Bounce = styled.div`animation: 0.8s ${keyframes`${fadeInRight}`} 1`;
 const ProductCard = (props) => {
 	
 	return (

@@ -1,40 +1,14 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import SalesStats from "./SalesStats";
-import AdminProducts from "./AdminProducts";
-import Customers from "./Customers";
+import SalesStats from "../AdminComponents/SalesStats";
+import AdminProducts from "../AdminComponents/AdminProducts";
+import Customers from "../AdminComponents/Customers";
 import YourOrders from "./YourOrders";
 import Reviews from "./Reviews";
 import { useSpring, animated } from "react-spring";
-import { Link } from "react-router-dom";
-
-const renderSelection = (option, props) => {
-  let selection =
-    [SalesStats, Customers, AdminProducts, YourOrders, Reviews] || [];
-  for (let i = 0; i < selection.length; i++) {
-    if (selection[i].name === option) {
-      return selection[i](props);
-    }
-  }
-};
-
-const displayOption = (option, fadeIn, setFadeIn, growWindow, props) => {
-  return (
-    <animated.div style={growWindow}>
-      <div className="frame">
-        <div onClick={() => setFadeIn(!fadeIn)}>
-          <a>X</a>
-        </div>
-        <h1>{option}</h1>
-        {renderSelection(option, props)}
-      </div>
-    </animated.div>
-  );
-};
-
-const clickActionForOptions = (e, props) => {
-  props.activeOptionSelect(e.target.innerText);
-};
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
+import Cart from './Cart';
 
 const userMenu = [
   "YourOrders", 
@@ -49,6 +23,40 @@ const staffMenu = [
   "Employees",
   "AdminProducts",
 ];
+
+const renderSelection = (option, props) => {
+  //Add any new menu items in here for the Account page, eventually they should match the userMenu and staffMenu
+  let selection = {
+    "SalesStats":SalesStats, 
+    "Customers":Customers, 
+    "AdminProducts":AdminProducts, 
+    "YourOrders":YourOrders, 
+    "Reviews":Reviews,
+    "Cart":Cart
+  };
+    //If the option is a valid selection then return the React Functional Component with props
+  if(!!selection[option]){
+    return selection[option](props)
+  }
+};
+
+const displayOption = (option, fadeIn, setFadeIn, growWindow, props) => {
+  return (
+    <animated.div style={growWindow}>
+      <div className="frame">
+        <div className="close-icon" onClick={() => setFadeIn(!fadeIn)}>
+          <FontAwesomeIcon size="3x" icon={faWindowClose} />
+        </div>
+        <h1>{option}</h1>
+        {renderSelection(option, props)}
+      </div>
+    </animated.div>
+  );
+};
+
+const clickActionForOptions = (e, props) => {
+  props.activeOptionSelect(e.target.innerText);
+};
 
 const Account = (props) => {
   const [fadeIn, setFadeIn] = useState(true);
@@ -89,7 +97,7 @@ const Account = (props) => {
                     className={`option`}
                     onClick={() => setFadeIn(!fadeIn)}
                   >
-                    <a onClick={(e) => clickActionForOptions(e, props)}>
+                    <a href="#" onClick={(e) => clickActionForOptions(e, props)}>
                       {menu}
                     </a>
                   </div>
@@ -107,7 +115,7 @@ const Account = (props) => {
                     className={`option`}
                     onClick={() => setFadeIn(!fadeIn)}
                   >
-                    <a onClick={(e) => clickActionForOptions(e, props)}>
+                    <a href="#" onClick={(e) => clickActionForOptions(e, props)}>
                       {menu}
                     </a>
                   </div>

@@ -42,7 +42,6 @@ function mdp(dispatch){
     removeItemFromCart: (action)=>{
       dispatch({type:"REMOVE_FROM_CART", payload:action})
     }
-
   }
 }
 function msp(state){

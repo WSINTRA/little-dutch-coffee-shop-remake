@@ -1,5 +1,7 @@
+$highlightColor: #b83b5e;
 .account {
-  background-color: rgba(66, 39, 32, 0.521);
+  background-color: $highlightColor;
+  // background-color: rgba(66, 39, 32, 0.521);
   border-color: rgba(138, 80, 66, 0.521);
   border-radius: 0.1rem;
   border-style: dashed;

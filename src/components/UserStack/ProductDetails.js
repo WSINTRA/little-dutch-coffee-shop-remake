@@ -34,12 +34,8 @@ const cartSuccess = (props) => {
   return (
     <Bounce>
       <div className="cart-success">
-        <h4>{props.product.title}</h4>
         <p>Succesfully added to your shopping cart</p>
         <br />
-        <div className="cart-button" onClick={() => props.closeSuccess()}>
-          CLOSE
-        </div>
       </div>
     </Bounce>
   );
@@ -50,6 +46,7 @@ const ProductDetails = (props) => {
       <h1>{props.product.title}</h1>
       <div className="reviews">
       <img size="small" alt={props.product.title} src={props.product.image} />
+      <p>{props.product.description}</p>
       <div className="review">
       {Reviews(props)}
       </div>

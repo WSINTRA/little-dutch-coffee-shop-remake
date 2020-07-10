@@ -1,14 +1,13 @@
+$overlay: 1rem;
+
 .product-card{
-    padding-right: 0.3rem;
+    padding-top: $overlay;
     margin: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: flex-start;
-    border-style: solid;
-    border-color: rgba(255, 255, 225, 0.2);
-    background-color: rgba(255, 255, 255, 1);
-    box-shadow: 1px 1px 5px 1px whitesmoke,
+    align-items: center;
+    box-shadow: 
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
   0 6.7px 5.3px rgba(0, 0, 0, 0.048),
   0 12.5px 10px rgba(0, 0, 0, 0.06),
@@ -16,7 +15,18 @@
   0 41.8px 33.4px rgba(0, 0, 0, 0.086),
   0 100px 80px rgba(0, 0, 0, 0.12);
     width: 20rem;
+    height: 20rem;
+    border-radius: 0.3rem;
     overflow: hidden;
+    .card-overlay{
+        width: 20rem;
+        height: 20rem;
+        margin-top: -$overlay;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 0;
+        filter: blur(4px);
+    }
     p {
         height: 6rem;
     }
@@ -31,16 +41,13 @@
         cursor: pointer;
     }
     h1 {
-        align-self: start;
-        border-style: dashed;
-        border-top-color: rgba(255, 255, 225, 0.1);
-        border-right-color: rgba(54, 54, 47, 0.048);
-        border-bottom: none;
-        border-left: none;
+        color: white;
         width: min-content;
         margin: inherit;
         text-align: left;
-        height: 8rem;
+        position: relative;
+        border-radius: 5rem;
+        background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,0,0,0.6824930655856092) 0%, rgba(0,0,0,0.37156869583771013) 30%, rgba(255,255,255,0) 70%);
     }
     h3 {
         align-self: flex-end;

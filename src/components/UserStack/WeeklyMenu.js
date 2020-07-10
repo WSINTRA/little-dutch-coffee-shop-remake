@@ -6,6 +6,14 @@ import { useSpring, animated } from "react-spring";
 import CartOverview from '../old_components/CartOverview';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
+
+
+const onDetailClosed=(props)=>{
+  props.backSwitchProductDetail();
+  props.closeSuccess();
+
+}
+
 const WeeklyMenu = (props) => {
   const spring = useSpring({ opacity: 1, from: { opacity: 0 } });
   let categories = props.productData || [];
@@ -13,7 +21,7 @@ const WeeklyMenu = (props) => {
     <animated.div style={spring}>
       {props.showProductDetail ? (
 		  <>
-		  <div style={{marginLeft: "5rem", cursor:"pointer"}} className="close-icon" onClick={()=>props.backSwitchProductDetail()}>
+		  <div style={{marginLeft: "5rem", cursor:"pointer"}} className="close-icon" onClick={()=>onDetailClosed(props)}>
           <FontAwesomeIcon size="3x" icon={faWindowClose} />
         </div>
         <ProductDetail product={props.activeProductDetail} />
@@ -42,6 +50,9 @@ function mdp(dispatch) {
   return {
     backSwitchProductDetail: (object) => {
       dispatch({ type: "BACKSWITCH_PRODUCT_DETAIL", payload: object });
+    },
+    closeSuccess: (action) => {
+      dispatch({ type: "CLOSE_SUCCESS_WINDOW", payload: action });
     },
   };
 }

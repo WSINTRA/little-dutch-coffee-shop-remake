@@ -42,20 +42,22 @@ const stars = 4
 const Card =(props)=> {
 	const [more, setMore] = useState(false);
 	return (
-		<div className="product-card">
+		<div className="product-card" onClick={()=>openProductDetails(props)} style={{backgroundPosition: 'center',
+		backgroundSize: 'cover',backgroundImage: `url(${props.image})`}}>
+			<div className="card-overlay"></div>
 			<Bounce><h1>{props.title}</h1></Bounce>
-			<img alt="product" src={props.image}/>
+			{/* <img alt="product" src={props.image}/> */}
 			<StarRatingComponent 
 				name="rate1" 
 				starCount={5}
 				value={stars}
 				/>
-			<p>{showFullDescription(props.description, more) + " "}
-				<a onClick={()=>setMore(!more)}>{changeMoreToLess(more)}</a></p>
-			<h3>${standardisePrice(props.price)}</h3>
-			<div className="more-btn" onClick={()=>openProductDetails(props)}>Details</div>
+			<h1>${standardisePrice(props.price)}</h1>
+			
 		</div>
 	)
 }
 
 export default Card;
+
+//Make card an image overlay with title in center

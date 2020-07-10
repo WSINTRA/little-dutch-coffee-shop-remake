@@ -1,5 +1,7 @@
 //reducer
 import initialState from './state.js';
+const UPDATE_PRODUCT_STORE = "UPDATE_PRODUCT_STORE"
+const CLEAR_ALL_FIELDS = "CLEAR_ALL_FIELDS";
 const EMPLOYEE_FORM_INPUT = "EMPLOYEE_FORM_INPUT";
 const REVIEW_ACTIVE = "REVIEW_ACTIVE";
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
@@ -12,7 +14,6 @@ const WEEKLY_CHECKBOX = "WEEKLY_CHECKBOX";
 const STAR_RATE = "STAR_RATE";
 const SOME_OPTION = "SOME_OPTION";
 const SOME_LINK = "SOME_LINK";
-const ADD_LOGIN_BOOL = "ADD_LOGIN_BOOL";
 const REVIEW_FORM_CONTROL = "REVIEW_FORM_CONTROL";
 const PRODUCT_FORM_CONTROL = "PRODUCT_FORM_CONTROL";
 const LOGIN_FORM_CONTROL = "LOGIN_FORM_CONTROL";
@@ -24,7 +25,6 @@ const SUBMIT_PRODUCT_FORM = "SUBMIT_PRODUCT_FORM";
 const CLEAR_PRODUCT_ID = "CLEAR_PRODUCT_ID";
 const REMOVE_BY_ID = "REMOVE_BY_ID";
 const SEARCH_TERM_CONTROL = "SEARCH_TERM_CONTROL";
-const URL_PATH = "URL_PATH";
 const LOGOUT = "LOGOUT";
 const BACKSWITCH_PRODUCT_DETAIL = "BACKSWITCH_PRODUCT_DETAIL"
 
@@ -160,6 +160,19 @@ const addReviewToUserAndProduct=(state, review)=>{
 
 function reducer( state = initialState , action){
 	switch(action.type){
+		case UPDATE_PRODUCT_STORE:
+			return {...state, productData: action.payload}
+		case CLEAR_ALL_FIELDS:
+			return {...state, productForm: {
+				breed: "",
+				productTitle: "",
+				description: "",
+				price: 0.00,
+				imageURL: "",
+				starRate: 0,
+				checkbox: true,
+				editID: 0,
+			} }
 		case EMPLOYEE_FORM_INPUT:
 		let employeeUpdate = formObjectCreator("employeeForm", action.payload, state)
 		return {...state, employeeForm: employeeUpdate}
@@ -188,11 +201,13 @@ function reducer( state = initialState , action){
  		case ADD_TO_CART:
  		let addToCart = addingToCart(state.cartItems, action.payload)
  		let success = cartSuccess(state.cartSuccess)
- 		return {...state, cartItems: addToCart, cartSuccess:success}
+		 return {...state, cartItems: addToCart, cartSuccess:success}
+		 
  		case BACKSWITCH_PRODUCT_DETAIL:
- 		let displaySwitch = switchProductDetail(state.showProductDetail)
- 		let productDetail = setProductDetail(state.activeProductDetail, action.payload)
- 		return {...state, showProductDetail: displaySwitch, activeProductDetail: productDetail}
+ 		 let displaySwitch = switchProductDetail(state.showProductDetail)
+		 let productDetail = setProductDetail(state.activeProductDetail, action.payload)
+		 return {...state, showProductDetail: displaySwitch, activeProductDetail: productDetail}
+		 
 		case SEARCH_TERM_CONTROL:
 		return {...state, searchTerm: action.payload}
 		case REMOVE_BY_ID:

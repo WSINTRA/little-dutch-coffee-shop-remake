@@ -1,5 +1,5 @@
 import * as React from "react";
-import fetchCustomers from "./services/customerFetch";
+import fetchCustomers from "../services/customerFetch";
 import { Button, Image, Table } from "semantic-ui-react";
 
 function Customers(props) {

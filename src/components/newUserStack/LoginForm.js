@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import React from "react";
-import submitLogin from "./services/submitLogin";
+import submitLogin from "../services/submitLogin";
 
 const controlledInput = (e, props) => {
   const changeFunction = props.FormControl;
@@ -14,7 +14,6 @@ const controlledInput = (e, props) => {
 
 const LoginForm = (props) => (
   <div id="login" className="login">
-    {console.log(props, "login")}
     <h1>Welcome</h1>
     <Link to="/register">Sign up?</Link>
     <div className="login-form">

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import React from "react";
-import submitRegistration from "./services/submitRegistration";
+import submitRegistration from "../services/submitRegistration";
 
 const passwordValid = (pass, conf) => {
   if (pass === conf) {
@@ -28,15 +28,15 @@ const cityValid = (city) => {
     return true;
   }
 };
-const stateValid = (state) => {
-  //This must a be a valid legal state for recreational use
-  //The recreational use of cannabis is legalized in 11 states
-  // According to https://en.wikipedia.org/wiki/Legality_of_cannabis_by_U.S._jurisdiction
-  //(Alaska, California, Colorado, Illinois, Maine, Massachusetts,
-  //Michigan, Nevada, Oregon, Vermont, and Washington)
-  //
-  //Will implement this later.
-};
+// const stateValid = (state) => {
+//   //This must a be a valid legal state for recreational use
+//   //The recreational use of cannabis is legalized in 11 states
+//   // According to https://en.wikipedia.org/wiki/Legality_of_cannabis_by_U.S._jurisdiction
+//   //(Alaska, California, Colorado, Illinois, Maine, Massachusetts,
+//   //Michigan, Nevada, Oregon, Vermont, and Washington)
+//   //
+//   //Will implement this later.
+// };
 const zipValid = (zip) => {
   let zipCodeCheck = /^\d{5}$|^\d{5}-\d{4}$/.test(zip);
   return zipCodeCheck;

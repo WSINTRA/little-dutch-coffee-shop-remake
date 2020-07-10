@@ -1,7 +1,7 @@
 import React, { useState, useLayoutEffect } from "react";
 import { connect } from "react-redux";
 import { Table } from "semantic-ui-react";
-import { deleteProducts } from "./services/submitProductDelete";
+import { deleteProducts } from "../services/submitProductDelete";
 import ProductForm from "./ProductForm";
 import { useRouteMatch } from "react-router-dom";
 

@@ -1,8 +1,8 @@
 import React from "react";
-import logo from "../images/header-logo.png";
-import menuOpen from "../svg/Menu.svg";
+import logo from "../../images/header-logo.png";
+import menuOpen from "../../svg/Menu.svg";
 import { Link } from "react-router-dom";
-import close from "../images/Close.png";
+import close from "../../images/Close.png";
 import { connect } from "react-redux";
 import { useSpring, animated } from "react-spring";
 

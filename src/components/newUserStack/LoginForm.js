@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import React from "react";
-import submitLogin from "./services/submitLogin";
+import submitLogin from "../services/submitLogin";
 
 const controlledInput = (e, props) => {
   const changeFunction = props.FormControl;

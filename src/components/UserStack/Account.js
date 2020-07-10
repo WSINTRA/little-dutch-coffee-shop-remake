@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import SalesStats from "./SalesStats";
-import AdminProducts from "./AdminProducts";
-import Customers from "./Customers";
+import SalesStats from "../AdminComponents/SalesStats";
+import AdminProducts from "../AdminComponents/AdminProducts";
+import Customers from "../AdminComponents/Customers";
 import YourOrders from "./YourOrders";
 import Reviews from "./Reviews";
 import { useSpring, animated } from "react-spring";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
+import Cart from './Cart';
 
 const userMenu = [
   "YourOrders", 
@@ -30,7 +31,8 @@ const renderSelection = (option, props) => {
     "Customers":Customers, 
     "AdminProducts":AdminProducts, 
     "YourOrders":YourOrders, 
-    "Reviews":Reviews
+    "Reviews":Reviews,
+    "Cart":Cart
   };
     //If the option is a valid selection then return the React Functional Component with props
   if(!!selection[option]){

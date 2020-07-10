@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useState } from 'react'
 import StarRatingComponent from "react-star-rating-component";
-import submitProduct from "./services/submitProduct";
+import submitProduct from "../services/submitProduct";
 
 import { connect } from "react-redux";
 import styled, { keyframes } from "styled-components";

@@ -201,11 +201,13 @@ function reducer( state = initialState , action){
  		case ADD_TO_CART:
  		let addToCart = addingToCart(state.cartItems, action.payload)
  		let success = cartSuccess(state.cartSuccess)
- 		return {...state, cartItems: addToCart, cartSuccess:success}
+		 return {...state, cartItems: addToCart, cartSuccess:success}
+		 
  		case BACKSWITCH_PRODUCT_DETAIL:
- 		let displaySwitch = switchProductDetail(state.showProductDetail)
- 		let productDetail = setProductDetail(state.activeProductDetail, action.payload)
- 		return {...state, showProductDetail: displaySwitch, activeProductDetail: productDetail}
+ 		 let displaySwitch = switchProductDetail(state.showProductDetail)
+		 let productDetail = setProductDetail(state.activeProductDetail, action.payload)
+		 return {...state, showProductDetail: displaySwitch, activeProductDetail: productDetail}
+		 
 		case SEARCH_TERM_CONTROL:
 		return {...state, searchTerm: action.payload}
 		case REMOVE_BY_ID:

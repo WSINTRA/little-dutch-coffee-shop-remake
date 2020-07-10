@@ -1,9 +1,16 @@
 .search-list-products {
   padding-left: 5rem;
   padding-right: 5rem;
+  padding-top: 2rem;
+  background-color: white;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  border-radius: 0.3rem;
+  border: 0.003rem solid black;
   
   .delete-btn {
     cursor: pointer;
+    top: 12rem;
     position: fixed;
     margin-left: 2rem;
     padding: 0.5rem;

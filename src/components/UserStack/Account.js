@@ -17,6 +17,10 @@ const userMenu = [
   "Account Settings"
 ];
 const staffMenu = [
+  "YourOrders", 
+  "Reviews", 
+  "Cart", 
+  "Account Settings",
   "SalesStats",
   "AllOrders",
   "Customers",

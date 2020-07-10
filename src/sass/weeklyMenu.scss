@@ -1,12 +1,10 @@
 .weekly-display {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  background-color: rgba(66, 39, 32, 0.521);
+  flex-direction: column;
+  background-color: white;
   border-color: rgba(138, 80, 66, 0.521);
-  border-radius: 0.1rem;
-  border-style: dashed;
+  border-radius: 0.3rem;
+  border-style: solid;
   border-width: 0.003rem;
   margin-left: 5rem;
   margin-right: 5rem;
@@ -19,9 +17,13 @@
     margin-right: 0.2rem;
   }
   .product-filters {
-    color: white;
+    // color: black;
   }
   .products-list {
-    display: contents;
+    display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  
   }
 }

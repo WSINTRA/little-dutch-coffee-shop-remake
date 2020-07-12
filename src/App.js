@@ -16,9 +16,6 @@ import SearchListProducts from "./components/AdminComponents/SearchListProducts"
 import CartOverview from './components/old_components/CartOverview'
 
 class App extends React.Component {
-  state = {
-    cartOpen: false,
-  };
 
   componentDidMount() {
     let userUrl = "http://localhost:3050/v1/profile";
@@ -59,6 +56,9 @@ class App extends React.Component {
           this.props.createProductStateFromFetch(res);
         });
     }
+    if (localStorage.cart){
+      console.log(localStorage.cart)
+    }
   }
 
   LogoutFunction = (props) => {
@@ -73,8 +73,9 @@ class App extends React.Component {
     return (
 
       <div className="container">
+
         {!this.props.loggedIn ? (
-          <>
+          <React.Fragment>
             <div className="heading">
               <h1>{`${business_header}`}</h1>
               <hr />
@@ -84,10 +85,11 @@ class App extends React.Component {
             </div>
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/register" component={RegisterForm} />{" "}
-          </>
+          </React.Fragment>
         ) : (
-          <>
+          <React.Fragment>
             <Header logout={() => this.LogoutFunction()} />
+            {this.props.cartOpen ? <CartOverview/> : <React.Fragment>
             <Route exact path="/" component={UserPage} />
             <Route exact path="/account" component={Account} />
             <Route exact path="/menu" component={WeeklyMenu} />
@@ -100,9 +102,9 @@ class App extends React.Component {
             <Route exact path="/account/RemoveProduct" component={SearchListProducts} />
             <Route exact path="/account/AddNewUser" component={SalesStats} />
             <Route exact path="/account/RemoveUser" component={SalesStats} />
-            <Route exact path="/cart" component={CartOverview} />
-			 
-          </>
+            <Route exact path="/cart" component={CartOverview} /></React.Fragment>
+			       }
+          </React.Fragment>
         )}
       </div>
     );
@@ -112,6 +114,7 @@ class App extends React.Component {
 function msp(store) {
   return {
     loggedIn: store.loggedIn,
+    cartOpen: store.cartOpen
   };
 }
 function mdp(dispatch) {

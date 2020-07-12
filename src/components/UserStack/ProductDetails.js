@@ -2,6 +2,9 @@ import React from "react";
 import { fadeIn } from "react-animations";
 import styled, { keyframes } from "styled-components";
 import { connect } from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCannabis, faShoppingBasket } from '@fortawesome/free-solid-svg-icons'
+
 const Bounce = styled.div`
   animation: 0.8s ${keyframes`${fadeIn}`} 1;
 `;
@@ -34,6 +37,11 @@ const cartSuccess = (props) => {
   return (
     <Bounce>
       <div className="cart-success">
+        <div onClick={()=>props.openCart(true)}>
+        <div className="close-icon" >
+              <FontAwesomeIcon size="3x" icon={faCannabis} /> 
+              <FontAwesomeIcon size="3x" icon={faShoppingBasket} />
+            </div> </div>
         <p>Succesfully added to your shopping cart</p>
         <br />
       </div>
@@ -65,6 +73,9 @@ function mdp(dispatch) {
     closeSuccess: (action) => {
       dispatch({ type: "CLOSE_SUCCESS_WINDOW", payload: action });
     },
+    openCart: (action)=> {
+      dispatch({ type: "TOGGLE_CART_OVERVIEW", payload: action });
+    }
   };
 }
 

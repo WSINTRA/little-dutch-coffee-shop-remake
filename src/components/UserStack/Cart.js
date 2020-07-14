@@ -1,8 +1,12 @@
-import CartOverview from '../old_components/CartOverview'
+import CartStatement from './CartStatement'
 import React from 'react';
 
+
 const Cart=(props)=>{
-    return ( <CartOverview/> )
+    return ( 
+    	<div>    
+        <CartStatement/>
+        </div> )
 }
 
 export default Cart;

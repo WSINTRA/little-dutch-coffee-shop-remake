@@ -5,25 +5,38 @@ import { Link } from "react-router-dom";
 import close from "../../images/Close.png";
 import { connect } from "react-redux";
 import { useSpring, animated } from "react-spring";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+
+const revertToggledItems = (props) => {
+  props.closeSuccess();
+  props.toggleProductDetail(false);
+};
 
 const Navigation = (props) => {
   const page = useSpring({ opacity: 1, from: { opacity: 0 } });
   return (
     <animated.div style={page}>
-      <ul>
-        <li>
+      <ul onClick={() => revertToggledItems(props)}>
+        <li >
           <Link to="/menu"> Weekly menu </Link>
         </li>
-        <li>
+        <li >
           <Link to="/"> Stash box </Link>
         </li>
-        <li>
+        <li >
           <Link to="/account"> Account </Link>
         </li>
+
         <li>
           <Link onClick={() => props.logout()} to="/">
             {" "}
             Logout{" "}
+          </Link>
+        </li>
+        <li>
+          <Link to="/cart">
+            <FontAwesomeIcon size="1x" icon={faShoppingCart} />
           </Link>
         </li>
       </ul>
@@ -67,6 +80,12 @@ function mdp(dispatch) {
   return {
     openCloseMenu: (action) => {
       dispatch({ type: "TOGGLE_MENU", payload: action });
+    },
+    closeSuccess: (action) => {
+      dispatch({ type: "CLOSE_SUCCESS_WINDOW", payload: action });
+    },
+    toggleProductDetail: (object) => {
+      dispatch({ type: "TOGGLE_PRODUCT_DETAIL", payload: object });
     },
   };
 }

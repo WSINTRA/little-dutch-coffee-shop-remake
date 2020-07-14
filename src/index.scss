@@ -18,7 +18,13 @@ body {
     color: rgb(25, 25, 25);
    // overflow-x: hidden;
 }
-
+button {
+  background-color: $backgroundColor;
+    border-color: black;
+    border-radius: 0.3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
 a {
   text-decoration: none;
   color: $link-color;

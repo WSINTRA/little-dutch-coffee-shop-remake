@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import React from "react";
 import submitRegistration from "../services/submitRegistration";
+import logo from "../../images/header-logo.png";
 
 const passwordValid = (pass, conf) => {
   if (pass === conf) {
@@ -84,9 +85,11 @@ const ControlledInput = (props, input) => {
 
 const RegisterForm = (props) => (
   <div id="register" className="register">
+    
     <h1>Sign up</h1>
     <Link to="/">Login ?</Link>
     <div className="register-form">
+    <img className="logo" style={{ width: "150px" }} alt="logo" src={logo} />
       <div className="row-1">
         {/* <label >email</label> */}
         <input

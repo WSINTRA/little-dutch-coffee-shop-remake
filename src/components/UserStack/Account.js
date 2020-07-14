@@ -13,7 +13,6 @@ import Cart from './Cart';
 const userMenu = [
   "YourOrders", 
   "Reviews", 
-  "Cart", 
   "Account Settings"
 ];
 const staffMenu = [
@@ -59,6 +58,7 @@ const displayOption = (option, fadeIn, setFadeIn, growWindow, props) => {
 };
 
 const clickActionForOptions = (e, props) => {
+
   props.activeOptionSelect(e.target.innerText);
 };
 
@@ -140,7 +140,7 @@ function mdp(dispatch) {
     },
     allCustomers: (action) => {
       dispatch({ type: "ALL_CUSTOMERS", payload: action });
-    },
+    }
   };
 }
 function msp(state) {

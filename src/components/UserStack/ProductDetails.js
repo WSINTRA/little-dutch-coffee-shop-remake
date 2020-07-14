@@ -1,9 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { fadeIn } from "react-animations";
 import styled, { keyframes } from "styled-components";
 import { connect } from "react-redux";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCannabis, faShoppingBasket } from '@fortawesome/free-solid-svg-icons'
 
 const Bounce = styled.div`
   animation: 0.8s ${keyframes`${fadeIn}`} 1;
@@ -28,7 +27,7 @@ const Reviews = (props) => {
 const BuyButton = (addToCart, props) => {
   return (
     <div className="buy-btn" onClick={() => addProductToCart(props)}>
-        ADD TO CART
+      ADD TO CART
     </div>
   );
 };
@@ -36,13 +35,13 @@ const BuyButton = (addToCart, props) => {
 const cartSuccess = (props) => {
   return (
     <Bounce>
-      <div className="cart-success">
-        <div onClick={()=>props.openCart(true)}>
-        <div className="close-icon" >
-              <FontAwesomeIcon size="3x" icon={faCannabis} /> 
-              <FontAwesomeIcon size="3x" icon={faShoppingBasket} />
-            </div> </div>
-        <p>Succesfully added to your shopping cart</p>
+      <div style={{ paddingTop: "2rem" }} className="cart-success">
+        <Link to="/cart">
+          <p style={{ color: "#237653" }}>
+            Succesfully added {props.cartItemQuantity}x<br/>
+            <b>{props.product.title}</b> to your shopping cart
+          </p>
+        </Link>
         <br />
       </div>
     </Bounce>
@@ -53,11 +52,9 @@ const ProductDetails = (props) => {
     <div className="product-details">
       <h1>{props.product.title}</h1>
       <div className="reviews">
-      <img size="small" alt={props.product.title} src={props.product.image} />
-      <p>{props.product.description}</p>
-      <div className="review">
-      {Reviews(props)}
-      </div>
+        <img size="small" alt={props.product.title} src={props.product.image} />
+        <p>{props.product.description}</p>
+        <div className="review">{Reviews(props)}</div>
       </div>
       {props.cartSuccessSwitch ? cartSuccess(props) : null}
       <h3>${Price(props.product.price)}</h3>
@@ -73,15 +70,13 @@ function mdp(dispatch) {
     closeSuccess: (action) => {
       dispatch({ type: "CLOSE_SUCCESS_WINDOW", payload: action });
     },
-    openCart: (action)=> {
-      dispatch({ type: "TOGGLE_CART_OVERVIEW", payload: action });
-    }
   };
 }
 
 function msp(state) {
   return {
     cartSuccessSwitch: state.cartSuccess,
+    cartItemQuantity: state.cartItemQuantity,
   };
 }
 

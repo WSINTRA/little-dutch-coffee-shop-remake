@@ -13,7 +13,6 @@ import Cart from './Cart';
 const userMenu = [
   "YourOrders", 
   "Reviews", 
-  "Cart", 
   "Account Settings"
 ];
 const staffMenu = [

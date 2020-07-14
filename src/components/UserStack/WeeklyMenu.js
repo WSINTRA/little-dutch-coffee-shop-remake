@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import Card from "./Card";
 import ProductDetail from "./ProductDetails";
 import { useSpring, animated } from "react-spring";
-import CartOverview from '../old_components/CartOverview';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 

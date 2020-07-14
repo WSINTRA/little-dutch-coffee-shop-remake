@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import React from "react";
 import submitLogin from "../services/submitLogin";
-
+import logo from "../../images/header-logo.png";
 const controlledInput = (e, props) => {
   const changeFunction = props.FormControl;
   const value = e.target.value;
@@ -17,6 +17,7 @@ const LoginForm = (props) => (
     <h1>Welcome</h1>
     <Link to="/register">Sign up?</Link>
     <div className="login-form">
+    <img className="logo" style={{ width: "150px" }} alt="logo" src={logo} />
       <input
         name="username"
         placeholder="Email address"

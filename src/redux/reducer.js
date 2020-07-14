@@ -1,7 +1,6 @@
 //reducer
 import initialState from "./state.js";
 const TOGGLE_PRODUCT_DETAIL = "TOGGLE_PRODUCT_DETAIL";
-const TOGGLE_CART_OVERVIEW = "TOGGLE_CART_OVERVIEW";
 const UPDATE_PRODUCT_STORE = "UPDATE_PRODUCT_STORE";
 const CLEAR_ALL_FIELDS = "CLEAR_ALL_FIELDS";
 const EMPLOYEE_FORM_INPUT = "EMPLOYEE_FORM_INPUT";
@@ -91,11 +90,14 @@ const logginIn = (state, userData) => {
 const logout = () => {
   localStorage.clear();
 };
-const addingToCart = (stateCart, product) => {
-  let stateCopy = [...stateCart];
-  stateCopy.push(product);
-  localStorage.setItem('cart', JSON.stringify(stateCopy))
-  return stateCopy;
+const addingToCart = (state, cartItem) => {
+  let cart = [...state.cartItems]
+  let itemBasket = { cartIndex: state.cartPos, itemId: cartItem.id, itemPrice:cartItem.price, itemTitle:cartItem.title }
+  let updatedCart = [...cart, itemBasket]
+  let increasePos = state.cartPos + 1
+  let updatedState = {...state, cartPos: increasePos, cartItems:updatedCart  }
+  // localStorage.setItem('cart', JSON.stringify(stateCopy))
+  return updatedState;
 };
 const cartSuccess = (stateCartSucess) => {
   let stateCopy = stateCartSucess;
@@ -113,18 +115,10 @@ const addAllCustomers = (stateAllCustomerData, data) => {
   return stateCopy;
 };
 const removeFromCart = (state, itemRemID) => {
-  let cartItems = state.cartItems
-    .map((item) => {
-      if (item.id !== itemRemID) {
-        return item;
-      }
-      return null;
-    })
-    .filter(function (el) {
-      return el != null;
-    });
-  localStorage.setItem('cart', JSON.stringify(cartItems))
-  return cartItems;
+  let lastSeenPos = state.cartPos-1;
+  let cart = [...state.cartItems]
+  let updatedCart = cart.filter(item=>item.cartIndex !==itemRemID)
+  return {...state, cartItems: updatedCart, cartPos: lastSeenPos}
 };
 
 const ActiveReview = (stateActiveReview) => {
@@ -142,6 +136,7 @@ const addReviewToUserAndProduct = (state, review) => {
   newReview.product_id = review.payload.product_id;
   newReview.title = review.payload.title;
   newReview.user_id = review.payload.user_id;
+
   const existingCheck = (userCopy, newReview) => {
     let userData = userCopy.reviews.filter(
       (review) => review.product_id !== newReview.product_id
@@ -149,7 +144,9 @@ const addReviewToUserAndProduct = (state, review) => {
     userData.push(newReview);
     return userData;
   };
+
   let reviewsArray = existingCheck(stateCopy.userData, newReview);
+
   stateCopy.userData.reviews = reviewsArray;
   stateCopy.productData
     .filter((prod) => prod.id === newReview.product_id)[0]
@@ -162,10 +159,6 @@ function reducer(state = initialState, action) {
     case TOGGLE_PRODUCT_DETAIL: 
     // console.log(action.payload)
     return {...state, showProductDetail: action.payload}
-
-    case TOGGLE_CART_OVERVIEW:
-    // console.log(action.payload)
-    return { ...state, cartOpen: action.payload}
     case UPDATE_PRODUCT_STORE:
       return { ...state, productData: action.payload };
     case CLEAR_ALL_FIELDS:
@@ -197,10 +190,10 @@ function reducer(state = initialState, action) {
     case REVIEW_ACTIVE:
       let activateReview = ActiveReview(state.reviewActive);
       return { ...state, reviewActive: activateReview };
-
+//Think about how I add an item to the cart and how I rmeove them.. Does the cart need the full object ?
     case REMOVE_FROM_CART:
       let removeItem = removeFromCart(state, action.payload);
-      return { ...state, cartItems: removeItem };
+      return { ...removeItem };
 
     case LOGOUT:
       logout();
@@ -218,17 +211,19 @@ function reducer(state = initialState, action) {
       return { ...state, allCustomersData: allCustData };
 
     case CLOSE_SUCCESS_WINDOW:
+      let cartItemReset = 0
       let successClose = false;
-      return { ...state, cartSuccess: successClose };
+      return { ...state, cartSuccess: successClose, cartItemQuantity: cartItemReset };
 
     case TOGGLE_MENU:
       let toggle = toggleMenu(state.menuOpen);
       return { ...state, menuOpen: toggle };
 
     case ADD_TO_CART:
-      let addToCart = addingToCart(state.cartItems, action.payload);
-      let success = cartSuccess(state.cartSuccess);
-      return { ...state, cartItems: addToCart, cartSuccess: success };
+      let addToCart = addingToCart(state, action.payload);
+      let success = true;
+      let addCartItemQuantity = state.cartItemQuantity + 1;
+      return { ...addToCart, cartSuccess: success, cartItemQuantity: addCartItemQuantity };
 
     case BACKSWITCH_PRODUCT_DETAIL:
       let displaySwitch = switchProductDetail(state.showProductDetail);

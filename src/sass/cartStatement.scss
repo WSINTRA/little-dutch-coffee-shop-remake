@@ -1,0 +1,18 @@
+.cart-display{
+    display: flex;
+    flex-direction: column;
+    padding-right: 5rem;
+    padding-left: 5rem;
+.cart-items{
+    
+
+    .item{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding-left: 21rem;
+        padding-bottom: 1rem;
+    }
+}
+}

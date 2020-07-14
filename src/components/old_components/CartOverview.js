@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { connect } from 'react-redux';
-import checkoutOrder from './checkoutOrder';
+import checkoutOrder from '../services/checkoutOrder';
 
 
 const cartTotal = (cartItems)=>{
@@ -23,9 +23,11 @@ const CartOverview = (props)=> {
 
 	return (
 	<div className="default-comp">
-  <div className="cart-display"><h3>CURRENT ORDER</h3><br/>
+  <div className="cart-display"><h3>CURRENT R</h3><br/>
   <div className="cart-items">
-   {props.cartItems.map(item=><div key={item.id}>{item.title} : ${item.price}<button onClick={()=>removeFromCart(props, item.id)}>remove</button></div>)}
+   {props.cartItems.map(item=><div key={item.id}>{item.title} : ${item.price}{"   "}
+    <button onClick={()=>removeFromCart(props, item.id)}>remove</button>
+   </div>)}
    </div>
    Total: ${cartTotal(props.cartItems).toFixed(2)}
    <div className="cart-checkout" onClick={()=>submitCheckOut(props.cartItems, props.user)}>Checkout</div>

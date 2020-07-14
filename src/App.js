@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import "./App.scss";
 import LandingPage from "./components/newUserStack/LandingPage";
 import UserPage from "./components/UserStack/UserPage";
@@ -10,42 +10,43 @@ import Account from "./components/UserStack/Account";
 import WeeklyMenu from "./components/UserStack/WeeklyMenu";
 import ProductDetail from "./components/UserStack/ProductDetails";
 import fetchCustomers from "./components/services/customerFetch";
-import SalesStats from './components/AdminComponents/SalesStats'
-import ProductForm from "./components/AdminComponents/ProductForm"
+import SalesStats from "./components/AdminComponents/SalesStats";
+import ProductForm from "./components/AdminComponents/ProductForm";
 import SearchListProducts from "./components/AdminComponents/SearchListProducts";
-import CartOverview from './components/old_components/CartOverview'
+import Cart from "./components/UserStack/Cart";
 
 class App extends React.Component {
-  state = {
-    cartOpen: false,
-  };
-
   componentDidMount() {
     let userUrl = "http://localhost:3050/v1/profile";
     let productUrl = "http://localhost:3050/v1/all_products";
     if (localStorage.myJWT) {
-      fetch(userUrl, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.myJWT}`,
-        },
-      })
-        .then((res) => {
-          if (!res.ok) {
-            console.log("not logged in", res);
-            return null;
-          } else {
-            return res.json();
-          }
+      try {
+        fetch(userUrl, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.myJWT}`,
+          },
         })
-        .then((userData) => {
-          if (userData.user.staff) {
-            //Put any specifics for staff login here
-            fetchCustomers(this.props.allCustomers);
-          }
-          this.props.createUserStateFromFetch(userData.user);
-        });
+          .then((res) => {
+            if (!res.ok) {
+              console.log("not logged in", res);
+              return null;
+            } else {
+              return res.json();
+            }
+          })
+          .then((userData) => {
+            if (userData.user.staff) {
+              //Put any specifics for staff login here
+              fetchCustomers(this.props.allCustomers);
+            }
+            this.props.createUserStateFromFetch(userData.user);
+          });
+      } catch (err) {
+        console.log(err);
+      }
     }
+
     if (!localStorage.products) {
       fetch(productUrl)
         .then((res) => {
@@ -59,6 +60,9 @@ class App extends React.Component {
           this.props.createProductStateFromFetch(res);
         });
     }
+    if (localStorage.cart) {
+      console.log(localStorage.cart);
+    }
   }
 
   LogoutFunction = (props) => {
@@ -71,22 +75,20 @@ class App extends React.Component {
       "Online high grade dispensary built with the official secrets act";
 
     return (
-
       <div className="container">
         {!this.props.loggedIn ? (
-          <>
+          <React.Fragment>
             <div className="heading">
-              <h1>{`${business_header}`}</h1>
-              <hr />
               <div className="sub-heading">
-                <h3>{`${business_sub_header}`}</h3>
+                <h3>{business_sub_header}</h3>
               </div>
+              <Link to="/"> home </Link>
             </div>
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/register" component={RegisterForm} />{" "}
-          </>
+          </React.Fragment>
         ) : (
-          <>
+          <React.Fragment>
             <Header logout={() => this.LogoutFunction()} />
             <Route exact path="/" component={UserPage} />
             <Route exact path="/account" component={Account} />
@@ -96,13 +98,20 @@ class App extends React.Component {
               path={`product-detail-${""}`}
               component={ProductDetail}
             />
-            <Route exact path="/account/AddNewProduct" component={ProductForm} />
-            <Route exact path="/account/RemoveProduct" component={SearchListProducts} />
+            <Route
+              exact
+              path="/account/AddNewProduct"
+              component={ProductForm}
+            />
+            <Route
+              exact
+              path="/account/RemoveProduct"
+              component={SearchListProducts}
+            />
             <Route exact path="/account/AddNewUser" component={SalesStats} />
             <Route exact path="/account/RemoveUser" component={SalesStats} />
-            <Route exact path="/cart" component={CartOverview} />
-			 
-          </>
+            <Route exact path="/cart" component={Cart} />
+          </React.Fragment>
         )}
       </div>
     );
@@ -112,6 +121,7 @@ class App extends React.Component {
 function msp(store) {
   return {
     loggedIn: store.loggedIn,
+    cartOpen: store.cartOpen,
   };
 }
 function mdp(dispatch) {

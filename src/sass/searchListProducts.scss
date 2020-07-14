@@ -1,19 +1,13 @@
 .search-list-products {
-  padding-left: 5rem;
-  padding-right: 5rem;
+  padding-left: $marginRems;
+  padding-right: $marginRems;
   padding-top: 2rem;
-  background-color: #eeecda;
-  margin-left: 5rem;
-  margin-right: 5rem;
-  border-radius: 0.3rem;
+  background-color: $cleanBG;
+  margin-left: $marginRems;
+  margin-right: $marginRems;
+  border-radius: $borderRad;
   border: 0.003rem solid black;
-  box-shadow: 
-  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-0 12.5px 10px rgba(0, 0, 0, 0.06),
-0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-0 100px 80px rgba(0, 0, 0, 0.12);
+  box-shadow: $boxShadows;
   
   .delete-btn {
     cursor: pointer;
@@ -22,8 +16,8 @@
     margin-left: 2rem;
     padding: 0.5rem;
     text-align: center;
-    background-color: darkolivegreen;
-    border-radius: 0.3rem;
-    box-shadow: 0rem 0.2rem 12px black;
+    background-color: $buttonColor;
+    border-radius: $borderRad;
+    box-shadow: $boxShadows;
   }
 }

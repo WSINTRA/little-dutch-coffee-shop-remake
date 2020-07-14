@@ -4,14 +4,14 @@
     flex-wrap: initial;
     justify-content: space-evenly;
     width: inherit;
-    padding-left: 5rem;
-  padding-right: 5rem;
+    padding-left: $marginRems;
+  padding-right: $marginRems;
   padding-bottom: 2rem;
   padding-top: 2rem;
-  background-color: #eeecda;
-  margin-left: 5rem;
-  margin-right: 5rem;
-  border-radius: 0.3rem;
+  background-color: $cleanBG;
+  margin-left: $marginRems;
+  margin-right: $marginRems;
+  border-radius: $borderRad;
   border: 0.003rem solid black;
 
     .reviews {
@@ -42,9 +42,9 @@
         height: 3rem;
         padding-top: 0.8rem;
         text-align: center;
-        background-color: darkolivegreen;
+        background-color: $buttonColor;
         border-radius: 0.3rem;
-        box-shadow: 0rem 0.2rem 12px black;
+        box-shadow: $boxShadows;
     }
   
 }

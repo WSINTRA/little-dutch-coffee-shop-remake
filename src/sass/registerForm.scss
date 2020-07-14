@@ -11,12 +11,12 @@
         align-items: center;
         align-content: space-between;
         text-align: left;
-        border-color: white;
-        background-color: beige;
+        border-color: $borderColor;
+        background-color: $cleanBG;
         border-width: 0.3rem;
         border-style: solid;
-        border-radius: 0.3rem;
-        box-shadow: 0rem 0.2rem 12px black;
+        border-radius: $borderRad;
+        box-shadow: $boxShadows;
         margin-top: 2rem;
         padding: 3rem;
 
@@ -31,12 +31,12 @@
         font-weight: bold;
     }
     input {
-        border-radius: 0.3rem;
+        border-radius: $borderRad;
         opacity: 0.8;
         margin-left: 0.5rem;
         margin-right: 0.5rem;
         margin-bottom: 0.5rem;
-        background-color: antiquewhite;
+        background-color: $cleanBG;
         height: 2.5rem;
         width:20rem;
     }
@@ -48,9 +48,9 @@
         padding-top: 0.8rem;
         width: 100%;
         text-align: center;
-        background-color: darkolivegreen;
-        border-radius: 0.3rem;
-        box-shadow: 0rem 0.2rem 12px black;
+        background-color: $buttonColor;
+        border-radius: $borderRad;
+        box-shadow: $boxShadows;
     }
     
 }

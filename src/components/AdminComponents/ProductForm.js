@@ -8,6 +8,7 @@ import { fadeIn } from "react-animations";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
+import { buttonFeedback } from '../services/buttonFeedback'
 
 import { useRouteMatch } from "react-router-dom";
 
@@ -27,11 +28,16 @@ const updateProducts = (props,standAlone) => {
   if(standAlone){
     props.clearProductID()
   }
+  if(props.productForm.productTitle.length > 2){
   submitProduct(
     props.removeOldProductFromStore,
     props.productForm,
     props.submitProductForm
   );
+}
+else {
+  alert("Product must atleast have a title")
+}
   
   props.clearAllFormFields()
 };
@@ -124,7 +130,11 @@ const ProductForm = (props) => {
         <div className="clear-button">
         <a onClick={()=>props.clearAllFormFields()}style={{cursor: 'pointer'}}>clear all fields</a>
         </div> : null }
-        <div className="submit-button" onClick={() => updateProducts(props,standAloneComp)}>
+        <div className="submit-button" 
+        style={{boxShadow: props.buttonPress}}
+        onMouseDown={(e)=>buttonFeedback(e, props.buttonFeedback)} 
+        onMouseUp={(e)=>buttonFeedback(e, props.buttonFeedback)} 
+        onClick={() => updateProducts(props,standAloneComp)}>
         {standAloneComp ? "Submit" : "Edit"}
         </div>
        
@@ -136,6 +146,7 @@ const ProductForm = (props) => {
 function msp(state) {
   return {
     productForm: state.productForm,
+    buttonPress: state.buttonPress
   };
 }
 function mdp(dispatch) {
@@ -161,6 +172,9 @@ function mdp(dispatch) {
     productFormControl: (object) => {
       dispatch({ type: "PRODUCT_FORM_CONTROL", payload: object });
     },
+    buttonFeedback: (action) => {
+      dispatch({ type: "BUTTON_FEEDBACK", payload: action});
+    }
   };
 }
 export default connect(msp, mdp)(ProductForm);

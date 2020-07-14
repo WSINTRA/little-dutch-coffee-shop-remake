@@ -3,11 +3,8 @@ import { connect } from "react-redux";
 import checkOutOrder from "../services/checkoutOrder";
 
 const cartTotal = (cartItems) => {
-  let total = 0;
-  //Work on this
-//   for (var i = cartItems.length - 1; i >= 0; i--) {
-//     total += parseFloat(cartItems[i].price);
-//   }
+  let total = 0
+  total = cartItems.reduce((total, item)=>(total +=parseFloat(item.itemPrice)),0 ).toFixed(2);
   return total;
 };
 
@@ -28,14 +25,14 @@ const CartStatement = (props) => {
         <div className="cart-items">
           {props.cartItems.map((item) => (
             <div className="item" key={item.cartIndex}>
-              {item.itemTitle} : ${item.itemPrice}
+              {item.itemTitle} : ${parseFloat(item.itemPrice).toFixed(2)}
               <button onClick={() => removeFromCart(props, item.cartIndex)}>
                 remove
               </button>
             </div>
           ))}
         </div>
-        Total: ${cartTotal(props.cartItems).toFixed(2)}
+        Total: ${cartTotal(props.cartItems)}
         <div
           className="cart-checkout"
           onClick={() => submitCheckOut(props.cartItems, props.user)}

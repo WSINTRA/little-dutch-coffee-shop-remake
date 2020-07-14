@@ -1,5 +1,6 @@
 //reducer
 import initialState from "./state.js";
+const BUTTON_FEEDBACK = "BUTTON_FEEDBACK";
 const TOGGLE_PRODUCT_DETAIL = "TOGGLE_PRODUCT_DETAIL";
 const UPDATE_PRODUCT_STORE = "UPDATE_PRODUCT_STORE";
 const CLEAR_ALL_FIELDS = "CLEAR_ALL_FIELDS";
@@ -156,6 +157,8 @@ const addReviewToUserAndProduct = (state, review) => {
 
 function reducer(state = initialState, action) {
   switch (action.type) {
+    case BUTTON_FEEDBACK:
+      return {...state, buttonPress: action.payload}
     case TOGGLE_PRODUCT_DETAIL: 
     // console.log(action.payload)
     return {...state, showProductDetail: action.payload}

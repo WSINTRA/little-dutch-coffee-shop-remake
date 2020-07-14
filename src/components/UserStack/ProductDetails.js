@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { fadeIn } from "react-animations";
 import styled, { keyframes } from "styled-components";
 import { connect } from "react-redux";
+import { buttonFeedback } from '../services/buttonFeedback';
 
 const Bounce = styled.div`
   animation: 0.8s ${keyframes`${fadeIn}`} 1;
@@ -13,6 +14,7 @@ const Price = (DataPrice) => {
 
 const addProductToCart = (props) => {
   props.addToCart(props.product);
+
 };
 const Reviews = (props) => {
   return props.product.reviews.map((review) => (
@@ -24,9 +26,14 @@ const Reviews = (props) => {
   ));
 };
 
-const BuyButton = (addToCart, props) => {
+
+const BuyButton = (addProductToCart, props) => {
   return (
-    <div className="buy-btn" onClick={() => addProductToCart(props)}>
+    <div className="buy-btn" 
+    style={{boxShadow: props.buttonPress}} 
+    onMouseDown={(e)=>buttonFeedback(e, props.buttonFeedback)} 
+    onMouseUp={(e)=>buttonFeedback(e, props.buttonFeedback)} 
+    onClick={() => addProductToCart(props)}>
       ADD TO CART
     </div>
   );
@@ -70,6 +77,9 @@ function mdp(dispatch) {
     closeSuccess: (action) => {
       dispatch({ type: "CLOSE_SUCCESS_WINDOW", payload: action });
     },
+    buttonFeedback: (action) => {
+      dispatch({ type: "BUTTON_FEEDBACK", payload: action});
+    }
   };
 }
 
@@ -77,6 +87,7 @@ function msp(state) {
   return {
     cartSuccessSwitch: state.cartSuccess,
     cartItemQuantity: state.cartItemQuantity,
+    buttonPress: state.buttonPress,
   };
 }
 

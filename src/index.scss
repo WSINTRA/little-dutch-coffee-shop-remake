@@ -1,5 +1,4 @@
-$link-color: #ffffff;
-$backgroundColor: rgb(241, 80, 37);
+
 
 * {
   margin: 0;
@@ -11,7 +10,6 @@ $backgroundColor: rgb(241, 80, 37);
 }
 body {
     font-family: monospace;
-    background-color: $backgroundColor;
     font-weight: 400;
     font-size: 16px;
     max-width: 100%;
@@ -19,7 +17,6 @@ body {
    // overflow-x: hidden;
 }
 button {
-  background-color: $backgroundColor;
     border-color: black;
     border-radius: 0.3rem;
     padding-left: 1rem;
@@ -27,15 +24,10 @@ button {
 }
 a {
   text-decoration: none;
-  color: $link-color;
-  &:visited {
-      color: $link-color;
-    }
+
     &:hover {
       color: black;  
       text-decoration: underline; 
     }
-    &:active {
-      color: $link-color;
-    }
+
 }

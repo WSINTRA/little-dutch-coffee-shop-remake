@@ -1,12 +1,13 @@
 .search-list-products {
-  padding-left: 5rem;
-  padding-right: 5rem;
+  padding-left: $marginRems;
+  padding-right: $marginRems;
   padding-top: 2rem;
-  background-color: white;
-  margin-left: 5rem;
-  margin-right: 5rem;
-  border-radius: 0.3rem;
+  background-color: $cleanBG;
+  margin-left: $marginRems;
+  margin-right: $marginRems;
+  border-radius: $borderRad;
   border: 0.003rem solid black;
+  box-shadow: $boxShadows;
   
   .delete-btn {
     cursor: pointer;
@@ -15,8 +16,8 @@
     margin-left: 2rem;
     padding: 0.5rem;
     text-align: center;
-    background-color: darkolivegreen;
-    border-radius: 0.3rem;
-    box-shadow: 0rem 0.2rem 12px black;
+    background-color: $buttonColor;
+    border-radius: $borderRad;
+    box-shadow: $boxShadows;
   }
 }

@@ -10,12 +10,12 @@
         align-items: center;
         align-content: space-between;
         text-align: left;
-        border-color: white;
-        background-color: beige;
-        border-width: 0.3rem;
+        border-color: $borderColor;
+        background-color: $backgroundColor;
+        border-width: $borderRad;
         border-style: solid;
         border-radius: 0.3rem;
-        box-shadow: 0rem 0.2rem 12px black;
+        box-shadow: $boxShadows;
         margin-top: 2rem;
         padding: 3rem;
 
@@ -28,7 +28,7 @@
             opacity: 0.8;
            margin-left: 0.5rem;
            margin-right: 0.5rem;
-            background-color: antiquewhite;
+            background-color: $cleanBG;
             height: 2.5rem;
         }
 
@@ -40,9 +40,9 @@
             padding-top: 0.8rem;
             width: 100%;
             text-align: center;
-            background-color: darkolivegreen;
-            border-radius: 0.3rem;
-            box-shadow: 0rem 0.2rem 12px black;
+            background-color: $cleanBG;
+            border-radius: $borderRad;
+            box-shadow: $boxShadows;
         }
     }
 }

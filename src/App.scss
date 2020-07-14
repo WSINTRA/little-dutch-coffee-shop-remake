@@ -1,3 +1,19 @@
+//Build all theme colors and sizes here
+$overlayPad: 1rem;
+$cardOverlay: rgba(0, 0, 0, 0.4);
+$cleanBG: #eeecda;
+$linkColor: #868042;
+$backgroundColor: #f08a5d;
+$borderColor: rgba(138, 80, 66, 0.521);
+$highlightColor: #b83b5e;
+$marginRems: 5rem;
+$gradient: linear-gradient(#eeecda, #f08a5d);
+$buttonColor: #337e55;
+$borderRad: 0.3rem;
+$boxShadows: 1px 1px 5px 1px, 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+0 100px 80px rgba(0, 0, 0, 0.12);
 /////////////////////////////////
 //mixins at the top for media queries
 //////////////////////////////////
@@ -35,7 +51,12 @@ $breakpoint argument choices:
       };
   } 
 }
-@import './sass/landingPage.scss',
+
+a  {
+  color: $linkColor
+}
+@import './index.scss',
+'./sass/landingPage.scss',
 './sass/loginForm.scss',
 './sass/registerForm.scss',
 './sass/header.scss',

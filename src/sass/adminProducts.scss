@@ -1,6 +1,7 @@
 .admin-product {
   display: flex;
   flex-direction: column;
+  box-shadow: $boxShadows;
 
   ul{
     display: flex;
@@ -14,7 +15,7 @@
     }
   }
   .search-list {
-    background: linear-gradient(rgba(255, 255, 255, 1), rgb(241, 80, 37));
+    background: $gradient;
     overflow: auto;
     padding: 1rem;
 
@@ -27,11 +28,9 @@
     height: 2rem;
     text-align: center;
     top: 25rem;
-    border-color: rgba(138, 80, 66, 0.521);
-    border-radius: 0.1rem;
+    border-radius: $borderRad;
     border-style: dashed;
     border-width: 0.003rem;
-    ;
   }
 
   .results {
@@ -39,7 +38,7 @@
     flex-direction: column;
 
     a {
-      color: rgb(241, 80, 37);
+      color: $linkColor;
       &:hover {
         text-decoration: none;
       }
@@ -54,7 +53,6 @@
     top: 0.5rem;
     z-index: 1;
     a {
-        color: rgb(241, 80, 37);
         align-self: flex-end;
     }
   }

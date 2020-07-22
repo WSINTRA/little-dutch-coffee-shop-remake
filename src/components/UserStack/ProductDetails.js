@@ -4,6 +4,8 @@ import { fadeIn } from "react-animations";
 import styled, { keyframes } from "styled-components";
 import { connect } from "react-redux";
 import { buttonFeedback } from '../services/buttonFeedback';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faWindowClose, faArchive } from '@fortawesome/free-solid-svg-icons'
 
 const Bounce = styled.div`
   animation: 0.8s ${keyframes`${fadeIn}`} 1;
@@ -17,8 +19,10 @@ const addProductToCart = (props) => {
 
 };
 const Reviews = (props) => {
+  console.log('reviews', props.product.reviews)
   return props.product.reviews.map((review) => (
     <div key={review.id}>
+      <h3>{review.username}{"  says.."}</h3>
       <h3>{review.title}</h3>
       <p>{review.content}</p>
       <hr />
@@ -61,7 +65,7 @@ const ProductDetails = (props) => {
       <div className="reviews">
         <img size="small" alt={props.product.title} src={props.product.image} />
         <p>{props.product.description}</p>
-        <div className="review">{Reviews(props)}</div>
+        <div className="review"><h2>Customer Reviews</h2>{Reviews(props)}</div><FontAwesomeIcon size="3x" icon={faArchive} />Stash Box
       </div>
       {props.cartSuccessSwitch ? cartSuccess(props) : null}
       <h3>${Price(props.product.price)}</h3>

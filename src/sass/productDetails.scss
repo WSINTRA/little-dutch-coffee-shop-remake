@@ -5,37 +5,59 @@
     justify-content: space-evenly;
     width: inherit;
     padding-left: $marginRems;
-  padding-right: $marginRems;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
-  background-color: $cleanBG;
-  margin-left: $marginRems;
-  margin-right: $marginRems;
-  border-radius: $borderRad;
-  border: 0.003rem solid black;
+    padding-right: $marginRems;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    background-color: $cleanBG;
+    margin-left: $marginRems;
+    margin-right: $marginRems;
+            border-color: $borderColor;
+            border-radius: $borderRad;
+            border-style: solid;
+            border-width: 0.003rem;
+            box-shadow: $boxShadows;
 
     .reviews {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-       
+        
+
         .review {
+            height: 16rem;
+            background-color: $cleanBG;
+            border-color: $borderColor;
+            border-radius: $borderRad;
+            border-style: solid;
+            border-width: 0.003rem;
+            box-shadow: $boxShadows;
+            padding: 0.5rem;
             margin: 1rem;
             overflow-y: scroll;
+            scrollbar-width: none;
             width: 100%;
-            width: -moz-available;          /* WebKit-based browsers will ignore this. */
-            width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+            width: -moz-available;
+            /* WebKit-based browsers will ignore this. */
+            width: -webkit-fill-available;
+
+            /* Mozilla-based browsers will ignore this. */
+            &::-webkit-scrollbar {
+                /** WebKit */
+                display: none;
+            }
         }
+
         img {
             width: 15rem;
             height: 15rem;
             border-radius: 15rem;
             object-fit: cover;
-        
+
         }
-     
+
     }
-    .buy-btn{
+
+    .buy-btn {
         cursor: pointer;
         margin-top: 1rem;
         margin-bottom: 1rem;
@@ -46,5 +68,5 @@
         border-radius: 0.3rem;
         box-shadow: $boxShadows;
     }
-  
+
 }

@@ -23,24 +23,24 @@ const openProductDetails=(props)=>{
 	}
 	props.backSwitch(displayProduct)
 }
-const showFullDescription=(description, trigger)=>{
-	let boolSwitch = !trigger;
-	let string = description;
-	if(boolSwitch){
-		return string.slice(0,55)
-	}
-	return string
-}
-const changeMoreToLess=(trigger)=>{
-	if(trigger){
-		return "...less"
-	}
-	return "more..."
-}
+// const showFullDescription=(description, trigger)=>{
+// 	let boolSwitch = !trigger;
+// 	let string = description;
+// 	if(boolSwitch){
+// 		return string.slice(0,55)
+// 	}
+// 	return string
+// }
+// const changeMoreToLess=(trigger)=>{
+// 	if(trigger){
+// 		return "...less"
+// 	}
+// 	return "more..."
+// }
 
 const stars = 4
 const Card =(props)=> {
-	const [more, setMore] = useState(false);
+	// const [more, setMore] = useState(false);
 	return (
 		<div className="product-card" onClick={()=>openProductDetails(props)} style={{backgroundPosition: 'center',
 		backgroundSize: 'cover',backgroundImage: `url(${props.image})`}}>
@@ -59,5 +59,3 @@ const Card =(props)=> {
 }
 
 export default Card;
-
-//Make card an image overlay with title in center

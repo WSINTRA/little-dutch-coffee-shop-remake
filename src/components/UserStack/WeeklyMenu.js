@@ -4,18 +4,17 @@ import Card from "./Card";
 import ProductDetail from "./ProductDetails";
 import { useSpring, animated } from "react-spring";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
+import { faWindowClose, faArchive } from '@fortawesome/free-solid-svg-icons'
 
 
 const onDetailClosed=(props)=>{
   props.backSwitchProductDetail();
   props.closeSuccess();
-  
 }
 
 const WeeklyMenu = (props) => {
   const spring = useSpring({ opacity: 1, from: { opacity: 0 } });
-  let categories = props.productData || [];
+  let productsFromFetch = props.productData || [];
   return (
     <animated.div style={spring}>
       {props.showProductDetail ? (
@@ -29,7 +28,7 @@ const WeeklyMenu = (props) => {
         <div className="weekly-display">
           <div className="product-filters">Some Filters here</div>
           <div className="products-list">
-            {categories.map((product) => {
+            {productsFromFetch.map((product) => {
               return (
                 <Card
                   key={product.id}

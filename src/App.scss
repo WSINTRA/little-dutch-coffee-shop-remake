@@ -55,6 +55,12 @@ $breakpoint argument choices:
 a  {
   color: $linkColor
 }
+.close-icon{
+  opacity: 1;
+  &:hover{
+    opacity:0.7;
+  }
+}
 @import './index.scss',
 './sass/landingPage.scss',
 './sass/loginForm.scss',

@@ -14,6 +14,7 @@ const initialState = {
  cartItems: [],
  cartItemQuantity: 0,
  productData: [],
+ filteredProducts: [],
  allCustomersData:[],
  searchTerm: "",
  editReviewForm: {

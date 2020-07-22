@@ -19,7 +19,6 @@ const addProductToCart = (props) => {
 
 };
 const Reviews = (props) => {
-  console.log('reviews', props.product.reviews)
   return props.product.reviews.map((review) => (
     <div key={review.id}>
       <h3>{review.username}{"  says.."}</h3>
@@ -35,6 +34,7 @@ const BuyButton = (addProductToCart, props) => {
   return (
     <div className="buy-btn" 
     style={{boxShadow: props.buttonPress}} 
+    onMouseOver={(e)=>buttonFeedback(e, props.buttonFeedback)}
     onMouseDown={(e)=>buttonFeedback(e, props.buttonFeedback)} 
     onMouseUp={(e)=>buttonFeedback(e, props.buttonFeedback)} 
     onClick={() => addProductToCart(props)}>

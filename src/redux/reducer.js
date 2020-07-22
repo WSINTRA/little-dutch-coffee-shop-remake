@@ -1,5 +1,6 @@
 //reducer
 import initialState from "./state.js";
+const FILTER_PRODUCT_BY = 'FILTER_PRODUCT_BY';
 const BUTTON_FEEDBACK = "BUTTON_FEEDBACK";
 const TOGGLE_PRODUCT_DETAIL = "TOGGLE_PRODUCT_DETAIL";
 const UPDATE_PRODUCT_STORE = "UPDATE_PRODUCT_STORE";
@@ -157,6 +158,8 @@ const addReviewToUserAndProduct = (state, review) => {
 
 function reducer(state = initialState, action) {
   switch (action.type) {
+    case FILTER_PRODUCT_BY:
+      return {...state, filteredProducts: action.payload}
     case BUTTON_FEEDBACK:
       return {...state, buttonPress: action.payload}
     case TOGGLE_PRODUCT_DETAIL: 
@@ -302,7 +305,7 @@ function reducer(state = initialState, action) {
       return { ...state, loggedIn: true, userData: action.payload };
 
     case ADD_PRODUCT_DATA_TO_STATE:
-      return { ...state, productData: action.payload };
+      return { ...state, productData: action.payload, filteredProducts: action.payload };
 
     default:
       return state;

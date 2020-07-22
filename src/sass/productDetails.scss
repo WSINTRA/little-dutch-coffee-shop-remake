@@ -67,6 +67,10 @@
         background-color: $buttonColor;
         border-radius: 0.3rem;
         box-shadow: $boxShadows;
+        opacity: 0.9;
+        &:hover {
+            opacity: 1;
+          }
     }
 
 }

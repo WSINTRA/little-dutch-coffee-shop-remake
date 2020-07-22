@@ -4,7 +4,7 @@ import SalesStats from "../AdminComponents/SalesStats";
 import AdminProducts from "../AdminComponents/AdminProducts";
 import Customers from "../AdminComponents/Customers";
 import YourOrders from "./YourOrders";
-import Reviews from "./Reviews";
+import Review from "./Review";
 import { useSpring, animated } from "react-spring";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
@@ -34,7 +34,7 @@ const renderSelection = (option, props) => {
     "Customers":Customers, 
     "AdminProducts":AdminProducts, 
     "YourOrders":YourOrders, 
-    "Reviews":Reviews,
+    "Reviews":Review,
     "Cart":Cart
   };
     //If the option is a valid selection then return the React Functional Component with props

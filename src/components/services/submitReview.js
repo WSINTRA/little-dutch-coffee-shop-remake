@@ -16,7 +16,8 @@ if (formDetails.reviewID === 0){
                "product_id": formDetails.productID
               }) }).then(res => res.json() ).then(review=> {
                     //push new review into the array of user reviews
-                    reviewToUserData(review)
+                    reviewToUserData(review);
+                    alert("Review Submitted");
                     } )
 } 
 else if (formDetails.reviewID !== 0){

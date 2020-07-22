@@ -2,7 +2,6 @@ import React from "react";
 import { Table } from "semantic-ui-react";
 
 const createTableOfOrders = (orders) => {
-  console.log(orders)
   return orders.map((order) => (
     
     <Table.Row key={order.id}>
@@ -16,7 +15,6 @@ const createTableOfOrders = (orders) => {
 const YourOrders = (props) => {
   return (
     <>
-    
       <Table basic="very" celled collapsing>
         <Table.Header>
           <Table.Row>

@@ -11,7 +11,7 @@ if(orderData.length >= 1){
                 body: JSON.stringify({
                  "order": orderData,
                  "userId": userId.id
-                
+                 
                }) 
             }).then(res => res.json() ).then(data => console.log("order placed", data)) 
 }

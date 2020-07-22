@@ -21,6 +21,7 @@ const addProductToCart = (props) => {
 const Reviews = (props) => {
   return props.product.reviews.map((review) => (
     <div key={review.id}>
+      {console.log(props)}
       <h3>{review.username}{"  says.."}</h3>
       <h3>{review.title}</h3>
       <p>{review.content}</p>

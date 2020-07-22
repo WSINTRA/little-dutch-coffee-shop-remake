@@ -1,5 +1,6 @@
 //reducer
 import initialState from "./state.js";
+const EDIT_REVIEW = 'EDIT_REVIEW';
 const FILTER_PRODUCT_BY = 'FILTER_PRODUCT_BY';
 const BUTTON_FEEDBACK = "BUTTON_FEEDBACK";
 const TOGGLE_PRODUCT_DETAIL = "TOGGLE_PRODUCT_DETAIL";
@@ -129,6 +130,7 @@ const ActiveReview = (stateActiveReview) => {
 
   return stateCopy;
 };
+
 const addReviewToUserAndProduct = (state, review) => {
   let stateCopy = { ...state };
   let newReview = {};
@@ -138,7 +140,7 @@ const addReviewToUserAndProduct = (state, review) => {
   newReview.product_id = review.payload.product_id;
   newReview.title = review.payload.title;
   newReview.user_id = review.payload.user_id;
-
+  newReview.username = review.payload.username;
   const existingCheck = (userCopy, newReview) => {
     let userData = userCopy.reviews.filter(
       (review) => review.product_id !== newReview.product_id
@@ -158,6 +160,8 @@ const addReviewToUserAndProduct = (state, review) => {
 
 function reducer(state = initialState, action) {
   switch (action.type) {
+    case EDIT_REVIEW:
+      return {...state, editReviewForm: {...state.editReviewForm, productTitle: action.payload.title, productID: action.payload.id} }
     case FILTER_PRODUCT_BY:
       return {...state, filteredProducts: action.payload}
     case BUTTON_FEEDBACK:

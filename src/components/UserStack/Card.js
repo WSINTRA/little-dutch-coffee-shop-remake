@@ -21,7 +21,9 @@ const openProductDetails=(props)=>{
 		rating: props.rating,
 		reviews: props.reviews
 	}
-	props.backSwitch(displayProduct)
+	if(props.backSwitch){
+		props.backSwitch(displayProduct)
+	}
 }
 // const showFullDescription=(description, trigger)=>{
 // 	let boolSwitch = !trigger;

@@ -21,7 +21,8 @@ const initialState = {
  	reviewTitle: "",
  	reviewContent: "",
  	reviewID: 0,
- 	productID: ""
+	 productTitle: "",
+	 productID: 0
  },
  form: {//Make this userForm *
  	email: "",

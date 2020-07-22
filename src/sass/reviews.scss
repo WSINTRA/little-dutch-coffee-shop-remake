@@ -1,0 +1,8 @@
+.review-products{
+    display: flex;
+    flex-direction: column;
+    .products-list{
+        display: flex;
+        flex-direction: row;
+    }
+}

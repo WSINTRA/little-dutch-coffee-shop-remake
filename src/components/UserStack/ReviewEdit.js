@@ -2,8 +2,8 @@ import React from 'react';
 import {connect } from 'react-redux';
 import { Button } from 'semantic-ui-react';
 import submitReview from '../services/submitReview'
-const ControlledInput = (props, input) => {
 
+const ControlledInput = (props, input) => {
   const value = input.target.value
   const label = input.target.name
   const payload = {}
@@ -12,17 +12,11 @@ const ControlledInput = (props, input) => {
 
 }
 
-const submitionReview=(reviewFormDetails, user, reviewToUserData,toggleReview)=>{
-submitReview(reviewFormDetails, user, reviewToUserData )
-toggleReview()
-}
-
 const EditReview=(props)=>{
 	return(
 	
     <div className="review-edit">
-     
-      {props.editReviewForm.reviewID ? <p>Review ID : {props.editReviewForm.reviewID}</p> : null}<br/>
+      {props.editReviewForm.productTitle ? <h3>Review for : {props.editReviewForm.productTitle}</h3> : <h2>Select a product to edit</h2>}
           <div>
             <label >Review Title</label><br/><input 
             onChange={(e)=>ControlledInput(props, e)} 
@@ -39,10 +33,10 @@ const EditReview=(props)=>{
             value={props.editReviewForm.reviewContent}
             type="text"/>
           </div><br/>
-		<Button onClick={()=>{submitionReview(props.editReviewForm, 
+		<Button onClick={()=>{submitReview(
+      props.editReviewForm, 
 			props.user, 
-			props.reviewToUserData,
-			props.toggleReview)}}>Submit</Button>
+			props.reviewToUserData)}}>Submit</Button>
         
     </div>
 
@@ -53,6 +47,7 @@ const EditReview=(props)=>{
 function msp(state){
   return {
     editReviewForm: state.editReviewForm,
+    user: state.userData
   };
 }
 function mdp(dispatch){

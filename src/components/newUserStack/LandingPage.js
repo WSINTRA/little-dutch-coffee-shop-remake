@@ -13,7 +13,7 @@ const LandingPage = ()=> {
 
 function msp(state){
 	return{
-		menuOpen: state.menuOpen
+		menuOpen: state.reducer.menuOpen
 	}
 }
 

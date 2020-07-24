@@ -10,7 +10,7 @@ const UserPage = (props)=> {
 
 function msp(state){
 	return {
-		userData: state.userData,
+		userData: state.CustomerReducer.userData,
 	}
 }
 export default connect(msp)(UserPage);

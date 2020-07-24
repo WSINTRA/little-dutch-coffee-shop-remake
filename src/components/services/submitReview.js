@@ -38,7 +38,6 @@ else if (formDetails.reviewID !== 0){
                     //push new review into the array of user reviews
                     reviewToUserData(review)
                     } )
-
 }
 //write a submission to the backend server here.
 

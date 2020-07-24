@@ -46,8 +46,8 @@ const EditReview=(props)=>{
 
 function msp(state){
   return {
-    editReviewForm: state.editReviewForm,
-    user: state.userData
+    editReviewForm: state.ReviewReducer.editReviewForm,
+    user: state.CustomerReducer.userData
   };
 }
 function mdp(dispatch){

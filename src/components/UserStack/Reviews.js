@@ -3,7 +3,7 @@ import Card from "./Card";
 import {connect } from 'react-redux';
 
 const passProductForReview = (product, props) => {
-  console.log(product);
+  // console.log(product);
   //Pass this products details into ReviewEdit
   props.editSelected(product);
 };
@@ -30,7 +30,7 @@ function mdp(dispatch) {
   }
   function msp(state) {
 	return {
-	  currentUser: state.userData,
+	  currentUser: state.CustomerReducer.userData,
 	};
   }
 export default connect(msp, mdp)(Reviews);

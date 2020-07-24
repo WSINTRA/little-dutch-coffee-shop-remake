@@ -37,7 +37,6 @@ const initialState = {
  login: {
  	username:"",
  	password:"",
-
  },
  employeeForm:{
  	name:"",

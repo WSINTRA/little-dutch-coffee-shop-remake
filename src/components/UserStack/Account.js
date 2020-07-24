@@ -145,9 +145,9 @@ function mdp(dispatch) {
 }
 function msp(state) {
   return {
-    currentUser: state.userData,
-    activeOption: state.activeOption,
-    customersData: state.allCustomersData,
+    currentUser: state.CustomerReducer.userData,
+    activeOption: state.reducer.activeOption,
+    customersData: state.CustomerReducer.allCustomersData,
   };
 }
 

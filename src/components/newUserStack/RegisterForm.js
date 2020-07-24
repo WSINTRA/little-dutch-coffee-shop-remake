@@ -179,7 +179,7 @@ const RegisterForm = (props) => (
 
 function msp(state) {
   return {
-    form: state.form,
+    form: state.reducer.form,
   };
 }
 function mdp(dispatch) {

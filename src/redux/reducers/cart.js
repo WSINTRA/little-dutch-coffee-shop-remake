@@ -1,9 +1,9 @@
-
+import State from './state/cart-state';
 const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 const CLOSE_SUCCESS_WINDOW = "CLOSE_SUCCESS_WINDOW";
 const ADD_TO_CART = "ADD_TO_CART";
 
-function CartReducer(state=null, action) {
+function CartReducer(state=State, action) {
 
   switch (action.type) {
 
@@ -33,7 +33,7 @@ function CartReducer(state=null, action) {
       return {
         ...state,
         cartSuccess: true,
-        cartItems: { ...state.cartItems, itemBasket },
+        cartItems: [...state.cartItems, itemBasket ],
         cartItemQuantity: addCartItemQuantity,
         cartPos: increasedCartPos,
       };

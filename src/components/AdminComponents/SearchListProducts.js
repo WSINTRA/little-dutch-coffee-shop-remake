@@ -242,8 +242,8 @@ function mdp(dispatch) {
 
 function msp(state) {
   return {
-    productData: state.productData,
-    searchTerm: state.searchTerm,
+    productData: state.ProductReducer.productData,
+    searchTerm: state.reducer.searchTerm,
   };
 }
 

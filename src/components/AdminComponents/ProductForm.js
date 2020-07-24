@@ -145,8 +145,8 @@ const ProductForm = (props) => {
 //Need some kind of feedback if the submission was all good, lets investigate the submission process
 function msp(state) {
   return {
-    productForm: state.productForm,
-    buttonPress: state.buttonPress
+    productForm: state.ProductReducer.productForm,
+    buttonPress: state.reducer.buttonPress
   };
 }
 function mdp(dispatch) {

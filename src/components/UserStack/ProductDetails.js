@@ -90,9 +90,9 @@ function mdp(dispatch) {
 
 function msp(state) {
   return {
-    cartSuccessSwitch: state.cartSuccess,
-    cartItemQuantity: state.cartItemQuantity,
-    buttonPress: state.buttonPress,
+    cartSuccessSwitch: state.CartReducer.cartSuccess,
+    cartItemQuantity: state.CartReducer.cartItemQuantity,
+    buttonPress: state.reducer.buttonPress,
   };
 }
 

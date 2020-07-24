@@ -54,7 +54,6 @@ const LoginForm = (props) => (
 function msp(state) {
   return {
     login: state.reducer.login,
-    state: state
   };
 }
 function mdp(dispatch) {

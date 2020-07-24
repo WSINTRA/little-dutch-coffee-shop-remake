@@ -1,176 +1,40 @@
 //reducer
-import initialState from "./state.js";
-const EDIT_REVIEW = 'EDIT_REVIEW';
-const FILTER_PRODUCT_BY = 'FILTER_PRODUCT_BY';
+import initialState from "./state";
+import { combineReducers } from 'redux';
+import CartReducer from './reducers/cart';
+import CustomerReducer from './reducers/customers';
+import ProductReducer from './reducers/products';
+import ReviewReducer from './reducers/reviews';
+import { formObjectCreator } from "./helpers/form-helpers";
+
 const BUTTON_FEEDBACK = "BUTTON_FEEDBACK";
-const TOGGLE_PRODUCT_DETAIL = "TOGGLE_PRODUCT_DETAIL";
-const UPDATE_PRODUCT_STORE = "UPDATE_PRODUCT_STORE";
 const CLEAR_ALL_FIELDS = "CLEAR_ALL_FIELDS";
 const EMPLOYEE_FORM_INPUT = "EMPLOYEE_FORM_INPUT";
-const REVIEW_ACTIVE = "REVIEW_ACTIVE";
-const REMOVE_FROM_CART = "REMOVE_FROM_CART";
-const ALL_CUSTOMERS = "ALL_CUSTOMERS";
-const CLOSE_SUCCESS_WINDOW = "CLOSE_SUCCESS_WINDOW";
 const TOGGLE_MENU = "TOGGLE_MENU";
-const ADD_TO_CART = "ADD_TO_CART";
-const PRODUCT_FOR_EDIT = "PRODUCT_FOR_EDIT";
-const WEEKLY_CHECKBOX = "WEEKLY_CHECKBOX";
-const STAR_RATE = "STAR_RATE";
 const SOME_OPTION = "SOME_OPTION";
 const SOME_LINK = "SOME_LINK";
-const REVIEW_FORM_CONTROL = "REVIEW_FORM_CONTROL";
-const PRODUCT_FORM_CONTROL = "PRODUCT_FORM_CONTROL";
 const LOGIN_FORM_CONTROL = "LOGIN_FORM_CONTROL";
 const REGISTER_FORM_CONTROL = "REGISTER_FORM_CONTROL";
-const ADD_REVIEW_DATA_TO_USER_STATE = "ADD_REVIEW_DATA_TO_USER_STATE";
-const ADD_USER_DATA_TO_STATE = "ADD_USER_DATA_TO_STATE";
-const ADD_PRODUCT_DATA_TO_STATE = "ADD_PRODUCT_DATA_TO_STATE";
-const SUBMIT_PRODUCT_FORM = "SUBMIT_PRODUCT_FORM";
-const CLEAR_PRODUCT_ID = "CLEAR_PRODUCT_ID";
-const REMOVE_BY_ID = "REMOVE_BY_ID";
 const SEARCH_TERM_CONTROL = "SEARCH_TERM_CONTROL";
-const LOGOUT = "LOGOUT";
-const BACKSWITCH_PRODUCT_DETAIL = "BACKSWITCH_PRODUCT_DETAIL";
 
-const formObjectCreator = (formType, payload, state) => {
-  let objKey = Object.keys(payload)[0];
-  let formObject = { ...state[formType], [objKey]: payload[objKey] };
-  //creates a controlled field based on incoming payload input field name
-  return formObject;
-};
-
-const removeById = (state, id) => {
-  let copy = [...state];
-  let removedObject = copy
-    .map((el) => (el.id !== id ? el : null))
-    .filter((el) => el !== null);
-  return removedObject;
-};
-
-const setCurrentFormIDtoZero = (state) => {
-  let copy = { ...state };
-  copy.editID = 0;
-  return copy;
-};
-const starRateInsert = (state, payload) => {
-  let copy = { ...state };
-  copy.starRate = payload;
-  return copy;
-};
-const weeklyCheckBoxBool = (state) => {
-  let copy = { ...state };
-  copy.checkbox = !copy.checkbox;
-  return copy;
-};
-
-const addProductToProductArray = (state, payload) => {
-  let copy = [...state, payload];
-  return copy;
-};
-const sendProductToEdit = (state, payload) => {
-  let stateCopy = { ...state };
-  stateCopy.productTitle = payload.title;
-  stateCopy.description = payload.description;
-  stateCopy.imageURL = payload.image;
-  stateCopy.starRate = payload.rating;
-  stateCopy.price = payload.price;
-  stateCopy.checkbox = payload.in_menu;
-  stateCopy.editID = payload.id;
-  stateCopy.breed = payload.breed;
-  return stateCopy;
-};
-
-const switchProductDetail = (stateProductDetail) => {
-  let stateCopy = stateProductDetail;
-  stateCopy = !stateProductDetail;
-  return stateCopy;
-};
-
-const logginIn = (state, userData) => {
-  let loginCopy = { ...state };
-  return loginCopy;
-};
-const logout = () => {
-  localStorage.clear();
-};
-const addingToCart = (state, cartItem) => {
-  let cart = [...state.cartItems]
-  let itemBasket = { cartIndex: state.cartPos, itemId: cartItem.id, itemPrice:cartItem.price, itemTitle:cartItem.title }
-  let updatedCart = [...cart, itemBasket]
-  let increasePos = state.cartPos + 1
-  let updatedState = {...state, cartPos: increasePos, cartItems:updatedCart  }
-  // localStorage.setItem('cart', JSON.stringify(stateCopy))
-  return updatedState;
-};
-const cartSuccess = (stateCartSucess) => {
-  let stateCopy = stateCartSucess;
-  stateCopy = !stateCopy;
-  return stateCopy;
-};
 const toggleMenu = (stateMenuOpen) => {
   let stateCopy = stateMenuOpen;
   stateCopy = !stateCopy;
   return stateCopy;
 };
-const addAllCustomers = (stateAllCustomerData, data) => {
-  let stateCopy = stateAllCustomerData;
-  stateCopy = [...data];
-  return stateCopy;
-};
-const removeFromCart = (state, itemRemID) => {
-  let lastSeenPos = state.cartPos-1;
-  let cart = [...state.cartItems]
-  let updatedCart = cart.filter(item=>item.cartIndex !==itemRemID)
-  return {...state, cartItems: updatedCart, cartPos: lastSeenPos}
-};
 
-const ActiveReview = (stateActiveReview) => {
-  let stateCopy = stateActiveReview;
-  stateCopy = !stateCopy;
-
-  return stateCopy;
-};
-
-const addReviewToUserAndProduct = (state, review) => {
-  let stateCopy = { ...state };
-  let newReview = {};
-  newReview.content = review.payload.content;
-  newReview.id = review.payload.id;
-  newReview.product = review.payload.product;
-  newReview.product_id = review.payload.product_id;
-  newReview.title = review.payload.title;
-  newReview.user_id = review.payload.user_id;
-  newReview.username = review.payload.username;
-  const existingCheck = (userCopy, newReview) => {
-    let userData = userCopy.reviews.filter(
-      (review) => review.product_id !== newReview.product_id
-    );
-    userData.push(newReview);
-    return userData;
-  };
-
-  let reviewsArray = existingCheck(stateCopy.userData, newReview);
-
-  stateCopy.userData.reviews = reviewsArray;
-  stateCopy.productData
-    .filter((prod) => prod.id === newReview.product_id)[0]
-    .reviews.push(newReview);
-  return stateCopy;
-};
+const rootReducer = combineReducers( { 
+  CartReducer, 
+  CustomerReducer, 
+  ProductReducer, 
+  ReviewReducer, 
+  reducer });
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case EDIT_REVIEW:
-      return {...state, editReviewForm: {...state.editReviewForm, productTitle: action.payload.title, productID: action.payload.id} }
-    case FILTER_PRODUCT_BY:
-      return {...state, filteredProducts: action.payload}
     case BUTTON_FEEDBACK:
-      return {...state, buttonPress: action.payload}
-    case TOGGLE_PRODUCT_DETAIL: 
-    // console.log(action.payload)
-    return {...state, showProductDetail: action.payload}
-    case UPDATE_PRODUCT_STORE:
-      return { ...state, productData: action.payload };
+      return { ...state, buttonPress: action.payload };
+
     case CLEAR_ALL_FIELDS:
       return {
         ...state,
@@ -185,6 +49,7 @@ function reducer(state = initialState, action) {
           editID: 0,
         },
       };
+
     case EMPLOYEE_FORM_INPUT:
       let employeeUpdate = formObjectCreator(
         "employeeForm",
@@ -193,87 +58,12 @@ function reducer(state = initialState, action) {
       );
       return { ...state, employeeForm: employeeUpdate };
 
-    case ADD_REVIEW_DATA_TO_USER_STATE:
-      let updatedState = addReviewToUserAndProduct(state, action);
-      return { ...updatedState };
-      
-    case REVIEW_ACTIVE:
-      let activateReview = ActiveReview(state.reviewActive);
-      return { ...state, reviewActive: activateReview };
-//Think about how I add an item to the cart and how I rmeove them.. Does the cart need the full object ?
-    case REMOVE_FROM_CART:
-      let removeItem = removeFromCart(state, action.payload);
-      return { ...removeItem };
-
-    case LOGOUT:
-      logout();
-      return {
-        ...state,
-        loggedIn: false,
-        userData: {},
-        activeOption: "",
-        activeLink: "Your Account",
-        login: { username: "", password: "" },
-      };
-
-    case ALL_CUSTOMERS:
-      let allCustData = addAllCustomers(state.allCustomersData, action.payload);
-      return { ...state, allCustomersData: allCustData };
-
-    case CLOSE_SUCCESS_WINDOW:
-      let cartItemReset = 0
-      let successClose = false;
-      return { ...state, cartSuccess: successClose, cartItemQuantity: cartItemReset };
-
     case TOGGLE_MENU:
       let toggle = toggleMenu(state.menuOpen);
       return { ...state, menuOpen: toggle };
 
-    case ADD_TO_CART:
-      let addToCart = addingToCart(state, action.payload);
-      let success = true;
-      let addCartItemQuantity = state.cartItemQuantity + 1;
-      return { ...addToCart, cartSuccess: success, cartItemQuantity: addCartItemQuantity };
-
-    case BACKSWITCH_PRODUCT_DETAIL:
-      let displaySwitch = switchProductDetail(state.showProductDetail);
-      return {
-        ...state,
-        showProductDetail: displaySwitch,
-        activeProductDetail: action.payload,
-      };
-
     case SEARCH_TERM_CONTROL:
       return { ...state, searchTerm: action.payload };
-    case REMOVE_BY_ID:
-      let removedProductByID = removeById(state.productData, action.payload);
-      return { ...state, productData: removedProductByID };
-    case CLEAR_PRODUCT_ID:
-      //set current form id to 0
-      let setFormIDtoZero = setCurrentFormIDtoZero(state.productForm);
-      return { ...state, productForm: setFormIDtoZero };
-
-    case SUBMIT_PRODUCT_FORM:
-      let updatedProductData = addProductToProductArray(
-        state.productData,
-        action.payload
-      );
-
-      return { ...state, productData: updatedProductData };
-
-    case PRODUCT_FOR_EDIT:
-      let productFormEdit = sendProductToEdit(
-        state.productForm,
-        action.payload
-      );
-      return { ...state, productForm: productFormEdit };
-    case WEEKLY_CHECKBOX:
-      let weeklyUpdate = weeklyCheckBoxBool(state.productForm);
-      return { ...state, productForm: weeklyUpdate };
-
-    case STAR_RATE:
-      let starUpdate = starRateInsert(state.productForm, action.payload);
-      return { ...state, productForm: starUpdate };
 
     case SOME_OPTION: //Used for navigation
       return { ...state, activeOption: action.payload };
@@ -281,39 +71,17 @@ function reducer(state = initialState, action) {
     case SOME_LINK: //Used for navigation
       return { ...state, activeLink: action.payload };
 
-    case PRODUCT_FORM_CONTROL:
-      let productUpdate = formObjectCreator(
-        "productForm",
-        action.payload,
-        state
-      );
-      return { ...state, productForm: productUpdate };
-
     case LOGIN_FORM_CONTROL:
       let loginUpdate = formObjectCreator("login", action.payload, state);
       return { ...state, login: loginUpdate };
 
-    case REVIEW_FORM_CONTROL:
-      let reviewUpdate = formObjectCreator(
-        "editReviewForm",
-        action.payload,
-        state
-      );
-      return { ...state, editReviewForm: reviewUpdate };
-
     case REGISTER_FORM_CONTROL:
       let registerUpdate = formObjectCreator("form", action.payload, state);
       return { ...state, form: registerUpdate };
-
-    case ADD_USER_DATA_TO_STATE:
-      return { ...state, loggedIn: true, userData: action.payload };
-
-    case ADD_PRODUCT_DATA_TO_STATE:
-      return { ...state, productData: action.payload, filteredProducts: action.payload };
 
     default:
       return state;
   }
 }
 
-export default reducer;
+export default rootReducer;

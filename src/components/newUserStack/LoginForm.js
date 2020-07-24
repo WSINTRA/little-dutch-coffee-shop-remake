@@ -15,6 +15,7 @@ const controlledInput = (e, props) => {
 const LoginForm = (props) => (
   <div id="login" className="login">
     <h1>Welcome</h1>
+    {console.log(props)}
     <Link to="/register">Sign up?</Link>
     <div className="login-form">
     <img className="logo" style={{ width: "150px" }} alt="logo" src={logo} />
@@ -52,7 +53,8 @@ const LoginForm = (props) => (
 
 function msp(state) {
   return {
-    login: state.login,
+    login: state.reducer.login,
+    state: state
   };
 }
 function mdp(dispatch) {

@@ -73,10 +73,10 @@ function mdp(dispatch) {
 
 function msp(state) {
   return {
-    productData: state.productData,
-    filteredProducts: state.filteredProducts,
-    showProductDetail: state.showProductDetail,
-    activeProductDetail: state.activeProductDetail,
+    productData: state.ProductReducer.productData,
+    filteredProducts: state.ProductReducer.filteredProducts,
+    showProductDetail: state.ProductReducer.showProductDetail,
+    activeProductDetail: state.ProductReducer.activeProductDetail,
   };
 }
 export default connect(msp, mdp)(WeeklyMenu);

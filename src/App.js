@@ -76,7 +76,7 @@ class App extends React.Component {
 
     return (
       <div className="container">
-        {!this.props.loggedIn ? (
+        {!this.props.customer.loggedIn ? (
           <React.Fragment>
             <div className="heading">
               <div className="sub-heading">
@@ -120,8 +120,9 @@ class App extends React.Component {
 
 function msp(store) {
   return {
-    loggedIn: store.loggedIn,
-    cartOpen: store.cartOpen,
+    customer: store.CustomerReducer,
+    cart: store.CartReducer,
+    state: store
   };
 }
 function mdp(dispatch) {

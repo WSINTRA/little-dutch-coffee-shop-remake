@@ -22,8 +22,10 @@ const CartStatement = (props) => {
       <div className="cart-display">
         <h3>Order Statement</h3>
         <br />
+        {console.log(props)}
         <div className="cart-items">
-          {props.cartItems.map((item) => (
+          {/* TODO: remove duplicates and instead display quantity */}
+          {props.cart.cartItems.map((item) => (
             <div className="item" key={item.cartIndex}>
               {item.itemTitle} : ${parseFloat(item.itemPrice).toFixed(2)}
               <button onClick={() => removeFromCart(props, item.cartIndex)}>
@@ -32,10 +34,10 @@ const CartStatement = (props) => {
             </div>
           ))}
         </div>
-        Total: ${cartTotal(props.cartItems)}
+        Total: ${cartTotal(props.cart.cartItems)}
         <div
           className="cart-checkout"
-          onClick={() => submitCheckOut(props.cartItems, props.user)}
+          onClick={() => submitCheckOut(props.cart.cartItems, props.user)}
         >
           Checkout
         </div>
@@ -58,8 +60,8 @@ function mdp(dispatch) {
 }
 function msp(state) {
   return {
-    cartItems: state.cartItems,
-    user: state.userData,
+    cart: state.CartReducer,
+    user: state.CustomerReducer.userData,
   };
 }
 export default connect(msp, mdp)(CartStatement);

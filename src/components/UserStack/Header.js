@@ -91,7 +91,7 @@ function mdp(dispatch) {
 }
 function msp(state) {
   return {
-    menuOpen: state.menuOpen,
+    menuOpen: state.reducer.menuOpen,
   };
 }
 
